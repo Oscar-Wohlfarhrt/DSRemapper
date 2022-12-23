@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DSRemapper Input Test</title>
+    <link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+</head>
+
+<body>
+    <div class="AutoGridLayout FullSpace" id="TestContainer">
+    </div>
+    <script>
+        axisEnum=[
+            "Left X",
+            "Left Y",
+            "Right X",
+            "Right Y",
+            "Left Trigger",
+            "Right Trigger"
+        ];
+        povEnum=[
+            "Up",
+            "Right",
+            "Down",
+            "Left",
+        ];
+        buttonsEnum=[
+            "Square/X",
+            "Cross/A",
+            "Circle/B",
+            "Triangle/Y",
+            "L1/LButton",
+            "R1/RButton",
+            "L2",
+            "R2",
+            "Share/Back",
+            "Options/Start",
+            "L3/LThumb",
+            "R3/RThumb",
+            "PS/Guide",
+            "TouchClick",
+        ];
+        sixAxisEnum=[
+            "RawAccel",
+            "Gyro",
+            "Grav",
+            "Accel",
+        ];
+
+
+        function SetData(event){
+            data={};
+
+            for(let i=0;i<event.Axis.length;i++){
+                data[`Axis ${i+1}<br>${axisEnum[i]}`]=event.Axis[i];
+            }
+            for(let i=0;i<event.Pov.length;i++){
+                data[`Pov ${i+1}<br>${povEnum[i]}`]=event.Pov[i];
+            }
+            for(let i=0;i<event.Buttons.length;i++){
+                data[`Button ${i+1}<br>${buttonsEnum[i]}`]=event.Buttons[i];
+            }
+            for(let i=0;i<event.SixAxisX.length;i++){
+                data[`SixAxis ${i+1}<br>${sixAxisEnum[i]}`]=`X:${event.SixAxisX[i]}<br>Y:${event.SixAxisY[i]}<br>Z:${event.SixAxisZ[i]}`;
+            }
+            data[`Rotation`]=`X:${event.Rotation[0]}<br>Y:${event.Rotation[1]}<br>Z:${event.Rotation[2]}<br>W:${event.Rotation[3]}`;
+            for(let i=0;i<event.Touch.length;i++){
+                data[`Touch Id ${i+1}`]=`${event.Touch[i].Id}`;
+                data[`Touch Press ${i+1}`]=`${event.Touch[i].Pressed}`;
+                data[`Touch Pos ${i+1}`]=`X:${event.Touch[i].PosX}<br>Y:${event.Touch[i].PosY}`;
+            }
+
+            ShowData(data);
+        }
+        function ShowData(data){
+            const repKeys = Object.keys(data);
+            const container = document.getElementById("TestContainer");
+            const item=`
+            <div class="testItem">
+                <span>Title</span>
+                <span>Value</span>
+            </div>`
+
+            while(container.childElementCount<repKeys.length){
+                container.innerHTML+=item;
+            }
+            while(container.childElementCount>repKeys.length){
+                container.removeChild(container.children[container.childElementCount - 1]);
+            }
+
+            for (let i = 0; i < repKeys.length; i++) {
+                container.children[i].children[0].innerHTML=repKeys[i];
+                container.children[i].children[1].innerHTML=data[repKeys[i]];
+            }
+        }
+
+        SetData({id1: "test1", id2: "test2"});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>DSRemapper Input Test</title>
+    <link rel="stylesheet" type="text/css" href="Stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="ITStyles.css" />
+</head>
+
+<body>
+    <div class="RowFlexLayout FullSpace" id="TestContainer">
+        <!--<div class="testItem">
+            <div class="testContent"><span>Title</span>
+                <span>Value</span>
+                <svg width="50px" height="50px">
+                    <polygon points="17,0 33,0 33,15 25,23 17,15"
+                    fill="#282828"></polygon>
+                    <polygon points="17,50 33,50 33,35 25,27 17,35"
+                    fill="#282828"></polygon>
+                    <polygon points="0,17 0,33 15,33 23,25 15,17"
+                    fill="#282828"></polygon>
+                    <polygon points="50,17 50,33 35,33 27,25 35,17"
+                    fill="#282828"></polygon>
+                </svg>
+            </div>
+        </div>-->
+    </div>
+    <script>
+        document.oncontextmenu = function () { return false }
+
+        axisEnum=[
+            "DS/DI: Left X",
+            "DS/DI: Left Y",
+            "DS/DI: Right X",
+            "DS/DI: Right Y",
+            "DS/DI: Left Trigger",
+            "DS/DI: Right Trigger"
+        ];
+        povEnum=[
+            "Up",
+            "Right",
+            "Down",
+            "Left",
+        ];
+        buttonsEnum=[
+            "DS: Square<br>XI: X",
+            "DS: Cross<br>XI: A",
+            "DS: Circle<br>XI: B",
+            "DS: Triangle<br>XI: Y",
+            "DS: L1<br>XI: LButton",
+            "DS: R1<br>XI: RButton",
+            "DS: L2",
+            "DS: R2",
+            "DS: Share<br>XI: Back",
+            "DS: Options<br>XI: Start",
+            "DS: L3<br>XI: LThumb",
+            "DS: R3<br>XI: RThumb",
+            "DS: PS<br>XI: Guide",
+            "DS: TouchClick",
+        ];
+        sixAxisEnum=[
+            "DS: RawAccel<br>DI: Velocity",
+            "DS: Gyro<br>DI: AngularVelocity",
+            "DS: Grav<br>DI: Acceleration",
+            "DS: Accel<br>DI: AngularAcceleration",
+        ];
+        quatsEnum=[
+            "DS: Rotation<br>DI: Force",
+            "DS: Delta Rotation<br>DI: Torque",
+        ];
+
+        const svgs=[
+            `
+            <span>Title</span>
+            <span>Value</span>`,
+            `
+            <span>Title</span>
+            <svg width="100px" height="10px">
+                <rect x="0px" y="0px" width="100px" height="10px" rx="3px" ry="3px" fill="#282828"></rect>
+                <rect x="0px" y="0px" width="50px" height="10px" rx="3px" ry="3px" fill="#aaa"></rect>
+            </svg>
+            <span>Value</span>`,
+            `
+            <span>Title</span>
+            <svg width="40px" height="20px">
+                <rect x="0px" y="0px" width="40px" height="20px" rx="3px" ry="3px" fill="#282828"></rect>
+            </svg>`,
+            `
+            <span>Title</span>
+            <svg width="50px" height="50px">
+                <polygon points="17,0 33,0 33,15 25,23 17,15"
+                fill="#282828"></polygon>
+                <polygon points="17,50 33,50 33,35 25,27 17,35"
+                fill="#282828"></polygon>
+                <polygon points="0,17 0,33 15,33 23,25 15,17"
+                fill="#282828"></polygon>
+                <polygon points="50,17 50,33 35,33 27,25 35,17"
+                fill="#282828"></polygon>
+            </svg>
+            <span>Value</span>`,
+        ]
+        const butColor=["#282828","#aaa"]
+
+
+        function SetData(event){
+            data={};
+
+            for(let i=0;i<event.Axis.length;i++){
+                data[`Axis ${i+1}<br>${axisEnum[i]}`]={value:event.Axis[i],type:1};
+            }
+            for(let i=0;i<event.Pov.length;i++){
+                data[`Pov ${i+1}`]={value:`${event.Pov[i].Angle}`,type:3,raw:event.Pov[i]};
+            }
+            for(let i=0;i<event.Sliders.length;i++){
+                data[`Sliders ${i+1}`]={value:`${event.Sliders[i]}`,type:1};
+            }
+            for(let i=0;i<event.Buttons.length;i++){
+                data[`Button ${i+1}${(typeof buttonsEnum[i] !== 'undefined')?`<br>${buttonsEnum[i]}`:""}`]={value:event.Buttons[i],type:2};
+            }
+            for(let i=0;i<event.SixAxis.length;i++){
+                data[`SixAxis ${i+1}<br>${sixAxisEnum[i]}`]={value:`X:${event.SixAxis[i].X}<br>Y:${event.SixAxis[i].Y}<br>Z:${event.SixAxis[i].Z}`,type:0};
+            }
+            data[`${quatsEnum[0]}`]={value:`X:${event.Rotation.X}<br>Y:${event.Rotation.Y}<br>Z:${event.Rotation.Z}<br>W:${event.Rotation.W}`,type:0};
+            data[`${quatsEnum[1]}`]={value:`X:${event.DeltaRotation.X}<br>Y:${event.DeltaRotation.Y}<br>Z:${event.DeltaRotation.Z}<br>W:${event.DeltaRotation.W}`,type:0};
+            for(let i=0;i<event.Touch.length;i++){
+                data[`Touch ${i+1}`]={value:`Id: ${event.Touch[i].Id}<br>${event.Touch[i].Pressed}<br>X:${event.Touch[i].Pos.X}<br>Y:${event.Touch[i].Pos.Y}`,type:0};
+            }
+
+            ShowData(data);
+        }
+        function ShowData(data){
+            const repKeys = Object.keys(data);
+            const container = document.getElementById("TestContainer");
+            const item=`
+            <div class="testItem">
+                <div class="testContent">
+                </div>
+            </div>`
+
+            while(container.childElementCount<repKeys.length){
+                container.innerHTML+=item;
+            }
+            while(container.childElementCount>repKeys.length){
+                container.removeChild(container.children[container.childElementCount - 1]);
+            }
+
+            for (let i = 0; i < repKeys.length; i++) {
+                
+                const type=data[repKeys[i]].type;
+
+                container.children[i].children[0].innerHTML=svgs[type];
+                container.children[i].children[0].children[0].innerHTML=repKeys[i];
+                //container.children[i].children[0].children[1].innerHTML=data[repKeys[i]].value;
+                
+                switch(type){
+                    case 0:
+                        container.children[i].children[0].children[1].innerHTML=data[repKeys[i]].value;
+                    break;
+                    case 1:
+                        container.children[i].children[0].children[2].innerHTML=data[repKeys[i]].value;
+                        container.children[i].children[0].children[1].children[1].setAttribute("width",`${50*(data[repKeys[i]].value+1)}px`);
+                    break;
+                    case 2:
+                        container.children[i].children[0].children[1].children[0].setAttribute("fill",`${butColor[data[repKeys[i]].value?1:0]}`);
+                    break;
+                    case 3:
+                        container.children[i].children[0].children[2].innerHTML=data[repKeys[i]].value;
+                        container.children[i].children[0].children[1].children[0].setAttribute("fill",`${butColor[data[repKeys[i]].raw.Up?1:0]}`);
+                        container.children[i].children[0].children[1].children[1].setAttribute("fill",`${butColor[data[repKeys[i]].raw.Down?1:0]}`);
+                        container.children[i].children[0].children[1].children[2].setAttribute("fill",`${butColor[data[repKeys[i]].raw.Left?1:0]}`);
+                        container.children[i].children[0].children[1].children[3].setAttribute("fill",`${butColor[data[repKeys[i]].raw.Right?1:0]}`);
+                    break;
+                }
+            }
+        }
+
+        //testData={"Battery":0.7,"Usb":true,"Axis":[-0.0078125,0.0234375,0.007874016,0.0390625,0,0],"Sliders":[0,0,0,0,0,0,0,0],"Buttons":[false,false,false,false,false,false,false,false,false,false,false,false,false,false],"Pov":[{"Angle":0,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":0,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":0,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":0,"Up":false,"Left":false,"Down":false,"Right":false}],"SixAxis":[{"X":-0.053222656,"Y":-0.9616699,"Z":0.1743164,"Length":0.978789},{"X":0.021798924,"Y":0.037058175,"Z":-0.11335445,"Length":0.12123421},{"X":-0.17487608,"Y":0.8156387,"Z":0.55149966,"Length":1},{"X":0.12119102,"Y":-1.7773165,"Z":-0.3772954,"Length":1.8209593}],"DeltaRotation":{"X":3.7592956E-05,"Y":6.390804E-05,"Z":-0.00019548346,"W":1},"Rotation":{"X":1.3300309E-05,"Y":0.00026725073,"Z":-7.335986E-05,"W":1},"Touch":[{"Id":0,"Pressed":false,"Pos":{"X":0,"Y":0,"Length":0}},{"Id":0,"Pressed":false,"Pos":{"X":0,"Y":0,"Length":0}}],"TouchPadSize":{"X":1920,"Y":943,"Length":2139.0767},"LX":-0.0078125,"LY":0.0234375,"RX":0.007874016,"RY":0.0390625,"LTrigger":0,"RTrigger":0,"Up":false,"Right":false,"Down":false,"Left":false,"Square":false,"Cross":false,"Circle":false,"Triangle":false,"L1":false,"R1":false,"L2":false,"R2":false,"Share":false,"Options":false,"L3":false,"R3":false,"PS":false,"TouchClick":false,"X":false,"A":false,"B":false,"Y":false,"LButton":false,"RButton":false,"Back":false,"Start":false,"LThumb":false,"RThumb":false,"Guide":false,"RawAccel":{"X":-0.053222656,"Y":-0.9616699,"Z":0.1743164,"Length":0.978789},"Gyro":{"X":0.021798924,"Y":0.037058175,"Z":-0.11335445,"Length":0.12123421},"Grav":{"X":-0.17487608,"Y":0.8156387,"Z":0.55149966,"Length":1},"Accel":{"X":0.12119102,"Y":-1.7773165,"Z":-0.3772954,"Length":1.8209593}};
+        //testData2={"Battery":0,"Usb":false,"Axis":[-0.5,-0,0.5,-0,-1,-1],"Sliders":[-1,-1,-1,-1,-1,-1,-1,-1],"Buttons":[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],"Pov":[{"Angle":-1,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":-1,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":-1,"Up":false,"Left":false,"Down":false,"Right":false},{"Angle":-1,"Up":false,"Left":false,"Down":false,"Right":false}],"SixAxis":[{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508}],"DeltaRotation":{"X":0,"Y":0,"Z":0,"W":1},"Rotation":{"X":0,"Y":0,"Z":0,"W":1},"Touch":[{"Id":0,"Pressed":false,"Pos":{"X":0,"Y":0,"Length":0}},{"Id":0,"Pressed":false,"Pos":{"X":0,"Y":0,"Length":0}}],"TouchPadSize":{"X":0,"Y":0,"Length":0},"LX":0,"LY":-0,"RX":0,"RY":-0,"LTrigger":-1,"RTrigger":-1,"Up":false,"Right":false,"Down":false,"Left":false,"Square":false,"Cross":false,"Circle":false,"Triangle":false,"L1":false,"R1":false,"L2":false,"R2":false,"Share":false,"Options":false,"L3":false,"R3":false,"PS":false,"TouchClick":false,"X":false,"A":false,"B":false,"Y":false,"LButton":false,"RButton":false,"Back":false,"Start":false,"LThumb":false,"RThumb":false,"Guide":false,"RawAccel":{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},"Gyro":{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},"Grav":{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508},"Accel":{"X":-1,"Y":-1,"Z":-1,"Length":1.7320508}}
+
+        //SetData(testData2);
+    </script>
+</body>
+
+</html>
