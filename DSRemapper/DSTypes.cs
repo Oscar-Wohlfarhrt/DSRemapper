@@ -76,9 +76,12 @@ namespace DSRemapper
     public class DSLight
     {
         private readonly float[] led = new float[3] { 0f, 0f, 0f };
+        private readonly float[] OnOff = new float[2] { 0f, 0f };
         public float Red { get { return led[0]; } set { led[0] = Math.Clamp(value, 0, 1); } }
         public float Green { get { return led[1]; } set { led[1] = Math.Clamp(value, 0, 1); } }
         public float Blue { get { return led[2]; } set { led[2] = Math.Clamp(value, 0, 1); } }
+        public float OnTime { get { return OnOff[0]; } set { OnOff[0] = Math.Clamp(value, 0, 1); } }
+        public float OffTime { get { return OnOff[1]; } set { OnOff[1] = Math.Clamp(value, 0, 1); } }
 
         public DSLight() { }
         public DSLight(float red, float green, float blue, float intensity = 1)

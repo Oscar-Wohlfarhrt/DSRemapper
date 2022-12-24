@@ -99,8 +99,8 @@ namespace DSRemapper.DSInput
         public float Red { get { return Led.Red; } set { Led.Red = value; } }
         public float Green { get { return Led.Green; } set { Led.Green = value; } }
         public float Blue { get { return Led.Blue; } set { Led.Blue = value; } }
-        public float OnTime { get { return OnOff[0]; } set { OnOff[0] = value; } }
-        public float OffTime { get { return OnOff[1]; } set { OnOff[1] = value; } }
+        public float OnTime { get { return Led.OnTime; } set { Led.OnTime = value; } }
+        public float OffTime { get { return Led.OffTime; } set { Led.OffTime = value; } }
         #endregion DS4Layout
 
     }

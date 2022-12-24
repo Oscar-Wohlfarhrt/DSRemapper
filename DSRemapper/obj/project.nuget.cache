@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9gf+HfUNfuOpNmzmV1dBCBavMFHsnHKkBL0SOPqGq6c7gTeQYZIoOHurGPh9YU6Voc+63or0m4LtrX4MAPS4xw==",
+  "dgSpecHash": "+EBzWgq08on62HyQ9j2v+n9+6KmKN/X+rTr/hDhPBR7GSnUylnYrF4OLfGE5WORxE3lRWE4D/gNaIr1S+POp8Q==",
   "success": true,
-  "projectFilePath": "G:\\Projectos Visual\\DSRemmaper\\DSRemapper\\DSRemapper.csproj",
+  "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.codeanalysis.common\\4.4.0\\microsoft.codeanalysis.common.4.4.0.nupkg.sha512",

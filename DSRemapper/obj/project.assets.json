@@ -5584,11 +5584,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projectos Visual\\DSRemmaper\\DSRemapper\\DSRemapper.csproj",
+      "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
       "projectName": "DSRemapper",
-      "projectPath": "G:\\Projectos Visual\\DSRemmaper\\DSRemapper\\DSRemapper.csproj",
+      "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
       "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-      "outputPath": "G:\\Projectos Visual\\DSRemmaper\\DSRemapper\\obj\\",
+      "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
