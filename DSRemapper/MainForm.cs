@@ -18,7 +18,7 @@ namespace DSRemapper
         readonly BackgroundWorker remapWorker = new ();
         readonly BackgroundWorker scanWorker = new();
 #if DEBUG
-        public static readonly string webPath = "G:\\Projectos Visual\\DSRemmaperV2\\DSRemmaperV2\\Forms";
+        public static readonly string webPath = "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\Forms";
 #else
         public static readonly string webPath = Path.GetFullPath("Forms");
 #endif

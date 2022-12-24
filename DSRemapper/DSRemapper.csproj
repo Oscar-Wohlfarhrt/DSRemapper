@@ -37,6 +37,9 @@
     <None Update="Forms\InputTest.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Forms\ITStyles.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Forms\Joystick.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
