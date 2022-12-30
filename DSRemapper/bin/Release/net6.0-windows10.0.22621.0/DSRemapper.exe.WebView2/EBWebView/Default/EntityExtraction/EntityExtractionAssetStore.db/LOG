@@ -1,2 +1,3 @@
-2022/12/24-16:19:46.374 3e34 Creating DB G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db since it was missing.
-2022/12/24-16:19:46.518 3e34 Reusing MANIFEST G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/MANIFEST-000001
+2022/12/29-14:15:29.909 5660 Reusing MANIFEST G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/MANIFEST-000001
+2022/12/29-14:15:29.910 5660 Recovering log #3
+2022/12/29-14:15:29.953 5660 Reusing old log G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/000003.log 

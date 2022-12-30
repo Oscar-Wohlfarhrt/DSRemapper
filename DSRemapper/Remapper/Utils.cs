@@ -14,12 +14,14 @@ namespace DSRemapper.Remapper
         private const float defaulLedIntensity = 0.125f;
 
         public static DSInputReport CreateInputReport() => new();
-        public static DSOutputReport CreateOutputReport() => new() { Red = 0.3f * defaulLedIntensity, Green = 0.8f * defaulLedIntensity, Blue = 1f * defaulLedIntensity };
+        public static DSOutputReport CreateOutputReport() => new() { Red = 0.4f * defaulLedIntensity, Green = 0.8f * defaulLedIntensity, Blue = 1f * defaulLedIntensity };
         public static SimpleSignalFilter CreateSSF() => new();
         public static ExpMovingAverage CreateAverange() => new();
         public static ExpMovingAverageVector3 CreateAverangeVec3() => new();
-        public static DSVector2 CreateVector2() => new();
-        public static DSVector3 CreateVector3() => new();
+        public static DSVector2 CreateVector2(float val = 0) => new(val);
+        public static DSVector2 CreateVector2(float x,float y) => new(x,y);
+        public static DSVector3 CreateVector3(float val = 0) => new(val);
+        public static DSVector3 CreateVector3(float x, float y,float z) => new(x,y,z);
         public static DSQuaternion CreateQuaternion() => Quaternion.Identity;
 
         public static float Deadzone(this float value, float deadzone)

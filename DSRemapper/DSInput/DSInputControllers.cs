@@ -9,6 +9,8 @@ namespace DSRemapper.DSInput
         public int Id { get; set; } = 0;
         public bool Pressed { get; set; } = false;
         public DSVector2 Pos { get; set; } = new();
+
+        public override string ToString() => $"Id:{Id},P:{Pressed},{Pos}";
     }
     public struct DSInputReport
     {

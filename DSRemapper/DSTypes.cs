@@ -72,6 +72,9 @@ namespace DSRemapper
             Down = Convert.ToBoolean(dPad & (1 << 2));
             Left = Convert.ToBoolean(dPad & (1 << 3));
         }
+
+        public override string ToString() => $"U:{Up},D:{Down},L:{Left},R:{Right}";
+        public string ToStringAngle() => $"Ang: {Angle}";
     }
     public class DSLight
     {
@@ -84,11 +87,28 @@ namespace DSRemapper
         public float OffTime { get { return OnOff[1]; } set { OnOff[1] = Math.Clamp(value, 0, 1); } }
 
         public DSLight() { }
-        public DSLight(float red, float green, float blue, float intensity = 1)
+        public DSLight(float red, float green, float blue, float intensity = 1) => SetRGB(red, green, blue, intensity);
+        /*{
+            Red = red * intensity;
+            Green = green * intensity;
+            Blue = blue * intensity;
+        }*/
+
+        public void SetRGB(float red, float green, float blue, float intensity = 1)
         {
             Red = red * intensity;
             Green = green * intensity;
             Blue = blue * intensity;
+        }
+
+        public void SetRGB(float[] leds, float intensity = 1)
+        {
+            if (leds.Length >= 3)
+            {
+                Red = leds[0] * intensity;
+                Green = leds[1] * intensity;
+                Blue = leds[2] * intensity;
+            }
         }
 
         public static DSLight operator *(DSLight light, float intensity)
@@ -146,7 +166,9 @@ namespace DSRemapper
         public static float Dot(DSVector2 left, DSVector2 right) => left.X * right.X + left.Y * right.Y;
         public float Dot(DSVector2 vector) => X * vector.X + Y * vector.Y;
         public static DSVector2 Normalize(DSVector2 vector) => new DSVector2(vector.X, vector.Y) / vector.Length;
-        public DSVector2 Normalize() => new DSVector2(X, Y) / Length;
+        public DSVector2 Normalize() => this / Length;
+
+        public override string ToString() => $"X: {X},Y: {Y}";
     }
     public class DSVector3
     {
@@ -187,6 +209,8 @@ namespace DSRemapper
         public DSVector3 Cross(DSVector3 vector) => new((Y * vector.Z) - (Z * vector.Y), (Z * vector.X) - (X * vector.Z), (X * vector.Y) - (Y * vector.X));
         public static DSVector3 Normalize(DSVector3 vector) => vector / vector.Length;
         public DSVector3 Normalize() => this / Length;
+
+        public override string ToString() => $"X: {X},Y: {Y},Z: {Z}";
     }
     public class DSQuaternion
     {
@@ -242,5 +266,7 @@ namespace DSRemapper
             return new DSVector3(vecQuat.X, vecQuat.Y, vecQuat.Z);
         }
         public static DSVector3 operator *(DSVector3 vec, DSQuaternion quat) => quat * vec;
+
+        public override string ToString() => $"X: {X},Y: {Y},Z: {Z},W: {W}";
     }
 }

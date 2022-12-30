@@ -130,3 +130,4 @@ G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\net6.0-windows10.0.22621.0\r
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\net6.0-windows10.0.22621.0\DSRemapper.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\net6.0-windows10.0.22621.0\DSRemapper.genruntimeconfig.cache
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\net6.0-windows10.0.22621.0\ref\DSRemapper.dll
+G:\Projectos Visual\DSRemapper\DSRemapper\bin\Debug\net6.0-windows10.0.22621.0\Forms\ITStyles.css

@@ -138,7 +138,7 @@ namespace DSRemapper.DSInput
                 [2] = 0xc0, //0xc0 HID + CRC according to hid-sony
                 [3] = 0x20, //0x20 ????
                 [4] = 0x07, // Set blink + leds + motor
-                
+
                 // rumble
                 [7] = (byte)(report.Weak * 255),
                 [8] = (byte)(report.Strong * 255),
@@ -153,6 +153,28 @@ namespace DSRemapper.DSInput
 
             sendReport.AddRange(Crc32.Hash(sendReport.ToArray()));
             sendReport.RemoveAt(0);
+            /*if(offset>0)
+            {}
+            else
+            {
+                sendReport = new(new byte[hidDevice.Capabilities.OutputReportByteLength]);
+
+                sendReport[0] = 0x05;
+                sendReport[1] = 0xff;
+
+                sendReport[4] = 0;
+                sendReport[5] = 0;
+                // colour
+                sendReport[6] = 0;
+                sendReport[7] = 0;
+                sendReport[8] = 0xff;
+
+                sendReport[9] = 0xff;
+                sendReport[10] = 0x00;
+
+                //sendReport.AddRange(Crc32.Hash(sendReport.ToArray()));
+                //sendReport.RemoveAt(0);
+            }*/
 
             hidDevice.WriteOutputReportViaControl(sendReport.ToArray());
         }

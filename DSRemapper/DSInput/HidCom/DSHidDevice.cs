@@ -16,6 +16,7 @@ namespace DSRemapper.DSInput.HidCom
         HidDeviceCapabilities deviceCapabilities;
         SafeFileHandle? safeFileHandle;
         string? serial;
+        private const bool defaultExclusiveMode = false;
 
         public bool IsExclusive { get; private set; }
         public bool IsOpen { get; private set; }
@@ -145,13 +146,13 @@ namespace DSRemapper.DSInput.HidCom
         public bool ReadInputReport(byte[] data)
         {
             if (safeFileHandle == null)
-                safeFileHandle = OpenHandle(deviceInfo.Path, true);
+                safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
             return HidD_GetInputReport(safeFileHandle, data, data.Length);
         }
         public ReadStatus ReadFile(byte[] inputBuffer)
         {
             if (safeFileHandle == null)
-                safeFileHandle = OpenHandle(deviceInfo.Path, true);
+                safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
             try
             {
                 uint bytesRead;
@@ -175,7 +176,7 @@ namespace DSRemapper.DSInput.HidCom
             try
             {
                 if (safeFileHandle == null)
-                    safeFileHandle = OpenHandle(deviceInfo.Path, true);
+                    safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
                 return HidD_SetOutputReport(safeFileHandle, outputBuffer, outputBuffer.Length);
             }
             catch
@@ -186,7 +187,7 @@ namespace DSRemapper.DSInput.HidCom
         public bool readFeatureData(byte[] inputBuffer)
         {
             if (safeFileHandle == null)
-                safeFileHandle = OpenHandle(deviceInfo.Path, true);
+                safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
             return HidD_GetFeature(safeFileHandle.DangerousGetHandle(), inputBuffer, inputBuffer.Length);
         }
         public string readSerial()
@@ -197,7 +198,7 @@ namespace DSRemapper.DSInput.HidCom
             try
             {
                 if (!IsOpen || safeFileHandle == null)
-                    safeFileHandle = OpenHandle(deviceInfo.Path, true);
+                    safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
 
                 if (Capabilities.InputReportByteLength == 64)
                 {
@@ -285,7 +286,7 @@ namespace DSRemapper.DSInput.HidCom
         }
         public class HidDeviceAttributes
         {
-            internal HidDeviceAttributes(NativeMethods.HIDD_ATTRIBUTES attributes)
+            internal HidDeviceAttributes(HIDD_ATTRIBUTES attributes)
             {
                 VendorId = attributes.VendorID;
                 ProductId = attributes.ProductID;
@@ -303,7 +304,7 @@ namespace DSRemapper.DSInput.HidCom
         }
         public class HidDeviceCapabilities
         {
-            internal HidDeviceCapabilities(NativeMethods.HIDP_CAPS capabilities)
+            internal HidDeviceCapabilities(HIDP_CAPS capabilities)
             {
                 Usage = capabilities.Usage;
                 UsagePage = capabilities.UsagePage;

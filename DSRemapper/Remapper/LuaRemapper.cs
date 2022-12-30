@@ -48,6 +48,10 @@ namespace DSRemapper.Remapper
             {
                 UserData.RegisterType<DSInputReport>(InteropAccessMode.BackgroundOptimized);
                 UserData.RegisterType<DSTouch>(InteropAccessMode.BackgroundOptimized);
+                UserData.RegisterType<DSTouch[]>(InteropAccessMode.BackgroundOptimized);
+                UserData.RegisterType<DSLight>(InteropAccessMode.BackgroundOptimized);
+                UserData.RegisterType<DSPov>(InteropAccessMode.BackgroundOptimized);
+                UserData.RegisterType<DSPov[]>(InteropAccessMode.BackgroundOptimized);
                 UserData.RegisterType<DSOutputReport>(InteropAccessMode.BackgroundOptimized);
                 UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
                 UserData.RegisterType<DSOutputController>(InteropAccessMode.BackgroundOptimized);
@@ -67,6 +71,9 @@ namespace DSRemapper.Remapper
                 UserData.RegisterType<ExpMovingAverageVector3>(InteropAccessMode.BackgroundOptimized);
                 UserData.RegisterType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
 
+                UserData.RegisterType<bool[]>(InteropAccessMode.BackgroundOptimized);
+                UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
+
                 script.Globals["CreateDS4"] = (Func<IDSOutputController>)emuCtrls.CreateDS4Controller;
                 script.Globals["CreateXbox"] = (Func<IDSOutputController>)emuCtrls.CreateXboxController;
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
@@ -76,7 +83,6 @@ namespace DSRemapper.Remapper
                 script.Globals["Keys"] = new VirtualKeyShort();
                 script.Globals["Scans"] = new ScanCodeShort();
                 script.Globals["MButs"] = new MouseButton();
-                script.Globals["Vector3"] = new Vector3();
                 script.Globals["inputFB"] = Utils.CreateOutputReport();
                 script.Globals["input"] = Utils.CreateInputReport();
 
@@ -122,7 +128,14 @@ namespace DSRemapper.Remapper
                 {
                     script.Call(remapFunction);
                 }
-                Controller.SendOutputReport((DSOutputReport)script.Globals["inputFB"]);
+                try
+                {
+                    Controller.SendOutputReport((DSOutputReport)script.Globals["inputFB"]);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             catch (Exception e)
             {
