@@ -139,6 +139,14 @@ namespace DSRemapper.Remapper
             }
             catch (Exception e)
             {
+                /*if (ControllerId.StartsWith("COM") && e.Message.Contains("The port is closed"))
+                {
+                    //Console.WriteLine($"{ControllerId} is closed");
+                    Controller.Disconnect();
+                    Controller.Dispose();
+                    Dispose();
+                }*/
+
                 if (eventArgs.message != e.Message)
                 {
                     eventArgs.message = e.Message;

@@ -73,7 +73,7 @@ namespace DSRemapper.DSInput.HidCom
         static internal extern uint WaitForSingleObject(IntPtr hHandle, int dwMilliseconds);
 
         [DllImport("kernel32.dll")]
-        static internal extern bool WriteFile(IntPtr hFile, byte[] lpBuffer, uint nNumberOfBytesToWrite, out uint lpNumberOfBytesWritten, [In] ref NativeOverlapped lpOverlapped);
+        static internal extern bool WriteFile(IntPtr hFile, byte[] lpBuffer, uint nNumberOfBytesToWrite, out uint lpNumberOfBytesWritten, IntPtr lpOverlapped);//[In] ref NativeOverlapped
 
         internal const int DBT_DEVICEARRIVAL = 0x8000;
         internal const int DBT_DEVICEREMOVECOMPLETE = 0x8004;

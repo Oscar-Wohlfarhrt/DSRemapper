@@ -47,13 +47,13 @@ namespace DSRemapper.DSInput
         private readonly Joystick joy;
         private DSInputReport report = new();
 
-        public bool IsConnected { get { return isConnected; } }
-        public DIDeviceInfo Information { get { return deviceInfo; } }
-        public DeviceProperties Properties { get { return joy.Properties; } }
+        public bool IsConnected => isConnected;
+        public DIDeviceInfo Information => deviceInfo;
+        public DeviceProperties Properties => joy.Properties;
 
-        public string Id { get { return deviceInfo.InstanceGuid.ToString(); } }
-        public string ControllerName { get { return deviceInfo.ProductName; } }
-        public ControllerType Type { get { return ControllerType.DI; } }
+        public string Id => deviceInfo.InstanceGuid.ToString();
+        public string ControllerName => deviceInfo.ProductName;
+        public ControllerType Type => ControllerType.DI;
 
         public DIController(DIDeviceInfo deviceInfo)
         {

@@ -10,7 +10,6 @@ namespace DSRemapper.DSInput
         {
             sample1 = y = new();
         }
-
         public static SimpleSignalFilter CreateSSF()
         {
             return new SimpleSignalFilter();

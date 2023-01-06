@@ -37,21 +37,21 @@ namespace DSRemapper
 
         public void CalculateAngle()
         {
-            if (Up && !Left && !Down && !Right)
+            if (Up && !Right && !Down && !Left)
                 Angle = 0;
-            else if (Up && Left && !Down && !Right)
+            else if (Up && Right && !Down && !Left)
                 Angle = 45;
-            else if (!Up && Left && !Down && !Right)
+            else if (!Up && Right && !Down && !Left)
                 Angle = 90;
-            else if (!Up && Left && Down && !Right)
+            else if (!Up && Right && Down && !Left)
                 Angle = 135;
-            else if (!Up && !Left && !Down && !Right)
+            else if (!Up && !Right && Down && !Left)
                 Angle = 180;
-            else if (!Up && !Left && !Down && !Right)
+            else if (!Up && !Right && Down && Left)
                 Angle = 225;
-            else if (!Up && !Left && !Down && !Right)
+            else if (!Up && !Right && !Down && Left)
                 Angle = 270;
-            else if (!Up && !Left && !Down && !Right)
+            else if (Up && !Right && !Down && Left)
                 Angle = 315;
             else
                 Angle = -1;
@@ -88,11 +88,6 @@ namespace DSRemapper
 
         public DSLight() { }
         public DSLight(float red, float green, float blue, float intensity = 1) => SetRGB(red, green, blue, intensity);
-        /*{
-            Red = red * intensity;
-            Green = green * intensity;
-            Blue = blue * intensity;
-        }*/
 
         public void SetRGB(float red, float green, float blue, float intensity = 1)
         {
@@ -111,23 +106,9 @@ namespace DSRemapper
             }
         }
 
-        public static DSLight operator *(DSLight light, float intensity)
-        {
-            light.Red *= intensity;
-            light.Green *= intensity;
-            light.Blue *= intensity;
-
-            return light;
-        }
+        public static DSLight operator *(DSLight light, float intensity) => new(light.Red, light.Green, light.Blue, intensity);
         public static DSLight operator *(float intensity, DSLight light) => light * intensity;
-        public static DSLight operator +(DSLight light, float add)
-        {
-            light.Red += add;
-            light.Green += add;
-            light.Blue += add;
-
-            return light;
-        }
+        public static DSLight operator +(DSLight light, float add) => new(light.Red + add, light.Green + add, light.Blue + add);
         public static DSLight operator +(float add, DSLight light) => light + add;
         public static DSLight operator -(DSLight light, float sub) => light + (-sub);
         public static DSLight operator -(float sub, DSLight light) => light - sub;

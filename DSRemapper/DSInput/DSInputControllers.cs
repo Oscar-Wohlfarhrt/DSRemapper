@@ -1,6 +1,7 @@
 ﻿using SharpDX.DirectInput;
 
 using DSRemapper.DSInput.HidCom;
+using System.IO.Ports;
 
 namespace DSRemapper.DSInput
 {
@@ -110,7 +111,9 @@ namespace DSRemapper.DSInput
     {
         Unkown,
         DS,
-        DI
+        DI,
+        COM,
+        TCP,
     }
 
     public interface IDSInputController : IDisposable
@@ -130,11 +133,16 @@ namespace DSRemapper.DSInput
         private static readonly ushort[] vendorBlackList = new ushort[] { 0x054C/*, 0x045E*/ };
         private static readonly ushort[] productBlackList = new ushort[] { 0x05C4 };
         private static List<DIDeviceInfo> tempDevInfo = new();
+        //private static string[] comDevs = Array.Empty<string>();
+        private static int lastCount=0;
         public static bool RefreshDevices()
         {
             List<DIDeviceInfo> xDevices = DIController.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly).ToList();
-            if (xDevices.Count != tempDevInfo.Count)
+            string[] comDevices = SerialPort.GetPortNames();
+            if ((xDevices.Count + comDevices.Length) != lastCount)
             {
+                lastCount = xDevices.Count + comDevices.Length;
+                //comDevs = comDevices;
                 tempDevInfo = xDevices;
                 return true;
             }
@@ -160,6 +168,14 @@ namespace DSRemapper.DSInput
                 {
                     controllers.Add(new DSController(dev));
                 }
+            }
+            string[] ports = SerialPort.GetPortNames();
+
+            Console.WriteLine("=======COMM=======");
+            foreach (var com in ports)
+            {
+                Console.WriteLine(com);
+                controllers.Add(new COMController(com));
             }
 
             return controllers;

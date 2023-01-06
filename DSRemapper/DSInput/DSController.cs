@@ -3,6 +3,8 @@ using System.IO.Hashing;
 using System.Numerics;
 using DSRemapper.Remapper;
 using DSRemapper.DSInput.HidCom;
+using Windows.Devices.HumanInterfaceDevice;
+using Windows.ApplicationModel.Appointments;
 
 namespace DSRemapper.DSInput
 {
@@ -13,12 +15,15 @@ namespace DSRemapper.DSInput
         private CustomMotionProcess motPro = new();
         private ExpMovingAverageVector3 gyroAvg=new();//accelAvg=new()
 
-        public string Id { get { return hidDevice.readSerial(); } }
-        public bool IsConnected { get { return hidDevice.IsOpen; } }
-        public string ControllerName { get { return "DualShock4"; } }
-        public ControllerType Type { get { return ControllerType.DS; } }
+        public string Id => hidDevice.readSerial();
+        public bool IsConnected => hidDevice.IsOpen;
+        public string ControllerName => "DualShock4";
+        public ControllerType Type => ControllerType.DS;
 
         private int offset = 0;
+        byte[] rawReport = Array.Empty<byte>(), crc = Array.Empty<byte>();
+        DSInputReport report = new();
+        List<byte> sendReport = new();
 
         public DSController(DSHidDevice device)
         {
@@ -39,24 +44,76 @@ namespace DSRemapper.DSInput
         {
             hidDevice.OpenDevice(false);
             if (IsConnected)
-                SendOutputReport(Utils.CreateOutputReport());
+            {
+                rawReport = new byte[hidDevice.Capabilities.InputReportByteLength];
+                GetFeatureReport();
+                //SendOutputReport(Utils.CreateOutputReport());
+            }
         }
         public void Disconnect()
         {
             hidDevice.CancelIO();
             hidDevice.CloseDevice();
         }
-        public DSInputReport GetInputReport()
+        public void GetFeatureReport()
         {
-            DSInputReport report = new();
+            byte[] fetRep = new byte[64];
+            fetRep[0] = 0x05;
+            hidDevice.readFeatureData(fetRep);
 
-            byte[] rawReport = new byte[hidDevice.Capabilities.InputReportByteLength];
-            hidDevice.ReadFile(rawReport);
+            DSOutputReport report = Utils.CreateOutputReport();
 
-            if (rawReport[0] == 0x11)
+            if (rawReport.Length>64)
             {
                 offset = 2;
+                sendReport = new(new byte[79])
+                {
+                    [0] = 0xa2, // Output report header, needs to be included in crc32
+                    [1] = 0x11, // Output report 0x11
+                    [2] = 0xc0, //0xc0 HID + CRC according to hid-sony
+                    [3] = 0x20, //0x20 ????
+                    [4] = 0x07, // Set blink + leds + motor
+
+                    // rumble
+                    [7] = (byte)(report.Weak * 255),
+                    [8] = (byte)(report.Strong * 255),
+                    // colour
+                    [9] = (byte)(report.Red * 255),
+                    [10] = (byte)(report.Green * 255),
+                    [11] = (byte)(report.Blue * 255),
+                    // flash time
+                    [12] = (byte)(report.OnTime * 255),
+                    [13] = (byte)(report.OffTime * 255)
+                };
             }
+            else
+            {
+                sendReport = new(new byte[hidDevice.Capabilities.OutputReportByteLength])
+                {
+                    [0] = 0x05,
+                    [1] = 0xff,
+
+                    // rumble
+                    [4] = (byte)(report.Weak * 255),
+                    [5] = (byte)(report.Strong * 255),
+                    // colour
+                    [6] = (byte)(report.Red * 255),
+                    [7] = (byte)(report.Green * 255),
+                    [8] = (byte)(report.Blue * 255),
+                    // flash time
+                    [9] = (byte)(report.OnTime * 255),
+                    [10] = (byte)(report.OffTime * 255)
+                };
+            }
+
+            //MessageBox.Show(string.Join(", ", fetRep));
+        }
+        public DSInputReport GetInputReport()
+        {
+            hidDevice.ReadFile(rawReport);
+
+            /*if (rawReport[0] == 0x11)
+                offset = 2;*/
 
             report.LX = AxisToFloat((sbyte)(rawReport[offset + 1] - 128));
             report.LY = -AxisToFloat((sbyte)(rawReport[offset + 2] - 128));
@@ -98,12 +155,12 @@ namespace DSRemapper.DSInput
             report.SixAxis[0].Y = -(short)((rawReport[offset + 22] << 8) | rawReport[offset + 21]) / 8192f;
             report.SixAxis[0].Z = (short)((rawReport[offset + 24] << 8) | rawReport[offset + 23]) / 8192f;
 
-            Vector3 temp = (report.Gyro - lastGyro);
-            if (temp.Length() < 1f)
+            DSVector3 temp = (report.Gyro - lastGyro);
+            if (temp.Length < 1f)
                 gyroAvg.Update(report.Gyro,200);
             lastGyro = report.Gyro;
 
-            report.Gyro -= gyroAvg.Mean;//gyroCal;
+            report.Gyro -= gyroAvg.Mean;
 
             motPro.Update(report.RawAccel, report.Gyro);
 
@@ -131,52 +188,57 @@ namespace DSRemapper.DSInput
         }
         public void SendOutputReport(DSOutputReport report)
         {
-            List<byte> sendReport = new(new byte[75])
+            if (offset > 0)
             {
-                [0] = 0xa2, // Output report header, needs to be included in crc32
-                [1] = 0x11, // Output report 0x11
-                [2] = 0xc0, //0xc0 HID + CRC according to hid-sony
-                [3] = 0x20, //0x20 ????
-                [4] = 0x07, // Set blink + leds + motor
+                /*sendReport = new(new byte[75])
+                {
+                    [0] = 0xa2, // Output report header, needs to be included in crc32
+                    [1] = 0x11, // Output report 0x11
+                    [2] = 0xc0, //0xc0 HID + CRC according to hid-sony
+                    [3] = 0x20, //0x20 ????
+                    [4] = 0x07, // Set blink + leds + motor*/
 
-                // rumble
-                [7] = (byte)(report.Weak * 255),
-                [8] = (byte)(report.Strong * 255),
-                // colour
-                [9] = (byte)(report.Red * 255),
-                [10] = (byte)(report.Green * 255),
-                [11] = (byte)(report.Blue * 255),
-                // flash time
-                [12] = (byte)(report.OnTime * 255),
-                [13] = (byte)(report.OffTime * 255)
-            };
+                    // rumble
+                    sendReport[7] = (byte)(report.Weak * 255);
+                    sendReport[8] = (byte)(report.Strong * 255);
+                    // colour
+                    sendReport[9] = (byte)(report.Red * 255);
+                    sendReport[10] = (byte)(report.Green * 255);
+                    sendReport[11] = (byte)(report.Blue * 255);
+                    // flash time
+                    sendReport[12] = (byte)(report.OnTime * 255);
+                sendReport[13] = (byte)(report.OffTime * 255);
+                //};
 
-            sendReport.AddRange(Crc32.Hash(sendReport.ToArray()));
-            sendReport.RemoveAt(0);
-            /*if(offset>0)
-            {}
+                crc = Crc32.Hash(sendReport.GetRange(0, 75).ToArray());
+                sendReport[75] = crc[0];
+                sendReport[76]= crc[1];
+                sendReport[77]= crc[2];
+                sendReport[78]= crc[3];
+                //sendReport.AddRange();
+                //sendReport.RemoveAt(0);
+                hidDevice.WriteFile(sendReport.GetRange(1, 78).ToArray());
+            }
             else
             {
-                sendReport = new(new byte[hidDevice.Capabilities.OutputReportByteLength]);
+                /*sendReport = new(new byte[hidDevice.Capabilities.OutputReportByteLength])
+                {
+                    [0] = 0x05,
+                    [1] = 0xff,*/
 
-                sendReport[0] = 0x05;
-                sendReport[1] = 0xff;
-
-                sendReport[4] = 0;
-                sendReport[5] = 0;
-                // colour
-                sendReport[6] = 0;
-                sendReport[7] = 0;
-                sendReport[8] = 0xff;
-
-                sendReport[9] = 0xff;
-                sendReport[10] = 0x00;
-
-                //sendReport.AddRange(Crc32.Hash(sendReport.ToArray()));
-                //sendReport.RemoveAt(0);
-            }*/
-
-            hidDevice.WriteOutputReportViaControl(sendReport.ToArray());
+                // rumble
+                sendReport[4] = (byte)(report.Weak * 255);
+                    sendReport[5] = (byte)(report.Strong * 255);
+                    // colour
+                    sendReport[6] = (byte)(report.Red * 255);
+                    sendReport[7] = (byte)(report.Green * 255);
+                    sendReport[8] = (byte)(report.Blue * 255);
+                    // flash time
+                    sendReport[9] = (byte)(report.OnTime * 255);
+                    sendReport[10] = (byte)(report.OffTime * 255);
+                //};
+                hidDevice.WriteFile(sendReport.ToArray());
+            }
         }
 
         private static float AxisToFloat(sbyte axis) => axis / (axis < 0 ? 128f : 127f);

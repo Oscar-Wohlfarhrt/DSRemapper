@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Xml;
+using System.Security.Cryptography;
 using static DSRemapper.DSInput.HidCom.NativeMethods;
 
 namespace DSRemapper.DSInput.HidCom
@@ -170,6 +172,27 @@ namespace DSRemapper.DSInput.HidCom
                 return ReadStatus.ReadError;
             }
         }
+        public ReadStatus WriteFile(byte[] inputBuffer)
+        {
+            if (safeFileHandle == null)
+                safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
+            try
+            {
+                uint bytesWrite;
+                if (NativeMethods.WriteFile(safeFileHandle.DangerousGetHandle(), inputBuffer, (uint)inputBuffer.Length, out bytesWrite, IntPtr.Zero))
+                {
+                    return ReadStatus.Success;
+                }
+                else
+                {
+                    return ReadStatus.NoDataRead;
+                }
+            }
+            catch (Exception)
+            {
+                return ReadStatus.ReadError;
+            }
+        }
 
         public bool WriteOutputReportViaControl(byte[] outputBuffer)
         {
@@ -211,7 +234,6 @@ namespace DSRemapper.DSInput.HidCom
                 }
                 else
                 {
-
                     byte[] buffer = new byte[126];
                     if (HidD_GetSerialNumberString(safeFileHandle.DangerousGetHandle(), buffer, (uint)buffer.Length))
                     {
@@ -223,37 +245,14 @@ namespace DSRemapper.DSInput.HidCom
                     }
                     else
                     {
-                        string FakeMAC;
-                        using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-                        {
-                            FakeMAC = BitConverter.ToString(
-                              md5.ComputeHash(Encoding.UTF8.GetBytes(deviceInfo.Path))
-                            ).Replace("-", string.Empty);
-                        }
-                        FakeMAC = string.Format("99:{0}{1}:{2}{3}:{4}{5}:{6}{7}:{8}{9}",
-                            FakeMAC[0], FakeMAC[1], FakeMAC[2], FakeMAC[3], FakeMAC[4],
-                            FakeMAC[5], FakeMAC[6], FakeMAC[7], FakeMAC[8], FakeMAC[9]);
-                        return serial= FakeMAC;
+                        return serial = GenerateFakeMAC();
                     }
                 }
             }
             catch (Exception err)
             {
                 if (err.GetType() == typeof(IndexOutOfRangeException))
-                {
-                    string FakeMAC;
-                    using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-                    {
-                        FakeMAC = BitConverter.ToString(
-                          md5.ComputeHash(Encoding.UTF8.GetBytes(deviceInfo.Path))
-                        ).Replace("-", String.Empty);
-                    }
-                    FakeMAC = String.Format("99:{0}{1}:{2}{3}:{4}{5}:{6}{7}:{8}{9}",
-                        FakeMAC[0], FakeMAC[1], FakeMAC[2], FakeMAC[3], FakeMAC[4],
-                        FakeMAC[5], FakeMAC[6], FakeMAC[7], FakeMAC[8], FakeMAC[9]);
-                    return serial = FakeMAC;
-
-                }
+                    return serial = GenerateFakeMAC();
             }
 
             if (serial == null)
@@ -261,10 +260,20 @@ namespace DSRemapper.DSInput.HidCom
 
             return serial;
         }
-    
-    #endregion
+        private string GenerateFakeMAC()
+        {
+            string FakeMAC;
+            using (MD5 md5 = MD5.Create())
+            {
+                FakeMAC = BitConverter.ToString(
+                  md5.ComputeHash(Encoding.UTF8.GetBytes(deviceInfo.Path))
+                ).Replace("-", ":");
+            }
+            return $"99:{FakeMAC[..14]}";
+        }
+        #endregion
 
-    public enum ReadStatus
+        public enum ReadStatus
         {
             Success = 0,
             WaitTimedOut = 1,
@@ -433,7 +442,7 @@ namespace DSRemapper.DSInput.HidCom
         {
             byte[] buffer = new byte[1024];
             int type = 0;
-            int requiredSize=0;
+            int requiredSize = 0;
 
             SetupDiGetDeviceRegistryProperty(info, ref devInfoData, SPDRP_DEVICEDESC, ref type, buffer, 1024, ref requiredSize);
 

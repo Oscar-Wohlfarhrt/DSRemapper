@@ -156,6 +156,7 @@ namespace DSRemapper.Remapper
             foreach (var control in controlRemapperList.ToArray())
             {
                 control.RemapController();
+                //Task.Run(()=>{ control.RemapController(); }).Start();
             }
         }
     }
