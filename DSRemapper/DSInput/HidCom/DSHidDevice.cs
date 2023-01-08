@@ -157,8 +157,7 @@ namespace DSRemapper.DSInput.HidCom
                 safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
             try
             {
-                uint bytesRead;
-                if (NativeMethods.ReadFile(safeFileHandle.DangerousGetHandle(), inputBuffer, (uint)inputBuffer.Length, out bytesRead, IntPtr.Zero))
+                if (NativeMethods.ReadFile(safeFileHandle.DangerousGetHandle(), inputBuffer, (uint)inputBuffer.Length, out uint bytesRead, IntPtr.Zero))
                 {
                     return ReadStatus.Success;
                 }
@@ -178,8 +177,7 @@ namespace DSRemapper.DSInput.HidCom
                 safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
             try
             {
-                uint bytesWrite;
-                if (NativeMethods.WriteFile(safeFileHandle.DangerousGetHandle(), inputBuffer, (uint)inputBuffer.Length, out bytesWrite, IntPtr.Zero))
+                if (NativeMethods.WriteFile(safeFileHandle.DangerousGetHandle(), inputBuffer, (uint)inputBuffer.Length, out uint bytesWrite, IntPtr.Zero))
                 {
                     return ReadStatus.Success;
                 }

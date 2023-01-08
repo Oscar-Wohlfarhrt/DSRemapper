@@ -5,7 +5,7 @@ namespace DSRemapper.DSInput
 {
     internal class COMController : IDSInputController
     {
-        const int BaudRate = 9600;
+        const int BaudRate = 57600;
         const int bufSize = 18;
 
         struct OutputReport
@@ -25,13 +25,13 @@ namespace DSRemapper.DSInput
         public bool IsConnected => isConnected;
         private bool isConnected = false;
 
-        private SerialPort sp;
+        private System.IO.Ports.SerialPort sp;
         OutputReport serialReport=new();
         DSInputReport report=new();
 
         public COMController(string port)
         {
-            id=port;
+            id =port;
             report.Buttons = new bool[32];
             sp = new(port, BaudRate)
             {
@@ -64,6 +64,7 @@ namespace DSRemapper.DSInput
         {
             if(sp.BytesToRead>0)
                 sp.ReadExisting();
+
             sp.Write("s");
             byte[] buffer = new byte[bufSize];
             int bytesReaded = 0;
