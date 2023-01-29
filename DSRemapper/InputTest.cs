@@ -14,10 +14,10 @@ namespace DSRemapper
     {
         readonly WebView2 webview = new();
         readonly FileSystemWatcher fileUpdater;
-        readonly IRemapper remapper;
+        readonly LuaRemapper remapper;
         readonly string webPage = Path.Combine(MainForm.webPath, "InputTest.html");
 
-        public InputTest(IRemapper remapper)
+        public InputTest(LuaRemapper remapper)
         {
             InitializeComponent();
             Controls.Add(webview);

@@ -6,21 +6,18 @@ namespace DSRemapper
     {
         private float angle = 0;
         public float Angle { get { return angle; } set { angle = value < 0 ? -1 : Math.Clamp(value, 0, 360); } }
-        public bool Up { get; set; } = false;
-        public bool Left { get; set; } = false;
-        public bool Down { get; set; } = false;
-        public bool Right { get; set; } = false;
+        private readonly bool[] buts = new bool[4];
+        public bool Up { get => buts[0]; set { buts[0] = value; Angle = -1; } }
+        public bool Right { get => buts[1]; set { buts[1] = value; Angle = -1; } }
+        public bool Down { get => buts[2]; set { buts[2] = value; Angle = -1; } }
+        public bool Left { get => buts[3]; set { buts[3] = value; Angle = -1; } }
 
         internal void SetDSPov(byte pov)
         {
             Angle = pov != 8 ? pov * 360f / 8f : -1;
+            CalculateButtons();
 
-            /*
-            byte dPad = (byte)(rawReport[continuosOffset] & 0x0F);
-            int bitSwap = dPad / 2;
-            dPad = (byte)(((1 << bitSwap) | ((dPad % 2 << (bitSwap + 1)) % 15)) & 0b1111);*/
-
-            int dPad = pov;
+            /*int dPad = pov;
             if (Angle >= 0)
             {
                 int bitSwap = dPad / 2;
@@ -32,7 +29,15 @@ namespace DSRemapper
             Up = Convert.ToBoolean(dPad & (1 << 0));
             Right = Convert.ToBoolean(dPad & (1 << 1));
             Down = Convert.ToBoolean(dPad & (1 << 2));
-            Left = Convert.ToBoolean(dPad & (1 << 3));
+            Left = Convert.ToBoolean(dPad & (1 << 3));*/
+        }
+
+        public void Update()
+        {
+            if (Angle == -1)
+                CalculateAngle();
+            else
+                CalculateButtons();
         }
 
         public void CalculateAngle()
@@ -67,10 +72,10 @@ namespace DSRemapper
             else
                 dPad = 0;
 
-            Up = Convert.ToBoolean(dPad & (1 << 0));
-            Right = Convert.ToBoolean(dPad & (1 << 1));
-            Down = Convert.ToBoolean(dPad & (1 << 2));
-            Left = Convert.ToBoolean(dPad & (1 << 3));
+            buts[0] = Convert.ToBoolean(dPad & (1 << 0));
+            buts[1] = Convert.ToBoolean(dPad & (1 << 1));
+            buts[2] = Convert.ToBoolean(dPad & (1 << 2));
+            buts[3] = Convert.ToBoolean(dPad & (1 << 3));
         }
 
         public override string ToString() => $"U:{Up},D:{Down},L:{Left},R:{Right}";
@@ -160,6 +165,7 @@ namespace DSRemapper
 
         public DSVector3() { }
         public DSVector3(float value) : this(value, value, value) { }
+        public DSVector3(float[] value) : this(value[0], value[1], value[2]) { }
         public DSVector3(float x, float y, float z)
         {
             X = x;
@@ -249,5 +255,157 @@ namespace DSRemapper
         public static DSVector3 operator *(DSVector3 vec, DSQuaternion quat) => quat * vec;
 
         public override string ToString() => $"X: {X},Y: {Y},Z: {Z},W: {W}";
+    }
+    public class DSTouch
+    {
+        public int Id { get; set; } = 0;
+        public bool Pressed { get; set; } = false;
+        public DSVector2 Pos { get; set; } = new();
+
+        public override string ToString() => $"Id:{Id},P:{Pressed},{Pos}";
+    }
+    public struct DSInputReport
+    {
+        public float Battery { get; set; } = 0;
+        public bool Usb { get; set; } = false;
+        public float[] Axis { get; } = new float[6];
+        public float[] Sliders { get; } = Array.Empty<float>();
+        public bool[] Buttons { get; } = new bool[14];
+        public DSPov[] Povs { get; } = new DSPov[1] { new() };
+        public DSVector3[] SixAxis { get; } = new DSVector3[4] { new(), new(), new(), new() };
+        public DSQuaternion DeltaRotation { get; set; } = new();
+        public DSQuaternion Rotation { get; set; } = new();
+
+        public DSTouch[] Touch { get; } = new DSTouch[2] { new(), new() };
+        public DSVector2 TouchPadSize { get; set;  } = new();
+
+        public float deltaTime = 0;
+
+        public DSInputReport() { }
+        public DSInputReport(byte axis = 6, byte sliders = 0, byte buttons = 14, byte povs = 1, byte touchs = 2)
+        {
+            Axis = new float[axis];
+            Sliders = new float[sliders];
+            Buttons = new bool[buttons];
+
+            povs = Math.Clamp(povs, (byte)1, (byte)4);
+            Povs = new DSPov[povs];
+            for (int i = 0; i < Povs.Length; i++)
+                Povs[i] = new DSPov();
+
+            Touch = new DSTouch[touchs];
+            for (int i = 0; i < Touch.Length; i++)
+                Touch[i] = new DSTouch();
+        }
+        public void SetAxis(float[] axis)
+        {
+            int length = Math.Min(Axis.Length, axis.Length);
+
+            for (int i = 0; i < length; i++)
+                Axis[i] = axis[i];
+        }
+        public void SetSliders(float[] sliders)
+        {
+            int length = Math.Min(Sliders.Length, sliders.Length);
+
+            for (int i = 0; i < length; i++)
+                Sliders[i] = sliders[i];
+        }
+        public void SetButtons(bool[] buttons)
+        {
+            int length = Math.Min(Buttons.Length,buttons.Length);
+
+            for(int i = 0;i<length;i++)
+                Buttons[i] = buttons[i];
+        }
+        public void SetPovs(DSPov[] povs)
+        {
+            int length = Math.Min(Povs.Length, povs.Length);
+
+            for (int i = 0; i < length; i++)
+                Povs[i] = povs[i];
+        }
+        public void SetTouchPads(DSTouch[] touch)
+        {
+            int length = Math.Min(Touch.Length, touch.Length);
+
+            for (int i = 0; i < length; i++)
+                Touch[i] = touch[i];
+        }
+
+        #region Axis
+        public float LX { get { return Axis[0]; } set { Axis[0] = value; } }
+        public float LY { get { return Axis[1]; } set { Axis[1] = value; } }
+        public float RX { get { return Axis[2]; } set { Axis[2] = value; } }
+        public float RY { get { return Axis[3]; } set { Axis[3] = value; } }
+        public float LTrigger { get { return Axis[4]; } set { Axis[4] = value; } }
+        public float RTrigger { get { return Axis[5]; } set { Axis[5] = value; } }
+        #endregion Axis
+
+        #region POV1
+        public DSPov Pov { get => Povs[0]; set => Povs[0] = value; }
+        public bool Up { get { return Povs[0].Up; } set { Povs[0].Up = value; } }
+        public bool Right { get { return Povs[0].Right; } set { Povs[0].Right = value; } }
+        public bool Down { get { return Povs[0].Down; } set { Povs[0].Down = value; } }
+        public bool Left { get { return Povs[0].Left; } set { Povs[0].Left = value; } }
+        #endregion POV1
+
+        #region DS4Layout
+        public bool Square { get { return Buttons[0]; } set { Buttons[0] = value; } }
+        public bool Cross { get { return Buttons[1]; } set { Buttons[1] = value; } }
+        public bool Circle { get { return Buttons[2]; } set { Buttons[2] = value; } }
+        public bool Triangle { get { return Buttons[3]; } set { Buttons[3] = value; } }
+        public bool L1 { get { return Buttons[4]; } set { Buttons[4] = value; } }
+        public bool R1 { get { return Buttons[5]; } set { Buttons[5] = value; } }
+        public bool L2 { get { return Buttons[6]; } set { Buttons[6] = value; } }
+        public bool R2 { get { return Buttons[7]; } set { Buttons[7] = value; } }
+        public bool Share { get { return Buttons[8]; } set { Buttons[8] = value; } }
+        public bool Options { get { return Buttons[9]; } set { Buttons[9] = value; } }
+        public bool L3 { get { return Buttons[10]; } set { Buttons[10] = value; } }
+        public bool R3 { get { return Buttons[11]; } set { Buttons[11] = value; } }
+        public bool PS { get { return Buttons[12]; } set { Buttons[12] = value; } }
+        public bool TouchClick { get { return Buttons[13]; } set { Buttons[13] = value; } }
+        #endregion DS4Layout
+
+        #region XboxLayout
+        public bool X { get { return Buttons[0]; } set { Buttons[0] = value; } }
+        public bool A { get { return Buttons[1]; } set { Buttons[1] = value; } }
+        public bool B { get { return Buttons[2]; } set { Buttons[2] = value; } }
+        public bool Y { get { return Buttons[3]; } set { Buttons[3] = value; } }
+        public bool LButton { get { return Buttons[4]; } set { Buttons[4] = value; } }
+        public bool RButton { get { return Buttons[5]; } set { Buttons[5] = value; } }
+        public bool Back { get { return Buttons[8]; } set { Buttons[8] = value; } }
+        public bool Start { get { return Buttons[9]; } set { Buttons[9] = value; } }
+        public bool LThumb { get { return Buttons[10]; } set { Buttons[10] = value; } }
+        public bool RThumb { get { return Buttons[11]; } set { Buttons[11] = value; } }
+        public bool Guide { get { return Buttons[12]; } set { Buttons[12] = value; } }
+        #endregion XboxLayout
+
+        #region SixAxis
+        public DSVector3 RawAccel { get { return SixAxis[0]; } set { SixAxis[0] = value; } }
+        public DSVector3 Gyro { get { return SixAxis[1]; } set { SixAxis[1] = value; } }
+        public DSVector3 Grav { get { return SixAxis[2]; } set { SixAxis[2] = value; } }
+        public DSVector3 Accel { get { return SixAxis[3]; } set { SixAxis[3] = value; } }
+        #endregion SixAxis
+    }
+    public struct DSOutputReport
+    {
+        public float[] rumble = new float[2];
+        public DSLight Led { get; set; } = new();
+        public float[] OnOff { get; set; } = new float[2];
+
+        public DSOutputReport() { }
+
+        #region DS4Layout
+        public float Right { get { return rumble[0]; } set { rumble[0] = value; } }
+        public float Left { get { return rumble[1]; } set { rumble[1] = value; } }
+        public float Weak { get { return rumble[0]; } set { rumble[0] = value; } }
+        public float Strong { get { return rumble[1]; } set { rumble[1] = value; } }
+        public float Red { get { return Led.Red; } set { Led.Red = value; } }
+        public float Green { get { return Led.Green; } set { Led.Green = value; } }
+        public float Blue { get { return Led.Blue; } set { Led.Blue = value; } }
+        public float OnTime { get { return Led.OnTime; } set { Led.OnTime = value; } }
+        public float OffTime { get { return Led.OffTime; } set { Led.OffTime = value; } }
+        #endregion DS4Layout
     }
 }

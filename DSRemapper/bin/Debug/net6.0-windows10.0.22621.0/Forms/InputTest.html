@@ -110,11 +110,11 @@
             for(let i=0;i<event.Axis.length;i++){
                 data[`Axis ${i+1}<br>${axisEnum[i]}`]={value:event.Axis[i],type:1};
             }
-            for(let i=0;i<event.Pov.length;i++){
-                data[`Pov ${i+1}`]={value:`${event.Pov[i].Angle}`,type:3,raw:event.Pov[i]};
+            for(let i=0;i<event.Povs.length;i++){
+                data[`Pov ${i+1}`]={value:`${event.Povs[i].Angle}`,type:3,raw:event.Povs[i]};
             }
             for(let i=0;i<event.Sliders.length;i++){
-                data[`Sliders ${i+1}`]={value:`${event.Sliders[i]}`,type:1};
+                data[`Slider ${i+1}`]={value:`${event.Sliders[i]}`,type:1};
             }
             for(let i=0;i<event.Buttons.length;i++){
                 data[`Button ${i+1}${(typeof buttonsEnum[i] !== 'undefined')?`<br>${buttonsEnum[i]}`:""}`]={value:event.Buttons[i],type:2};

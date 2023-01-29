@@ -60,10 +60,7 @@ namespace DSRemapper.DSInput
             this.deviceInfo = deviceInfo;
             joy = new Joystick(di, deviceInfo.InstanceGuid);
 
-            report.Pov = new DSPov[4] { new(), new(), new(), new() };
-            report.Buttons = new bool[32];
-            report.Sliders = new float[8];
-            report.Touch = Array.Empty<DSTouch>();
+            report = new(sliders: 8,buttons: 32, povs: 4,touchs:0);
         }
         public void Dispose()
         {
@@ -114,8 +111,8 @@ namespace DSRemapper.DSInput
 
             for (int i = 0; i < state.PointOfViewControllers.Length; i++)
             {
-                report.Pov[i].Angle = state.PointOfViewControllers[i] != -1 ? state.PointOfViewControllers[i] / 100 : -1f;
-                report.Pov[i].CalculateButtons();
+                report.Povs[i].Angle = state.PointOfViewControllers[i] != -1 ? state.PointOfViewControllers[i] / 100 : -1f;
+                report.Povs[i].CalculateButtons();
             }
 
             return report;

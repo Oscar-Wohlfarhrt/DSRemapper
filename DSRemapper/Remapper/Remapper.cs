@@ -1,11 +1,16 @@
 ﻿using DSRemapper.Configs;
+using DSRemapper.ControllerOutput;
 using DSRemapper.DSInput;
+using DSRemapper.DSOutput;
+using MoonSharp.Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static DSRemapper.ControllerOutput.SendInputApi;
 
 namespace DSRemapper.Remapper
 {
@@ -20,36 +25,55 @@ namespace DSRemapper.Remapper
         public DSInputReport report { get; set; } = new DSInputReport();
     }
 
-    public interface IRemapper : IDisposable
-    {
-        public string ControllerId { get; }
-        public IDSInputController Controller { get; }
-        public string LastProfile { get; }
-        public event EventHandler<RemapperScriptEventArgs>? OnError;
-        public event EventHandler<RemapperScriptEventArgs>? OnLog;
-        public event EventHandler<RemapperReportEventArgs>? OnReportUpdate;
-
-        public void LoadScript(string profileName);
-        public void ReloadScript();
-        public void RemapController();
-        public DSInputReport GetInputReport();
-        public void Connect();
-        public void DisconnectEmulatedControllers();
-    }
-
     public class RemapperCore
     {
-        public List<IRemapper> controlRemapperList = new List<IRemapper>();
+        public List<LuaRemapper> controlRemapperList = new List<LuaRemapper>();
 
         public event EventHandler<RemapperScriptEventArgs>? OnError;
         public event EventHandler<RemapperScriptEventArgs>? OnLog;
-        private RemapperScriptEventArgs loadDefault = new RemapperScriptEventArgs();
+        readonly private RemapperScriptEventArgs loadDefault = new();
         public event EventHandler<RemapperScriptEventArgs>? LoadDefaultProfile;
         public event EventHandler<RemapperReportEventArgs>? OnReportUpdate;
 
+        public RemapperCore()
+        {
+            UserData.RegisterType<DSInputReport>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSTouch>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSTouch[]>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSLight>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSPov>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSPov[]>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSOutputReport>(InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType<DSOutputController>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<IDSOutputController>(InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType<MKOutput>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<VirtualKeyShort>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<ScanCodeShort>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<MouseButton>(InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType<Vector2>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<Vector3>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<Quaternion>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSVector2>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSVector3>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<DSQuaternion>(InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType<SimpleSignalFilter>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<ExpMovingAverage>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<ExpMovingAverageVector3>(InteropAccessMode.BackgroundOptimized);
+
+            UserData.RegisterType<bool[]>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
+        }
+
         public void SetControllers(List<IDSInputController> controllers)
         {
-            List<IRemapper> removeList = new List<IRemapper>();
+            List<LuaRemapper> removeList = new List<LuaRemapper>();
             foreach (var ctrl in controlRemapperList)
             {
                 if (!controllers.Exists((c) => { return c.Id == ctrl.ControllerId; }))
@@ -66,22 +90,12 @@ namespace DSRemapper.Remapper
         {
             if (!controlRemapperList.Exists((c) => { return c.ControllerId == controller.Id; }))
             {
-                IRemapper ctrlRemapper;
+                LuaRemapper ctrlRemapper;
 
                 if (profileName == null)
                     profileName = ProfileManager.GetLastProfile(controller.Id);
 
-                switch (Path.GetExtension(profileName))
-                {
-                    case ".cs":
-                        Console.WriteLine("C# Profile");
-                        ctrlRemapper = new CSRemapper(controller, OnError, OnLog, OnReportUpdate);
-                        break;
-                    default:
-                        Console.WriteLine("Lua Profile");
-                        ctrlRemapper = new LuaRemapper(controller, OnError, OnLog, OnReportUpdate);
-                        break;
-                }
+                ctrlRemapper = new LuaRemapper(controller, OnError, OnLog, OnReportUpdate);
 
                 ctrlRemapper.LoadScript(profileName);
 
@@ -96,7 +110,7 @@ namespace DSRemapper.Remapper
         }
         public void RemoveController(string controllerId)
         {
-            IRemapper? ctrlRemapper = controlRemapperList.Find((c) => { return c.ControllerId == controllerId; });
+            LuaRemapper? ctrlRemapper = controlRemapperList.Find((c) => { return c.ControllerId == controllerId; });
 
             if (ctrlRemapper != null)
             {
@@ -106,15 +120,7 @@ namespace DSRemapper.Remapper
             }
         }
 
-        public IRemapper GetControlRemapper(string controllerId)
-        {
-            int index = controlRemapperList.FindIndex((c) => { return c.ControllerId == controllerId; });
-
-            if (index==-1)
-                throw new Exception("Controller not found");
-
-            return controlRemapperList[index];
-        }
+        public LuaRemapper GetControlRemapper(string controllerId) => controlRemapperList[GetControlRemapperIndex(controllerId)];
         public int GetControlRemapperIndex(string controllerId)
         {
             int index = controlRemapperList.FindIndex((c) => { return c.ControllerId == controllerId; });
@@ -130,20 +136,6 @@ namespace DSRemapper.Remapper
 
             controlRemapperList[index].DisconnectEmulatedControllers();
 
-            switch (Path.GetExtension(profileName))
-            {
-                case ".cs":
-                    Console.WriteLine("C# Profile");
-                    if(controlRemapperList[index] is not CSRemapper)
-                        controlRemapperList[index] = new CSRemapper(controlRemapperList[index].Controller, OnError, OnLog, OnReportUpdate);
-                    break;
-                default:
-                    Console.WriteLine("Lua Profile");
-                    if (controlRemapperList[index] is not LuaRemapper)
-                        controlRemapperList[index] = new LuaRemapper(controlRemapperList[index].Controller, OnError, OnLog, OnReportUpdate);
-                    break;
-            }
-
             controlRemapperList[index].LoadScript(profileName);
         }
         public DSInputReport GetControllerInputReport(string controllerId)
@@ -155,7 +147,9 @@ namespace DSRemapper.Remapper
         {
             foreach (var control in controlRemapperList.ToArray())
             {
-                control.RemapController();
+                if (control.RemapCompleted)
+                    control.RemapController();
+
                 //Task.Run(()=>{ control.RemapController(); }).Start();
             }
         }

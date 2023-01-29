@@ -8,14 +8,17 @@ using System.Numerics;
 
 namespace DSRemapper.Remapper
 {
-    public class LuaRemapper : IRemapper
+    public class LuaRemapper
     {
         public string ControllerId { get { return Controller.Id; } }
         public IDSInputController Controller { get; private set; }
-        public Script script = new Script();
-        public Closure? remapFunction = null;
-        private RemapperScriptEventArgs eventArgs = new RemapperScriptEventArgs();
-        private RemapperReportEventArgs reportArgs = new RemapperReportEventArgs();
+        private Script script = new();
+        private Closure? remapFunction = null;
+        private Task? RemapTask=null;
+        public bool RemapCompleted { get => RemapTask==null || RemapTask.IsCompleted; }
+
+        readonly private RemapperScriptEventArgs eventArgs = new();
+        readonly private RemapperReportEventArgs reportArgs = new();
         public event EventHandler<RemapperScriptEventArgs>? OnError;
         public event EventHandler<RemapperScriptEventArgs>? OnLog;
         public event EventHandler<RemapperReportEventArgs>? OnReportUpdate;
@@ -46,36 +49,9 @@ namespace DSRemapper.Remapper
             script = new Script();
             try
             {
-                UserData.RegisterType<DSInputReport>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSTouch>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSTouch[]>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSLight>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSPov>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSPov[]>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSOutputReport>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSOutputController>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<IDSOutputController>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<MKOutput>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<VirtualKeyShort>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<ScanCodeShort>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<MouseButton>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<Vector2>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<Vector3>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<Quaternion>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSVector2>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSVector3>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<DSQuaternion>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<SimpleSignalFilter>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<ExpMovingAverage>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<ExpMovingAverageVector3>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
-
-                UserData.RegisterType<bool[]>(InteropAccessMode.BackgroundOptimized);
-                UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
-
                 script.Globals["CreateDS4"] = (Func<IDSOutputController>)emuCtrls.CreateDS4Controller;
                 script.Globals["CreateXbox"] = (Func<IDSOutputController>)emuCtrls.CreateXboxController;
+                script.Globals["CreateVJoy"] = (Func<uint,IDSOutputController>)emuCtrls.CreateVJoyController;
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
 
                 script.Globals["Utils"] = typeof(Utils);
@@ -113,46 +89,41 @@ namespace DSRemapper.Remapper
         }
         public void RemapController()
         {
-            now = DateTime.Now;
-            deltaTime = (now - lastUpdate).Ticks / (float)TimeSpan.TicksPerSecond;
-            lastUpdate = now;
-
-            try
+            RemapTask=Task.Factory.StartNew(() =>
             {
-                lastInput = Controller.GetInputReport();
-                reportArgs.report = lastInput;
-                OnReportUpdate?.Invoke(this, reportArgs);
-                script.Globals["input"] = lastInput;
-                script.Globals["deltaTime"] = deltaTime;
-                if (remapFunction != null)
-                {
-                    script.Call(remapFunction);
-                }
+                now = DateTime.Now;
+                deltaTime = (now - lastUpdate).Ticks / (float)TimeSpan.TicksPerSecond;
+                lastUpdate = now;
+
                 try
                 {
-                    Controller.SendOutputReport((DSOutputReport)script.Globals["inputFB"]);
+                    lastInput = Controller.GetInputReport();
+                    reportArgs.report = lastInput;
+                    OnReportUpdate?.Invoke(this, reportArgs);
+                    script.Globals["input"] = lastInput;
+                    script.Globals["deltaTime"] = deltaTime;
+                    if (remapFunction != null)
+                    {
+                        script.Call(remapFunction);
+                    }
+                    try
+                    {
+                        Controller.SendOutputReport((DSOutputReport)script.Globals["inputFB"]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    MessageBox.Show(ex.Message);
+                    if (eventArgs.message != e.Message)
+                    {
+                        eventArgs.message = e.Message;
+                        OnError?.Invoke(this, eventArgs);
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                /*if (ControllerId.StartsWith("COM") && e.Message.Contains("The port is closed"))
-                {
-                    //Console.WriteLine($"{ControllerId} is closed");
-                    Controller.Disconnect();
-                    Controller.Dispose();
-                    Dispose();
-                }*/
-
-                if (eventArgs.message != e.Message)
-                {
-                    eventArgs.message = e.Message;
-                    OnError?.Invoke(this, eventArgs);
-                }
-            }
+            });
         }
         public DSInputReport GetInputReport()
         {

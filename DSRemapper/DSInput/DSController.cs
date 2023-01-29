@@ -105,15 +105,10 @@ namespace DSRemapper.DSInput
                     [10] = (byte)(report.OffTime * 255)
                 };
             }
-
-            //MessageBox.Show(string.Join(", ", fetRep));
         }
         public DSInputReport GetInputReport()
         {
             hidDevice.ReadFile(rawReport);
-
-            /*if (rawReport[0] == 0x11)
-                offset = 2;*/
 
             report.LX = AxisToFloat((sbyte)(rawReport[offset + 1] - 128));
             report.LY = -AxisToFloat((sbyte)(rawReport[offset + 2] - 128));
@@ -122,7 +117,7 @@ namespace DSRemapper.DSInput
 
             int constOffset = offset + 5;
             byte dPad = (byte)(rawReport[constOffset] & 0x0F);
-            report.Pov[0].SetDSPov(dPad);
+            report.Povs[0].SetDSPov(dPad);
 
             report.Square = Convert.ToBoolean(rawReport[constOffset] & (1 << 4));
             report.Cross = Convert.ToBoolean(rawReport[constOffset] & (1 << 5));
@@ -190,53 +185,38 @@ namespace DSRemapper.DSInput
         {
             if (offset > 0)
             {
-                /*sendReport = new(new byte[75])
-                {
-                    [0] = 0xa2, // Output report header, needs to be included in crc32
-                    [1] = 0x11, // Output report 0x11
-                    [2] = 0xc0, //0xc0 HID + CRC according to hid-sony
-                    [3] = 0x20, //0x20 ????
-                    [4] = 0x07, // Set blink + leds + motor*/
-
-                    // rumble
-                    sendReport[7] = (byte)(report.Weak * 255);
-                    sendReport[8] = (byte)(report.Strong * 255);
-                    // colour
-                    sendReport[9] = (byte)(report.Red * 255);
-                    sendReport[10] = (byte)(report.Green * 255);
-                    sendReport[11] = (byte)(report.Blue * 255);
-                    // flash time
-                    sendReport[12] = (byte)(report.OnTime * 255);
+                // rumble
+                sendReport[7] = (byte)(report.Weak * 255);
+                sendReport[8] = (byte)(report.Strong * 255);
+                // colour
+                sendReport[9] = (byte)(report.Red * 255);
+                sendReport[10] = (byte)(report.Green * 255);
+                sendReport[11] = (byte)(report.Blue * 255);
+                // flash time
+                sendReport[12] = (byte)(report.OnTime * 255);
                 sendReport[13] = (byte)(report.OffTime * 255);
-                //};
 
                 crc = Crc32.Hash(sendReport.GetRange(0, 75).ToArray());
                 sendReport[75] = crc[0];
-                sendReport[76]= crc[1];
-                sendReport[77]= crc[2];
-                sendReport[78]= crc[3];
-                //sendReport.AddRange();
-                //sendReport.RemoveAt(0);
+                sendReport[76] = crc[1];
+                sendReport[77] = crc[2];
+                sendReport[78] = crc[3];
+
                 hidDevice.WriteFile(sendReport.GetRange(1, 78).ToArray());
             }
             else
             {
-                /*sendReport = new(new byte[hidDevice.Capabilities.OutputReportByteLength])
-                {
-                    [0] = 0x05,
-                    [1] = 0xff,*/
-
                 // rumble
                 sendReport[4] = (byte)(report.Weak * 255);
-                    sendReport[5] = (byte)(report.Strong * 255);
-                    // colour
-                    sendReport[6] = (byte)(report.Red * 255);
-                    sendReport[7] = (byte)(report.Green * 255);
-                    sendReport[8] = (byte)(report.Blue * 255);
-                    // flash time
-                    sendReport[9] = (byte)(report.OnTime * 255);
-                    sendReport[10] = (byte)(report.OffTime * 255);
-                //};
+                sendReport[5] = (byte)(report.Strong * 255);
+                // colour
+                sendReport[6] = (byte)(report.Red * 255);
+                sendReport[7] = (byte)(report.Green * 255);
+                sendReport[8] = (byte)(report.Blue * 255);
+                // flash time
+                sendReport[9] = (byte)(report.OnTime * 255);
+                sendReport[10] = (byte)(report.OffTime * 255);
+
                 hidDevice.WriteFile(sendReport.ToArray());
             }
         }

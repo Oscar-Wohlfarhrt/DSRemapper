@@ -1,5 +1,3 @@
-2023/01/07-11:58:25.696 48cc Reusing MANIFEST G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/MANIFEST-000001
-2023/01/07-11:58:25.698 48cc Recovering log #3
-2023/01/07-11:58:25.848 48cc Level-0 table #3: started
-2023/01/07-11:58:25.909 48cc Level-0 table #3: 265038 bytes OK
-2023/01/07-11:58:25.948 48cc Delete type=0 #3
+2023/01/26-20:46:48.734 2ec4 Reusing MANIFEST G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/MANIFEST-000001
+2023/01/26-20:46:48.736 2ec4 Recovering log #4
+2023/01/26-20:46:48.765 2ec4 Reusing old log G:\Projectos Visual\DSRemapper\DSRemapper\bin\Release\net6.0-windows10.0.22621.0\DSRemapper.exe.WebView2\EBWebView\Default\EntityExtractionAssetStore.db/000004.log 

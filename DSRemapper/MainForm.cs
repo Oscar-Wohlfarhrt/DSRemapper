@@ -177,10 +177,11 @@ namespace DSRemapper
 
         private void ControllerUpdateTimer_Tick(object sender, EventArgs e)
         {
-            if (!remapWorker.IsBusy)
+            remapper.RemapAll();
+            /*if (!remapWorker.IsBusy)
             {
                 remapWorker.RunWorkerAsync();
-            }
+            }*/
         }
 
         private void RemapWorker_DoWork(object? sender, DoWorkEventArgs e)
