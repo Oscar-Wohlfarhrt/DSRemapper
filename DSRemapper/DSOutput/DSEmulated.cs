@@ -72,9 +72,9 @@ namespace DSRemapper.DSOutput
             if (isConnected)
             {
                 emuController.SetAxisValue(DualShock4Axis.LeftThumbX, (byte)(report.LX.ToSByteAxis() + 128));
-                emuController.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)((-report.LY).ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)(report.LY.ToSByteAxis() + 128));
                 emuController.SetAxisValue(DualShock4Axis.RightThumbX, (byte)(report.RX.ToSByteAxis() + 128));
-                emuController.SetAxisValue(DualShock4Axis.RightThumbY, (byte)((-report.RY).ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.RightThumbY, (byte)(report.RY.ToSByteAxis() + 128));
 
                 emuController.SetSliderValue(DualShock4Slider.LeftTrigger, report.LTrigger.ToByteTrigger());
                 emuController.SetSliderValue(DualShock4Slider.RightTrigger, report.RTrigger.ToByteTrigger());

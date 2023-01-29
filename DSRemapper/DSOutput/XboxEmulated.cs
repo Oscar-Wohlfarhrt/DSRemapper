@@ -70,9 +70,9 @@ namespace DSRemapper.DSOutput
             if (isConnected)
             {
                 emuController.SetAxisValue(Xbox360Axis.LeftThumbX, report.LX.ToShortAxis());
-                emuController.SetAxisValue(Xbox360Axis.LeftThumbY, report.LY.ToShortAxis());
+                emuController.SetAxisValue(Xbox360Axis.LeftThumbY, (-report.LY).ToShortAxis());
                 emuController.SetAxisValue(Xbox360Axis.RightThumbX, report.RX.ToShortAxis());
-                emuController.SetAxisValue(Xbox360Axis.RightThumbY, report.RY.ToShortAxis());
+                emuController.SetAxisValue(Xbox360Axis.RightThumbY, (-report.RY).ToShortAxis());
 
                 emuController.SetSliderValue(Xbox360Slider.LeftTrigger, report.LTrigger.ToByteTrigger());
                 emuController.SetSliderValue(Xbox360Slider.RightTrigger, report.RTrigger.ToByteTrigger());
@@ -95,7 +95,6 @@ namespace DSRemapper.DSOutput
                 emuController.SetButtonState(Xbox360Button.Back, report.Back);
                 emuController.SetButtonState(Xbox360Button.Start, report.Start);
                 emuController.SetButtonState(Xbox360Button.Guide, report.Guide);
-
                 emuController.SubmitReport();
             }
         }

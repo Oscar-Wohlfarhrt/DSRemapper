@@ -26,7 +26,7 @@ namespace DSRemapper.DSOutput
         }
         public IDSOutputController CreateDS4Controller()=> AddController(new DSEmulated(vigem.CreateDualShock4Controller()));
         public IDSOutputController CreateXboxController() => AddController(new XboxEmulated(vigem.CreateXbox360Controller(0x045E, 0x0280)));
-        public IDSOutputController CreateVJoyController(uint id) => AddController(new VJEmulated(id));
+        public IDSOutputController CreateVJoyController(uint id, uint axisRange = 32768) => AddController(new VJEmulated(id, axisRange));
         private IDSOutputController AddController(IDSOutputController ctrl)
         {
             controllers.Add(ctrl);

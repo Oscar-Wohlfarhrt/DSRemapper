@@ -54,8 +54,8 @@ namespace DSRemapper.DSInput
             {
                 Console.WriteLine($"Name {info.ProductName} | Ids: {info.ProductId:X4}-{info.VendorId:X4}");
                 if (!vendorBlackList.Contains(info.VendorId) &&
-                    !(info.VendorId == 0x045E && info.ProductId == 0x0280) &&
-                    !(info.VendorId == 0x1234 && info.ProductId == 0xBEAD))
+                    !(info.VendorId == 0x045E && info.ProductId == 0x0280) /*&&
+                    !(info.VendorId == 0x1234 && info.ProductId == 0xBEAD)*/)
                 {
                     controllers.Add(new DIController(info));
                 }

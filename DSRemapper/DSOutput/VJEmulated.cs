@@ -24,9 +24,11 @@ namespace DSRemapper.DSOutput
 
         const int negAxisConvertion = -short.MinValue;
         const int posAxisConvertion = short.MaxValue;
+        private readonly uint range;
 
-        public VJEmulated(uint id) {
+        public VJEmulated(uint id, uint axisRange=32768) {
             this.id = id;
+            range = axisRange;
         }
 
         public void Connect()
@@ -97,7 +99,7 @@ namespace DSRemapper.DSOutput
 
         public int FloatToVJoyAxis(float axis)
         {
-            return (int)((axis + 1) * (axis > 0 ? posAxisConvertion : negAxisConvertion) / 2);
+            return (int)((axis + 1) * (axis > 0 ? range-1 : range) / 2);
         }
     }
 }

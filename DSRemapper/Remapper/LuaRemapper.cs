@@ -51,7 +51,7 @@ namespace DSRemapper.Remapper
             {
                 script.Globals["CreateDS4"] = (Func<IDSOutputController>)emuCtrls.CreateDS4Controller;
                 script.Globals["CreateXbox"] = (Func<IDSOutputController>)emuCtrls.CreateXboxController;
-                script.Globals["CreateVJoy"] = (Func<uint,IDSOutputController>)emuCtrls.CreateVJoyController;
+                script.Globals["CreateVJoy"] = (Func<uint,uint,IDSOutputController>)emuCtrls.CreateVJoyController;
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
 
                 script.Globals["Utils"] = typeof(Utils);

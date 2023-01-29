@@ -111,9 +111,9 @@ namespace DSRemapper.DSInput
             hidDevice.ReadFile(rawReport);
 
             report.LX = AxisToFloat((sbyte)(rawReport[offset + 1] - 128));
-            report.LY = -AxisToFloat((sbyte)(rawReport[offset + 2] - 128));
+            report.LY = AxisToFloat((sbyte)(rawReport[offset + 2] - 128));
             report.RX = AxisToFloat((sbyte)(rawReport[offset + 3] - 128));
-            report.RY = -AxisToFloat((sbyte)(rawReport[offset + 4] - 128));
+            report.RY = AxisToFloat((sbyte)(rawReport[offset + 4] - 128));
 
             int constOffset = offset + 5;
             byte dPad = (byte)(rawReport[constOffset] & 0x0F);
