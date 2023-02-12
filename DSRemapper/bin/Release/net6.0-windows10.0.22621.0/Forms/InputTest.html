@@ -114,7 +114,7 @@
                 data[`Pov ${i+1}`]={value:`${event.Povs[i].Angle}`,type:3,raw:event.Povs[i]};
             }
             for(let i=0;i<event.Sliders.length;i++){
-                data[`Slider ${i+1}`]={value:`${event.Sliders[i]}`,type:1};
+                data[`Slider ${i+1}`]={value:event.Sliders[i],type:1};
             }
             for(let i=0;i<event.Buttons.length;i++){
                 data[`Button ${i+1}${(typeof buttonsEnum[i] !== 'undefined')?`<br>${buttonsEnum[i]}`:""}`]={value:event.Buttons[i],type:2};
