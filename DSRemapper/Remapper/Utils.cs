@@ -1,11 +1,16 @@
 ﻿using DSRemapper;
+using DSRemapper.Configs;
 using DSRemapper.DSInput;
+using MoonSharp.Interpreter;
+using MoonSharp.Interpreter.Serialization;
+using MoonSharp.Interpreter.Serialization.Json;
 using System.Numerics;
 
 namespace DSRemapper.Remapper
 {
     public static class Utils
     {
+        public static string ConfigPath { get => Path.Combine(ProfileManager.mainDir, "Profile Configs"); }
         public const float MinAxis = -1;
         public const float CenterAxis = 0;
         public const float MaxAxis = 1;
@@ -63,6 +68,31 @@ namespace DSRemapper.Remapper
         {
             float lenght = vector.Length();
             return vector / lenght;
+        }
+
+        public static void SaveTable(string path, Table table)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            string json = JsonTableConverter.TableToJson(table);
+            if (Path.IsPathRooted(path))
+                File.WriteAllText(path, json);
+            else
+                File.WriteAllText(Path.Combine(ConfigPath,path), json);
+        }
+        public static Table LoadTable(string path)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            string json = "";
+            if (Path.IsPathFullyQualified(path))
+                json = File.ReadAllText(path);
+            else
+                json = File.ReadAllText(Path.Combine(ConfigPath, path));
+
+            return JsonTableConverter.JsonToTable(json);
         }
     }
 }

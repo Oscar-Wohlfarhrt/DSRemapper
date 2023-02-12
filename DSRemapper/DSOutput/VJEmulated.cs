@@ -1,13 +1,6 @@
 ﻿using VJoyWrapper;
-using DSRemapper.DSInput;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DSRemapper.Remapper;
 using System.Collections;
-using static System.Windows.Forms.AxHost;
 
 namespace DSRemapper.DSOutput
 {
@@ -16,18 +9,17 @@ namespace DSRemapper.DSOutput
         public bool IsConnected { get; private set; }
 
         public readonly DSOutputReport report = new();
-        public DSInputReport state = new(axis:6,sliders: 2,buttons:32,povs:4,touchs:0);
+        public DSInputReport state { get; private set; }
 
         private readonly VJoy joy = new();
         private VJoy.JoystickState vState = new();
         private readonly uint id;
 
-        const int negAxisConvertion = -short.MinValue;
-        const int posAxisConvertion = short.MaxValue;
         private readonly uint range;
 
-        public VJEmulated(uint id, uint axisRange=32768) {
+        public VJEmulated(uint id,byte buttons=32, uint axisRange=32768) {
             this.id = id;
+            state = new(6, 2, buttons, 4, 0);
             range = axisRange;
         }
 
@@ -69,9 +61,13 @@ namespace DSRemapper.DSOutput
             vState.Dial = state.Sliders[1].ToShortAxis();
             vState.bHats = (uint)(state.Povs[0].Angle != -1 ? state.Povs[0].Angle * 100 : -1);
 
-            uint[] buttons = new uint[1];
-            state.Buttons.CopyTo(buttons, 0);
+            BitArray bArr = new BitArray(state.Buttons);
+            uint[] buttons = new uint[4];
+            bArr.CopyTo(buttons, 0);
             vState.Buttons = buttons[0];
+            vState.ButtonsEx1 = buttons[1];
+            vState.ButtonsEx2 = buttons[2];
+            vState.ButtonsEx3 = buttons[3];
 
             joy.UpdateVJD(id, ref vState);
         }

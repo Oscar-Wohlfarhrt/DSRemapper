@@ -10,6 +10,8 @@ namespace DSRemapper.DSOutput
 
         private bool isConnected = false;
         public bool IsConnected { get { return isConnected; } }
+
+        public DSInputReport state { get; private set; } = new(6, 0, 13, 1, 0);
         private DSOutputReport feedback = new();
 
         public XboxEmulated(IXbox360Controller emuController)
@@ -64,6 +66,9 @@ namespace DSRemapper.DSOutput
         public DSOutputReport GetFeedbackReport()
         {
             return feedback;
+        }
+        public void Update()
+        {
         }
         public void SetInputReport(DSInputReport report)
         {

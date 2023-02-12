@@ -10,6 +10,9 @@ namespace DSRemapper.DSOutput
 
         private bool isConnected = false;
         public bool IsConnected { get { return isConnected; } }
+
+        public DSInputReport state { get; private set; } = new(6,0,14,1,2);
+
         private DSOutputReport feedback = new();
 
         public DSEmulated(IDualShock4Controller emuController)
@@ -66,6 +69,9 @@ namespace DSRemapper.DSOutput
             }*/
 
             return feedback;
+        }
+        public void Update()
+        {
         }
         public void SetInputReport(DSInputReport report)
         {         

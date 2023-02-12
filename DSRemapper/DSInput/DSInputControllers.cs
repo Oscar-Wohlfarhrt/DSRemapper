@@ -2,6 +2,8 @@
 
 using DSRemapper.DSInput.HidCom;
 using System.IO.Ports;
+using System.Net.Sockets;
+using DSRemapper.DSInput.DSRTCP;
 
 namespace DSRemapper.DSInput
 {
@@ -31,15 +33,21 @@ namespace DSRemapper.DSInput
         private static readonly ushort[] vendorBlackList = new ushort[] { 0x054C/*, 0x045E*/ };
         private static readonly ushort[] productBlackList = new ushort[] { 0x05C4 };
         private static List<DIDeviceInfo> tempDevInfo = new();
+        private static List<TcpClient> tcpDevs = new();
         private static int lastCount=0;
+        private static DSTCPListener tcpListener = new();
         public static bool RefreshDevices()
         {
             List<DIDeviceInfo> xDevices = DIController.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly).ToList();
             string[] comDevices = SerialPort.GetPortNames();
-            if ((xDevices.Count + comDevices.Length) != lastCount)
+            List<TcpClient> tcpClis = tcpListener.RefreshClients();
+
+            int count = (xDevices.Count + comDevices.Length + tcpClis.Count);
+            if (count != lastCount)
             {
-                lastCount = xDevices.Count + comDevices.Length;
+                lastCount = count;
                 tempDevInfo = xDevices;
+                tcpDevs = tcpClis;
                 return true;
             }
 
@@ -74,6 +82,13 @@ namespace DSRemapper.DSInput
             {
                 Console.WriteLine(com);
                 controllers.Add(new COMController(com));
+            }
+            Console.WriteLine("=======TCP=======");
+            foreach (var tcp in tcpDevs)
+            {
+                IDSInputController ctrl = new TCPController(tcp);
+                Console.WriteLine(ctrl.ControllerName);
+                controllers.Add(ctrl);
             }
 
             return controllers;

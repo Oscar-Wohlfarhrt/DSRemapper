@@ -311,11 +311,18 @@ namespace DSRemapper
             for (int i = 0; i < length; i++)
                 Sliders[i] = sliders[i];
         }
-        public void SetButtons(bool[] buttons)
-        {
+        public void SetButtons(bool[] buttons) => SetButtons(buttons, 0, buttons.Length);
+        /*{
             int length = Math.Min(Buttons.Length,buttons.Length);
 
             for(int i = 0;i<length;i++)
+                Buttons[i] = buttons[i];
+        }*/
+        public void SetButtons(bool[] buttons,int offset,int length)
+        {
+            int runLength = Math.Min(Buttons.Length-offset, length);
+
+            for (int i = offset; i < runLength; i++)
                 Buttons[i] = buttons[i];
         }
         public void SetPovs(DSPov[] povs)

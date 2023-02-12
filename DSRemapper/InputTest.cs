@@ -62,7 +62,12 @@ namespace DSRemapper
         }
         private void ReloadPage()
         {
-            webview.CoreWebView2.Reload();
+            try
+            {
+                if (webview.CoreWebView2 != null)
+                    webview.CoreWebView2.Reload();
+            }
+            catch { }
         }
 
         private void InputTest_FormClosed(object sender, FormClosedEventArgs e)

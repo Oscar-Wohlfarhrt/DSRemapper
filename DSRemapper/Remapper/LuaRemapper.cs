@@ -5,6 +5,7 @@ using DSRemapper.DSOutput;
 using DSRemapper.ControllerOutput;
 using static DSRemapper.ControllerOutput.SendInputApi;
 using System.Numerics;
+using MoonSharp.Interpreter.Serialization;
 
 namespace DSRemapper.Remapper
 {
@@ -49,9 +50,11 @@ namespace DSRemapper.Remapper
             script = new Script();
             try
             {
-                script.Globals["CreateDS4"] = (Func<IDSOutputController>)emuCtrls.CreateDS4Controller;
-                script.Globals["CreateXbox"] = (Func<IDSOutputController>)emuCtrls.CreateXboxController;
-                script.Globals["CreateVJoy"] = (Func<uint,uint,IDSOutputController>)emuCtrls.CreateVJoyController;
+                //Console.WriteLine(string.Join("\n", ((Table)script.Globals["os"]).Keys));
+                script.Globals["ControllerManager"] = emuCtrls;
+                script.Globals["CreateDS4"] = (Func<IDSOutputController>)emuCtrls.CreateDS4;
+                script.Globals["CreateXbox"] = (Func<IDSOutputController>)emuCtrls.CreateXbox;
+                script.Globals["CreateVJoy"] = (Func<uint,byte,uint,IDSOutputController>)emuCtrls.CreateVJoy;
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
 
                 script.Globals["Utils"] = typeof(Utils);
