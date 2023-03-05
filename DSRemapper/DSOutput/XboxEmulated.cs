@@ -28,19 +28,19 @@ namespace DSRemapper.DSOutput
         {
             feedback.Weak = e.SmallMotor/255f;
             feedback.Strong = e.LargeMotor/255f;
-            switch (e.LedNumber)
+            switch (feedback.Led.Player = e.LedNumber)
             {
                 case 0:
-                    feedback.Led=new(0,0,1);
+                    feedback.Led.SetRGB(0,0,1);
                     break;
                 case 1:
-                    feedback.Led =new(1, 0, 0);
+                    feedback.Led.SetRGB(1, 0, 0);
                     break;
                 case 2:
-                    feedback.Led = new(0, 1, 0);
+                    feedback.Led.SetRGB(0, 1, 0);
                     break;
                 case 3:
-                    feedback.Led = new(1, 0, 1);
+                    feedback.Led.SetRGB(1, 0, 1);
                     break;
             }
         }
@@ -69,6 +69,36 @@ namespace DSRemapper.DSOutput
         }
         public void Update()
         {
+            if (isConnected)
+            {
+                emuController.SetAxisValue(Xbox360Axis.LeftThumbX, state.LX.ToShortAxis());
+                emuController.SetAxisValue(Xbox360Axis.LeftThumbY, (-state.LY).ToShortAxis());
+                emuController.SetAxisValue(Xbox360Axis.RightThumbX, state.RX.ToShortAxis());
+                emuController.SetAxisValue(Xbox360Axis.RightThumbY, (-state.RY).ToShortAxis());
+
+                emuController.SetSliderValue(Xbox360Slider.LeftTrigger, state.LTrigger.ToByteTrigger());
+                emuController.SetSliderValue(Xbox360Slider.RightTrigger, state.RTrigger.ToByteTrigger());
+
+                emuController.SetButtonState(Xbox360Button.A, state.A);
+                emuController.SetButtonState(Xbox360Button.B, state.B);
+                emuController.SetButtonState(Xbox360Button.X, state.X);
+                emuController.SetButtonState(Xbox360Button.Y, state.Y);
+
+                emuController.SetButtonState(Xbox360Button.Up, state.Up);
+                emuController.SetButtonState(Xbox360Button.Left, state.Left);
+                emuController.SetButtonState(Xbox360Button.Down, state.Down);
+                emuController.SetButtonState(Xbox360Button.Right, state.Right);
+
+                emuController.SetButtonState(Xbox360Button.LeftShoulder, state.LButton);
+                emuController.SetButtonState(Xbox360Button.RightShoulder, state.RButton);
+                emuController.SetButtonState(Xbox360Button.LeftThumb, state.LThumb);
+                emuController.SetButtonState(Xbox360Button.RightThumb, state.RThumb);
+
+                emuController.SetButtonState(Xbox360Button.Back, state.Back);
+                emuController.SetButtonState(Xbox360Button.Start, state.Start);
+                emuController.SetButtonState(Xbox360Button.Guide, state.Guide);
+                emuController.SubmitReport();
+            }
         }
         public void SetInputReport(DSInputReport report)
         {

@@ -52,6 +52,7 @@
                 <div class="VerticalLayout DeviceActions">
                     <button name="ctrlId" onclick="SendCommand(1,this.name)">Input Test</button>
                     <button name="ctrlId" onclick="SendCommand(2,this.name)">Reload Profile</button>
+                    <button name="ctrlId" onclick="SendCommand(3,this.name)">Disconnect</button>
                 </div>
             </div>`;
         }
@@ -76,6 +77,14 @@
 
                 deviceList.children[i].children[2].children[0].name = devList[i].Id;//Input Test
                 deviceList.children[i].children[2].children[1].name = devList[i].Id;//Reload Profile
+
+                if (devList[i].Type!=2 && devList[i].Type!=0){
+                    deviceList.children[i].children[2].children[2].name = devList[i].Id;//Disconnect
+                }
+                else{
+                    deviceList.children[i].children[2].children[2].classList.add("hide");
+                    deviceList.children[i].children[2].children[2].name = devList[i].Id;//Disconnect
+                }
                 
                 if (devList[i].Type == 1){
                     deviceList.children[i].children[1].children[1].classList.remove("hide");

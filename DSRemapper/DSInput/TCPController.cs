@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSRemapper.DSInput.DSRTCP
+namespace DSRemapper.DSInput
 {
     internal class TCPController : IDSInputController
     {
@@ -77,7 +77,7 @@ namespace DSRemapper.DSInput.DSRTCP
 #pragma warning restore CS8600 // Se va a convertir un literal nulo o un posible valor nulo en un tipo que no acepta valores NULL
 
             soc = client;
-            stream=client.GetStream();
+            stream = client.GetStream();
             report = new(sliders: 6, buttons: 32, povs: 2);
             isConnected = soc.Connected;
         }
@@ -93,6 +93,10 @@ namespace DSRemapper.DSInput.DSRTCP
                 soc.Close();
                 isConnected = false;
             }
+        }
+        public void ForceDisconnect()
+        {
+
         }
         public void Dispose()
         {
@@ -164,41 +168,41 @@ namespace DSRemapper.DSInput.DSRTCP
                 report.Sliders[4] = AxisToFloat(rawReport.Axis[10]);
                 report.Sliders[5] = AxisToFloat(rawReport.Axis[11]);
 
-                report.Buttons[0] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 0));
-                report.Buttons[1] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 1));
-                report.Buttons[2] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 2));
-                report.Buttons[3] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 3));
-                report.Buttons[4] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 4));
-                report.Buttons[5] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 5));
-                report.Buttons[6] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 6));
-                report.Buttons[7] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 7));
+                report.Buttons[0] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 0);
+                report.Buttons[1] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 1);
+                report.Buttons[2] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 2);
+                report.Buttons[3] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 3);
+                report.Buttons[4] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 4);
+                report.Buttons[5] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 5);
+                report.Buttons[6] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 6);
+                report.Buttons[7] = Convert.ToBoolean(rawReport.Buttons[0] & 1 << 7);
 
-                report.Buttons[8] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 0));
-                report.Buttons[9] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 1));
-                report.Buttons[10] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 2));
-                report.Buttons[11] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 3));
-                report.Buttons[12] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 4));
-                report.Buttons[13] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 5));
-                report.Buttons[14] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 6));
-                report.Buttons[15] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 7));
+                report.Buttons[8] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 0);
+                report.Buttons[9] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 1);
+                report.Buttons[10] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 2);
+                report.Buttons[11] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 3);
+                report.Buttons[12] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 4);
+                report.Buttons[13] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 5);
+                report.Buttons[14] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 6);
+                report.Buttons[15] = Convert.ToBoolean(rawReport.Buttons[1] & 1 << 7);
 
-                report.Buttons[16] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 0));
-                report.Buttons[17] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 1));
-                report.Buttons[18] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 2));
-                report.Buttons[19] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 3));
-                report.Buttons[20] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 4));
-                report.Buttons[21] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 5));
-                report.Buttons[22] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 6));
-                report.Buttons[23] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 7));
+                report.Buttons[16] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 0);
+                report.Buttons[17] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 1);
+                report.Buttons[18] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 2);
+                report.Buttons[19] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 3);
+                report.Buttons[20] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 4);
+                report.Buttons[21] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 5);
+                report.Buttons[22] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 6);
+                report.Buttons[23] = Convert.ToBoolean(rawReport.Buttons[2] & 1 << 7);
 
-                report.Buttons[24] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 0));
-                report.Buttons[25] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 1));
-                report.Buttons[26] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 2));
-                report.Buttons[27] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 3));
-                report.Buttons[28] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 4));
-                report.Buttons[29] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 5));
-                report.Buttons[30] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 6));
-                report.Buttons[31] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 7));
+                report.Buttons[24] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 0);
+                report.Buttons[25] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 1);
+                report.Buttons[26] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 2);
+                report.Buttons[27] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 3);
+                report.Buttons[28] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 4);
+                report.Buttons[29] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 5);
+                report.Buttons[30] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 6);
+                report.Buttons[31] = Convert.ToBoolean(rawReport.Buttons[3] & 1 << 7);
 
                 if (rawReport.Pov[0] == ushort.MaxValue)
                     report.Povs[0].Angle = -1;
@@ -223,7 +227,7 @@ namespace DSRemapper.DSInput.DSRTCP
                         report.Gyro = new DSVector3(rawReport.Gyro[0] / gyroScale,
                             rawReport.Gyro[1] / gyroScale, rawReport.Gyro[2] / gyroScale);
 
-                        DSVector3 temp = (report.Gyro - lastGyro);
+                        DSVector3 temp = report.Gyro - lastGyro;
                         if (temp.Length < 1f)
                             gyroAvg.Update(report.Gyro, 200);
 

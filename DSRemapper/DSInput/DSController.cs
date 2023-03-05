@@ -55,11 +55,23 @@ namespace DSRemapper.DSInput
             hidDevice.CancelIO();
             hidDevice.CloseDevice();
         }
+        public void ForceDisconnect()
+        {
+            if (IsConnected)
+            {
+                byte[] disconnectReport = new byte[65];
+                disconnectReport[0] = 0xE2;
+                disconnectReport[1] = 0x02;
+                Array.Clear(disconnectReport, 2, 63);
+
+                hidDevice.SetFeature(disconnectReport);
+            }
+        }
         public void GetFeatureReport()
         {
             byte[] fetRep = new byte[64];
             fetRep[0] = 0x05;
-            hidDevice.readFeatureData(fetRep);
+            hidDevice.GetFeature(fetRep);
 
             DSOutputReport report = Utils.CreateOutputReport();
 

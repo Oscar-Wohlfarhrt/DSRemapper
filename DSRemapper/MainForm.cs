@@ -139,6 +139,10 @@ namespace DSRemapper
                     Console.WriteLine($"Reload Profile for {mes.ControllerId}");
                     remapper.GetControlRemapper(mes.ControllerId).ReloadScript();
                     break;
+                case 3:
+                    Console.WriteLine($"Force disconnect for {mes.ControllerId}");
+                    remapper.GetControlRemapper(mes.ControllerId).ForceDisconnect();
+                    break;
             }
         }
 

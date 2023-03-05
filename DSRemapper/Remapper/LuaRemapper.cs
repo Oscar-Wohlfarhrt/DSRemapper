@@ -139,6 +139,8 @@ namespace DSRemapper.Remapper
             return new DSInputReport();
         }
         public void Connect() => Controller.Connect();
+        public void Disconnect() => Controller.Disconnect();
+        public void ForceDisconnect() => Controller.ForceDisconnect();
         public void DisconnectEmulatedControllers() => emuCtrls.DisconnectAll();
 
         public void ConsoleLog(string message)

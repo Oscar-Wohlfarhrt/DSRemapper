@@ -16,20 +16,6 @@ namespace DSRemapper
         {
             Angle = pov != 8 ? pov * 360f / 8f : -1;
             CalculateButtons();
-
-            /*int dPad = pov;
-            if (Angle >= 0)
-            {
-                int bitSwap = dPad / 2;
-                dPad = (((1 << bitSwap) | ((dPad % 2 << (bitSwap + 1)) % 15)) & 0b1111);
-            }
-            else
-                dPad = 0;
-
-            Up = Convert.ToBoolean(dPad & (1 << 0));
-            Right = Convert.ToBoolean(dPad & (1 << 1));
-            Down = Convert.ToBoolean(dPad & (1 << 2));
-            Left = Convert.ToBoolean(dPad & (1 << 3));*/
         }
 
         public void Update()
@@ -85,6 +71,7 @@ namespace DSRemapper
     {
         private readonly float[] led = new float[3] { 0f, 0f, 0f };
         private readonly float[] OnOff = new float[2] { 0f, 0f };
+        public float Player { get; set; }
         public float Red { get { return led[0]; } set { led[0] = Math.Clamp(value, 0, 1); } }
         public float Green { get { return led[1]; } set { led[1] = Math.Clamp(value, 0, 1); } }
         public float Blue { get { return led[2]; } set { led[2] = Math.Clamp(value, 0, 1); } }
@@ -397,17 +384,17 @@ namespace DSRemapper
     }
     public struct DSOutputReport
     {
-        public float[] rumble = new float[2];
+        public float[] Rumble { get; set; } = new float[6];
         public DSLight Led { get; set; } = new();
-        public float[] OnOff { get; set; } = new float[2];
+        public float[] ExtLeds { get; set; } = new float[6];
 
         public DSOutputReport() { }
 
         #region DS4Layout
-        public float Right { get { return rumble[0]; } set { rumble[0] = value; } }
-        public float Left { get { return rumble[1]; } set { rumble[1] = value; } }
-        public float Weak { get { return rumble[0]; } set { rumble[0] = value; } }
-        public float Strong { get { return rumble[1]; } set { rumble[1] = value; } }
+        public float Right { get { return Rumble[0]; } set { Rumble[0] = value; } }
+        public float Left { get { return Rumble[1]; } set { Rumble[1] = value; } }
+        public float Weak { get { return Rumble[0]; } set { Rumble[0] = value; } }
+        public float Strong { get { return Rumble[1]; } set { Rumble[1] = value; } }
         public float Red { get { return Led.Red; } set { Led.Red = value; } }
         public float Green { get { return Led.Green; } set { Led.Green = value; } }
         public float Blue { get { return Led.Blue; } set { Led.Blue = value; } }

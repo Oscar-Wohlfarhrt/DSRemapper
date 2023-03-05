@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.IO.Ports;
 using Microsoft.VisualBasic;
+using DSRemapper.DSOutput;
 
 namespace DSRemapper.DSInput
 {
@@ -38,8 +39,22 @@ namespace DSRemapper.DSInput
 
             public COMInputReport() { }
         };
+        //Pack is required to match report length of the COM device
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        struct COMOutputReport
+        {
+            public readonly byte code = 2;
+            public byte id = 0;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            public short[] Motors = new short[6];
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            public byte[] Leds = new byte[6];
+
+            public COMOutputReport() { }
+        };
         private static int COMInfoReportSize { get => Marshal.SizeOf(typeof(COMInfoReport)); }
         private static int COMInputReportSize { get => Marshal.SizeOf(typeof(COMInputReport)); }
+        private static int COMOutputReportSize { get => Marshal.SizeOf(typeof(COMOutputReport)); }
 
         private static readonly byte[] infoReportRequst = new byte[] { 0x00 };
         private static readonly byte[] inputReportRequst = new byte[] { 0x01 };
@@ -52,7 +67,7 @@ namespace DSRemapper.DSInput
         private bool isConnected = false;
 
         private readonly SerialPort sp;
-        private COMInputReport serialReport=new();
+        private COMInputReport rawReport=new();
         private DSInputReport report=new();
         private COMInfoReport? information;
 
@@ -87,6 +102,10 @@ namespace DSRemapper.DSInput
                 sp.Close();
                 isConnected = false;
             }
+        }
+        public void ForceDisconnect()
+        {
+
         }
         public void Dispose()
         {
@@ -141,82 +160,82 @@ namespace DSRemapper.DSInput
             if (Read(buffer,0,buffer.Length))
             {
                 GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-                serialReport = Marshal.PtrToStructure<COMInputReport>(ptr.AddrOfPinnedObject());
+                rawReport = Marshal.PtrToStructure<COMInputReport>(ptr.AddrOfPinnedObject());
                 ptr.Free();
 
-                report.Axis[0] = AxisToFloat(serialReport.Axis[0]);
-                report.Axis[1] = AxisToFloat(serialReport.Axis[1]);
-                report.Axis[2] = AxisToFloat(serialReport.Axis[2]);
-                report.Axis[3] = AxisToFloat(serialReport.Axis[3]);
-                report.Axis[4] = AxisToFloat(serialReport.Axis[4]);
-                report.Axis[5] = AxisToFloat(serialReport.Axis[5]);
+                report.Axis[0] = AxisToFloat(rawReport.Axis[0]);
+                report.Axis[1] = AxisToFloat(rawReport.Axis[1]);
+                report.Axis[2] = AxisToFloat(rawReport.Axis[2]);
+                report.Axis[3] = AxisToFloat(rawReport.Axis[3]);
+                report.Axis[4] = AxisToFloat(rawReport.Axis[4]);
+                report.Axis[5] = AxisToFloat(rawReport.Axis[5]);
 
-                report.Sliders[0] = AxisToFloat(serialReport.Axis[6]);
-                report.Sliders[1] = AxisToFloat(serialReport.Axis[7]);
-                report.Sliders[2] = AxisToFloat(serialReport.Axis[8]);
-                report.Sliders[3] = AxisToFloat(serialReport.Axis[9]);
-                report.Sliders[4] = AxisToFloat(serialReport.Axis[10]);
-                report.Sliders[5] = AxisToFloat(serialReport.Axis[11]);
+                report.Sliders[0] = AxisToFloat(rawReport.Axis[6]);
+                report.Sliders[1] = AxisToFloat(rawReport.Axis[7]);
+                report.Sliders[2] = AxisToFloat(rawReport.Axis[8]);
+                report.Sliders[3] = AxisToFloat(rawReport.Axis[9]);
+                report.Sliders[4] = AxisToFloat(rawReport.Axis[10]);
+                report.Sliders[5] = AxisToFloat(rawReport.Axis[11]);
 
-                report.Buttons[0] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 0));
-                report.Buttons[1] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 1));
-                report.Buttons[2] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 2));
-                report.Buttons[3] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 3));
-                report.Buttons[4] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 4));
-                report.Buttons[5] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 5));
-                report.Buttons[6] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 6));
-                report.Buttons[7] = Convert.ToBoolean(serialReport.Buttons[0] & (1 << 7));
+                report.Buttons[0] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 0));
+                report.Buttons[1] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 1));
+                report.Buttons[2] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 2));
+                report.Buttons[3] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 3));
+                report.Buttons[4] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 4));
+                report.Buttons[5] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 5));
+                report.Buttons[6] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 6));
+                report.Buttons[7] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 7));
 
-                report.Buttons[8] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 0));
-                report.Buttons[9] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 1));
-                report.Buttons[10] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 2));
-                report.Buttons[11] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 3));
-                report.Buttons[12] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 4));
-                report.Buttons[13] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 5));
-                report.Buttons[14] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 6));
-                report.Buttons[15] = Convert.ToBoolean(serialReport.Buttons[1] & (1 << 7));
+                report.Buttons[8] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 0));
+                report.Buttons[9] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 1));
+                report.Buttons[10] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 2));
+                report.Buttons[11] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 3));
+                report.Buttons[12] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 4));
+                report.Buttons[13] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 5));
+                report.Buttons[14] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 6));
+                report.Buttons[15] = Convert.ToBoolean(rawReport.Buttons[1] & (1 << 7));
 
-                report.Buttons[16] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 0));
-                report.Buttons[17] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 1));
-                report.Buttons[18] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 2));
-                report.Buttons[19] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 3));
-                report.Buttons[20] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 4));
-                report.Buttons[21] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 5));
-                report.Buttons[22] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 6));
-                report.Buttons[23] = Convert.ToBoolean(serialReport.Buttons[2] & (1 << 7));
+                report.Buttons[16] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 0));
+                report.Buttons[17] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 1));
+                report.Buttons[18] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 2));
+                report.Buttons[19] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 3));
+                report.Buttons[20] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 4));
+                report.Buttons[21] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 5));
+                report.Buttons[22] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 6));
+                report.Buttons[23] = Convert.ToBoolean(rawReport.Buttons[2] & (1 << 7));
 
-                report.Buttons[24] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 0));
-                report.Buttons[25] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 1));
-                report.Buttons[26] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 2));
-                report.Buttons[27] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 3));
-                report.Buttons[28] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 4));
-                report.Buttons[29] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 5));
-                report.Buttons[30] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 6));
-                report.Buttons[31] = Convert.ToBoolean(serialReport.Buttons[3] & (1 << 7));
+                report.Buttons[24] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 0));
+                report.Buttons[25] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 1));
+                report.Buttons[26] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 2));
+                report.Buttons[27] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 3));
+                report.Buttons[28] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 4));
+                report.Buttons[29] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 5));
+                report.Buttons[30] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 6));
+                report.Buttons[31] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 7));
 
-                if (serialReport.Pov[0] == ushort.MaxValue)
+                if (rawReport.Pov[0] == ushort.MaxValue)
                     report.Povs[0].Angle = -1;
                 else
-                    report.Povs[0].Angle = serialReport.Pov[0] / 100f;
+                    report.Povs[0].Angle = rawReport.Pov[0] / 100f;
                 report.Povs[0].CalculateButtons();
-                if (serialReport.Pov[1] == ushort.MaxValue)
+                if (rawReport.Pov[1] == ushort.MaxValue)
                     report.Povs[1].Angle = -1;
                 else
-                    report.Povs[1].Angle = serialReport.Pov[1] / 100f;
+                    report.Povs[1].Angle = rawReport.Pov[1] / 100f;
                 report.Povs[1].CalculateButtons();
 
                 if (information != null)
                 {
-                    float accelScale = 32768 / information.Value.AccelScale;
-                    float gyroScale = 32768 / information.Value.GyroScale;
-                    report.RawAccel = new DSVector3(serialReport.Accel[0] / accelScale,
-                        serialReport.Accel[1] / accelScale, serialReport.Accel[2] / accelScale);
-                    report.Gyro = new DSVector3(serialReport.Gyro[0] / gyroScale,
-                        serialReport.Gyro[1] / gyroScale, serialReport.Gyro[2] / gyroScale);
-
-                    if (accelScale > 0 && gyroScale > 0)
+                    if (information.Value.AccelScale > 0 && information.Value.GyroScale > 0)
                     {
-                        DSVector3 temp = (report.Gyro - lastGyro);
+                        float accelScale = 32768 / information.Value.AccelScale;
+                        float gyroScale = 32768 / information.Value.GyroScale;
+                        report.RawAccel = new DSVector3(rawReport.Accel[0] / accelScale,
+                            rawReport.Accel[1] / accelScale, rawReport.Accel[2] / accelScale);
+                        report.Gyro = new DSVector3(rawReport.Gyro[0] / gyroScale,
+                            rawReport.Gyro[1] / gyroScale, rawReport.Gyro[2] / gyroScale);
+
+                        DSVector3 temp = report.Gyro - lastGyro;
                         if (temp.Length < 1f)
                             gyroAvg.Update(report.Gyro, 200);
 
@@ -232,11 +251,16 @@ namespace DSRemapper.DSInput
                         report.DeltaRotation = motPro.deltaRotation;
                         report.deltaTime = motPro.DeltaTime;
                     }
+                    else
+                    {
+                        report.RawAccel = new DSVector3(rawReport.Accel[0], rawReport.Accel[1], rawReport.Accel[2]);
+                        report.Gyro = new DSVector3(rawReport.Gyro[0], rawReport.Gyro[1], rawReport.Gyro[2]);
+                    }
                 }
                 else
                 {
-                    report.RawAccel = new DSVector3(serialReport.Accel[0], serialReport.Accel[1], serialReport.Accel[2]);
-                    report.Gyro = new DSVector3(serialReport.Gyro[0], serialReport.Gyro[1], serialReport.Gyro[2]);
+                    report.RawAccel = new DSVector3(rawReport.Accel[0], rawReport.Accel[1], rawReport.Accel[2]);
+                    report.Gyro = new DSVector3(rawReport.Gyro[0], rawReport.Gyro[1], rawReport.Gyro[2]);
                 }
 
                 if (!float.IsNormal(report.RawAccel.Length))
@@ -254,7 +278,22 @@ namespace DSRemapper.DSInput
 
         public void SendOutputReport(DSOutputReport report)
         {
+            COMOutputReport outReport = new();
 
+            for(int i = 0; i < report.Rumble.Length;i++)
+                outReport.Motors[i] = report.Rumble[i].ToShortAxis();
+            for (int i = 0; i < report.ExtLeds.Length; i++)
+                outReport.Leds[i] = (byte)report.ExtLeds[i];
+
+            byte[] buffer = new byte[COMOutputReportSize];
+
+            GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            Marshal.StructureToPtr(outReport, ptr.AddrOfPinnedObject(),false);
+            ptr.Free();
+
+            sp.Write(buffer, 0, buffer.Length);
+
+            Read(buffer, 0, 1);
         }
         private static float AxisToFloat(int axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
     }

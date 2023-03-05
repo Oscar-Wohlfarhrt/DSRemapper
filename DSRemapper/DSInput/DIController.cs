@@ -76,6 +76,10 @@ namespace DSRemapper.DSInput
             isConnected = false;
             joy.Unacquire();
         }
+        public void ForceDisconnect()
+        {
+
+        }
         public DSInputReport GetInputReport()
         {
             joy.Poll();

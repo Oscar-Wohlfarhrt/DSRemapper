@@ -205,11 +205,17 @@ namespace DSRemapper.DSInput.HidCom
                 return false;
             }
         }
-        public bool readFeatureData(byte[] inputBuffer)
+        public bool GetFeature(byte[] data)
         {
             if (safeFileHandle == null)
                 safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
-            return HidD_GetFeature(safeFileHandle.DangerousGetHandle(), inputBuffer, inputBuffer.Length);
+            return HidD_GetFeature(safeFileHandle.DangerousGetHandle(), data, data.Length);
+        }
+        public bool SetFeature(byte[] data)
+        {
+            if (safeFileHandle == null)
+                safeFileHandle = OpenHandle(deviceInfo.Path, defaultExclusiveMode);
+            return HidD_SetFeature(safeFileHandle.DangerousGetHandle(), data, data.Length);
         }
         public string readSerial()
         {
@@ -225,7 +231,7 @@ namespace DSRemapper.DSInput.HidCom
                 {
                     byte[] buffer = new byte[16];
                     buffer[0] = 18;
-                    readFeatureData(buffer);
+                    GetFeature(buffer);
                     serial = string.Format("{0:X02}:{1:X02}:{2:X02}:{3:X02}:{4:X02}:{5:X02}", buffer[6], buffer[5], buffer[4], buffer[3], buffer[2], buffer[1]);
                     return serial;
 

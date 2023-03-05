@@ -45,6 +45,5 @@ namespace DSRemapper.DSInput.DSRTCP
 
             return clients;
         }
-
     }
 }
