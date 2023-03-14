@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DSRemapper.DSOutput;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
@@ -43,8 +44,22 @@ namespace DSRemapper.DSInput
 
             public TCPInputReport() { }
         };
-        private static int COMInfoReportSize { get => Marshal.SizeOf(typeof(TCPInfoReport)); }
-        private static int COMInputReportSize { get => Marshal.SizeOf(typeof(TCPInputReport)); }
+        //Pack is required to match report length of the COM device
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
+        struct TCPOutputReport
+        {
+            public readonly byte code = 2;
+            public byte id = 0;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            public short[] Motors = new short[6];
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+            public byte[] Leds = new byte[6];
+
+            public TCPOutputReport() { }
+        };
+        private static int TCPInfoReportSize { get => Marshal.SizeOf(typeof(TCPInfoReport)); }
+        private static int TCPInputReportSize { get => Marshal.SizeOf(typeof(TCPInputReport)); }
+        private static int TCPOutputReportSize { get => Marshal.SizeOf(typeof(TCPOutputReport)); }
 
         private static readonly byte[] infoReportRequst = new byte[] { 0x00 };
         private static readonly byte[] inputReportRequst = new byte[] { 0x01 };
@@ -123,7 +138,7 @@ namespace DSRemapper.DSInput
 
             TCPInfoReport? report = null;
             stream.Write(infoReportRequst, 0, infoReportRequst.Length);
-            byte[] buffer = new byte[COMInfoReportSize];
+            byte[] buffer = new byte[TCPInfoReportSize];
             if (Read(buffer, 0, buffer.Length))
             {
                 GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
@@ -142,7 +157,7 @@ namespace DSRemapper.DSInput
             information ??= ReadInfoReport();
 
             stream.Write(inputReportRequst, 0, inputReportRequst.Length);
-            byte[] buffer = new byte[COMInputReportSize];
+            byte[] buffer = new byte[TCPInputReportSize];
             /*int bytesReaded = 0;
             while (bytesReaded < bufSize)
             {
@@ -270,7 +285,22 @@ namespace DSRemapper.DSInput
 
         public void SendOutputReport(DSOutputReport report)
         {
+            TCPOutputReport outReport = new();
 
+            for (int i = 0; i < report.Rumble.Length; i++)
+                outReport.Motors[i] = report.Rumble[i].ToShortAxis();
+            for (int i = 0; i < report.ExtLeds.Length; i++)
+                outReport.Leds[i] = (byte)report.ExtLeds[i];
+
+            byte[] buffer = new byte[TCPOutputReportSize];
+
+            GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+            Marshal.StructureToPtr(outReport, ptr.AddrOfPinnedObject(), false);
+            ptr.Free();
+
+            stream.Write(buffer, 0, buffer.Length);
+
+            Read(buffer, 0, 1);
         }
         private static float AxisToFloat(int axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
     }

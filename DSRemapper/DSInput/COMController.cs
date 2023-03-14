@@ -7,6 +7,25 @@ namespace DSRemapper.DSInput
 {
     internal class COMController : IDSInputController
     {
+        /* New com port query
+         * 
+        void GetComs()
+        {
+            //string wmiQuery = @"SELECT * FROM Win32_PnPEntity WHERE ClassGuid=""{4d36e978-e325-11ce-bfc1-08002be10318}""";
+            string wmiQuery = @"SELECT DeviceID, Name FROM Win32_SerialPort";
+
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmiQuery);
+            ManagementObjectCollection objCollection = searcher.Get();
+            foreach (var obj in objCollection)
+            {
+                Console.WriteLine($"{obj["DeviceID"]}: {obj["Name"]}");
+                foreach (var prop in obj.Properties ){
+                    Console.WriteLine($"{prop.Name}: {prop.Value}");
+                }
+            }
+        }
+        */
+
         const int BaudRate = 57600;
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
