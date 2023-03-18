@@ -1,31 +1,12 @@
 ﻿using System.Runtime.InteropServices;
-using System.IO.Ports;
 using Microsoft.VisualBasic;
 using DSRemapper.DSOutput;
+using FireLibs.IO.COMPorts;
 
 namespace DSRemapper.DSInput
 {
     internal class COMController : IDSInputController
     {
-        /* New com port query
-         * 
-        void GetComs()
-        {
-            //string wmiQuery = @"SELECT * FROM Win32_PnPEntity WHERE ClassGuid=""{4d36e978-e325-11ce-bfc1-08002be10318}""";
-            string wmiQuery = @"SELECT DeviceID, Name FROM Win32_SerialPort";
-
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmiQuery);
-            ManagementObjectCollection objCollection = searcher.Get();
-            foreach (var obj in objCollection)
-            {
-                Console.WriteLine($"{obj["DeviceID"]}: {obj["Name"]}");
-                foreach (var prop in obj.Properties ){
-                    Console.WriteLine($"{prop.Name}: {prop.Value}");
-                }
-            }
-        }
-        */
-
         const int BaudRate = 57600;
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -82,8 +63,7 @@ namespace DSRemapper.DSInput
         public string Id => id;
         public string ControllerName => $"Controller {id}";
         public ControllerType Type => ControllerType.COM;
-        public bool IsConnected => isConnected;
-        private bool isConnected = false;
+        public bool IsConnected => sp.IsConnected;
 
         private readonly SerialPort sp;
         private COMInputReport rawReport=new();
@@ -96,11 +76,11 @@ namespace DSRemapper.DSInput
 
         private const int readTimeout = 500;
 
-        public COMController(string port)
+        public COMController(SerialDeviceInfo info)
         {
-            id = port;
+            id = info.PortName;
             report = new(sliders:6,buttons:32,povs:2);
-            sp = new(port, BaudRate)
+            sp = new(info, BaudRate)
             {
                 ReadTimeout = readTimeout
             };
@@ -108,18 +88,16 @@ namespace DSRemapper.DSInput
 
         public void Connect()
         {
-            if (!sp.IsOpen)
+            if (!sp.IsConnected)
             {
-                sp.Open();
-                isConnected = true;
+                sp.Connect();
             }
         }
         public void Disconnect()
         {
-            if (sp.IsOpen)
+            if (sp.IsConnected)
             {
-                sp.Close();
-                isConnected = false;
+                sp.Disconnect();
             }
         }
         public void ForceDisconnect()
@@ -129,19 +107,6 @@ namespace DSRemapper.DSInput
         public void Dispose()
         {
             Disconnect();
-            sp.Dispose();
-        }
-
-        private bool Read(byte[] buffer,int offset,int count)
-        {
-            DateTime timeout = DateTime.Now.AddMilliseconds(readTimeout);
-            while (sp.BytesToRead < count && DateTime.Now < timeout) ;
-            if (DateTime.Now < timeout)
-            {
-                sp.BaseStream.Read(buffer, offset, count);
-                return true;
-            }
-            return false;
         }
 
         private COMInfoReport? ReadInfoReport()
@@ -152,7 +117,7 @@ namespace DSRemapper.DSInput
             COMInfoReport? report = null;
             sp.Write(infoReportRequst, 0, infoReportRequst.Length);
             byte[] buffer = new byte[COMInfoReportSize];
-            if (Read(buffer, 0, buffer.Length))
+            if (sp.ReadCount(buffer, 0, buffer.Length))
             {
                 GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
                 report = Marshal.PtrToStructure<COMInfoReport>(ptr.AddrOfPinnedObject());
@@ -171,12 +136,8 @@ namespace DSRemapper.DSInput
 
             sp.Write(inputReportRequst,0, inputReportRequst.Length);
             byte[] buffer = new byte[COMInputReportSize];
-            /*int bytesReaded = 0;
-            while (bytesReaded < bufSize)
-            {
-                bytesReaded+=sp.Read(buffer, bytesReaded, bufSize-bytesReaded);
-            }*/
-            if (Read(buffer,0,buffer.Length))
+
+            if (sp.ReadCount(buffer,0,buffer.Length))
             {
                 GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
                 rawReport = Marshal.PtrToStructure<COMInputReport>(ptr.AddrOfPinnedObject());
@@ -312,7 +273,7 @@ namespace DSRemapper.DSInput
 
             sp.Write(buffer, 0, buffer.Length);
 
-            Read(buffer, 0, 1);
+            sp.ReadCount(buffer, 0, 1);
         }
         private static float AxisToFloat(int axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
     }

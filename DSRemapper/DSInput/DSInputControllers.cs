@@ -1,9 +1,9 @@
 ﻿using SharpDX.DirectInput;
 
 using DSRemapper.DSInput.HidCom;
-using System.IO.Ports;
 using System.Net.Sockets;
 using DSRemapper.DSInput.DSRTCP;
+using FireLibs.IO.COMPorts;
 
 namespace DSRemapper.DSInput
 {
@@ -40,7 +40,7 @@ namespace DSRemapper.DSInput
         public static bool RefreshDevices()
         {
             List<DIDeviceInfo> xDevices = DIController.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly).ToList();
-            string[] comDevices = SerialPort.GetPortNames();
+            SerialDeviceInfo[] comDevices = SerialPort.GetSerialDevices();
             List<TcpClient> tcpClis = tcpListener.RefreshClients();
 
             int count = (xDevices.Count + comDevices.Length + tcpClis.Count);
@@ -76,7 +76,7 @@ namespace DSRemapper.DSInput
                     controllers.Add(new DSController(dev));
                 }
             }
-            string[] ports = SerialPort.GetPortNames().Distinct().ToArray();
+            SerialDeviceInfo[] ports = SerialPort.GetSerialDevices();
 
             Console.WriteLine("=======COMM=======");
             foreach (var com in ports)

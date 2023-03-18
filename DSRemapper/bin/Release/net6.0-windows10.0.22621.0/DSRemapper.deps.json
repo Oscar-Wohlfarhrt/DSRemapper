@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "DSRemapper/1.0.0": {
         "dependencies": {
+          "FireLibs.IO": "1.0.0",
           "Microsoft.CodeAnalysis.CSharp": "4.4.0",
           "Microsoft.Web.WebView2": "1.0.1462.37",
           "MoonSharp": "2.0.0",
@@ -16,21 +17,33 @@
           "System.IO.Hashing": "7.0.0",
           "System.IO.Ports": "7.0.0",
           "System.Management": "7.0.0",
-          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.22621.27"
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.22621.28"
         },
         "runtime": {
           "DSRemapper.dll": {}
         }
       },
-      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.27": {
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.28": {
         "runtime": {
           "Microsoft.Windows.SDK.NET.dll": {
             "assemblyVersion": "10.0.22621.24",
-            "fileVersion": "10.0.22621.27"
+            "fileVersion": "10.0.22621.28"
           },
           "WinRT.Runtime.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.39961"
+            "fileVersion": "2.0.1.40881"
+          }
+        }
+      },
+      "FireLibs.IO/1.0.0": {
+        "dependencies": {
+          "System.IO.Ports": "7.0.0",
+          "System.Management": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/FireLibs.IO.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -1012,10 +1025,17 @@
       "serviceable": false,
       "sha512": ""
     },
-    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.27": {
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.28": {
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
+    },
+    "FireLibs.IO/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eZ6hVXgvCYSxdG8LTtZVLbneZjBhO/q2BfVFLgdPfZfGnL2gvD122rVQICuBzQiSYlL1uQIbho8/pkOf25zAww==",
+      "path": "firelibs.io/1.0.0",
+      "hashPath": "firelibs.io.1.0.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.3": {
       "type": "package",

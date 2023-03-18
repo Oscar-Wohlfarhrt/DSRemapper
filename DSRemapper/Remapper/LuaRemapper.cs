@@ -92,7 +92,7 @@ namespace DSRemapper.Remapper
         }
         public void RemapController()
         {
-            RemapTask=Task.Factory.StartNew(() =>
+            RemapTask = Task.Factory.StartNew(() =>
             {
                 now = DateTime.Now;
                 deltaTime = (now - lastUpdate).Ticks / (float)TimeSpan.TicksPerSecond;

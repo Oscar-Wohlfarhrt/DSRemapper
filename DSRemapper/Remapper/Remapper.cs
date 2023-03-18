@@ -9,6 +9,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using static DSRemapper.ControllerOutput.SendInputApi;
 
@@ -149,8 +150,6 @@ namespace DSRemapper.Remapper
             {
                 if (control.RemapCompleted)
                     control.RemapController();
-
-                //Task.Run(()=>{ control.RemapController(); }).Start();
             }
         }
     }
