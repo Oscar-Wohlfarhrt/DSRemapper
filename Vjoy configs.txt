@@ -1,0 +1,7 @@
+Common
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_1234&PID_BEAD]
+"OEMData"= 03 00 88 11 20 00 00 00
+
+Wheel
+[HKEY_CURRENT_USER\System\CurrentControlSet\Control\MediaProperties\PrivateProperties\Joystick\OEM\VID_1234&PID_BEAD]
+"OEMData"= 43 00 88 01 fe 00 00 00
