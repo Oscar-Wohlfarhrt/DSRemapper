@@ -6,6 +6,7 @@ using DSRemapper.ControllerOutput;
 using static DSRemapper.ControllerOutput.SendInputApi;
 using System.Numerics;
 using MoonSharp.Interpreter.Serialization;
+using System.Diagnostics;
 
 namespace DSRemapper.Remapper
 {
@@ -29,6 +30,8 @@ namespace DSRemapper.Remapper
 
         private DateTime now = DateTime.Now, lastUpdate = DateTime.Now;
         float deltaTime = 0;
+
+        public Stopwatch watch = new Stopwatch();
 
         public LuaRemapper(IDSInputController controller, EventHandler<RemapperScriptEventArgs>? errHandler = null, EventHandler<RemapperScriptEventArgs>? logHandler = null, EventHandler<RemapperReportEventArgs>? batteryHandler = null)
         {
@@ -92,11 +95,13 @@ namespace DSRemapper.Remapper
         }
         public void RemapController()
         {
-            RemapTask = Task.Factory.StartNew(() =>
+            RemapTask = RemapperCore.tFactory.StartNew(() =>
             {
-                now = DateTime.Now;
-                deltaTime = (now - lastUpdate).Ticks / (float)TimeSpan.TicksPerSecond;
-                lastUpdate = now;
+                watch.Stop();
+                //now = DateTime.Now;
+                deltaTime = watch.ElapsedMilliseconds/1000f;//(now - lastUpdate).Ticks / (float)TimeSpan.TicksPerSecond;
+                //lastUpdate = now;
+                watch.Restart();
 
                 try
                 {
@@ -126,7 +131,7 @@ namespace DSRemapper.Remapper
                         OnError?.Invoke(this, eventArgs);
                     }
                 }
-            });
+            },TaskCreationOptions.LongRunning);
         }
         public DSInputReport GetInputReport()
         {

@@ -36,6 +36,9 @@ namespace DSRemapper.Remapper
         public event EventHandler<RemapperScriptEventArgs>? LoadDefaultProfile;
         public event EventHandler<RemapperReportEventArgs>? OnReportUpdate;
 
+        public static CancellationTokenSource cts = new CancellationTokenSource();
+        public static TaskFactory tFactory= new TaskFactory(cts.Token,TaskCreationOptions.None,TaskContinuationOptions.None,null);
+
         public RemapperCore()
         {
             UserData.RegisterType<DSInputReport>(InteropAccessMode.BackgroundOptimized);
@@ -120,7 +123,7 @@ namespace DSRemapper.Remapper
                 ctrlRemapper.Controller.Dispose();
             }
         }
-
+        public List<IDSInputController> GetControllers() => controlRemapperList.Select((c) => c.Controller).ToList();
         public LuaRemapper GetControlRemapper(string controllerId) => controlRemapperList[GetControlRemapperIndex(controllerId)];
         public int GetControlRemapperIndex(string controllerId)
         {
@@ -149,8 +152,11 @@ namespace DSRemapper.Remapper
             foreach (var control in controlRemapperList.ToArray())
             {
                 if (control.RemapCompleted)
+                {
                     control.RemapController();
+                }
             }
+
         }
     }
 }

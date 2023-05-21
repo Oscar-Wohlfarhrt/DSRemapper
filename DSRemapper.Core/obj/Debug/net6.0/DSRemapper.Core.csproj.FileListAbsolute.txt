@@ -1,0 +1,12 @@
+D:\Github\DSRemapper\DSRemapper.Core\bin\Debug\net6.0\DSRemapper.Core.deps.json
+D:\Github\DSRemapper\DSRemapper.Core\bin\Debug\net6.0\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\bin\Debug\net6.0\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\refint\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.Core\obj\Debug\net6.0\ref\DSRemapper.Core.dll

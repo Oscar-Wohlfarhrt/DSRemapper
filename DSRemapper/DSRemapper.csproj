@@ -34,6 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+    <ProjectReference Include="..\DSRemapper.DSInput\DSRemapper.DSInput.csproj" />
+    <ProjectReference Include="..\DSRemapper.DualShock\DSRemapper.DualShock.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="DSRemapper.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

@@ -17,7 +17,7 @@ namespace DSRemapper
         readonly RemapperCore remapper = new ();
         readonly BackgroundWorker remapWorker = new ();
         readonly BackgroundWorker scanWorker = new();
-#if DEBUG
+#if DEBUG1
         public static readonly string webPath = "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\Forms";
 #else
         public static readonly string webPath = Path.GetFullPath("Forms");
@@ -27,6 +27,7 @@ namespace DSRemapper
         public MainForm()
         {
             InitializeComponent();
+            DSRemapper.DSInput.DSInputCore.LoadAnsemblies();
             Controls.Add(webview);
             webview.Dock = DockStyle.Fill;
 
@@ -165,12 +166,12 @@ namespace DSRemapper
                 while (remapWorker.IsBusy) ;
 
                 List<IDSInputController> controllers = DSInputControllers.GetDevices().ToList();
+                remapper.SetControllers(controllers);
                 Invoke(() =>
                 {
-                    webview.CoreWebView2.ExecuteScriptAsync($"UpdateDeviceList({JsonSerializer.Serialize(controllers)})");
+                    webview.CoreWebView2.ExecuteScriptAsync($"UpdateDeviceList({JsonSerializer.Serialize(remapper.GetControllers())})");
                     webview.CoreWebView2.ExecuteScriptAsync($"LoadProfiles({JsonSerializer.Serialize(ProfileManager.GetProfileNames())})");
                 });
-                remapper.SetControllers(controllers);
 
                 Invoke(() =>
                 {

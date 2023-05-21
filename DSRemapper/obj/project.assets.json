@@ -1733,12 +1733,48 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "DSRemapper.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/DSRemapper.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSRemapper.Core.dll": {}
+        }
+      },
+      "DSRemapper.DSInput/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DSRemapper.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DSRemapper.DSInput.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSRemapper.DSInput.dll": {}
+        }
+      },
+      "DSRemapper.DualShock/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DSRemapper.DSInput": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
+        }
       }
     }
   },
   "libraries": {
     "FireLibs.IO/1.0.0": {
-      "sha512": "eZ6hVXgvCYSxdG8LTtZVLbneZjBhO/q2BfVFLgdPfZfGnL2gvD122rVQICuBzQiSYlL1uQIbho8/pkOf25zAww==",
+      "sha512": "afH8AppYyl7rgRXJOfvk7UMdjNM+e4QrjOnkaLxsH/OvlYy/oD2lqKpQMpFbfdjwaZLeQQ5PU0TUbuCK/vCEkA==",
       "type": "package",
       "path": "firelibs.io/1.0.0",
       "files": [
@@ -5899,10 +5935,28 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "DSRemapper.Core/1.0.0": {
+      "type": "project",
+      "path": "../DSRemapper.Core/DSRemapper.Core.csproj",
+      "msbuildProject": "../DSRemapper.Core/DSRemapper.Core.csproj"
+    },
+    "DSRemapper.DSInput/1.0.0": {
+      "type": "project",
+      "path": "../DSRemapper.DSInput/DSRemapper.DSInput.csproj",
+      "msbuildProject": "../DSRemapper.DSInput/DSRemapper.DSInput.csproj"
+    },
+    "DSRemapper.DualShock/1.0.0": {
+      "type": "project",
+      "path": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj",
+      "msbuildProject": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows10.0.22621": [
+      "DSRemapper.Core >= 1.0.0",
+      "DSRemapper.DSInput >= 1.0.0",
+      "DSRemapper.DualShock >= 1.0.0",
       "FireLibs.IO >= 1.0.0",
       "Microsoft.CodeAnalysis.CSharp >= 4.4.0",
       "Microsoft.Web.WebView2 >= 1.0.1462.37",
@@ -5915,23 +5969,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oscar\\.nuget\\packages\\": {},
+    "C:\\Users\\Oscar2\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
+      "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
       "projectName": "DSRemapper",
-      "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
-      "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-      "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\obj\\",
+      "projectPath": "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
+      "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+      "outputPath": "D:\\Github\\DSRemapper\\DSRemapper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5940,14 +5994,23 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+        "D:\\Github\\FireLibs\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows10.0.22621": {
           "targetAlias": "net6.0-windows10.0.22621.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+              "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+            },
+            "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj": {
+              "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj"
+            },
+            "D:\\Github\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj": {
+              "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
