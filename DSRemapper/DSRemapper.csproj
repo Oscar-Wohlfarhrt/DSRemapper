@@ -3,17 +3,32 @@
   <PropertyGroup Label="Globals">
     <WebView2UseWinRT>False</WebView2UseWinRT>
     <Configurations>Debug;Release;ReleaseTest</Configurations>
+	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
-    <ApplicationIcon>DSRemapper.ico</ApplicationIcon>
+	  <OutputType>Exe</OutputType>
+	  <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
+	  <Nullable>enable</Nullable>
+	  <UseWindowsForms>true</UseWindowsForms>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+	  <ApplicationIcon>DSRemapper.ico</ApplicationIcon>
+	  <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+	  <BaseOutputPath>..\build\$(Configuration)\</BaseOutputPath>
+	  <OutputPath>..\build\$(Configuration)\</OutputPath>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="DSRemapper.ico">
@@ -23,14 +38,21 @@
 
   <ItemGroup>
     <PackageReference Include="FireLibs.IO" Version="1.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.4.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1462.37" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1774.30" />
     <PackageReference Include="MoonSharp" Version="2.0.0" />
-    <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.232" />
+    <PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.256" />
     <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" />
     <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
-    <PackageReference Include="System.Management" Version="7.0.0" />
+    <PackageReference Include="System.Management" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+    <ProjectReference Include="..\DSRemapper.DSInput\DSRemapper.DSInput.csproj" />
+    <ProjectReference Include="..\DSRemapper.DSOutput\DSRemapper.DSOutput.csproj" />
+    <ProjectReference Include="..\WebView2NETControls\WebView2NETControls.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -28,7 +28,6 @@ namespace DSRemapper.DSInput
             return y;
         }
     }
-
     public struct ExpMovingAverage
     {
         int n = 0;

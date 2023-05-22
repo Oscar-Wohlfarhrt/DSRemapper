@@ -1,0 +1,12 @@
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Output\DSRemapper.MouseKeyboardOutput.deps.json
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Output\DSRemapper.MouseKeyboardOutput.dll
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Output\DSRemapper.MouseKeyboardOutput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\refint\DSRemapper.MouseKeyboardOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\DSRemapper.MouseKeyboardOutput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.MouseKeyboardOutput\obj\Release\ref\DSRemapper.MouseKeyboardOutput.dll

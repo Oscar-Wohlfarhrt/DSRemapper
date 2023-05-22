@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DSRemapper.ViGEm/1.0.0": {
+        "dependencies": {
+          "DSRemapper.Core": "1.0.0"
+        },
+        "runtime": {
+          "DSRemapper.ViGEm.dll": {}
+        }
+      },
+      "DSRemapper.Core/1.0.0": {
+        "runtime": {
+          "DSRemapper.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DSRemapper.ViGEm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Release\net6.0\DSRemapper.Core.deps.json
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Release\net6.0\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Release\net6.0\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\refint\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\net6.0\ref\DSRemapper.Core.dll
