@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oscar\\.nuget\\packages\\": {},
+    "C:\\Users\\Oscar2\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ViGEm\\DSRemapper.ViGEm.csproj",
+      "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.ViGEm\\DSRemapper.ViGEm.csproj",
       "projectName": "DSRemapper.ViGEm",
-      "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ViGEm\\DSRemapper.ViGEm.csproj",
-      "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-      "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ViGEm\\obj\\",
+      "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.ViGEm\\DSRemapper.ViGEm.csproj",
+      "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+      "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.ViGEm\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -52,16 +52,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+        "D:\\Github\\FireLibs\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
-              "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+            "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+              "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
             }
           }
         }

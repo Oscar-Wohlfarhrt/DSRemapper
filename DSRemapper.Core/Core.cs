@@ -8,34 +8,26 @@ namespace DSRemapper.Core
 
     }
 
-    public class DSInputDeviceInfo<T> where T : IDSInputController,new()
+    #region Interfaces
+
+    public abstract class IDSInputDeviceInfo
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public DSInputDeviceInfo(string id, string name) : this(id, name, "") { }
-        public DSInputDeviceInfo(string id,string name,string description) {
+        
+        public IDSInputDeviceInfo(string id, string name, string description="none")
+        {
             Id = id;
             Name = name;
             Description = description;
         }
-
-        public T CreateController()
-        {
-            return new T();
-        }
-
-        public override string ToString()
-        {
-            return $"Device {Id} - {Name}";
-        }
+        public abstract IDSInputController CreateController();
+        public override string ToString() => $"Device {Name} [{Id}]";
     }
-
-    #region Interfaces
     public interface IDSDeviceScanner 
     {
-        public DSInputDeviceInfo<IDSInputController>[] ScanDevices();
+        public IDSInputDeviceInfo[] ScanDevices();
     }
     public interface IDSInputController : IDisposable
     {

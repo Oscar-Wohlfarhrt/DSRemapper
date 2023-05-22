@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {}
+    "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {}
   },
   "projects": {
-    "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
+    "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
         "projectName": "WebView2NETControls",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\WebView2NETControls\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

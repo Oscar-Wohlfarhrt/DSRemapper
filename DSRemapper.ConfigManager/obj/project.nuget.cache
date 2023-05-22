@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vRYAgaE7A9aFx5+XO2VWug1h85DZt3YLat3dLij03xqnRnhuSyCRUCRg238+re23tx9RNCtVPGBVmmGTTWGw7w==",
+  "dgSpecHash": "s2E7PpWNO/RT+BXjPQdp8GhJqbw5+pPZIiMPM7HiPA653/3ibDlNMsdjVfsFcA3Hi6+2ap2ZWMthwuQ1D3ddPw==",
   "success": true,
-  "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
+  "projectFilePath": "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

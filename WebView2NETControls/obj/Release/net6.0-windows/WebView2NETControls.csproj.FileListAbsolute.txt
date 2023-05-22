@@ -15,3 +15,20 @@ G:\Projectos Visual\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\We
 G:\Projectos Visual\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\ref\WebView2NETControls.dll
 G:\Projectos Visual\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.UserControl1.resources
 G:\Projectos Visual\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.csproj.GenerateResource.cache
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\WebView2NETControls.deps.json
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\WebView2NETControls.dll
+D:\Github\DSRemapper\WebView2NETControls\bin\Release\net6.0-windows\WebView2NETControls.pdb
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.UserControl1.resources
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.csproj.GenerateResource.cache
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.AssemblyInfo.cs
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.dll
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\refint\WebView2NETControls.dll
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\WebView2NETControls.pdb
+D:\Github\DSRemapper\WebView2NETControls\obj\Release\net6.0-windows\ref\WebView2NETControls.dll

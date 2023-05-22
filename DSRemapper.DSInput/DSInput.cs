@@ -13,8 +13,10 @@ namespace DSRemapper.DSInput
         {
             foreach(var scanner in PluginsLoader.Scanners)
             {
-                var scan= (IDSDeviceScanner)Activator.CreateInstance(scanner.Value);
-                if(scan.ScanDevices())
+                foreach (var dev in scanner.Value.ScanDevices())
+                {
+                    Logger.Log(dev.ToString());
+                }
             }
         }
     }

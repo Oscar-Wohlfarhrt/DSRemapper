@@ -14,3 +14,16 @@ G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.
 G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.dll
 G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.csproj.CopyComplete
+D:\Github\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.deps.json
+D:\Github\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\DSRemapper.DualShock.pdb
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.csproj.CopyComplete
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.dll
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\refint\DSRemapper.DualShock.dll
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\DSRemapper.DualShock.pdb
+D:\Github\DSRemapper\DSRemapper.DualShock\obj\Release\ref\DSRemapper.DualShock.dll

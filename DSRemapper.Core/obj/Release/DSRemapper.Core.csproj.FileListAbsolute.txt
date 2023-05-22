@@ -10,3 +10,15 @@ G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\refint\DSRemapper.Core.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Release\ref\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\bin\Release\DSRemapper.Core.deps.json
+D:\Github\DSRemapper\DSRemapper.Core\bin\Release\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\bin\Release\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\refint\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.Core\obj\Release\ref\DSRemapper.Core.dll

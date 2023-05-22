@@ -3,17 +3,28 @@ using DSRemapper.Types;
 
 namespace DSRemapper.DualShock
 {
-    public class DualShockScanner : IDSDeviceScanner<DualShock>
+    public class DualShockInfo : IDSInputDeviceInfo
     {
-        public DSInputDeviceInfo<DualShock>[] ScanDevices()
+        public DualShockInfo(string id, string name, string description = "none")
+            : base(id, name, description) { }
+
+        public override IDSInputController CreateController()
+        {
+            return new DualShock();
+        }
+    }
+
+    public class DualShockScanner : IDSDeviceScanner
+    {
+        public IDSInputDeviceInfo[] ScanDevices()
         {
             return new[]
             {
-                new DSInputDeviceInfo<DualShock>("1","a"),
-                new DSInputDeviceInfo<DualShock>("2","b"),
-                new DSInputDeviceInfo<DualShock>("3","c"),
-                new DSInputDeviceInfo<DualShock>("4","d"),
-                new DSInputDeviceInfo<DualShock>("5","e"),
+                new DualShockInfo("1","a"),
+                new ("2","b"),
+                new ("3","c"),
+                new ("4","d"),
+                new ("5","e"),
             };
         }
     }

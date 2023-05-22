@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj": {}
+    "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj": {}
   },
   "projects": {
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj": {
+    "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
         "projectName": "DSRemapper.ConfigManager",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,16 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
               }
             }
           }
@@ -69,20 +68,20 @@
         }
       }
     },
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+    "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj",
         "projectName": "DSRemapper.Core",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,8 +90,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,20 +128,20 @@
         }
       }
     },
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj": {
+    "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj",
         "projectName": "DSRemapper.DSInput",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -152,19 +150,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj"
               },
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
               }
             }
           }
@@ -198,20 +195,20 @@
         }
       }
     },
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
+    "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj",
         "projectName": "DSRemapper.DSOutput",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -220,16 +217,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
               }
             }
           }
@@ -263,20 +259,20 @@
         }
       }
     },
-    "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj": {
+    "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
         "projectName": "DSRemapper",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\DSRemapper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -285,25 +281,24 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows10.0.22621": {
             "targetAlias": "net6.0-windows10.0.22621.0",
             "projectReferences": {
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
               },
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DSInput\\DSRemapper.DSInput.csproj"
               },
-              "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj"
+              "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj"
               },
-              "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
-                "projectPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj"
+              "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
+                "projectPath": "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj"
               }
             }
           }
@@ -387,20 +382,20 @@
         }
       }
     },
-    "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
+    "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
+        "projectUniqueName": "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
         "projectName": "WebView2NETControls",
-        "projectPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
-        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-        "outputPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\obj\\",
+        "projectPath": "D:\\Github\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj",
+        "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\DSRemapper\\WebView2NETControls\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -409,8 +404,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "G:\\Projectos Visual\\FireLibs\\Nugets": {},
+          "D:\\Github\\FireLibs\\Nugets": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
