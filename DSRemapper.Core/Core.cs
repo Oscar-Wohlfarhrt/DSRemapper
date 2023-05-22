@@ -33,9 +33,9 @@ namespace DSRemapper.Core
     }
 
     #region Interfaces
-    public interface IDSDeviceScanner<T> where T : IDSInputController,new()
+    public interface IDSDeviceScanner 
     {
-        public DSInputDeviceInfo<T>[] ScanDevices();
+        public DSInputDeviceInfo<IDSInputController>[] ScanDevices();
     }
     public interface IDSInputController : IDisposable
     {
