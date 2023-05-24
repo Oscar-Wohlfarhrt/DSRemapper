@@ -37,8 +37,10 @@ namespace DSRemapper
         }
         public void OnLog_ToJS(Logger.LogEntry entry)
         {
-            Console.WriteLine(entry.ToString());
-            webView.CoreWebView2.ExecuteScriptAsync(@$"LogEvent(""{entry}""");
+            webView.Invoke(() =>
+            {
+                webView.CoreWebView2.ExecuteScriptAsync(@$"LogEvent(""{entry}"")");
+            });
         }
 
         public void WindowsControllers()

@@ -27,6 +27,15 @@ button:hover {
 button:active {
     background-color: #5A5A5A;
 }
+message{
+    color:#bbb
+}
+warning{
+    color:#fb0
+}
+error{
+    color:#d00
+}
 
 #nav{
     margin: 0;
@@ -49,14 +58,20 @@ button:active {
     height: 100%;
     background-color: #222;
 }
-#main>message{
-    color:#bbb
+#log-console{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
 }
-#main>warning{
-    color:#fb0
-}
-#main>error{
-    color:#d00
+#log-console>*{
+    border: 0px;
+    border-bottom: 1.5px solid #444;
+    padding: 3px 10px;
+    font-family: monospace;
+    font-size: 16px;
+    white-space: pre;
 }
 
 #footer{

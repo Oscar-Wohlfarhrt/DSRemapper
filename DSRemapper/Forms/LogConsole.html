@@ -10,15 +10,23 @@
 <body>
     <script>
         const bridge = chrome.webview.hostObjects.DSRBridge;
+        function LogTest(){
+            console.log('test send');
+            bridge.LogOnConsole('test');
+        }
     </script>
 
     <div id="nav">
         <button onclick="bridge.TriggerEvent()">File</button>
         <button onclick="bridge.WindowsControllers()">Windows controllers</button>
-        <button onclick="bridge.LogOnConsole('test')">Log console</button>
+        <button onclick="LogTest()">Log console</button>
     </div>
-    <div id="main">
-        <message>LogConsole</message>
+    <div id="log-console">
+        <message>Log  Console
+Log  Console</message>
+        <error>Log  Console</error>
+        <warning>Log  Console</warning>
+        <message>Log  Console</message>
     </div>
     <div id="footer">
         <span>hello</span>
@@ -31,6 +39,7 @@
     <script>
         const main = document.getElementById("main");
         function LogEvent(logMessage){
+            console.log(logMessage);
             main.innerHTML+=`${logMessage}\n`;
         }
         bridge.RegisterLogEvent();
