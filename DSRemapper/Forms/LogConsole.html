@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DSStyles.css">
+</head>
+<body>
+    <script>
+        const bridge = chrome.webview.hostObjects.DSRBridge;
+    </script>
+
+    <div id="nav">
+        <button onclick="bridge.TriggerEvent()">File</button>
+        <button onclick="bridge.WindowsControllers()">Windows controllers</button>
+        <button onclick="bridge.LogOnConsole('test')">Log console</button>
+    </div>
+    <div id="main">
+        <message>LogConsole</message>
+    </div>
+    <div id="footer">
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+    </div>
+    
+    <script>
+        const main = document.getElementById("main");
+        function LogEvent(logMessage){
+            main.innerHTML+=`${logMessage}\n`;
+        }
+        bridge.RegisterLogEvent();
+
+        (async()=>{
+
+        })();
+    </script>
+</body>
+</html>

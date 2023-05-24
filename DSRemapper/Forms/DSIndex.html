@@ -5,19 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="DSStyles.css">
 </head>
 <body>
-    <h1>Hello World! WhatsApp</h1>
-    <div id="container">
-
-    </div>
     <script>
-        const container=document.getElementById("container");
         const bridge = chrome.webview.hostObjects.DSRBridge;
+    </script>
+
+    <div id="nav">
+        <button onclick="bridge.TriggerEvent()">File</button>
+        <button onclick="bridge.WindowsControllers()">Windows controllers</button>
+        <button onclick="bridge.LogConsole()">Log console</button>
+    </div>
+    <div id="main">
+        <error>hello</error>
+        <warning>hello</warning>
+        <message>hello</message>
+        <span>hello</span>
+        <span>hello</span>
+    </div>
+    <div id="footer">
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+        <span>hello</span>
+    </div>
+    
+    <script>
+        const main = document.getElementById("main");
+
+
         (async()=>{
 
-
-
+            bridge.testEvent+=function(sender,event){
+                main.innerHTML+="test\n";
+            }
 
         })();
     </script>

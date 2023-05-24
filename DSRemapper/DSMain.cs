@@ -57,7 +57,7 @@ namespace DSRemapper
             webView.CoreWebView2.Settings.IsScriptEnabled = true;
             webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
 
-            webView.CoreWebView2.AddHostObjectToScript("DSRBridge",new DSRBridge());
+            webView.CoreWebView2.AddHostObjectToScript("DSRBridge",new DSRBridge(webView));
             fileWatcher.EnableRaisingEvents = true;
         }
     }

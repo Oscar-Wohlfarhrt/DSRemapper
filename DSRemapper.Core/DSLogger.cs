@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,13 +9,15 @@ namespace DSRemapper.DSLogger
 {
     public enum LogLevel { Message, Warning, Error }
     public static class Logger
-    { 
+    {
+        public delegate void LoggerEvent(LogEntry log);
+        public static event LoggerEvent OnLog;
         public struct LogEntry
         {
             public LogLevel Level;
             public string Message;
 
-            public LogEntry(string message,LogLevel level=LogLevel.Message)
+            public LogEntry(string message, LogLevel level = LogLevel.Message)
             {
                 Message = message;
                 Level = level;
@@ -26,19 +29,25 @@ namespace DSRemapper.DSLogger
             }
         }
 
-        public static List<LogEntry> logs = new List<LogEntry>();
+        public static List<LogEntry> logs = new();
 
         public static void Log(string message)
         {
-            logs.Add(new LogEntry(message));
+            LogEntry entry = new(message);
+            logs.Add(entry);
+            OnLog?.Invoke(entry);
         }
         public static void LogWarning(string message)
         {
-            logs.Add(new LogEntry(message, LogLevel.Warning));
+            LogEntry entry = new(message, LogLevel.Warning);
+            logs.Add(entry);
+            OnLog?.Invoke(entry);
         }
         public static void LogError(string message)
         {
-            logs.Add(new LogEntry(message,LogLevel.Error));
+            LogEntry entry = new(message, LogLevel.Error);
+            logs.Add(entry);
+            OnLog?.Invoke(entry);
         }
         public static void PrintLogOnConsole()
         {
