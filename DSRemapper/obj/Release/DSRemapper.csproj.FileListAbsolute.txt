@@ -28,7 +28,6 @@ G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.genruntimeconfig.cache
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\ref\DSRemapper.dll
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.DSMain.resources
-G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.WebView2Control.resources
 D:\Github\DSRemapper\DSRemapper\obj\Release\DSRemapper.csproj.AssemblyReference.cache
 D:\Github\DSRemapper\DSRemapper\obj\Release\DSRemapper.DSMain.resources
 D:\Github\DSRemapper\DSRemapper\obj\Release\DSRemapper.InputTest.resources

@@ -1,0 +1,13 @@
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.DirectInput.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.DirectInput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\refint\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Debug\ref\DSRemapper.DirectInput.dll

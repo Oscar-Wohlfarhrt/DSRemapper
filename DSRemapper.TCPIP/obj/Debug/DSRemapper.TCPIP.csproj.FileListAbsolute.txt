@@ -1,0 +1,13 @@
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\refint\DSRemapper.TCPIP.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\ref\DSRemapper.TCPIP.dll

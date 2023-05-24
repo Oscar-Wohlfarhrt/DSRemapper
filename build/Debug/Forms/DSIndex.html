@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World! WhatsApp</h1>
+    <div id="container">
+
+    </div>
+    <script>
+        const container=document.getElementById("container");
+        const bridge = chrome.webview.hostObjects.DSRBridge;
+
+        (async()=>{
+            const x = await bridge.GetDevicesInfo();
+            for(dev of x){
+                container.innerHTML+=`${await dev.Name}<br>`
+                console.log(await dev.ToString());
+            }
+        })();
+
+        //var devs = bridge.LoopBack("hello");
+        /*for(var dev of devs){
+            container.innerHTML+=dev.ToString();
+        }*/
+    </script>
+</body>
+</html>

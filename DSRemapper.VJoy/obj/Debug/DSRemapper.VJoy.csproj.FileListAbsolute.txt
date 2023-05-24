@@ -1,0 +1,13 @@
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.VJoy.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.VJoy.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.VJoy.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\refint\DSRemapper.VJoy.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.VJoy\obj\Debug\ref\DSRemapper.VJoy.dll

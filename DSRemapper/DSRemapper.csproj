@@ -59,6 +59,12 @@
     <None Update="DSRemapper.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="Forms\DSIndex.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Forms\DSStyles.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Forms\InputTest.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

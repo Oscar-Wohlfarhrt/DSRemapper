@@ -1,0 +1,13 @@
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.COMM.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.COMM.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSRemapper.COMM.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\refint\DSRemapper.COMM.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\DSRemapper.COMM.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.COMM\obj\Debug\ref\DSRemapper.COMM.dll

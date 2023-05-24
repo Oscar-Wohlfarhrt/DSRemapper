@@ -1,0 +1,12 @@
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Debug\DSRemapper.Core.deps.json
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Debug\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\bin\Debug\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\refint\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.Core\obj\Debug\ref\DSRemapper.Core.dll

@@ -1,0 +1,13 @@
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.ViGEm.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.ViGEm.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\DSRemapper.ViGEm.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\refint\DSRemapper.ViGEm.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\DSRemapper.ViGEm.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.ViGEm\obj\Debug\ref\DSRemapper.ViGEm.dll
