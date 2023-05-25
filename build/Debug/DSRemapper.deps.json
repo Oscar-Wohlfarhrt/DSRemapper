@@ -11,6 +11,7 @@
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSInput": "1.0.0",
           "DSRemapper.DSOutput": "1.0.0",
+          "DSRemapper.DualShock": "1.0.0",
           "FireLibs.IO": "1.0.0",
           "Microsoft.CodeAnalysis.CSharp": "4.6.0",
           "Microsoft.Web.WebView2": "1.0.1774.30",
@@ -20,7 +21,6 @@
           "System.IO.Hashing": "7.0.0",
           "System.IO.Ports": "7.0.0",
           "System.Management": "7.0.1",
-          "WebView2NETControls": "1.0.0",
           "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.22621.28"
         },
         "runtime": {
@@ -1083,14 +1083,6 @@
         "runtime": {
           "DSRemapper.DSOutput.dll": {}
         }
-      },
-      "WebView2NETControls/1.0.0": {
-        "dependencies": {
-          "Microsoft.Web.WebView2": "1.0.1774.30"
-        },
-        "runtime": {
-          "WebView2NETControls.dll": {}
-        }
       }
     }
   },
@@ -1793,11 +1785,6 @@
       "sha512": ""
     },
     "DSRemapper.DSOutput/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "WebView2NETControls/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "s9ybNMZXU5y6wUSG+W/U2nZeSoHfQfFh1+ICSxk0nMa5XS2n14liOqPEmBmQcYrZb+/pSxpbckkSLuLqoZZeDg==",
+  "dgSpecHash": "IZLwTZiJzbjhdAdCuemQTrAP06qZ7O2Q4pC1qGSvgweP2Jm8IpBE9GbAbnTym7biTw6V8CibhZiRjcH4EbcZrQ==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

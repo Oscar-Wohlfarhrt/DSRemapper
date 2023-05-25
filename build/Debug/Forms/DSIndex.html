@@ -13,16 +13,12 @@
     </script>
 
     <div id="nav">
-        <button onclick="bridge.TriggerEvent()">File</button>
+        <button onclick="bridge.LogWarning('Not working')">File</button>
         <button onclick="bridge.WindowsControllers()">Windows controllers</button>
         <button onclick="bridge.LogConsole()">Log console</button>
     </div>
     <div id="main">
-        <error>hello</error>
-        <warning>hello</warning>
-        <message>hello</message>
-        <span>hello</span>
-        <span>hello</span>
+
     </div>
     <div id="footer">
         <span>hello</span>
@@ -43,6 +39,7 @@
             }
 
         })();
+        bridge.LogConsole()
     </script>
 </body>
 </html>

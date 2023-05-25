@@ -1789,21 +1789,19 @@
           "bin/placeholder/DSRemapper.DSOutput.dll": {}
         }
       },
-      "WebView2NETControls/1.0.0": {
+      "DSRemapper.DualShock/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.Web.WebView2": "1.0.1774.30"
+          "DSRemapper.Core": "1.0.0",
+          "System.Management": "7.0.1"
         },
         "compile": {
-          "bin/placeholder/WebView2NETControls.dll": {}
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
         },
         "runtime": {
-          "bin/placeholder/WebView2NETControls.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WindowsForms"
-        ]
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
+        }
       }
     }
   },
@@ -6304,10 +6302,10 @@
       "path": "../DSRemapper.DSOutput/DSRemapper.DSOutput.csproj",
       "msbuildProject": "../DSRemapper.DSOutput/DSRemapper.DSOutput.csproj"
     },
-    "WebView2NETControls/1.0.0": {
+    "DSRemapper.DualShock/1.0.0": {
       "type": "project",
-      "path": "../WebView2NETControls/WebView2NETControls.csproj",
-      "msbuildProject": "../WebView2NETControls/WebView2NETControls.csproj"
+      "path": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj",
+      "msbuildProject": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6315,6 +6313,7 @@
       "DSRemapper.Core >= 1.0.0",
       "DSRemapper.DSInput >= 1.0.0",
       "DSRemapper.DSOutput >= 1.0.0",
+      "DSRemapper.DualShock >= 1.0.0",
       "FireLibs.IO >= 1.0.0",
       "Microsoft.CodeAnalysis.CSharp >= 4.6.0",
       "Microsoft.Web.WebView2 >= 1.0.1774.30",
@@ -6323,8 +6322,7 @@
       "SharpDX.DirectInput >= 4.2.0",
       "System.IO.Hashing >= 7.0.0",
       "System.IO.Ports >= 7.0.0",
-      "System.Management >= 7.0.1",
-      "WebView2NETControls >= 1.0.0"
+      "System.Management >= 7.0.1"
     ]
   },
   "packageFolders": {
@@ -6370,8 +6368,8 @@
             "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
               "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj"
             },
-            "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj": {
-              "projectPath": "G:\\Projectos Visual\\DSRemapper\\WebView2NETControls\\WebView2NETControls.csproj"
+            "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj": {
+              "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj"
             }
           }
         }

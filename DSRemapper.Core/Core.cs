@@ -12,14 +12,20 @@ namespace DSRemapper.Core
 
     public abstract class IDSInputDeviceInfo
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        
-        public IDSInputDeviceInfo(string id, string name, string description="none")
+        public virtual string Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string Path { get; set; }
+        public virtual int VendorId { get; set; }
+        public virtual int ProductId { get; set; }
+
+        public IDSInputDeviceInfo(string path, string name, string id, int vendorId,int productId, string description="none")
         {
+            Path = path;
             Id = id;
             Name = name;
+            VendorId = vendorId;
+            ProductId = productId;
             Description = description;
         }
         public abstract IDSInputController CreateController();

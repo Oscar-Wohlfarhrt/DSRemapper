@@ -17,35 +17,32 @@
     </script>
 
     <div id="nav">
-        <button onclick="bridge.TriggerEvent()">File</button>
-        <button onclick="bridge.WindowsControllers()">Windows controllers</button>
-        <button onclick="LogTest()">Log console</button>
+        <input type="checkbox" checked id="autoScroll">
+        <label for="autoScroll">Auto scroll on log</label>
     </div>
     <div id="log-console">
-        <message>Log  Console
-Log  Console</message>
-        <error>Log  Console</error>
-        <warning>Log  Console</warning>
-        <message>Log  Console</message>
     </div>
     <div id="footer">
-        <span>hello</span>
-        <span>hello</span>
-        <span>hello</span>
-        <span>hello</span>
-        <span>hello</span>
+
     </div>
     
     <script>
-        const main = document.getElementById("main");
+        const lcon = document.getElementById("log-console");
+        const autoScroll = document.getElementById("autoScroll");
+
         function LogEvent(logMessage){
-            console.log(logMessage);
-            main.innerHTML+=`${logMessage}\n`;
+            lcon.innerHTML+=`${logMessage}\n`;
+            if(autoScroll.checked){
+                lcon.scrollTo(0,lcon.scrollHeight);
+            }
         }
         bridge.RegisterLogEvent();
 
         (async()=>{
-
+            /*const devs=await bridge.GetDevicesInfo();
+            for(dev of devs){
+                bridge.Log(await dev.ToString());
+            }*/
         })();
     </script>
 </body>

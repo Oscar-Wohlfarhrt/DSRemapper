@@ -406,7 +406,7 @@ namespace DSRemapper.DSInput.HidCom
 
                         string path = GetDevicePath(infoSet, ref interfaceData);
                         string description = GetBusReportedDeviceDescription(infoSet, ref devInfoData) ?? GetDeviceDescription(infoSet, ref devInfoData);
-
+                        
                         devices.Add(new DeviceInfo(path, description));
                     }
                 }

@@ -1,12 +1,14 @@
 ﻿using DSRemapper.Core;
+using DSRemapper.DSLogger;
 using DSRemapper.Types;
+using System.Management;
 
 namespace DSRemapper.DualShock
 {
     public class DualShockInfo : IDSInputDeviceInfo
     {
-        public DualShockInfo(string id, string name, string description = "none")
-            : base(id, name, description) { }
+        public DualShockInfo(string path, string name, string id, int vendorId, int productId, string description = "none")
+            : base(path, name, id, vendorId, productId, description){}
 
         public override IDSInputController CreateController()
         {
@@ -18,13 +20,21 @@ namespace DSRemapper.DualShock
     {
         public IDSInputDeviceInfo[] ScanDevices()
         {
-            return new[]
+            //VID&0002054C
+            //VID&0002054C_PID&09CC
+            int vid = 0x054C, pid = 0x0000;//#{4d1e55b2-f16f-11cf-88cb-001111000030}
+            string wmiQuery = @$"SELECT DeviceID FROM Win32_PnPEntity WHERE DeviceID like 'HID%VID%{(vid>0? $"{vid:X4}":"")}_PID_{(pid > 0 ? $"{pid:X4}" : "")}%'";
+
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher(wmiQuery);
+            ManagementObjectCollection objCollection = searcher.Get();
+            Logger.Log("Path: \\\\?\\hid#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&09cc#9&2005301&25&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}");
+            foreach (var obj in objCollection)
             {
-                new DualShockInfo("1","a"),
-                new ("2","b"),
-                new ("3","c"),
-                new ("4","d"),
-                new ("5","e"),
+                
+                Logger.Log($"Path: \\\\?\\{obj["DeviceID"].ToString().Replace("\\","#")}#{{4d1e55b2-f16f-11cf-88cb-001111000030}}");
+            }
+            return new[]{
+                new DualShockInfo("path","name","id",0,0)
             };
         }
     }
