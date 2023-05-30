@@ -13,6 +13,9 @@ namespace DSRemapper
 {
     public partial class DSMain : Form
     {
+#if DEBUG
+        private static bool notLoaded=true;
+#endif
         string mainPagePath;
         FileSystemWatcher fileWatcher;
 
@@ -57,8 +60,18 @@ namespace DSRemapper
             webView.CoreWebView2.Settings.IsScriptEnabled = true;
             webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
 
-            
+
+#if DEBUG
+            DSRBridge bridge = new(webView);
+            webView.CoreWebView2.AddHostObjectToScript("DSRBridge", bridge);
+            if (notLoaded)
+            {
+                notLoaded = false;
+                bridge.LogConsole();
+            }
+#else
             webView.CoreWebView2.AddHostObjectToScript("DSRBridge", new DSRBridge(webView));
+#endif
             fileWatcher.EnableRaisingEvents = true;
         }
     }

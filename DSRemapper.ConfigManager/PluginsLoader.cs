@@ -17,6 +17,7 @@ namespace DSRemapper.ConfigManager
             public IDSInputDeviceInfo[] ScanDevices() => Array.Empty<IDSInputDeviceInfo>();
         }
 
+        private static List<Assembly> pluginAssemblies = new();
         public static SortedList<string, Type> InputPlugins = new();
         public static SortedList<string, Type> OutputPlugins = new();
         public static SortedList<string, Type> RemapperPlugins = new();
@@ -29,13 +30,13 @@ namespace DSRemapper.ConfigManager
             foreach (string plugin in plugins)
             {
                 Logger.Log($"Assembly found: {plugin}");
-                Assembly.LoadFile(plugin);
+                pluginAssemblies.Add(Assembly.LoadFrom(plugin));
             }
         }
 
         public static void LoadPlugins()
         {
-            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes());
+            IEnumerable<Type> types = pluginAssemblies.SelectMany(a => a.GetTypes());
             foreach (Type type in types)
             {
                 if (type.IsInterface || !type.IsVisible)

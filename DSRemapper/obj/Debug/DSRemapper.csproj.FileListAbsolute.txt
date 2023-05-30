@@ -30,3 +30,4 @@ G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\DSRemapper.genruntimeconfig.
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\ref\DSRemapper.dll
 G:\Projectos Visual\DSRemapper\build\Debug\Forms\DSIndex.html
 G:\Projectos Visual\DSRemapper\build\Debug\Forms\DSStyles.css
+G:\Projectos Visual\DSRemapper\build\Debug\Forms\LogConsole.html

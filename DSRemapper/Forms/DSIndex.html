@@ -58,6 +58,10 @@ dwasdwakl
                 main.innerHTML+="test\n";
             }
 
+            const devs= await bridge.GetDevicesInfo();
+            for (const d of devs) {
+                bridge.Log(await d.ToString());
+            }
         })();
         //bridge.LogConsole()
     </script>

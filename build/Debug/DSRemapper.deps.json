@@ -11,8 +11,6 @@
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSInput": "1.0.0",
           "DSRemapper.DSOutput": "1.0.0",
-          "DSRemapper.DualShock": "1.0.0",
-          "DSRemapper.HID": "1.0.0",
           "FireLibs.IO": "1.0.0",
           "Microsoft.CodeAnalysis.CSharp": "4.6.0",
           "Microsoft.Web.WebView2": "1.0.1774.30",
@@ -1084,14 +1082,6 @@
         "runtime": {
           "DSRemapper.DSOutput.dll": {}
         }
-      },
-      "DSRemapper.HID/1.0.0": {
-        "dependencies": {
-          "System.Management": "7.0.1"
-        },
-        "runtime": {
-          "DSRemapper.HID.dll": {}
-        }
       }
     }
   },
@@ -1794,11 +1784,6 @@
       "sha512": ""
     },
     "DSRemapper.DSOutput/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DSRemapper.HID/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

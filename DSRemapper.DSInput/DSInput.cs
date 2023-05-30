@@ -16,7 +16,9 @@ namespace DSRemapper.DSInput
 
         public static IDSInputDeviceInfo[] GetDevicesInfo()
         {
-            return PluginsLoader.Scanners.SelectMany((s) => { return s.Value.ScanDevices(); }).ToArray();
+            return PluginsLoader.Scanners.SelectMany((s) => {
+                return s.Value.ScanDevices();
+            }).ToArray();
         }
     }
 }

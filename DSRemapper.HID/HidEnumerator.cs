@@ -28,7 +28,7 @@ namespace DSRemapper.HID
                 if (!int.TryParse(match.Groups[2].Value, NumberStyles.HexNumber, null, out pid))
                     pid = 0;
 
-                DSHidInfo info = new($"\\\\?\\{did.Replace("\\", "#")}#{{4d1e55b2-f16f-11cf-88cb-001111000030}}", "DualShock 4", "", vid, pid);
+                infos.Add(new($"\\\\?\\{did.Replace("\\", "#")}#{{4d1e55b2-f16f-11cf-88cb-001111000030}}", "DualShock 4", "", vid, pid));
             }
 
             return infos;

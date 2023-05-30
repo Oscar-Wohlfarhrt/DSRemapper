@@ -58,3 +58,6 @@ D:\Github\DSRemapper\build\Release\DSRemapper.pdb
 D:\Github\DSRemapper\DSRemapper\obj\Release\DSRemapper.csproj.CopyComplete
 D:\Github\DSRemapper\DSRemapper\obj\Release\DSRemapper.genruntimeconfig.cache
 D:\Github\DSRemapper\DSRemapper\obj\Release\ref\DSRemapper.dll
+G:\Projectos Visual\DSRemapper\build\Release\Forms\DSIndex.html
+G:\Projectos Visual\DSRemapper\build\Release\Forms\DSStyles.css
+G:\Projectos Visual\DSRemapper\build\Release\Forms\LogConsole.html

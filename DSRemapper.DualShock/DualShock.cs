@@ -102,7 +102,7 @@ namespace DSRemapper.DualShock
             fetRep[0] = 0x05;
             hidDevice.GetFeature(fetRep);
 
-            DSOutputReport report = Utils.CreateOutputReport();
+            DSOutputReport report = new();//Utils.CreateOutputReport();
 
             if (rawReport.Length > 64)
             {

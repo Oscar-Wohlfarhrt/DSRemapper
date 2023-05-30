@@ -18,6 +18,32 @@
         <button onclick="bridge.LogConsole()">Log console</button>
     </div>
     <div id="main">
+        <div id="controller-list">
+            <div class="ctrl">
+                <img>
+                <div class="ctrl-main">
+                    <div class="title">Controller Title</div>
+                    <div class="description">Controller information</div>
+                    <select class="profile-list">
+                        <option value="">Select a profile</option>
+                        <option>test 1</option>
+                        <option>test 2</option>
+                        <option>test 3</option>
+                    </select>
+                    <div class="console">
+Hola Mundo!
+dwasdwakl
+                                dlwkamñdmqwlñ lmdpqlñ plkñ
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button>But 1</button>
+                    <button>But 2</button>
+                    <button>But 3</button>
+                    <button>But 4</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="footer">
     </div>
@@ -32,6 +58,10 @@
                 main.innerHTML+="test\n";
             }
 
+            const devs= await bridge.GetDevicesInfo();
+            for (const d of devs) {
+                bridge.Log(await d.ToString());
+            }
         })();
         //bridge.LogConsole()
     </script>

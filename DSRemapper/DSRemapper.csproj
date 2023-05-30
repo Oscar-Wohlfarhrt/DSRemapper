@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-	  <OutputType>Exe</OutputType>
+	  <OutputType>WinExe</OutputType>
 	  <TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
 	  <Nullable>enable</Nullable>
 	  <UseWindowsForms>true</UseWindowsForms>
@@ -52,10 +52,6 @@
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
     <ProjectReference Include="..\DSRemapper.DSInput\DSRemapper.DSInput.csproj" />
     <ProjectReference Include="..\DSRemapper.DSOutput\DSRemapper.DSOutput.csproj" />
-    <ProjectReference Include="..\DSRemapper.DualShock\DSRemapper.DualShock.csproj">
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\DSRemapper.HID\DSRemapper.HID.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,6 +71,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Forms\Joystick.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Forms\LogConsole.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Forms\MainPage.html">
