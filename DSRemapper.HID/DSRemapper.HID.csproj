@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DSHidDevice.cs" />
+    <Compile Remove="HIDDeviceOLD.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="DSHidDevice.cs" />
+    <None Include="HIDDeviceOLD.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>

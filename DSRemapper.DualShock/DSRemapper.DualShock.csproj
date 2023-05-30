@@ -11,11 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
     <PackageReference Include="System.Management" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+    <ProjectReference Include="..\DSRemapper.HID\DSRemapper.HID.csproj" />
   </ItemGroup>
 
 </Project>

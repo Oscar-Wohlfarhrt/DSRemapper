@@ -9,6 +9,7 @@
       "DSRemapper.DualShock/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
+          "DSRemapper.HID": "1.0.0",
           "System.Management": "7.0.1"
         },
         "runtime": {
@@ -46,6 +47,14 @@
         "runtime": {
           "DSRemapper.Core.dll": {}
         }
+      },
+      "DSRemapper.HID/1.0.0": {
+        "dependencies": {
+          "System.Management": "7.0.1"
+        },
+        "runtime": {
+          "DSRemapper.HID.dll": {}
+        }
       }
     }
   },
@@ -70,6 +79,11 @@
       "hashPath": "system.management.7.0.1.nupkg.sha512"
     },
     "DSRemapper.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.HID/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

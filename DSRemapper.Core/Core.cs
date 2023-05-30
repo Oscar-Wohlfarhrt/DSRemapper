@@ -14,19 +14,17 @@ namespace DSRemapper.Core
     {
         public virtual string Id { get; set; }
         public virtual string Name { get; set; }
-        public virtual string Description { get; set; }
         public virtual string Path { get; set; }
         public virtual int VendorId { get; set; }
         public virtual int ProductId { get; set; }
 
-        public IDSInputDeviceInfo(string path, string name, string id, int vendorId,int productId, string description="none")
+        public IDSInputDeviceInfo(string path, string name, string id, int vendorId,int productId)
         {
             Path = path;
             Id = id;
             Name = name;
             VendorId = vendorId;
             ProductId = productId;
-            Description = description;
         }
         public abstract IDSInputController CreateController();
         public override string ToString() => $"Device {Name} [{Id}]";

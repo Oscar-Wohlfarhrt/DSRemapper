@@ -55,6 +55,7 @@
     <ProjectReference Include="..\DSRemapper.DualShock\DSRemapper.DualShock.csproj">
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\DSRemapper.HID\DSRemapper.HID.csproj" />
   </ItemGroup>
 
   <ItemGroup>

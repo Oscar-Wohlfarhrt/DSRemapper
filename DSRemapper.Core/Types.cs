@@ -12,7 +12,7 @@ namespace DSRemapper.Types
         public bool Down { get => buts[2]; set { buts[2] = value; Angle = -1; } }
         public bool Left { get => buts[3]; set { buts[3] = value; Angle = -1; } }
 
-        internal void SetDSPov(byte pov)
+        public void SetDSPov(byte pov)
         {
             Angle = pov != 8 ? pov * 360f / 8f : -1;
             CalculateButtons();

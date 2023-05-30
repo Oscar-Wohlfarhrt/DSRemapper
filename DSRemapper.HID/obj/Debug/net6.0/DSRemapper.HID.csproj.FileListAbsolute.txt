@@ -1,0 +1,12 @@
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\bin\Debug\net6.0\DSRemapper.HID.deps.json
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\bin\Debug\net6.0\DSRemapper.HID.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\bin\Debug\net6.0\DSRemapper.HID.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\refint\DSRemapper.HID.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\DSRemapper.HID.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.HID\obj\Debug\net6.0\ref\DSRemapper.HID.dll

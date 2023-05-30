@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.RemapperLua", "D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.ConfigManager", "DSRemapper.ConfigManager\DSRemapper.ConfigManager.csproj", "{D3AC0FA3-BB91-4E28-B37C-02ED48792467}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSRemapper.HID", "DSRemapper.HID\DSRemapper.HID.csproj", "{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -316,6 +318,24 @@ Global
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x64.Build.0 = Release|Any CPU
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x86.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x64.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x86.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|Any CPU.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|Any CPU.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x64.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x64.Build.0 = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
+		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

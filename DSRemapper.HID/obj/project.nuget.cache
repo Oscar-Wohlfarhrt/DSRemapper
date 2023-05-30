@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "BqMapZupurV1zT8+0pEm6tPOgwZoSFDPWw7OuHxrAprl1XKQASiAi0FrXgoek9cNuIkUkFBoaErd9LgUCVbWzQ==",
+  "success": true,
+  "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.HID\\DSRemapper.HID.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
