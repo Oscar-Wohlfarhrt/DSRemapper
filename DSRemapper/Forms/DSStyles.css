@@ -2,6 +2,8 @@
     font-family: Sans-serif;
     color: #ccc;
     user-select: none;
+    box-sizing: border-box;
+    margin: 0px;
 }
 html,body{
     padding: 0;
@@ -10,7 +12,6 @@ html,body{
     width: 100%;
     max-height: 100%;
     max-width: 100%;
-    box-sizing: border-box;
     background-color: #666;
 }
 
@@ -72,8 +73,6 @@ error{
 #nav{
     margin: 0;
     padding: 2px;
-    box-sizing: border-box;
-
     display: flex;
     width: 100%;
     height: 100%;
@@ -128,12 +127,11 @@ error{
     overflow: hidden auto;
 }
 .ctrl{
-    /*display: grid;
-    grid-template-columns: 150px 1fr 150px;*/
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    /*display: flex;
+    flex-direction: row;*/
     padding: 10px;
-    box-sizing: border-box;
     width: 100%;
     min-height: 200px;
     max-height: 250px;
@@ -141,34 +139,32 @@ error{
     border-radius: 10px;
 }
 .ctrl img{
-    width: 150px;
+    width: 100%;
 }
 .ctrl .ctrl-main{
-    width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    max-width: 100%;
 }
 .ctrl .title{
     text-align: center;
-    font-size: 20px;
-    margin: 10px;
     width: 100%;
-    border-radius: 5px;
+    font-size: 20px;
 }
 .ctrl .description{
     text-align: center;
     width: 100%;
-    background-color: #444;
-    border-radius: 5px;
     font-size: 15px;
     font-family: monospace;
 }
 .ctrl .buttons{
     display: flex;
     flex-direction: column;
-    margin: 5px;
-    width: 150px;
-    height: 1fr;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
     background-color: #444;
 }
 .ctrl .buttons>*{
@@ -176,19 +172,18 @@ error{
     height: 100%;
 }
 .ctrl .profile-list{
-    display: flex;
-    flex-direction: row;
-    width: 1fr;
-    margin: 10px;
+    padding: 2px;
+    width: 100%;
+    color: #333;
+    border-radius: 4px;
 }
 .ctrl .console{
-    width: 1fr;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0px 10px;
+    display: inline-block;
+    width: 100%;
     padding: 5px;
-    max-height: 100px;
-    background-color: #222;
+    min-height: 80px;
+    height: 100%;
+    background-color: #333;
     border-radius: 5px;
     font-size: 15px;
     font-family: monospace;
