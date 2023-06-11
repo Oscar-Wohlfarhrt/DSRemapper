@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.ConfigManager", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.HID", "DSRemapper.HID\DSRemapper.HID.csproj", "{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSRemapper", "DSRemapper\DSRemapper.csproj", "{6A470241-B1A9-4267-896D-CD3A1DED9CFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper", "DSRemapper\DSRemapper.csproj", "{6A470241-B1A9-4267-896D-CD3A1DED9CFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

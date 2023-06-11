@@ -15,3 +15,20 @@ G:\Projectos Visual\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.d
 G:\Projectos Visual\DSRemapper\DSRemapper.DSInput\obj\Debug\refint\DSRemapper.DSInput.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.DSInput\obj\Debug\ref\DSRemapper.DSInput.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.DSInput.deps.json
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.DSInput.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.DSInput.pdb
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.ConfigManager.pdb
+D:\Github\DSRemapper\DSRemapper.DSInput\bin\Debug\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.csproj.CopyComplete
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\refint\DSRemapper.DSInput.dll
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\DSRemapper.DSInput.pdb
+D:\Github\DSRemapper\DSRemapper.DSInput\obj\Debug\ref\DSRemapper.DSInput.dll

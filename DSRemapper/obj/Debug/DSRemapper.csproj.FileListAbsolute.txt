@@ -27,3 +27,32 @@ G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\DSRemapper.genruntimeconfig.
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\ref\DSRemapper.dll
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\DSRemapper.DSMain.resources
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Debug\DSRemapper.LogConsole.resources
+D:\Github\DSRemapper\build\Debug\DSRemapper.ico
+D:\Github\DSRemapper\build\Debug\DSRemapper.staticwebassets.runtime.json
+D:\Github\DSRemapper\build\Debug\DSRemapper.exe
+D:\Github\DSRemapper\build\Debug\DSRemapper.deps.json
+D:\Github\DSRemapper\build\Debug\DSRemapper.runtimeconfig.json
+D:\Github\DSRemapper\build\Debug\DSRemapper.dll
+D:\Github\DSRemapper\build\Debug\DSRemapper.pdb
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.DSMain.resources
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.LogConsole.resources
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.csproj.GenerateResource.cache
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets\msbuild.DSRemapper.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets\msbuild.build.DSRemapper.props
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets\msbuild.buildMultiTargeting.DSRemapper.props
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets\msbuild.buildTransitive.DSRemapper.props
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets.pack.json
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets.build.json
+D:\Github\DSRemapper\DSRemapper\obj\Debug\staticwebassets.development.json
+D:\Github\DSRemapper\DSRemapper\obj\Debug\scopedcss\bundle\DSRemapper.styles.css
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.csproj.CopyComplete
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.dll
+D:\Github\DSRemapper\DSRemapper\obj\Debug\refint\DSRemapper.dll
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.pdb
+D:\Github\DSRemapper\DSRemapper\obj\Debug\DSRemapper.genruntimeconfig.cache
+D:\Github\DSRemapper\DSRemapper\obj\Debug\ref\DSRemapper.dll

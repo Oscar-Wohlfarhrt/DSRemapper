@@ -13,3 +13,18 @@ G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemap
 G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\refint\DSRemapper.ConfigManager.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\ref\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net6.0\DSRemapper.ConfigManager.deps.json
+D:\Github\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net6.0\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net6.0\DSRemapper.ConfigManager.pdb
+D:\Github\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net6.0\DSRemapper.Core.dll
+D:\Github\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net6.0\DSRemapper.Core.pdb
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.csproj.CopyComplete
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\refint\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\DSRemapper.ConfigManager.pdb
+D:\Github\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net6.0\ref\DSRemapper.ConfigManager.dll

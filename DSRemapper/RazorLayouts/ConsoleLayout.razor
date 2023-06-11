@@ -1,79 +1,52 @@
 @page "/logconsole"
+@using DSRemapper.DSLogger;
 @using Microsoft.AspNetCore.Components.Rendering;
 @using Microsoft.JSInterop;
 
 @inject IJSRuntime JS
 
+@functions{
+    ElementReference main, logConsole;
+
+    void ScrollBottom(){
+        JS.InvokeVoidAsync("ScrollToBottom", new object[] { main });
+    }
+    void AddHTMLLog(string html){
+        JS.InvokeVoidAsync("AddHTML", new object[] { logConsole, html });
+    }
+}
+
 <div id="nav">
+    <Microsoft.AspNetCore.Components.Forms.InputCheckbox @bind-Value=autoScroll />
     <input type="checkbox" checked id="autoScroll" onchange="">
     <label for="autoScroll">Auto scroll on log</label>
-    <button onclick="@Count"></button>
+    <button onclick="@Count">AddLog</button>
+    <button onclick="@ScrollBottom">ScrollBottom</button>
 </div>
-<div id="main">
-    <div id="log-console">
-        <message>Actual count: @counter</message>
-        @console
+<div @ref=main id="main">
+    <div @ref=logConsole id="log-console">
     </div>
 </div>
 <div id="footer">
 </div>
-
 @{
-    JS.InvokeVoidAsync("ScrollToTop", new[] { "main" });
+    if(firstLoad){
+        firstLoad = false;
+        Logger.OnLog += PrintLog;
+    }
 }
 @code {
-    delegate void LogEvent();
-    static event LogEvent? OnLog;
+    bool firstLoad = true;
 
-    int counter=0;
-
-    async void Count()
-    {
-        counter++;
-        AddLog2();
+    bool autoScroll=true;
+    void PrintLog(Logger.LogEntry entry){
+        AddHTMLLog($"<{entry.Level}>{entry.Message}</{entry.Level}>");
+        if(autoScroll)
+            ScrollBottom();
     }
 
-    List<string> logs = new()
-    {
-        "Hello World 1",
-        "Hello World 2",
-        "Hello World 3",
-        "Hello World 4",
-    };
-    RenderFragment console = (b) => { };
+    void Count(){
+        Logger.Log($"Hola mundo {Logger.Subcribers}");
 
-
-    void AddLog2()
-    {
-        logs.Add("Test");
-        console = LoadConsole();
     }
-
-    RenderFragment LoadConsole()
-    {
-        return (b) =>
-        {
-            foreach (string l in logs)
-            {
-                b.OpenElement(0, "message");
-                b.AddContent(0, l);
-                b.CloseElement();
-            }
-        };
-    }
-
-    /*RenderFragment CreateConsole()
-    {
-        return 
-    }*/
-
-    /*@{
-            string AddLog(string tag, string text)
-                {
-                return ($"<{tag}>{text}</{tag}>");
-            }
-            @(new HtmlString(AddLog("message","Hello World")))
-            @(new HtmlString(AddLog("warning","Hello World"))
-            @(new HtmlString(AddLog("error", "Hello World")))
-}*/
 }

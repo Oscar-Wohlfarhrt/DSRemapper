@@ -31,6 +31,8 @@ namespace DSRemapper.DSLogger
 
         public static List<LogEntry> logs = new();
 
+        public static int Subcribers => OnLog.GetInvocationList().Length;
+
         public static void Log(string message)
         {
             LogEntry entry = new(message);
