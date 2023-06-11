@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "fChJQJ0GUvp4lNvz2TbVgJ6Iqd84llF0cC/7TcBeIPcG3f7nvEIlXfFxdf9/HKPsIIVDDEsjfXCWMRwTkm3iMw==",
+  "dgSpecHash": "mYQq0Fh7fcDTx/r2HgfnZOlhsl47yfOgaar4T/ou3j8yz8LlNwYXpjLmcU6dhEM0iFRJHq2bPJI6qyptFY7ftQ==",
   "success": true,
-  "projectFilePath": "D:\\Github\\DSRemapper\\DSRemapper.HID\\DSRemapper.HID.csproj",
+  "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.HID\\DSRemapper.HID.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Oscar2\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
-    "C:\\Users\\Oscar2\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,7 @@
 ﻿using DSRemapper.Core;
+using DSRemapper.DSInput;
 using System.Threading;
+using System.Xml.Linq;
 
 namespace DSRemapper.RemapperCore
 {
@@ -7,13 +9,54 @@ namespace DSRemapper.RemapperCore
     {
         public static List<Remapper> remappers = new List<Remapper>();
 
+        public static Thread? deviceScannerThread;
+        private static CancellationTokenSource tokenSource = new CancellationTokenSource();
+        private static CancellationToken cancellationToken;
+
+        public delegate void RemapperUpdateArgs(List<Remapper> remappers);
+        public static event RemapperUpdateArgs? OnUpdate;
+
+        public static void StartScanner()
+        {
+            if (deviceScannerThread != null)
+            {
+                StopScanner();
+                tokenSource.TryReset();
+                cancellationToken = tokenSource.Token;
+            }
+            deviceScannerThread = new(DeviceScanner)
+            {
+                Name = $"DSRemapper Device Scanner",
+                Priority = ThreadPriority.BelowNormal
+            };
+            deviceScannerThread.Start();
+        }
+        public static void StopScanner()
+        {
+            tokenSource.Cancel();
+            deviceScannerThread?.Join();
+        }
+        private static void DeviceScanner()
+        {
+            while (cancellationToken.IsCancellationRequested)
+            {
+                var devs = DSInput.DSInput.GetDevicesInfo();
+                if(devs.Length!=remappers.Count)
+                {
+                    SetControllers(devs.Select((i) => i.CreateController()).ToList());
+                    OnUpdate?.Invoke(remappers);
+                }
+                Thread.Sleep(1000);
+            }
+        }
+
         public static void SetControllers(List<IDSInputController> controllers)
         {
             List<Remapper> removeList = new List<Remapper>();
-            foreach (var ctrl in remappers)
+            foreach (var rmp in remappers)
             {
-                if (!controllers.Exists((c) => { return c.Id == ctrl.Id; }))
-                    removeList.Add(ctrl);
+                if (!controllers.Exists((c) => { return c.Id == rmp.Id; }))
+                    removeList.Add(rmp);
             }
 
             foreach (var ctrl in removeList)
@@ -23,54 +66,45 @@ namespace DSRemapper.RemapperCore
                 AddController(ctrl);
         }
 
-        public static void AddController(IDSInputController controller, string? profileName = null)
+        private static void AddController(IDSInputController controller)
         {
             if (!remappers.Exists((c) => { return c.Id == controller.Id; }))
             {
-                Remapper ctrlRemapper;
-
-                if (profileName == null)
-                    profileName = ProfileManager.GetLastProfile(controller.Id);
-
-                ctrlRemapper = new LuaRemapper(controller, OnError, OnLog, OnReportUpdate);
-
-                ctrlRemapper.LoadScript(profileName);
-
-                loadDefault.id = controller.Id;
-                loadDefault.message = ctrlRemapper.LastProfile;
-                LoadDefaultProfile?.Invoke(this, loadDefault);
-
-                ctrlRemapper.Connect();
-
-                controlRemapperList.Add(ctrlRemapper);
+                remappers.Add(new(controller));
             }
         }
-        public static void RemoveController(string controllerId)
+        private static void RemoveController(string controllerId)
         {
-            Remapper? ctrlRemapper = controlRemapperList.Find((c) => { return c.ControllerId == controllerId; });
+            Remapper? ctrlRemapper = remappers.Find((c) => { return c.Id == controllerId; });
 
             if (ctrlRemapper != null)
             {
                 remappers.Remove(ctrlRemapper);
-                ctrlRemapper.DisconnectEmulatedControllers();
-                ctrlRemapper.Controller.Dispose();
+                ctrlRemapper.Dispose();
             }
         }
     }
-
+    public enum RemapperEventType
+    {
+        DeviceConsole,
+        Warning,
+        Error
+    }
+    delegate void RemapperEventArgs(RemapperEventType type, string message);
     public class Remapper : IDisposable
     {
         private readonly IDSInputController controller;
-        private readonly IDSRemapper remapper;
+        private IDSRemapper? remapper = null;
         private readonly Thread thread;
         private readonly CancellationTokenSource cancellationTokenSource;
         private readonly CancellationToken cancellationToken;
         //Timer timer;
 
-        public Remapper(IDSInputController controller, IDSRemapper remapper)
+        event RemapperEventArgs OnLog;
+
+        public Remapper(IDSInputController controller)
         {
             this.controller = controller;
-            this.remapper = remapper;
             cancellationTokenSource = new CancellationTokenSource();
             cancellationToken = cancellationTokenSource.Token;
 
@@ -105,6 +139,7 @@ namespace DSRemapper.RemapperCore
         public void Dispose()
         {
             Stop();
+            controller.Dispose();
         }
 
         public void Start()
@@ -115,6 +150,7 @@ namespace DSRemapper.RemapperCore
         public void Stop()
         {
             cancellationTokenSource.Cancel();
+            thread.Join();
         }
 
         private void RemapThread()
@@ -127,9 +163,9 @@ namespace DSRemapper.RemapperCore
                 Thread.Sleep(10);
             }
         }
-        private void RemapTimer(object? sender)
+        /*private void RemapTimer(object? sender)
         {
 
-        }
+        }*/
     }
 }

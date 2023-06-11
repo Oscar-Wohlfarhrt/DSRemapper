@@ -15,17 +15,27 @@
     </div>
     <div id="main">
         <div id="controller-list">
-        <ControllerItem/>
-        @foreach(var dev in devs)
+        @foreach(var rmp in RemapperCore.RemapperCore.remappers)
         {
-            <ControllerItem Name="@dev.Name" Type="@dev.Type" />
+            <ControllerItem Remapper="rmp" />
         }
         </div>
     </div>
     <div id="footer">
     </div>
 
-
+@code{
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+#if DEBUG
+            DSBridge.LogConsole();
+#endif
+        }
+    }
+}
 <!--
 
 <div class="main-DSLayout">

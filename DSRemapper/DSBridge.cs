@@ -30,7 +30,11 @@ namespace DSRemapper
                 console.Show();
             }
             else
+            {
+                if(console.WindowState == FormWindowState.Minimized)
+                    console.WindowState = FormWindowState.Normal;
                 console.Focus();
+            }
         }
     }
 }

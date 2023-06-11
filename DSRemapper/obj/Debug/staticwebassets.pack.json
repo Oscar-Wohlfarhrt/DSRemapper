@@ -1,19 +1,19 @@
 {
   "Files": [
     {
-      "Id": "D:\\Github\\DSRemapper\\DSRemapper\\wwwroot\\css\\DSStyles.css",
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\css\\DSStyles.css",
       "PackagePath": "staticwebassets\\css\\DSStyles.css"
     },
     {
-      "Id": "D:\\Github\\DSRemapper\\DSRemapper\\wwwroot\\css\\app.css",
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "D:\\Github\\DSRemapper\\DSRemapper\\wwwroot\\index.html",
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "D:\\Github\\DSRemapper\\DSRemapper\\wwwroot\\js\\jsinterop.js",
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\js\\jsinterop.js",
       "PackagePath": "staticwebassets\\js\\jsinterop.js"
     },
     {

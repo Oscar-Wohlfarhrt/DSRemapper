@@ -1,4 +1,5 @@
 ﻿@using DSRemapper.Core;
+@using DSRemapper.RemapperCore;
 @using Microsoft.AspNetCore.Components.Forms
 
 <div class="ctrl">
@@ -24,6 +25,10 @@
 
 @code {
     private bool active = false;
+
+    [Parameter, EditorRequired]
+    public Remapper Remapper { get; set; } = null!;
+
     [Parameter]
     public string Name { get; set; } = "Unamed";
     [Parameter]
