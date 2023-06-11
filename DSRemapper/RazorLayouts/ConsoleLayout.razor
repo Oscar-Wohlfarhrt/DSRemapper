@@ -1,0 +1,79 @@
+@page "/logconsole"
+@using Microsoft.AspNetCore.Components.Rendering;
+@using Microsoft.JSInterop;
+
+@inject IJSRuntime JS
+
+<div id="nav">
+    <input type="checkbox" checked id="autoScroll" onchange="">
+    <label for="autoScroll">Auto scroll on log</label>
+    <button onclick="@Count"></button>
+</div>
+<div id="main">
+    <div id="log-console">
+        <message>Actual count: @counter</message>
+        @console
+    </div>
+</div>
+<div id="footer">
+</div>
+
+@{
+    JS.InvokeVoidAsync("ScrollToTop", new[] { "main" });
+}
+@code {
+    delegate void LogEvent();
+    static event LogEvent? OnLog;
+
+    int counter=0;
+
+    async void Count()
+    {
+        counter++;
+        AddLog2();
+    }
+
+    List<string> logs = new()
+    {
+        "Hello World 1",
+        "Hello World 2",
+        "Hello World 3",
+        "Hello World 4",
+    };
+    RenderFragment console = (b) => { };
+
+
+    void AddLog2()
+    {
+        logs.Add("Test");
+        console = LoadConsole();
+    }
+
+    RenderFragment LoadConsole()
+    {
+        return (b) =>
+        {
+            foreach (string l in logs)
+            {
+                b.OpenElement(0, "message");
+                b.AddContent(0, l);
+                b.CloseElement();
+            }
+        };
+    }
+
+    /*RenderFragment CreateConsole()
+    {
+        return 
+    }*/
+
+    /*@{
+            string AddLog(string tag, string text)
+                {
+                return ($"<{tag}>{text}</{tag}>");
+            }
+            @(new HtmlString(AddLog("message","Hello World")))
+            @(new HtmlString(AddLog("warning","Hello World"))
+            @(new HtmlString(AddLog("error", "Hello World")))
+}*/
+}

@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-windows\\staticwebassets\\msbuild.DSRemapper.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-windows\\staticwebassets\\msbuild.build.DSRemapper.props",
+      "PackagePath": "build\\DSRemapper.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-windows\\staticwebassets\\msbuild.buildMultiTargeting.DSRemapper.props",
+      "PackagePath": "buildMultiTargeting\\DSRemapper.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-windows\\staticwebassets\\msbuild.buildTransitive.DSRemapper.props",
+      "PackagePath": "buildTransitive\\DSRemapper.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

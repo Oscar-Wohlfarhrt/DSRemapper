@@ -1,0 +1,37 @@
+﻿@using DSRemapper.Core;
+
+<div class="ctrl">
+    <img>
+    <div class="ctrl-main">
+        <div class="title">@Name - @Type</div>
+        <div class="description">@infoLine</div>
+        <select class="profile-list">
+            <option value="">Select a profile</option>
+            @foreach (string op in options)
+            {
+                <option>op</option>
+            }
+        </select>
+        <div class="console">@consoleText</div>
+    </div>
+    <div class="buttons">
+        <button onclick="">Connect</button>
+        <button onclick="">Disconnect</button>
+        <button>Input Test</button>
+    </div>
+</div>
+
+@code {
+    private string Name => "Unamed";
+    private string Type => "Unknown";
+    private string infoLine = "No information";
+    private string consoleText = @"Hola Mundo!";
+
+    private List<string> options = new()
+    {
+        "test1",
+        "test2",
+        "test3",
+        "test4",
+    };
+}

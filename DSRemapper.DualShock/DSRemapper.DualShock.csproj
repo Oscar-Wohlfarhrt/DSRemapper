@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+    <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj">
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\DSRemapper.HID\DSRemapper.HID.csproj" />
   </ItemGroup>
 

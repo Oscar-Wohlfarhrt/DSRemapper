@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DSStyles.css">
+</head>
+<body>
+    <script>
+        const bridge = chrome.webview.hostObjects.DSRBridge;
+        function LogTest(){
+            console.log('test send');
+            bridge.LogOnConsole('test');
+        }
+    </script>
+
+    <div id="nav">
+        <input type="checkbox" checked id="autoScroll">
+        <label for="autoScroll">Auto scroll on log</label>
+    </div>
+    <div id="main">
+        <div id="log-console">
+            <message>test</message>
+            <warning>test</warning>
+            <error>test</error>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+            <message>test</message>
+        </div>
+    </div>
+    <div id="footer">
+
+    </div>
+    
+    <script>
+        const lcon = document.getElementById("log-console");
+        const autoScroll = document.getElementById("autoScroll");
+
+        function LogEvent(logMessage){
+            lcon.innerHTML+=`${logMessage}\n`;
+            if(autoScroll.checked){
+                lcon.scrollTo(0,lcon.scrollHeight);
+            }
+        }
+        bridge.RegisterLogEvent();
+
+        (async()=>{
+            /*const devs=await bridge.GetDevicesInfo();
+            for(dev of devs){
+                bridge.Log(await dev.ToString());
+            }*/
+        })();
+    </script>
+</body>
+</html>

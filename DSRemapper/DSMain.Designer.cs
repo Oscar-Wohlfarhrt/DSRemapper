@@ -1,16 +1,14 @@
-﻿using Microsoft.Web.WebView2.WinForms;
-
-namespace DSRemapper
+﻿namespace DSRemapper
 {
     partial class DSMain
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -25,32 +23,36 @@ namespace DSRemapper
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        internal void InitializeComponent()
         {
-            webView = new WebView2();
+            blazorWebView1 = new Microsoft.AspNetCore.Components.WebView.WindowsForms.BlazorWebView();
             SuspendLayout();
-            //
-            // webView
-            //
-            webView.Dock=DockStyle.Fill;
             // 
-            // DSMain
+            // blazorWebView1
+            // 
+            blazorWebView1.Dock = DockStyle.Fill;
+            blazorWebView1.Location = new Point(0, 0);
+            blazorWebView1.Name = "blazorWebView1";
+            blazorWebView1.Size = new Size(800, 450);
+            blazorWebView1.TabIndex = 0;
+            blazorWebView1.Text = "blazorWebView1";
+            // 
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(webView);
-            Name = "DSMain";
-            Text = "DSMain";
+            Controls.Add(blazorWebView1);
+            Name = "Form1";
+            Text = "Form1";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private WebView2 webView;
+        internal Microsoft.AspNetCore.Components.WebView.WindowsForms.BlazorWebView blazorWebView1;
     }
 }

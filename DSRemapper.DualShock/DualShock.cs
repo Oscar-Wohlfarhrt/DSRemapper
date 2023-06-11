@@ -63,7 +63,11 @@ namespace DSRemapper.DualShock
 
         public string Type => "DS";
 
-        public bool IsConnected => hidDevice.IsOpen;
+        bool _isConnected = false;
+
+        //public bool IsConnected => hidDevice.IsOpen;
+
+        public bool IsConnected { get => _isConnected; private set => _isConnected = value; }
 
         public DualShock(DualShockInfo info)
         {

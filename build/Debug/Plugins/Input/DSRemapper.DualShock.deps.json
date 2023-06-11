@@ -52,11 +52,6 @@
           }
         }
       },
-      "DSRemapper.Core/1.0.0": {
-        "runtime": {
-          "DSRemapper.Core.dll": {}
-        }
-      },
       "DSRemapper.HID/1.0.0": {
         "dependencies": {
           "System.Management": "7.0.1"
@@ -93,11 +88,6 @@
       "sha512": "sha512-pHg4hGr/dn5wYdJ+kolMY4gkCIzFDRj/HFqoPq7e5h7OGii6BCBmS2/+ysC2SSoB5WvIDS29DMM5DowxxSY/oA==",
       "path": "system.management/7.0.1",
       "hashPath": "system.management.7.0.1.nupkg.sha512"
-    },
-    "DSRemapper.Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "DSRemapper.HID/1.0.0": {
       "type": "project",

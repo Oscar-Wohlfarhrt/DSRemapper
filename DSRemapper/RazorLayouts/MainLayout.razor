@@ -1,0 +1,29 @@
+@page "/"
+
+@{
+    #pragma warning disable CS8974 //this is for call C# functions from onclick event
+}
+
+    <div id="nav">
+        <button onclick="bridge.LogWarning('Not working')">File</button>
+        <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
+        <button onclick="@DSBridge.LogConsole">Log console</button>
+    </div>
+    <div id="main">
+        <div id="controller-list">
+        <ControllerItem />
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+<!--
+
+<div class="main-DSLayout">
+</div>
+
+    <h1>Hello World!</h1>
+    <h1><test>This is DSRemapper Razor View</test></h1>
+    <button onclick="@DSBridge.WindowsControllers">Windows Controllers</button>
+    <button onclick="@DSBridge.LogConsole">Windows Controllers</button>
+
+    <ControllerItem/>-->
