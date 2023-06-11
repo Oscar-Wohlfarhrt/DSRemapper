@@ -15,6 +15,7 @@ html, body, #app {
     max-height: 100%;
     max-width: 100%;
     background-color: #666;
+    overflow: hidden;
 }
 
 .main-DSLayout{
@@ -194,6 +195,9 @@ error{
     width: 100%;
     height: 100%;
     overflow: auto;
+}
+.darktext{
+    color:#444;
 }
 /*.ctrl .console{
     display: inline-block;

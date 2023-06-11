@@ -1,0 +1,12 @@
+D:\Github\DSRemapper\DSRemapper.HID\bin\Release\net6.0\DSRemapper.HID.deps.json
+D:\Github\DSRemapper\DSRemapper.HID\bin\Release\net6.0\DSRemapper.HID.dll
+D:\Github\DSRemapper\DSRemapper.HID\bin\Release\net6.0\DSRemapper.HID.pdb
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.dll
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\refint\DSRemapper.HID.dll
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\DSRemapper.HID.pdb
+D:\Github\DSRemapper\DSRemapper.HID\obj\Release\net6.0\ref\DSRemapper.HID.dll

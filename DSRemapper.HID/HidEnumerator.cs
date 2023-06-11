@@ -30,7 +30,6 @@ namespace DSRemapper.HID
 
                 infos.Add(new($"\\\\?\\{did.Replace("\\", "#")}#{{4d1e55b2-f16f-11cf-88cb-001111000030}}", "DualShock 4", "", vid, pid));
             }
-
             return infos;
         }
     }

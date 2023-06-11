@@ -1,0 +1,9 @@
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\DSRemapper.DualShock.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\DSRemapper.DualShock.deps.json
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\DSRemapper.DualShock.pdb
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\System.CodeDom.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\System.IO.Hashing.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\System.Management.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\runtimes\win\lib\net6.0\System.Management.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\DSRemapper.HID.dll
+D:\Github\DSRemapper\build\Release\Plugins\Input\publish\DSRemapper.HID.pdb

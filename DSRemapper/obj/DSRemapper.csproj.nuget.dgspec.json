@@ -322,9 +322,13 @@
               "target": "Package",
               "version": "[7.0.86, )"
             },
-            "Microsoft.AspNetCore.Html.Abstractions": {
+            "System.IO.Hashing": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[7.0.0, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[7.0.1, )"
             }
           },
           "imports": [

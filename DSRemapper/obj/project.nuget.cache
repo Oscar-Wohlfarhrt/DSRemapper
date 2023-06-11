@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dHOgFftAKkx0FATbsZ/YKueKpF85THJGRoYq+H5eze5eEA47iVLmcgDiIAKOy3LTJXrlsD2NikKOYTfasKFYpg==",
+  "dgSpecHash": "Fue2/8W0D4/AUQQcQQwQVW+ZmtedihjfNqSNjegRWnkAvwHye/l0KlFpC17wZjajddVHoRuTW9IGlpOpUKbjcQ==",
   "success": true,
   "projectFilePath": "D:\\Github\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,6 @@
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.0\\microsoft.aspnetcore.components.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.aspnetcore.components.webview\\7.0.0\\microsoft.aspnetcore.components.webview.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.aspnetcore.components.webview.windowsforms\\7.0.86\\microsoft.aspnetcore.components.webview.windowsforms.7.0.86.nupkg.sha512",
-    "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.0\\microsoft.aspnetcore.metadata.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
@@ -31,7 +30,10 @@
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.jsinterop\\7.0.0\\microsoft.jsinterop.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\microsoft.web.webview2\\1.0.1370.28\\microsoft.web.webview2.1.0.1370.28.nupkg.sha512",
+    "C:\\Users\\Oscar2\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar2\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar2\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar2\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],

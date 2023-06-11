@@ -29,8 +29,8 @@ namespace DSRemapper.ConfigManager
             string[] plugins = Directory.GetFiles(DSPaths.PluginsPath, "*.dll", SearchOption.AllDirectories);
             foreach (string plugin in plugins)
             {
-                Logger.Log($"Assembly found: {plugin}");
                 pluginAssemblies.Add(Assembly.LoadFrom(plugin));
+                Logger.Log($"Assembly found: {plugin}");
             }
         }
 

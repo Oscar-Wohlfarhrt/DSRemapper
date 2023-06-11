@@ -43,6 +43,7 @@ namespace DSRemapper.DualShock
     {
         public IDSInputDeviceInfo[] ScanDevices() => WmiEnumerator
             .EnumerateDevices(0x054C).Select(i => (DualShockInfo)i).ToArray();
+
     }
     public class DualShock : IDSInputController
     {
@@ -59,7 +60,7 @@ namespace DSRemapper.DualShock
 
         public string Id { get => hidDevice.Information.Id; }
 
-        public string ControllerName => "DualShock 4";
+        public string Name => "DualShock 4";
 
         public string Type => "DS";
 

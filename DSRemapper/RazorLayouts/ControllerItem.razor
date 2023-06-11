@@ -1,10 +1,11 @@
 ﻿@using DSRemapper.Core;
+@using Microsoft.AspNetCore.Components.Forms
 
 <div class="ctrl">
     <img>
     <div class="ctrl-main">
-        <div class="title">@Name - @Type</div>
-        <div class="description">@infoLine</div>
+        <div class="title"><label><InputCheckbox @bind-Value=active/> @Name - @Type</label></div>
+        <div class="description">@InfoLine</div>
         <select class="profile-list">
             <option value="">Select a profile</option>
             @foreach (string op in options)
@@ -12,7 +13,7 @@
                 <option>op</option>
             }
         </select>
-        <div class="console">@consoleText</div>
+        <div class="console">@ConsoleText</div>
     </div>
     <div class="buttons">
         <button onclick="">Connect</button>
@@ -22,10 +23,15 @@
 </div>
 
 @code {
-    private string Name => "Unamed";
-    private string Type => "Unknown";
-    private string infoLine = "No information";
-    private string consoleText = @"Hola Mundo!";
+    private bool active = false;
+    [Parameter]
+    public string Name { get; set; } = "Unamed";
+    [Parameter]
+    public string Type { get; set; } = "Unknown";
+    [Parameter]
+    public string InfoLine { get; set; } = "No information";
+    [Parameter]
+    public string ConsoleText { get; set; } = @"Hola Mundo!";
 
     private List<string> options = new()
     {

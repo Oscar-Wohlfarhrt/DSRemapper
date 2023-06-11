@@ -1,5 +1,6 @@
 @page "/logconsole"
 @using DSRemapper.DSLogger;
+@using Microsoft.AspNetCore.Components.Forms;
 @using Microsoft.AspNetCore.Components.Rendering;
 @using Microsoft.JSInterop;
 
@@ -7,6 +8,7 @@
 
 @functions{
     ElementReference main, logConsole;
+    InputCheckbox autoScrollCheck;
 
     void ScrollBottom(){
         JS.InvokeVoidAsync("ScrollToBottom", new object[] { main });
@@ -17,21 +19,42 @@
 }
 
 <div id="nav">
-    <Microsoft.AspNetCore.Components.Forms.InputCheckbox @bind-Value=autoScroll />
-    <input type="checkbox" checked id="autoScroll" onchange="">
-    <label for="autoScroll">Auto scroll on log</label>
-    <button onclick="@Count">AddLog</button>
-    <button onclick="@ScrollBottom">ScrollBottom</button>
+    <label><InputCheckbox @bind-Value=autoScroll @ref=autoScrollCheck /> Auto scroll</label>
+    <InputText @bind-Value=testLog class="darktext" />
+    <button onclick="@LogMessage">Add Log</button>
+    <button onclick="@LogWarning">Add Warning</button>
+    <button onclick="@LogError">Add Error</button>
+    <button onclick="@ScrollBottom">Scroll Bottom</button>
 </div>
 <div @ref=main id="main">
     <div @ref=logConsole id="log-console">
+        @foreach (var log in Logger.logs)
+        {
+            switch (log.Level)
+            {
+                case LogLevel.Warning:
+                    <warning>@log.Message</warning>
+                    break;
+                case LogLevel.Error:
+                    <error>@log.Message</error>
+                    break;
+                default:
+                    <message>@log.Message</message>
+                    break;
+            }
+        }
     </div>
 </div>
 <div id="footer">
 </div>
+
 @{
     if(firstLoad){
         firstLoad = false;
+        /*foreach (var log in Logger.logs)
+            PrintLog(log);*/
+        //StateHasChanged();
+        ScrollBottom();
         Logger.OnLog += PrintLog;
     }
 }
@@ -39,14 +62,24 @@
     bool firstLoad = true;
 
     bool autoScroll=true;
+    string testLog = "";
+
     void PrintLog(Logger.LogEntry entry){
         AddHTMLLog($"<{entry.Level}>{entry.Message}</{entry.Level}>");
         if(autoScroll)
             ScrollBottom();
     }
 
-    void Count(){
-        Logger.Log($"Hola mundo {Logger.Subcribers}");
-
+    void LogMessage()
+    {
+        Logger.Log(testLog);
+    }
+    void LogWarning()
+    {
+        Logger.LogWarning(testLog);
+    }
+    void LogError()
+    {
+        Logger.LogError(testLog);
     }
 }

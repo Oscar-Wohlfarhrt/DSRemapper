@@ -1,0 +1,39 @@
+is_global = true
+build_property.ApplicationManifest = 
+build_property.StartupObject = 
+build_property.ApplicationDefaultFont = 
+build_property.ApplicationHighDpiMode = 
+build_property.ApplicationUseCompatibleTextRendering = 
+build_property.ApplicationVisualStyles = 
+build_property.TargetFramework = net7.0-windows
+build_property.TargetPlatformMinVersion = 7.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DSRemapper
+build_property.RootNamespace = DSRemapper
+build_property.ProjectDir = D:\Github\DSRemapper\DSRemapper\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Github\DSRemapper\DSRemapper
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/ConsoleLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnNvbGVMYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/ControllerItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnRyb2xsZXJJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Github/DSRemapper/DSRemapper/_Import.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 

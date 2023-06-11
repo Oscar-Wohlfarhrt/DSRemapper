@@ -1,0 +1,194 @@
+*{
+    font-family: Sans-serif;
+    color: #ccc;
+    user-select: none;
+    box-sizing: border-box;
+    margin: 0px;
+}
+html,body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    background-color: #666;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 30px 1fr 30px;
+}
+button{
+    margin: 5px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #555;
+    color: #bbb;
+}
+button:hover {
+    background-color: #666;
+}
+button:active {
+    background-color: #5A5A5A;
+}
+
+message{
+    color:#ccc;
+}
+warning{
+    color:#fc0;
+    border-color: rgba(255, 187, 0, 0.5) !important;
+    background-color: rgba(255, 187, 0, 0.15) !important;
+}
+error{
+    color:#f22;
+    border-color: rgba(221, 0, 0, 0.5) !important;
+    background-color: rgba(221, 0, 0, 0.15) !important;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #8A8A8A;
+}
+
+#nav{
+    margin: 0;
+    padding: 2px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+}
+#nav>*{
+    margin: 3px !important;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background-color: #222;
+}
+#log-console{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    overflow: hidden auto;
+    user-select: text;
+}
+#log-console>*{
+    border-width: 1.5px 0px;
+    border-style: solid;
+    border-color: #444;
+    /*border: 1.5px solid #444 1.5px solid #444;
+    border-top: 1.5px solid #444;
+    border-bottom: 1.5px solid #444;*/
+    padding: 3px 10px;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    user-select: text;
+}
+
+#footer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+}
+
+#controller-list{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden auto;
+}
+.ctrl{
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+    /*display: flex;
+    flex-direction: row;*/
+    padding: 10px;
+    width: 100%;
+    min-height: 200px;
+    max-height: 250px;
+    background-color: #444;
+    border-radius: 10px;
+}
+.ctrl img{
+    width: 100%;
+}
+.ctrl .ctrl-main{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    max-width: 100%;
+}
+.ctrl .title{
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+}
+.ctrl .description{
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    font-family: monospace;
+}
+.ctrl .buttons{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    background-color: #444;
+}
+.ctrl .buttons>*{
+    width: 100%;
+    height: 100%;
+}
+.ctrl .profile-list{
+    padding: 2px;
+    width: 100%;
+    color: #333;
+    border-radius: 4px;
+}
+.ctrl .console{
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+    min-height: 80px;
+    height: 100%;
+    background-color: #333;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: monospace;
+    text-align: start;
+    white-space: pre;
+    user-select: text;
+    overflow: auto;
+}

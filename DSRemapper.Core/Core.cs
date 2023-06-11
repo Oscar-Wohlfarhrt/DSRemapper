@@ -18,7 +18,7 @@ namespace DSRemapper.Core
         public virtual int VendorId { get; set; }
         public virtual int ProductId { get; set; }
 
-        public IDSInputDeviceInfo(string path, string name, string id, int vendorId,int productId)
+        public IDSInputDeviceInfo(string path, string name, string id, int vendorId, int productId)
         {
             Path = path;
             Id = id;
@@ -29,14 +29,14 @@ namespace DSRemapper.Core
         public abstract IDSInputController CreateController();
         public override string ToString() => $"Device {Name} [{Id}]";
     }
-    public interface IDSDeviceScanner 
+    public interface IDSDeviceScanner
     {
         public IDSInputDeviceInfo[] ScanDevices();
     }
     public interface IDSInputController : IDisposable
     {
         public string Id { get; }
-        public string ControllerName { get; }
+        public string Name { get; }
         public string Type { get; }
         public bool IsConnected { get; }
         public void Connect();
@@ -58,7 +58,7 @@ namespace DSRemapper.Core
 
     public interface IDSRemapper : IDisposable
     {
-
+        public DSOutputReport Remap(DSInputReport report);
     }
     #endregion Interfaces
 

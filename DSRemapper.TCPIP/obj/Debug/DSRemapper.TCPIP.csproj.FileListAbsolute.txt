@@ -11,3 +11,16 @@ G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\refint\DSRemapper.TCPIP.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.TCPIP\obj\Debug\ref\DSRemapper.TCPIP.dll
+D:\Github\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.deps.json
+D:\Github\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.dll
+D:\Github\DSRemapper\build\Debug\Plugins\Input\DSRemapper.TCPIP.pdb
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.AssemblyReference.cache
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.AssemblyInfoInputs.cache
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.AssemblyInfo.cs
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.CoreCompileInputs.cache
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.csproj.CopyComplete
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.dll
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\refint\DSRemapper.TCPIP.dll
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\DSRemapper.TCPIP.pdb
+D:\Github\DSRemapper\DSRemapper.TCPIP\obj\Debug\ref\DSRemapper.TCPIP.dll

@@ -1,21 +1,31 @@
 @page "/"
+@using DSRemapper.ConfigManager;
+@using DSRemapper.Core;
 
 @{
     #pragma warning disable CS8974 //this is for call C# functions from onclick event
+    var devs = DSInput.DSInput.GetDevicesInfo().Select((i)=>i.CreateController()).ToArray();
 }
 
     <div id="nav">
         <button onclick="bridge.LogWarning('Not working')">File</button>
         <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
         <button onclick="@DSBridge.LogConsole">Log console</button>
+        <span>@devs.Length</span>
     </div>
     <div id="main">
         <div id="controller-list">
-        <ControllerItem />
+        <ControllerItem/>
+        @foreach(var dev in devs)
+        {
+            <ControllerItem Name="@dev.Name" Type="@dev.Type" />
+        }
         </div>
     </div>
     <div id="footer">
     </div>
+
+
 <!--
 
 <div class="main-DSLayout">

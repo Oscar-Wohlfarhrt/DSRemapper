@@ -7,7 +7,7 @@ namespace DSRemapper.COMM
     {
         public string Id => throw new NotImplementedException();
 
-        public string ControllerName => throw new NotImplementedException();
+        public string Name => throw new NotImplementedException();
 
         public string Type => throw new NotImplementedException();
 
