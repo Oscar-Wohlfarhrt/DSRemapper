@@ -4,25 +4,24 @@
 
 @{
     #pragma warning disable CS8974 //this is for call C# functions from onclick event
-    var devs = DSInput.DSInput.GetDevicesInfo().Select((i)=>i.CreateController()).ToArray();
 }
 
-    <div id="nav">
-        <button onclick="bridge.LogWarning('Not working')">File</button>
-        <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
-        <button onclick="@DSBridge.LogConsole">Log console</button>
-        <span>@devs.Length</span>
-    </div>
-    <div id="main">
-        <div id="controller-list">
+<div id="nav">
+    <button onclick="bridge.LogWarning('Not working')">File</button>
+    <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
+    <button onclick="@DSBridge.LogConsole">Log console</button>
+    <span>@RemapperCore.RemapperCore.remappers.Count</span>
+</div>
+<div id="main">
+    <div id="controller-list">
         @foreach(var rmp in RemapperCore.RemapperCore.remappers)
         {
             <ControllerItem Remapper="rmp" />
         }
-        </div>
     </div>
-    <div id="footer">
-    </div>
+</div>
+<div id="footer">
+</div>
 
 @code{
     private void ControllersUpdate(List<RemapperCore.Remapper> remappers)
