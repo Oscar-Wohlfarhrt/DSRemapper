@@ -1,3 +1,4 @@
+using DSRemapper.DSLogger;
 using DSRemapper.RazorLayouts;
 
 namespace DSRemapper
@@ -16,6 +17,8 @@ namespace DSRemapper
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new DSMain());
+            Logger.Log("Program Out");
+            RemapperCore.RemapperCore.StopScanner();
         }
     }
 }

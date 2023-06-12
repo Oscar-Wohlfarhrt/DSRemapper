@@ -38,7 +38,7 @@ namespace DSRemapper.RemapperCore
         }
         private static void DeviceScanner()
         {
-            while (cancellationToken.IsCancellationRequested)
+            while (!cancellationToken.IsCancellationRequested)
             {
                 var devs = DSInput.DSInput.GetDevicesInfo();
                 if(devs.Length!=remappers.Count)
@@ -155,7 +155,7 @@ namespace DSRemapper.RemapperCore
 
         private void RemapThread()
         {
-            while (cancellationToken.IsCancellationRequested)
+            while (!cancellationToken.IsCancellationRequested)
             {
                 if(IsConnected)
                     controller.SendOutputReport(remapper.Remap(controller.GetInputReport()));

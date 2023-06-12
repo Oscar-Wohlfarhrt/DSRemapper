@@ -25,14 +25,24 @@
     </div>
 
 @code{
+    private void ControllersUpdate(List<RemapperCore.Remapper> remappers)
+    {
+        this.InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
 #if DEBUG
-            DSBridge.LogConsole();
+    DSBridge.LogConsole();
 #endif
+
+            RemapperCore.RemapperCore.OnUpdate += ControllersUpdate;
+            RemapperCore.RemapperCore.StartScanner();
         }
     }
 }

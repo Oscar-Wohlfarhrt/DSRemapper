@@ -21,9 +21,9 @@ namespace DSRemapper
             }
         }
     }
-    public class DSForm<T>:DSMain where T : IComponent
+    public class DSForm<T> : DSMain where T : IComponent
     {
-        public DSForm():base(false)
+        public DSForm() : base(false)
         {
             var services = new ServiceCollection();
             services.AddWindowsFormsBlazorWebView();

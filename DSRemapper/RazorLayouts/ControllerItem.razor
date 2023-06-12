@@ -1,17 +1,18 @@
 ﻿@using DSRemapper.Core;
+@using DSRemapper.DSLogger;
 @using DSRemapper.RemapperCore;
 @using Microsoft.AspNetCore.Components.Forms
 
 <div class="ctrl">
     <img>
     <div class="ctrl-main">
-        <div class="title"><label><InputCheckbox @bind-Value=active/> @Name - @Type</label></div>
+        <div class="title"><label><InputCheckbox @bind-Value=active /> @Name - @Type</label></div>
         <div class="description">@InfoLine</div>
-        <select class="profile-list">
+        <select class="profile-list" onchange="@UpdateProfile">
             <option value="">Select a profile</option>
             @foreach (string op in options)
             {
-                <option>op</option>
+                <option value="@op">@op</option>
             }
         </select>
         <div class="console">@ConsoleText</div>
@@ -29,14 +30,10 @@
     [Parameter, EditorRequired]
     public Remapper Remapper { get; set; } = null!;
 
-    [Parameter]
-    public string Name { get; set; } = "Unamed";
-    [Parameter]
-    public string Type { get; set; } = "Unknown";
-    [Parameter]
-    public string InfoLine { get; set; } = "No information";
-    [Parameter]
-    public string ConsoleText { get; set; } = @"Hola Mundo!";
+    private string Name => Remapper.Name;
+    private string Type => Remapper.Type;
+    private string InfoLine = "";
+    private string ConsoleText= "";
 
     private List<string> options = new()
     {
@@ -45,4 +42,9 @@
         "test3",
         "test4",
     };
+
+    private void UpdateProfile(ChangeEventArgs e)
+    {
+        
+    }
 }

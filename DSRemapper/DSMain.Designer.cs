@@ -40,13 +40,13 @@
             blazorWebView1.TabIndex = 0;
             blazorWebView1.Text = "blazorWebView1";
             // 
-            // Form1
+            // DSMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(blazorWebView1);
-            Name = "Form1";
+            Name = "DSMain";
             Text = "Form1";
             ResumeLayout(false);
         }
