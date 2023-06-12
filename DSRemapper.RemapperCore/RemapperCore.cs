@@ -95,7 +95,7 @@ namespace DSRemapper.RemapperCore
     {
         private readonly IDSInputController controller;
         private IDSRemapper? remapper = null;
-        private readonly Thread thread;
+        private readonly Thread? thread=null;
         private readonly CancellationTokenSource cancellationTokenSource;
         private readonly CancellationToken cancellationToken;
         //Timer timer;
@@ -149,8 +149,11 @@ namespace DSRemapper.RemapperCore
 
         public void Stop()
         {
-            cancellationTokenSource.Cancel();
-            thread.Join();
+            if (thread?.ThreadState != ThreadState.Stopped)
+            {
+                cancellationTokenSource.Cancel();
+                thread?.Join();
+            }
         }
 
         private void RemapThread()
