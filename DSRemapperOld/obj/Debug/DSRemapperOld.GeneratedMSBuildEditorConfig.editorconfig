@@ -22,4 +22,4 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DSRemapperOld
-build_property.ProjectDir = G:\Projectos Visual\DSRemapper\DSRemapperOld\
+build_property.ProjectDir = D:\Github\DSRemapper\DSRemapperOld\

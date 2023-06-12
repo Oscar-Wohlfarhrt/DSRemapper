@@ -3,44 +3,63 @@ using DSRemapper.Types;
 
 namespace DSRemapper.DirectInput
 {
+    public class DIScanner : IDSDeviceScanner
+    {
+        public IDSInputDeviceInfo[] ScanDevices()
+        {
+            return new IDSInputDeviceInfo[]{
+                new DIDeviceInfo("none","Unknown","none", 0x1000, 0x1000)
+            };
+        }
+    }
+    public class DIDeviceInfo : IDSInputDeviceInfo
+    {
+        public DIDeviceInfo(string path, string name, string id, int vendorId, int productId)
+            : base(path, name, id, vendorId, productId) { }
+
+        public override IDSInputController CreateController()
+        {
+            return new DirectInput();
+        }
+    }
     public class DirectInput : IDSInputController
     {
-        public string Id => throw new NotImplementedException();
+        public string Id => "none";
 
-        public string Name => throw new NotImplementedException();
+        public string Name => "Unknow";
 
-        public string Type => throw new NotImplementedException();
+        public string Type => "DI";
 
-        public bool IsConnected => throw new NotImplementedException();
+        public bool IsConnected => false;
 
         public void Connect()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Disconnect()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+
         }
 
         public void ForceDisconnect()
         {
-            throw new NotImplementedException();
+
         }
 
         public DSInputReport GetInputReport()
         {
-            throw new NotImplementedException();
+            return new DSInputReport();
         }
 
         public void SendOutputReport(DSOutputReport report)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

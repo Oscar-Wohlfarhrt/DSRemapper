@@ -15,25 +15,25 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DSRemapper
 build_property.RootNamespace = DSRemapper
-build_property.ProjectDir = G:\Projectos Visual\DSRemapper\DSRemapper\
+build_property.ProjectDir = D:\Github\DSRemapper\DSRemapper\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = G:\Projectos Visual\DSRemapper\DSRemapper
+build_property.MSBuildProjectDirectory = D:\Github\DSRemapper\DSRemapper
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/ConsoleLayout.razor]
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/ConsoleLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnNvbGVMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/ControllerItem.razor]
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/ControllerItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnRyb2xsZXJJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/MainLayout.razor]
+[D:/Github/DSRemapper/DSRemapper/RazorLayouts/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Projectos Visual/DSRemapper/DSRemapper/_Import.razor]
+[D:/Github/DSRemapper/DSRemapper/_Import.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

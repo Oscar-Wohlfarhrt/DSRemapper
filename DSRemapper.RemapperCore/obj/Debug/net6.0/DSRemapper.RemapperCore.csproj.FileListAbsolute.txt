@@ -32,3 +32,7 @@ G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapp
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.DSInput.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.DSInput.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.ConfigManager.pdb
+D:\Github\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.ConfigManager.dll
+D:\Github\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.DSInput.dll
+D:\Github\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.DSInput.pdb
+D:\Github\DSRemapper\DSRemapper.RemapperCore\bin\Debug\net6.0\DSRemapper.ConfigManager.pdb

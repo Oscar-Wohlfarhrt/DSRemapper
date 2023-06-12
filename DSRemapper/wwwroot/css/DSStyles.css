@@ -112,6 +112,7 @@ error{
     font-family: monospace;
     font-size: 14px;
     white-space: pre-wrap;
+    overflow-wrap: break-word;
     user-select: text;
 }
 
