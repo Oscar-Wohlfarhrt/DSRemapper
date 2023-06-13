@@ -95,7 +95,7 @@ namespace DSRemapper.RemapperCore
     {
         private readonly IDSInputController controller;
         private IDSRemapper? remapper = null;
-        private readonly Thread? thread=null;
+        private Thread? thread=null;
         private readonly CancellationTokenSource cancellationTokenSource;
         private readonly CancellationToken cancellationToken;
         //Timer timer;
@@ -111,11 +111,6 @@ namespace DSRemapper.RemapperCore
             /*timer = new Timer(RemapTimer);
             timer.Change(0,10);*/
 
-            thread = new(RemapThread)
-            {
-                Name = $"{controller.Name} Remapper",
-                Priority = ThreadPriority.Normal
-            };
 
             /*Task.Factory.StartNew(RemapThread, CancellationToken.None,
                 TaskCreationOptions.LongRunning, TaskScheduler.Default);*/
@@ -144,15 +139,21 @@ namespace DSRemapper.RemapperCore
 
         public void Start()
         {
+            Stop();
+            thread = new(RemapThread)
+            {
+                Name = $"{controller.Name} Remapper",
+                Priority = ThreadPriority.Normal
+            };
             thread.Start();
         }
 
         public void Stop()
         {
-            if (thread?.ThreadState != ThreadState.Stopped)
+            if (thread!=null && thread.IsAlive)
             {
                 cancellationTokenSource.Cancel();
-                thread?.Join();
+                thread.Join();
             }
         }
 
@@ -160,7 +161,7 @@ namespace DSRemapper.RemapperCore
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if(IsConnected)
+                if(IsConnected && remapper!=null)
                     controller.SendOutputReport(remapper.Remap(controller.GetInputReport()));
 
                 Thread.Sleep(10);

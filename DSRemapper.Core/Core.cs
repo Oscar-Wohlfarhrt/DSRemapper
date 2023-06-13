@@ -1,11 +1,22 @@
 ﻿using DSRemapper.Types;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace DSRemapper.Core
 {
     public class Core
     {
 
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class EmulatedControllerPathAttribute : Attribute
+    {
+        public string ScannerPath { get; set; }
+        public EmulatedControllerPathAttribute(string path)
+        {
+            ScannerPath = path;
+        }
     }
 
     #region Interfaces

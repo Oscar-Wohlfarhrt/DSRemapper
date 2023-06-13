@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Oscar2\\.nuget\\packages\\": {},
+    "C:\\Users\\Oscar\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\DSRemapper.MouseKeyboardOutput.csproj",
+      "projectUniqueName": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\DSRemapper.MouseKeyboardOutput.csproj",
       "projectName": "DSRemapper.MouseKeyboardOutput",
-      "projectPath": "D:\\Github\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\DSRemapper.MouseKeyboardOutput.csproj",
-      "packagesPath": "C:\\Users\\Oscar2\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\obj\\",
+      "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\DSRemapper.MouseKeyboardOutput.csproj",
+      "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
+      "outputPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.MouseKeyboardOutput\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Oscar2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -34,7 +34,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "D:\\Github\\FireLibs\\Nugets": {},
+        "G:\\Projectos Visual\\FireLibs\\Nugets": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

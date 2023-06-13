@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "geASyfc6FBzd7x3x0aRYeSsnZXiiyEDREeWFZOIDLM9Y17dQpWh3kY+Ohb8K3Hh1MzPOanMRv9w9iAKBUL3PKg==",
+  "dgSpecHash": "xjLMsEFNjSpE7vtkTVdkEbx7eDmgT7WUJqranuqb1ohRsZyyKYX9mgo1/jwjvR3vYQrloNkVaTpdgVTn9WLJJg==",
   "success": true,
-  "projectFilePath": "D:\\Github\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj",
+  "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Oscar2\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
-    "C:\\Users\\Oscar2\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
-    "C:\\Users\\Oscar2\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512"
   ],
   "logs": []
 }

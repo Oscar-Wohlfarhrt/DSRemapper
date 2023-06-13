@@ -287,6 +287,5 @@ namespace DSRemapper.HID
         }
         #endregion I/O Operations
 
-
     }
 }

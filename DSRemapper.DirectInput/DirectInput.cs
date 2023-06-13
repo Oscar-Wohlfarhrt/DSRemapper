@@ -7,9 +7,7 @@ namespace DSRemapper.DirectInput
     {
         public IDSInputDeviceInfo[] ScanDevices()
         {
-            return new IDSInputDeviceInfo[]{
-                new DIDeviceInfo("none","Unknown","none", 0x1000, 0x1000)
-            };
+            return Array.Empty<IDSInputDeviceInfo>();
         }
     }
     public class DIDeviceInfo : IDSInputDeviceInfo

@@ -51,7 +51,8 @@ namespace DSRemapper.ConfigManager
                 }
                 else if (type.IsAssignableTo(typeof(IDSOutputController)))
                 {
-                    if (OutputPlugins.TryAdd(type.FullName ?? "Unknown", type))
+                    string? path = type.GetCustomAttribute<EmulatedControllerPathAttribute>()?.ScannerPath;
+                    if (OutputPlugins.TryAdd(path ?? type.FullName ?? "Unknown", type))
                         Logger.Log($"Output plugin found: {type.FullName}");
                     else
                         Logger.LogError($"Output plugin duplicated: {type.FullName}");
