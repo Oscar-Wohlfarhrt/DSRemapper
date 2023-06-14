@@ -1,7 +1,12 @@
 ﻿@using DSRemapper.Core;
 @using DSRemapper.DSLogger;
 @using DSRemapper.RemapperCore;
+@using DSRemapper.ConfigManager;
 @using Microsoft.AspNetCore.Components.Forms
+
+@{
+#pragma warning disable CS8974 //this is for call C# functions from onclick event
+}
 
 <div class="ctrl">
     <img>
@@ -10,7 +15,7 @@
         <div class="description">@InfoLine</div>
         <select class="profile-list" onchange="@UpdateProfile">
             <option value="">Select a profile</option>
-            @foreach (string op in options)
+            @foreach (string op in ProfileManager.GetProfiles())
             {
                 <option value="@op">@op</option>
             }

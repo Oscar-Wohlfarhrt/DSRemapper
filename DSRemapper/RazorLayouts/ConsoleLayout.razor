@@ -6,6 +6,10 @@
 
 @inject IJSRuntime JS
 
+@{
+#pragma warning disable CS8974 //this is for call C# functions from onclick event
+}
+
 @functions{
     ElementReference main, logConsole;
     InputCheckbox autoScrollCheck;

@@ -100,7 +100,7 @@ namespace DSRemapper.RemapperCore
         private readonly CancellationToken cancellationToken;
         //Timer timer;
 
-        event RemapperEventArgs OnLog;
+        event RemapperEventArgs? OnLog;
 
         public Remapper(IDSInputController controller)
         {

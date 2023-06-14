@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "Hash": "QA6vJhVm+4M6Ako+5AH/HQ/5/31tWBLyNm5nF6b9Hrc=",
+  "Source": "DSRemapper",
+  "BasePath": "/",
+  "Mode": "Root",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DSRemapper\\wwwroot",
+      "Source": "DSRemapper",
+      "ContentRoot": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\",
+      "BasePath": "/",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\css\\app.css",
+      "SourceId": "DSRemapper",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/app.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\app.css"
+    },
+    {
+      "Identity": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\css\\DSStyles.css",
+      "SourceId": "DSRemapper",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/DSStyles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\DSStyles.css"
+    },
+    {
+      "Identity": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\index.html",
+      "SourceId": "DSRemapper",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\js\\jsinterop.js",
+      "SourceId": "DSRemapper",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/jsinterop.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jsinterop.js"
+    }
+  ]
+}

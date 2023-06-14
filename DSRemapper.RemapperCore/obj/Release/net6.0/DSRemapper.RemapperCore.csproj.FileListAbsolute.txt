@@ -10,3 +10,10 @@ G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\obj\Release\net6.0\DSRema
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\obj\Release\net6.0\refint\DSRemapper.RemapperCore.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\obj\Release\net6.0\DSRemapper.RemapperCore.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\obj\Release\net6.0\ref\DSRemapper.RemapperCore.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.DSInput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.DSInput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\bin\Release\net6.0\DSRemapper.ConfigManager.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperCore\obj\Release\net6.0\DSRemapper.RemapperCore.csproj.CopyComplete

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DSRemapper.ConfigManager
 {
-    internal class ProfileManager
+    public static class ProfileManager
     {
+        public static string[] GetProfiles()
+        {
+            return Directory.GetFiles(DSPaths.ProfilesPath, "*.*", SearchOption.AllDirectories)
+                .Select((f) => Path.GetRelativePath(DSPaths.ProfilesPath, f)).ToArray();
+        }
     }
 }
