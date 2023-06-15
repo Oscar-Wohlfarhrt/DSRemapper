@@ -5,6 +5,7 @@
 @using Microsoft.JSInterop;
 
 @inject IJSRuntime JS
+@implements IDisposable
 
 @{
 #pragma warning disable CS8974 //this is for call C# functions from onclick event
@@ -71,9 +72,14 @@
 
             foreach (var log in Logger.logs)
                 PrintLog(log);
-            //StateHasChanged();
+
             ScrollBottom();
             Logger.OnLog += PrintLog;
         }
+    }
+
+    public void Dispose()
+    {
+        Logger.OnLog -= PrintLog;
     }
 }

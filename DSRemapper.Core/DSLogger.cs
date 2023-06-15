@@ -11,7 +11,8 @@ namespace DSRemapper.DSLogger
     public static class Logger
     {
         public delegate void LoggerEvent(LogEntry log);
-        public static event LoggerEvent OnLog;
+        public static event LoggerEvent? OnLog;
+        public static int Subcribers => OnLog?.GetInvocationList().Length ?? 0;
         public struct LogEntry
         {
             public LogLevel Level;
@@ -31,7 +32,6 @@ namespace DSRemapper.DSLogger
 
         public static List<LogEntry> logs = new();
 
-        public static int Subcribers => OnLog.GetInvocationList().Length;
 
         public static void Log(string message)
         {

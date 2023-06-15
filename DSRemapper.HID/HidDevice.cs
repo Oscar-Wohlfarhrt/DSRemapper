@@ -34,8 +34,12 @@ namespace DSRemapper.HID
                 Information.VendorId = Attributes.VendorId;
 
             int trys = 3;
-            while (trys > 0 && Information.Id == "")
-                Information.Id = ReadSerial();
+            string? serial = null;
+            while (trys > 0 && (serial = ReadSerial())==null) ;
+            Information.Id = serial ?? info.Path;
+
+            CancelIO();
+            CloseDevice();
         }
 
         #region Device Atributes
@@ -79,7 +83,7 @@ namespace DSRemapper.HID
             return new HidDeviceCapabilities(capabilities);
         }
         /* ------- Serial ------- */
-        public string ReadSerial()
+        public string? ReadSerial()
         {
             if (serial != null)
                 return serial;
@@ -121,7 +125,7 @@ namespace DSRemapper.HID
                     return serial = GenerateFakeMAC();*/
             }
 
-            return serial ?? "";
+            return serial;
         }
         private string GenerateFakeMAC()
         {

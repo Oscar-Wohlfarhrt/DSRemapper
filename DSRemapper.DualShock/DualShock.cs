@@ -162,7 +162,7 @@ namespace DSRemapper.DualShock
         DSInputReport report = new();
         List<byte> sendReport = new();
 
-        public string Id { get => hidDevice.Information.Id; }
+        public string Id => hidDevice.Information.Id;
 
         public string Name => "DualShock 4";
 
@@ -177,7 +177,7 @@ namespace DSRemapper.DualShock
         public DualShock(DualShockInfo info)
         {
             hidDevice = new((DSHidInfo)info);
-            Logger.Log($"Device connected: {info}");
+            Logger.Log($"Device connected: {Name} [{Id}] [{hidDevice.Information.VendorId:X4}][{hidDevice.Information.ProductId:X4}]");
         }
         public void Connect()
         {

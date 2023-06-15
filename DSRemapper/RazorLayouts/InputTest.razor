@@ -1,5 +1,6 @@
 ﻿@using DSRemapper.RemapperCore;
 @using DSRemapper.Types;
+@implements IDisposable
 
 <div id="nav">
     <span>@Remapper.Name - @Remapper.Type</span>
@@ -61,5 +62,10 @@
         {
             StateHasChanged();
         });
+    }
+
+    public void Dispose()
+    {
+        Remapper.OnRead -= OnControllerRead;
     }
 }

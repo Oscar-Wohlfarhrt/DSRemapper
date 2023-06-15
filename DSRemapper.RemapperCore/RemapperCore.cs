@@ -22,7 +22,7 @@ namespace DSRemapper.RemapperCore
             if (deviceScannerThread != null)
             {
                 StopScanner();
-                tokenSource.TryReset();
+                tokenSource = new();
                 cancellationToken = tokenSource.Token;
             }
             deviceScannerThread = new(DeviceScanner)
@@ -42,7 +42,7 @@ namespace DSRemapper.RemapperCore
             while (!cancellationToken.IsCancellationRequested)
             {
                 var devs = DSInput.DSInput.GetDevicesInfo();
-                if(devs.Length!=remappers.Count)
+                if(devs.Length != remappers.Count)
                 {
                     SetControllers(devs.Select((i) => i.CreateController()).ToList());
                     OnUpdate?.Invoke(remappers);
@@ -103,9 +103,9 @@ namespace DSRemapper.RemapperCore
 
         public delegate void ControllerRead(DSInputReport report);
         public event ControllerRead? OnRead;
+        public int OnReadSubscriptors => OnRead?.GetInvocationList().Length ?? 0;
 
         event RemapperEventArgs? OnLog;
-
         public Remapper(IDSInputController controller)
         {
             this.controller = controller;

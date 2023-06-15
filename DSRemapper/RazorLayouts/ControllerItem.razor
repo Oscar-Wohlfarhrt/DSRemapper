@@ -13,7 +13,7 @@
     <img>
     <div class="ctrl-main">
         <div class="title"><label><InputCheckbox @bind-Value=active /> @Name - @Type</label></div>
-        <div class="description">@InfoLine</div>
+        <div class="description">@InfoLine @Remapper.OnReadSubscriptors</div>
         <select class="profile-list" onchange="@UpdateProfile">
             <option value="">Select a profile</option>
             @foreach (string op in ProfileManager.GetProfiles())
@@ -57,7 +57,15 @@
         if (firstRender)
         {
             Remapper.OnRead += OnControllerRead;
+            RemapperConfig config= DSConfig.GetConfig(Remapper.Id);
+            active = config.AutoConnect;
+            SetProfile(config.LastProfile);
         }
+    }
+
+    private void SetProfile(string profile)
+    {
+
     }
 
     private void OnControllerRead(DSInputReport report)
@@ -78,7 +86,8 @@ Tr: {report.Triangle}";
 
     private void UpdateProfile(ChangeEventArgs e)
     {
-
+        string profile = e.Value?.ToString() ?? "";
+        Logger.Log($"{Remapper.Id} selected profile {profile}");
     }
 
     public void ShowInputTest()
