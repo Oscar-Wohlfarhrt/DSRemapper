@@ -4,7 +4,12 @@ using DSRemapper.DSMath;
 using DSRemapper.HID;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
+using System;
+using System.CodeDom;
+using System.Collections.Specialized;
 using System.IO.Hashing;
+using System.Runtime.InteropServices;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DSRemapper.DualShock
 {
@@ -39,6 +44,104 @@ namespace DSRemapper.DualShock
         public static explicit operator DSHidInfo(DualShockInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
     }
 
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    internal struct ReportArray
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        public byte[] data;
+
+        public byte this[int index] { get => data[index]; }
+    }
+
+    [StructLayout(LayoutKind.Explicit, Size = 64)]
+    internal struct DualShockInReport
+    {
+        [FieldOffset(0)]
+        public byte id = 0;
+        [FieldOffset(1)]
+        public byte LX = 0;
+        [FieldOffset(2)]
+        public byte LY = 0;
+        [FieldOffset(3)]
+        public byte RX = 0;
+        [FieldOffset(4)]
+        public byte RY = 0;
+
+        [FieldOffset(5)]
+        private BitVector32 buttons = new BitVector32();
+        private static BitVector32.Section[] masks = new BitVector32.Section[15];
+
+        [FieldOffset(6)]
+        public byte LT = 0;
+        [FieldOffset(7)]
+        public byte RT = 0;
+
+        [FieldOffset(13)]
+        public short GyroX = 0;
+        [FieldOffset(15)]
+        public short GyroY = 0;
+        [FieldOffset(17)]
+        public short GyroZ = 0;
+
+        [FieldOffset(19)]
+        public short AccelX = 0;
+        [FieldOffset(21)]
+        public short AccelY = 0;
+        [FieldOffset(23)]
+        public short AccelZ = 0;
+
+        [FieldOffset(30)]
+        private byte misc = 0;
+
+        [FieldOffset(35)]
+        private BitVector32 touchf1 = new();
+        [FieldOffset(39)]
+        private BitVector32 touchf2 = new();
+
+        private static BitVector32.Section touchId = BitVector32.CreateSection(0x7F);
+        private static BitVector32.Section touchPress = BitVector32.CreateSection(0x01, touchId);
+        private static BitVector32.Section touchPosX = BitVector32.CreateSection(0xFFF, touchPress);
+        private static BitVector32.Section touchPosY = BitVector32.CreateSection(0xFFF, touchPosX);
+
+        public byte DPad => (byte)buttons[masks[0]];
+        public bool Square => buttons[masks[1]] != 0;
+        public bool Cross => buttons[masks[2]] != 0;
+        public bool Circle => buttons[masks[3]] != 0;
+        public bool Triangle => buttons[masks[4]] != 0;
+        public bool L1 => buttons[masks[5]] != 0;
+        public bool R1 => buttons[masks[6]] != 0;
+        public bool L2 => buttons[masks[7]] != 0;
+        public bool R2 => buttons[masks[8]] != 0;
+        public bool Options => buttons[masks[9]] != 0;
+        public bool Share => buttons[masks[10]] != 0;
+        public bool L3 => buttons[masks[11]] != 0;
+        public bool R3 => buttons[masks[12]] != 0;
+        public bool PS => buttons[masks[13]] != 0;
+        public bool TPad => buttons[masks[14]] != 0;
+
+        public byte Baterry => (byte)(misc & 0x0F);
+        public bool USB => (misc & (1 << 4)) != 0;
+
+        public byte TF1Id => (byte)touchf1[touchId];
+        public bool TF1Press => touchf1[touchPress] == 0;
+        public short TF1PosX => (short)touchf1[touchPosX];
+        public short TF1PosY => (short)touchf1[touchPosY];
+        public byte TF2Id => (byte)touchf2[touchId];
+        public bool TF2Press => touchf2[touchPress] == 0;
+        public short TF2PosX => (short)touchf2[touchPosX];
+        public short TF2PosY => (short)touchf2[touchPosY];
+
+        static DualShockInReport(){
+            masks[0] = BitVector32.CreateSection(0x0f);
+            for(int i = 1; i < masks.Length; i++)
+            {
+                masks[i] = BitVector32.CreateSection(0x01, masks[i - 1]);
+            }
+        }
+
+        public DualShockInReport() { }
+    }
+
     public class DualShockScanner : IDSDeviceScanner
     {
         public IDSInputDeviceInfo[] ScanDevices() => WmiEnumerator
@@ -54,6 +157,7 @@ namespace DSRemapper.DualShock
         private ExpMovingAverageVector3 gyroAvg = new();
 
         private int offset = 0;
+        DualShockInReport strRawReport;
         byte[] rawReport = Array.Empty<byte>(), crc = Array.Empty<byte>();
         DSInputReport report = new();
         List<byte> sendReport = new();
@@ -64,11 +168,11 @@ namespace DSRemapper.DualShock
 
         public string Type => "DS";
 
-        bool _isConnected = false;
+        //bool _isConnected = false;
 
-        //public bool IsConnected => hidDevice.IsOpen;
+        public bool IsConnected => hidDevice.IsOpen;
 
-        public bool IsConnected { get => _isConnected; private set => _isConnected = value; }
+        //public bool IsConnected { get => _isConnected; private set => _isConnected = value; }
 
         public DualShock(DualShockInfo info)
         {
@@ -152,49 +256,49 @@ namespace DSRemapper.DualShock
                 };
             }
         }
+
         public DSInputReport GetInputReport()
         {
             hidDevice.ReadFile(rawReport);
+            GCHandle ptr = GCHandle.Alloc(rawReport, GCHandleType.Pinned);
+            strRawReport = Marshal.PtrToStructure<DualShockInReport>(new IntPtr(ptr.AddrOfPinnedObject().ToInt64()+offset));
+            ptr.Free();
 
-            report.LX = AxisToFloat((sbyte)(rawReport[offset + 1] - 128));
-            report.LY = AxisToFloat((sbyte)(rawReport[offset + 2] - 128));
-            report.RX = AxisToFloat((sbyte)(rawReport[offset + 3] - 128));
-            report.RY = AxisToFloat((sbyte)(rawReport[offset + 4] - 128));
+            report.LX = AxisToFloat((sbyte)(strRawReport.LX - 128));
+            report.LY = AxisToFloat((sbyte)(strRawReport.LY - 128));
+            report.RX = AxisToFloat((sbyte)(strRawReport.RX - 128));
+            report.RY = AxisToFloat((sbyte)(strRawReport.RY - 128));
 
-            int constOffset = offset + 5;
-            byte dPad = (byte)(rawReport[constOffset] & 0x0F);
-            report.Povs[0].SetDSPov(dPad);
+            report.Povs[0].SetDSPov(strRawReport.DPad);
 
-            report.Square = Convert.ToBoolean(rawReport[constOffset] & (1 << 4));
-            report.Cross = Convert.ToBoolean(rawReport[constOffset] & (1 << 5));
-            report.Circle = Convert.ToBoolean(rawReport[constOffset] & (1 << 6));
-            report.Triangle = Convert.ToBoolean(rawReport[constOffset] & (1 << 7));
+            report.Square = strRawReport.Square;
+            report.Cross = strRawReport.Cross;
+            report.Circle = strRawReport.Circle;
+            report.Triangle = strRawReport.Triangle;
 
-            constOffset = offset + 6;
-            report.L1 = Convert.ToBoolean(rawReport[constOffset] & (1 << 0));
-            report.R1 = Convert.ToBoolean(rawReport[constOffset] & (1 << 1));
-            report.L2 = Convert.ToBoolean(rawReport[constOffset] & (1 << 2));
-            report.R2 = Convert.ToBoolean(rawReport[constOffset] & (1 << 3));
-            report.Share = Convert.ToBoolean(rawReport[constOffset] & (1 << 4));
-            report.Options = Convert.ToBoolean(rawReport[constOffset] & (1 << 5));
-            report.L3 = Convert.ToBoolean(rawReport[constOffset] & (1 << 6));
-            report.R3 = Convert.ToBoolean(rawReport[constOffset] & (1 << 7));
+            report.L1 = strRawReport.L1;
+            report.R1 = strRawReport.R1;
+            report.L2 = strRawReport.L2;
+            report.R2 = strRawReport.R2;
+            report.Share = strRawReport.Share;
+            report.Options = strRawReport.Options;
+            report.L3 = strRawReport.L3;
+            report.R3 = strRawReport.R3;
 
-            constOffset = offset + 7;
-            report.PS = Convert.ToBoolean(rawReport[constOffset] & (1 << 0));
-            report.TouchClick = Convert.ToBoolean(rawReport[constOffset] & (1 << 1));
+            report.PS = strRawReport.PS;
+            report.TouchClick = strRawReport.TPad;
 
-            report.LTrigger = AxisToFloat(rawReport[offset + 8]);
-            report.RTrigger = AxisToFloat(rawReport[offset + 9]);
-            report.Battery = Math.Clamp((rawReport[offset + 30] & 0xF) / 10f, 0f, 1f);
-            report.Usb = Convert.ToBoolean(rawReport[offset + 30] & (1 << 4));
+            report.LTrigger = AxisToFloat(strRawReport.LT);
+            report.RTrigger = AxisToFloat(strRawReport.RT);
+            report.Battery = Math.Clamp(strRawReport.Baterry / 10f, 0f, 1f);
+            report.Usb = strRawReport.USB;
 
-            report.SixAxis[1].X = -(short)((rawReport[offset + 14] << 8) | rawReport[offset + 13]) * (2000f / 32767f);
-            report.SixAxis[1].Y = -(short)((rawReport[offset + 16] << 8) | rawReport[offset + 15]) * (2000f / 32767f);
-            report.SixAxis[1].Z = (short)((rawReport[offset + 18] << 8) | rawReport[offset + 17]) * (2000f / 32767f);
-            report.SixAxis[0].X = -(short)((rawReport[offset + 20] << 8) | rawReport[offset + 19]) / 8192f;
-            report.SixAxis[0].Y = -(short)((rawReport[offset + 22] << 8) | rawReport[offset + 21]) / 8192f;
-            report.SixAxis[0].Z = (short)((rawReport[offset + 24] << 8) | rawReport[offset + 23]) / 8192f;
+            report.SixAxis[1].X = -strRawReport.GyroX * (2000f / 32767f);
+            report.SixAxis[1].Y = -strRawReport.GyroY * (2000f / 32767f);
+            report.SixAxis[1].Z = strRawReport.GyroZ * (2000f / 32767f);
+            report.SixAxis[0].X = -strRawReport.AccelX / 8192f;
+            report.SixAxis[0].Y = -strRawReport.AccelY / 8192f;
+            report.SixAxis[0].Z = strRawReport.AccelZ / 8192f;
 
             DSVector3 temp = (report.Gyro - lastGyro);
             if (temp.Length < 1f)
@@ -213,16 +317,16 @@ namespace DSRemapper.DualShock
 
             report.TouchPadSize = new(1920, 943);
 
-            report.Touch[0].Pressed = !Convert.ToBoolean(rawReport[offset + 35] & (1 << 7));
-            report.Touch[0].Id = rawReport[offset + 35] & ~(1 << 7);
-            report.Touch[0].Pos.X = rawReport[offset + 36] | ((rawReport[offset + 37] & 0x0F) << 8);
-            report.Touch[0].Pos.Y = ((rawReport[offset + 37] & 0xF0) >> 4) | (rawReport[offset + 38] << 4);
+            report.Touch[0].Pressed = strRawReport.TF1Press;
+            report.Touch[0].Id = strRawReport.TF1Id;
+            report.Touch[0].Pos.X = strRawReport.TF1PosX;
+            report.Touch[0].Pos.Y = strRawReport.TF1PosY;
             report.Touch[0].Pos /= report.TouchPadSize;
 
-            report.Touch[1].Pressed = !Convert.ToBoolean(rawReport[offset + 39] & (1 << 7));
-            report.Touch[1].Id = rawReport[offset + 39] & ~(1 << 7);
-            report.Touch[1].Pos.X = rawReport[offset + 40] | ((rawReport[offset + 41] & 0x0F) << 8);
-            report.Touch[1].Pos.Y = ((rawReport[offset + 41] & 0xF0) >> 4) | (rawReport[offset + 42] << 4);
+            report.Touch[1].Pressed = strRawReport.TF2Press;
+            report.Touch[1].Id = strRawReport.TF2Id;
+            report.Touch[1].Pos.X = strRawReport.TF2PosX;
+            report.Touch[1].Pos.Y = strRawReport.TF2PosY;
             report.Touch[1].Pos /= report.TouchPadSize;
 
             return report;

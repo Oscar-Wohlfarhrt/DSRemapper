@@ -2,6 +2,7 @@
 @using DSRemapper.DSLogger;
 @using DSRemapper.RemapperCore;
 @using DSRemapper.ConfigManager;
+@using DSRemapper.Types;
 @using Microsoft.AspNetCore.Components.Forms
 
 @{
@@ -23,8 +24,8 @@
         <div class="console">@ConsoleText</div>
     </div>
     <div class="buttons">
-        <button onclick="">Connect</button>
-        <button onclick="">Disconnect</button>
+        <button onclick="@Remapper.Start">Connect</button>
+        <button onclick="@Remapper.Stop">Disconnect</button>
         <button>Input Test</button>
     </div>
 </div>
@@ -38,7 +39,7 @@
     private string Name => Remapper.Name;
     private string Type => Remapper.Type;
     private string InfoLine = "";
-    private string ConsoleText= "";
+    private string ConsoleText = "";
 
     private List<string> options = new()
     {
@@ -48,8 +49,33 @@
         "test4",
     };
 
+    private void OnControllerRead(DSInputReport report)
+    {
+        ConsoleText = $@"Battery: {report.Battery}
+LX: {report.LX}
+LY: {report.Grav}
+RX: {report.Touch[0].Pressed}
+RY: {report.Touch[0].Pos}
+Sq: {report.Square}
+Cr: {report.Cross}
+Ci: {report.Circle}
+Tr: {report.Triangle}";
+        this.InvokeAsync(() => { 
+            StateHasChanged();
+        });
+    }
+
     private void UpdateProfile(ChangeEventArgs e)
     {
-        
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            Remapper.OnRead += OnControllerRead;
+        }
     }
 }

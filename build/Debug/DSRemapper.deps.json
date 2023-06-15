@@ -12,6 +12,7 @@
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSInput": "1.0.0",
           "DSRemapper.DSOutput": "1.0.0",
+          "DSRemapper.DualShock": "1.0.0",
           "DSRemapper.RemapperCore": "1.0.0",
           "Microsoft.AspNetCore.Components.WebView.WindowsForms": "7.0.86",
           "System.IO.Hashing": "7.0.0",
@@ -402,6 +403,14 @@
           "DSRemapper.DSOutput.dll": {}
         }
       },
+      "DSRemapper.HID/1.0.0": {
+        "dependencies": {
+          "System.Management": "7.0.1"
+        },
+        "runtime": {
+          "DSRemapper.HID.dll": {}
+        }
+      },
       "DSRemapper.RemapperCore/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
@@ -659,6 +668,11 @@
       "sha512": ""
     },
     "DSRemapper.DSOutput/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.HID/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

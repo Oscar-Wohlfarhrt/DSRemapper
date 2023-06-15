@@ -667,6 +667,35 @@
           "bin/placeholder/DSRemapper.DSOutput.dll": {}
         }
       },
+      "DSRemapper.DualShock/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "DSRemapper.Core": "1.0.0",
+          "DSRemapper.HID": "1.0.0",
+          "System.IO.Hashing": "7.0.0",
+          "System.Management": "7.0.1"
+        },
+        "compile": {
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSRemapper.DualShock.dll": {}
+        }
+      },
+      "DSRemapper.HID/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Management": "7.0.1"
+        },
+        "compile": {
+          "bin/placeholder/DSRemapper.HID.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DSRemapper.HID.dll": {}
+        }
+      },
       "DSRemapper.RemapperCore/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1634,6 +1663,16 @@
       "path": "../DSRemapper.DSOutput/DSRemapper.DSOutput.csproj",
       "msbuildProject": "../DSRemapper.DSOutput/DSRemapper.DSOutput.csproj"
     },
+    "DSRemapper.DualShock/1.0.0": {
+      "type": "project",
+      "path": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj",
+      "msbuildProject": "../DSRemapper.DualShock/DSRemapper.DualShock.csproj"
+    },
+    "DSRemapper.HID/1.0.0": {
+      "type": "project",
+      "path": "../DSRemapper.HID/DSRemapper.HID.csproj",
+      "msbuildProject": "../DSRemapper.HID/DSRemapper.HID.csproj"
+    },
     "DSRemapper.RemapperCore/1.0.0": {
       "type": "project",
       "path": "../DSRemapper.RemapperCore/DSRemapper.RemapperCore.csproj",
@@ -1646,6 +1685,7 @@
       "DSRemapper.Core >= 1.0.0",
       "DSRemapper.DSInput >= 1.0.0",
       "DSRemapper.DSOutput >= 1.0.0",
+      "DSRemapper.DualShock >= 1.0.0",
       "DSRemapper.RemapperCore >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebView.WindowsForms >= 7.0.86",
       "System.IO.Hashing >= 7.0.0",
@@ -1697,6 +1737,9 @@
             },
             "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj": {
               "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DSOutput\\DSRemapper.DSOutput.csproj"
+            },
+            "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj": {
+              "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.DualShock\\DSRemapper.DualShock.csproj"
             },
             "G:\\Projectos Visual\\DSRemapper\\DSRemapper.RemapperCore\\DSRemapper.RemapperCore.csproj": {
               "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.RemapperCore\\DSRemapper.RemapperCore.csproj"

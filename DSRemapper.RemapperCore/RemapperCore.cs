@@ -1,5 +1,6 @@
 ﻿using DSRemapper.Core;
 using DSRemapper.DSInput;
+using DSRemapper.Types;
 using System.Threading;
 using System.Xml.Linq;
 
@@ -96,9 +97,12 @@ namespace DSRemapper.RemapperCore
         private readonly IDSInputController controller;
         private IDSRemapper? remapper = null;
         private Thread? thread=null;
-        private readonly CancellationTokenSource cancellationTokenSource;
-        private readonly CancellationToken cancellationToken;
+        private CancellationTokenSource cancellationTokenSource;
+        private CancellationToken cancellationToken;
         //Timer timer;
+
+        public delegate void ControllerRead(DSInputReport report);
+        public event ControllerRead? OnRead;
 
         event RemapperEventArgs? OnLog;
 
@@ -120,15 +124,20 @@ namespace DSRemapper.RemapperCore
         public string Name => controller.Name;
         public string Type => controller.Type;
         public bool IsConnected => controller.IsConnected;
-        public void Connect()
+        public bool IsRunning => thread?.IsAlive ?? false;
+        public bool Connect()
         {
             if (!IsConnected)
                 controller.Connect();
+
+            return IsConnected;
         }
-        public void Disconnect()
+        public bool Disconnect()
         {
             if (IsConnected)
                 controller.Disconnect();
+
+            return IsConnected;
         }
 
         public void Dispose()
@@ -140,20 +149,26 @@ namespace DSRemapper.RemapperCore
         public void Start()
         {
             Stop();
-            thread = new(RemapThread)
+            if (Connect())
             {
-                Name = $"{controller.Name} Remapper",
-                Priority = ThreadPriority.Normal
-            };
-            thread.Start();
+                cancellationTokenSource = new CancellationTokenSource();
+                cancellationToken = cancellationTokenSource.Token;
+                thread = new(RemapThread)
+                {
+                    Name = $"{controller.Name} Remapper",
+                    Priority = ThreadPriority.Normal
+                };
+                thread.Start();
+            }
         }
 
         public void Stop()
         {
+            cancellationTokenSource.Cancel();
             if (thread!=null && thread.IsAlive)
             {
-                cancellationTokenSource.Cancel();
                 thread.Join();
+                Disconnect();
             }
         }
 
@@ -161,8 +176,15 @@ namespace DSRemapper.RemapperCore
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if(IsConnected && remapper!=null)
-                    controller.SendOutputReport(remapper.Remap(controller.GetInputReport()));
+                if (IsConnected)
+                {
+                    DSInputReport report = controller.GetInputReport();
+                    OnRead?.Invoke(report);
+                    if (remapper != null)
+                    {
+                        controller.SendOutputReport(remapper.Remap(report));
+                    }
+                }
 
                 Thread.Sleep(10);
             }
