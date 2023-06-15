@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="DSStyles.css">
+</head>
+<body>
+    <script>
+        const bridge = chrome.webview.hostObjects.DSRBridge;
+    </script>
+
+    <div id="nav">
+        <button onclick="bridge.LogWarning('Not working')">File</button>
+        <button onclick="bridge.WindowsControllers()">Windows controllers</button>
+        <button onclick="bridge.LogConsole()">Log console</button>
+    </div>
+    <div id="main">
+        <div id="input-test-grid">
+            <div class="axis-item">
+                <span>Name</span>
+                <svg width="100px" height="10px">
+                    <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
+                    <rect x="0" y="0" width="50" height="10" rx="3" ry="3" fill="#aaa"></rect>
+                </svg>
+                <span>Value</span>
+            </div>
+            <div class="six-item">
+                <span>Title</span>
+                <svg width="100px" height="10px">
+                    <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
+                    <rect x="0" y="0" width="50" height="10" rx="3" ry="3" fill="#aaa"></rect>
+                </svg>
+                <span>Value</span>
+                <svg width="100px" height="10px">
+                    <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
+                    <rect x="0" y="0" width="50" height="10" rx="3" ry="3" fill="#aaa"></rect>
+                </svg>
+                <span>Value</span>
+                <svg width="100px" height="10px">
+                    <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
+                    <rect x="0" y="0" width="50" height="10" rx="3" ry="3" fill="#aaa"></rect>
+                </svg>
+                <span>Value</span>
+            </div>
+            <div class="button-item">
+                <span>Title</span>
+                <svg width="40px" height="20px">
+                    <rect x="0" y="0" width="40" height="20" rx="3" ry="3" fill="#282828"></rect>
+                </svg>
+            </div>
+            <div class="pov-item">
+                <span>Title</span>
+                <svg width="50px" height="50px">
+                    <polygon points="17,0 33,0 33,15 25,23 17,15"
+                    fill="#282828"></polygon>
+                    <polygon points="17,50 33,50 33,35 25,27 17,35"
+                    fill="#282828"></polygon>
+                    <polygon points="0,17 0,33 15,33 23,25 15,17"
+                    fill="#282828"></polygon>
+                    <polygon points="50,17 50,33 35,33 27,25 35,17"
+                    fill="#282828"></polygon>
+                </svg>
+                <span>Value</span>
+            </div>
+            <div class="touch-item">
+                <span>Title</span>
+                <svg width="100px" height="60px">
+                    <rect x="0" y="0" width="100" height="60" rx="3" ry="3" fill="#282828"></rect>
+                    <circle cx="10" cy="10" r="3" fill="#aaa"></circle>
+                    <circle cx="20" cy="10" r="3" fill="#666"></circle>
+                </svg>
+                <span>Id: --</span>
+                <span>X: -- Y: --</span>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+    </div>
+    
+    <script>
+        const main = document.getElementById("main");
+
+
+        (async()=>{
+
+            bridge.testEvent+=function(sender,event){
+                main.innerHTML+="test\n";
+            }
+
+            const devs= await bridge.GetDevicesInfo();
+            for (const d of devs) {
+                bridge.Log(await d.ToString());
+            }
+        })();
+        //bridge.LogConsole()
+    </script>
+</body>
+</html>

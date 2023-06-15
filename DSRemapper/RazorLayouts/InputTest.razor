@@ -1,0 +1,65 @@
+﻿@using DSRemapper.RemapperCore;
+@using DSRemapper.Types;
+
+<div id="nav">
+    <span>@Remapper.Name - @Remapper.Type</span>
+</div>
+<div id="main">
+    <div id="input-test-grid">
+        @if (report != null)
+        {
+            @for (int i = 0; i < report.Value.Axis.Length; i++)
+            {
+                <AxisItem Name=@($"Axis[{i}]") Value=report.Value.Axis[i]/>
+            }
+            @for (int i = 0; i < report.Value.Sliders.Length; i++)
+            {
+                <AxisItem Name=@($"Sliders[{i}]") Value=report.Value.Sliders[i] />
+            }
+            @for (int i = 0; i < report.Value.Povs.Length; i++)
+            {
+                <PovItem Name=@($"Pov[{i}]") Value=report.Value.Povs[i] />
+            }
+            @for (int i = 0; i < report.Value.Buttons.Length; i++)
+            {
+                <ButtonItem Name=@($"Buttons[{i}]") Value=report.Value.Buttons[i] />
+            }
+            <SixAxisItem Name=@($"SixAxis[0]") Value=report.Value.RawAccel Scale="2" />
+            <SixAxisItem Name=@($"SixAxis[1]") Value=report.Value.Gyro Scale="500" />
+            <SixAxisItem Name=@($"SixAxis[2]") Value=report.Value.Grav />
+            <SixAxisItem Name=@($"SixAxis[3]") Value=report.Value.Accel Scale="2" />
+
+            @for (int i = 0; i < report.Value.Touch.Length; i++)
+            {
+                <TouchItem Name=@($"Touch[{i}]") Value=report.Value.Touch[i] />
+            }
+        }
+    </div>
+</div>
+<div id="footer">
+</div>
+
+@code {
+    [Parameter]
+    public Remapper Remapper { get; set; } = null!;
+
+    private DSInputReport? report = null;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            Remapper.OnRead += OnControllerRead;
+        }
+    }
+
+    private void OnControllerRead(DSInputReport report)
+    {
+        this.report = report;
+        this.InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+}

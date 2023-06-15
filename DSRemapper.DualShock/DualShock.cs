@@ -71,9 +71,9 @@ namespace DSRemapper.DualShock
         private BitVector32 buttons = new BitVector32();
         private static BitVector32.Section[] masks = new BitVector32.Section[15];
 
-        [FieldOffset(6)]
+        [FieldOffset(8)]
         public byte LT = 0;
-        [FieldOffset(7)]
+        [FieldOffset(9)]
         public byte RT = 0;
 
         [FieldOffset(13)]

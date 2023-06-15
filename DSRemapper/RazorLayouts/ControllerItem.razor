@@ -24,9 +24,9 @@
         <div class="console">@ConsoleText</div>
     </div>
     <div class="buttons">
-        <button onclick="@Remapper.Start">Connect</button>
-        <button onclick="@Remapper.Stop">Disconnect</button>
-        <button>Input Test</button>
+        <button onclick="@Remapper.Start" >Connect</button>
+        <button onclick="@Remapper.Stop" >Disconnect</button>
+        <button onclick="@ShowInputTest" >Input Test</button>
     </div>
 </div>
 
@@ -35,6 +35,8 @@
 
     [Parameter, EditorRequired]
     public Remapper Remapper { get; set; } = null!;
+
+    public static DSForm<InputTest>? inputTest = null;
 
     private string Name => Remapper.Name;
     private string Type => Remapper.Type;
@@ -48,6 +50,15 @@
         "test3",
         "test4",
     };
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            Remapper.OnRead += OnControllerRead;
+        }
+    }
 
     private void OnControllerRead(DSInputReport report)
     {
@@ -70,12 +81,23 @@ Tr: {report.Triangle}";
 
     }
 
-    protected override void OnAfterRender(bool firstRender)
+    public void ShowInputTest()
     {
-        base.OnAfterRender(firstRender);
-        if (firstRender)
+        if (inputTest == null || inputTest.IsDisposed)
         {
-            Remapper.OnRead += OnControllerRead;
+            inputTest = new DSForm<InputTest>(new Dictionary<string, object?>()
+            {
+                {"Remapper", Remapper},
+            });
+
+            inputTest.Show();
+        }
+        else
+        {
+            if (inputTest.WindowState == FormWindowState.Minimized)
+                inputTest.WindowState = FormWindowState.Normal;
+            inputTest.Focus();
         }
     }
+
 }

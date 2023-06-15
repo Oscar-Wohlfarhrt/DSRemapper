@@ -22,6 +22,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = G:\Projectos Visual\DSRemapper\DSRemapper
 build_property._RazorSourceGeneratorDebug = 
 
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/AxisItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXEF4aXNJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/ButtonItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXEJ1dHRvbkl0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/ConsoleLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnNvbGVMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,8 +38,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXENvbnRyb2xsZXJJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/InputTest.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXElucHV0VGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/PovItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXFBvdkl0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/SixAxisItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXFNpeEF4aXNJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[G:/Projectos Visual/DSRemapper/DSRemapper/RazorLayouts/TouchItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UmF6b3JMYXlvdXRzXFRvdWNoSXRlbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [G:/Projectos Visual/DSRemapper/DSRemapper/_Import.razor]
