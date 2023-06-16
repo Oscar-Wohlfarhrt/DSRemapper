@@ -36,6 +36,10 @@
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>
     <ProjectReference Include="..\DSRemapper.RemapperCore\DSRemapper.RemapperCore.csproj" />
+    <ProjectReference Include="..\DSRemapper.RemapperLua\DSRemapper.RemapperLua.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>

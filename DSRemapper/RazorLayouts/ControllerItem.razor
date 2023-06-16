@@ -70,7 +70,8 @@
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
-            Remapper.OnRead += OnControllerRead;
+            //Remapper.OnRead += OnControllerRead;
+            Remapper.OnLog += RemapperOnLog;
             RemapperConfig config = DSConfig.GetConfig(Remapper.Id);
             Active = config.AutoConnect;
             SetProfile(config.LastProfile);
@@ -79,10 +80,20 @@
 
     private void SetProfile(string profile)
     {
+        Remapper.SetProfile(profile);
+    }
+    private void RemapperOnLog(RemapperEventType type, string message)
+    {
+        if (type == RemapperEventType.DeviceConsole)
+            ConsoleText = message;
 
+        this.InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
     }
 
-    private void OnControllerRead(DSInputReport report)
+    /*private void OnControllerRead(DSInputReport report)
     {
         ConsoleText = $@"Battery: {report.Battery}
 LX: {report.LX}
@@ -96,25 +107,14 @@ Tr: {report.Triangle}";
         this.InvokeAsync(() => { 
             StateHasChanged();
         });
-    }
+    }*/
 
     private void UpdateProfile(ChangeEventArgs e)
     {
         string profile = e.Value?.ToString() ?? "";
-        DSConfig.SetLastProfile(Remapper.Id,profile);
+        SetProfile(profile);
+        DSConfig.SetLastProfile(Remapper.Id, profile);
         Logger.Log($"{Remapper.Id} selected profile {profile}");
-    }
-    private void UpdateConnect(bool e)
-    {
-        if (e)
-        {
-            Remapper.Start();
-        }
-    }
-    private bool UpdateConnect2(bool e)
-    {
-        return false;
-        //Logger.Log($"{Remapper.Id} selected profile {e}");
     }
 
     public void ShowInputTest()

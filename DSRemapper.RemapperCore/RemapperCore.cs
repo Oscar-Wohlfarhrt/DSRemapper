@@ -1,5 +1,7 @@
-﻿using DSRemapper.Core;
+﻿using DSRemapper.ConfigManager;
+using DSRemapper.Core;
 using DSRemapper.DSInput;
+using DSRemapper.DSLogger;
 using DSRemapper.Types;
 using System.Threading;
 using System.Xml.Linq;
@@ -84,14 +86,15 @@ namespace DSRemapper.RemapperCore
                 ctrlRemapper.Dispose();
             }
         }
+
+        public static IDSRemapper? CreateRemapper(string fileExt)
+        {
+            if (PluginsLoader.RemapperPlugins.TryGetValue(fileExt,out Type? remapType))
+                return (IDSRemapper?)Activator.CreateInstance(remapType);
+
+            return null;
+        }
     }
-    public enum RemapperEventType
-    {
-        DeviceConsole,
-        Warning,
-        Error
-    }
-    delegate void RemapperEventArgs(RemapperEventType type, string message);
     public class Remapper : IDisposable
     {
         private readonly IDSInputController controller;
@@ -105,7 +108,7 @@ namespace DSRemapper.RemapperCore
         public event ControllerRead? OnRead;
         public int OnReadSubscriptors => OnRead?.GetInvocationList().Length ?? 0;
 
-        event RemapperEventArgs? OnLog;
+        public event RemapperEventArgs? OnLog;
         public Remapper(IDSInputController controller)
         {
             this.controller = controller;
@@ -171,7 +174,33 @@ namespace DSRemapper.RemapperCore
                 Disconnect();
             }
         }
-
+        public void SetProfile(string profile)
+        {
+            if (profile == "")
+            {
+                if (remapper != null)
+                    remapper.OnLog -= OnLog;
+                remapper?.Dispose();
+                remapper = null;
+            }
+            else
+            {
+                string fullPath = Path.Combine(DSPaths.ProfilesPath, profile);
+                if (File.Exists(fullPath))
+                {
+                    string ext = Path.GetExtension(fullPath)[1..];
+                    remapper = RemapperCore.CreateRemapper(ext);
+                    if (remapper!=null)
+                    {
+                        remapper.OnLog += OnLog;
+                        remapper.SetScript(fullPath);
+                    }
+                }
+            }
+        }
+        public void ConsoleLog(string text)
+        {
+        }
         private void RemapThread()
         {
             while (!cancellationToken.IsCancellationRequested)

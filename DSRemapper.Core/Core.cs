@@ -9,6 +9,7 @@ namespace DSRemapper.Core
 
     }
 
+
     [AttributeUsage(AttributeTargets.Class)]
     public class EmulatedControllerAttribute : Attribute
     {
@@ -18,6 +19,13 @@ namespace DSRemapper.Core
             ScannerPath = path;
         }
     }
+    public enum RemapperEventType
+    {
+        DeviceConsole,
+        Warning,
+        Error
+    }
+    public delegate void RemapperEventArgs(RemapperEventType type, string message);
     [AttributeUsage(AttributeTargets.Class)]
     public class RemapperAttribute : Attribute
     {
@@ -78,6 +86,8 @@ namespace DSRemapper.Core
 
     public interface IDSRemapper : IDisposable
     {
+        public event RemapperEventArgs? OnLog;
+        public void SetScript(string file);
         public DSOutputReport Remap(DSInputReport report);
     }
     #endregion Interfaces

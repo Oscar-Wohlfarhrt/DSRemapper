@@ -4,6 +4,7 @@ using DSRemapper.SixAxis;
 using DSRemapper.Types;
 using MoonSharp.Interpreter;
 using System.Numerics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace DSRemapper.RemapperLua
 {
@@ -44,10 +45,33 @@ namespace DSRemapper.RemapperLua
             UserData.RegisterType<bool[]>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
         }
+        Script script = new Script();
 
+        public event RemapperEventArgs? OnLog;
+
+        public LuaInterpreter()
+        {
+
+        }
+        public void SetScript(string file)
+        {
+            try
+            {
+                script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
+                script.DoFile(file);
+            }
+            catch (Exception e)
+            {
+                OnLog?.Invoke(RemapperEventType.Error, e.Message);
+            }
+        }
         public DSOutputReport Remap(DSInputReport report)
         {
             return new();
+        }
+        private void ConsoleLog(string text)
+        {
+            OnLog?.Invoke(RemapperEventType.DeviceConsole,text);
         }
         public void Dispose()
         {

@@ -8,10 +8,12 @@
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Remapper\</BaseOutputPath>
 	  <OutputPath>..\build\$(Configuration)\Plugins\Remapper\</OutputPath>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MoonSharp" Version="2.0.0" />
+    <PackageReference Include="MoonSharp" Version="2.0.0">
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

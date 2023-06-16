@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G22wCvGW+yKyUT7iEypxoBFpbutCWqMTb6yu0WdOB0pmxf6y+9Lkc66TUC6j0zZX87XgsbBsdWIgKoPOkOd99A==",
+  "dgSpecHash": "kpE24UWiiW1kbL+SgZiLOBsfZ0idASr+5IfBx7nNEPR6dQL1dziWb2DmDgklCGgQl8/bXpXPsLI7B1RYLkUE1Q==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.jsinterop\\7.0.0\\microsoft.jsinterop.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.web.webview2\\1.0.1370.28\\microsoft.web.webview2.1.0.1370.28.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\moonsharp\\2.0.0\\moonsharp.2.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
