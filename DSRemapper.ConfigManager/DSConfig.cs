@@ -25,13 +25,18 @@ namespace DSRemapper.ConfigManager
     {
         private static string configPath = Path.Combine(DSPaths.ConfigPath,"DSConfigs.json");
         private static List<RemapperConfig> remapperConfigs;
+
         static DSConfig()
         {
             if(File.Exists(configPath))
-                remapperConfigs = JsonSerializer.Deserialize<List<RemapperConfig>>(File.ReadAllText(configPath)) ?? new();
+                LoadConfigFile();
             else
                 remapperConfigs = new();
         }
+        private static void LoadConfigFile() => remapperConfigs = JsonSerializer
+            .Deserialize<List<RemapperConfig>>(File.ReadAllText(configPath)) ?? new();
+        private static void SaveConfigFile() => File.
+            WriteAllText(configPath, JsonSerializer.Serialize(remapperConfigs));
         public static RemapperConfig GetConfig(string id)
         {
             if(!remapperConfigs.Exists((c) => c.Id == id))
@@ -45,10 +50,12 @@ namespace DSRemapper.ConfigManager
         public static void SetLastProfile(string id, string profile)
         {
             GetConfig(id).LastProfile = profile;
+            SaveConfigFile();
         }
         public static void SetAutoConnect(string id,bool autoConnect)
         {
             GetConfig(id).AutoConnect = autoConnect;
+            SaveConfigFile();
         }
     }
 }

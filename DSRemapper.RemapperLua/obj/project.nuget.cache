@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "L3GVX8/90lLSKps6kNl4ru498bmP7sX6X2jQQCVi4Wh0owwLnYZXkQFPUesfQ6Odm/3VaIwMHK6u8wau8JVhng==",
+  "dgSpecHash": "pUFxUDi1iu6ZDiNj1KrHF20vFjerkkBVBSKSrsqxYd+L486syL+j08GhFv/QchQ7Jh9QFFgqv+dXfP6MqFjnNw==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.RemapperLua\\DSRemapper.RemapperLua.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\moonsharp\\2.0.0\\moonsharp.2.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

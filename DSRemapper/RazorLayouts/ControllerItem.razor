@@ -12,7 +12,7 @@
 <div class="ctrl">
     <img>
     <div class="ctrl-main">
-        <div class="title"><label><InputCheckbox @bind-Value=active /> @Name - @Type</label></div>
+        <div class="title"><label><InputCheckbox @bind-Value=Active />@Name - @Type</label></div>
         <div class="description">@InfoLine @Remapper.OnReadSubscriptors</div>
         <select class="profile-list" onchange="@UpdateProfile">
             <option value="">Select a profile</option>
@@ -31,7 +31,21 @@
 </div>
 
 @code {
-    private bool active = false;
+    private bool active;
+
+    private bool Active
+    {
+        get => active;
+        set
+        {
+            if (value)
+            {
+                Remapper.Start();
+            }
+            DSConfig.SetAutoConnect(Remapper.Id,value);
+            active = value;
+        }
+    }
 
     [Parameter, EditorRequired]
     public Remapper Remapper { get; set; } = null!;
@@ -57,8 +71,8 @@
         if (firstRender)
         {
             Remapper.OnRead += OnControllerRead;
-            RemapperConfig config= DSConfig.GetConfig(Remapper.Id);
-            active = config.AutoConnect;
+            RemapperConfig config = DSConfig.GetConfig(Remapper.Id);
+            Active = config.AutoConnect;
             SetProfile(config.LastProfile);
         }
     }
@@ -87,7 +101,20 @@ Tr: {report.Triangle}";
     private void UpdateProfile(ChangeEventArgs e)
     {
         string profile = e.Value?.ToString() ?? "";
+        DSConfig.SetLastProfile(Remapper.Id,profile);
         Logger.Log($"{Remapper.Id} selected profile {profile}");
+    }
+    private void UpdateConnect(bool e)
+    {
+        if (e)
+        {
+            Remapper.Start();
+        }
+    }
+    private bool UpdateConnect2(bool e)
+    {
+        return false;
+        //Logger.Log($"{Remapper.Id} selected profile {e}");
     }
 
     public void ShowInputTest()

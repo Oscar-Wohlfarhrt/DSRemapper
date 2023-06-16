@@ -25,11 +25,10 @@
             {
                 <ButtonItem Name=@($"Buttons[{i}]") Value=report.Value.Buttons[i] />
             }
-            <SixAxisItem Name=@($"SixAxis[0]") Value=report.Value.RawAccel Scale="2" />
-            <SixAxisItem Name=@($"SixAxis[1]") Value=report.Value.Gyro Scale="500" />
-            <SixAxisItem Name=@($"SixAxis[2]") Value=report.Value.Grav />
-            <SixAxisItem Name=@($"SixAxis[3]") Value=report.Value.Accel Scale="2" />
-
+            @for (int i = 0; i < report.Value.SixAxis.Length; i++)
+            {
+                <SixAxisItem Name=@($"SixAxis[{i}]") Value=report.Value.SixAxis[i] Scale=SixAxisScales[i] />
+            }
             @for (int i = 0; i < report.Value.Touch.Length; i++)
             {
                 <TouchItem Name=@($"Touch[{i}]") Value=report.Value.Touch[i] />
@@ -38,6 +37,11 @@
     </div>
 </div>
 <div id="footer">
+    @if (report != null)
+    {
+        <span>Battery: @report.Value.Battery</span>
+        <span>USB: @report.Value.Usb</span>
+    }
 </div>
 
 @code {
@@ -45,6 +49,7 @@
     public Remapper Remapper { get; set; } = null!;
 
     private DSInputReport? report = null;
+    static readonly float[] SixAxisScales = new[] { 1f, 500f, 1f, 1f }; 
 
     protected override void OnAfterRender(bool firstRender)
     {

@@ -1,19 +1,19 @@
 ﻿@using DSRemapper.DSMath;
 <div class="six-item">
     <span>@Name</span>
-    <svg width="100px" height="10px">
-        <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
-        <rect x="0" y="0" width="@svgxVal" height="10" rx="3" ry="3" fill="#aaa"></rect>
+    <svg width="100px" height="@height">
+        <rect x="0" y="0" width="100" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+        <rect x="0" y="0" width="@svgxVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
     </svg>
     <span>@($"{Value.X:0.000}")</span>
-    <svg width="100px" height="10px">
-        <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
-        <rect x="0" y="0" width="@svgyVal" height="10" rx="3" ry="3" fill="#aaa"></rect>
+    <svg width="100px" height="@height">
+        <rect x="0" y="0" width="100" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+        <rect x="0" y="0" width="@svgyVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
     </svg>
     <span>@($"{Value.Y:0.000}")</span>
-    <svg width="100px" height="10px">
-        <rect x="0" y="0" width="100" height="10" rx="3" ry="3" fill="#282828"></rect>
-        <rect x="0" y="0" width="@svgzVal" height="10" rx="3" ry="3" fill="#aaa"></rect>
+    <svg width="100px" height="@height">
+        <rect x="0" y="0" width="100" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+        <rect x="0" y="0" width="@svgzVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
     </svg>
     <span>@($"{Value.Z:0.000}")</span>
 </div>
@@ -25,6 +25,9 @@
     public DSVector3 Value { get; set; } = null!;
     [Parameter]
     public float Scale { get; set; } = 1;
+
+    const int borrad = 2;
+    const int height = 7;
 
     private int svgxVal => (int)Math.Round((Value.X/Scale + 1) * 50, 0);
     private int svgyVal => (int)Math.Round((Value.Y/Scale + 1) * 50, 0);

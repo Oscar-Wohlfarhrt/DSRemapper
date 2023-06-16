@@ -51,7 +51,7 @@ namespace DSRemapper.ConfigManager
                 }
                 else if (type.IsAssignableTo(typeof(IDSOutputController)))
                 {
-                    string? path = type.GetCustomAttribute<EmulatedControllerPathAttribute>()?.ScannerPath;
+                    string? path = type.GetCustomAttribute<EmulatedControllerAttribute>()?.ScannerPath;
                     if (OutputPlugins.TryAdd(path ?? type.FullName ?? "Unknown", type))
                         Logger.Log($"Output plugin found: {type.FullName}");
                     else
@@ -59,10 +59,11 @@ namespace DSRemapper.ConfigManager
                 }
                 else if (type.IsAssignableTo(typeof(IDSRemapper)))
                 {
-                    if (RemapperPlugins.TryAdd(type.FullName ?? "Unknown", type))
+                    string? fileExt = type.GetCustomAttribute<RemapperAttribute>()?.FileExt;
+                    if (fileExt!=null && RemapperPlugins.TryAdd(fileExt, type))
                         Logger.Log($"Remapper plugin found: {type.FullName}");
                     else
-                        Logger.LogError($"Remapper plugin duplicated: {type.FullName}");
+                        Logger.LogError($"{type.FullName}: Remapper plugin not have file extension or it is repeated");
                 }
                 else if (type.IsAssignableTo(typeof(IDSDeviceScanner)))
                 {

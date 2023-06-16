@@ -10,12 +10,21 @@ namespace DSRemapper.Core
     }
 
     [AttributeUsage(AttributeTargets.Class)]
-    public class EmulatedControllerPathAttribute : Attribute
+    public class EmulatedControllerAttribute : Attribute
     {
         public string ScannerPath { get; set; }
-        public EmulatedControllerPathAttribute(string path)
+        public EmulatedControllerAttribute(string path)
         {
             ScannerPath = path;
+        }
+    }
+    [AttributeUsage(AttributeTargets.Class)]
+    public class RemapperAttribute : Attribute
+    {
+        public string FileExt { get; set; }
+        public RemapperAttribute(string fileExt)
+        {
+            FileExt = fileExt;
         }
     }
 
