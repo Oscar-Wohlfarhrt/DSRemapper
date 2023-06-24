@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v7.0": {
       "DSRemapper/1.0.0": {
         "dependencies": {
-          "DSRemapper.ConfigManager": "1.0.0",
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSInput": "1.0.0",
           "DSRemapper.DSOutput": "1.0.0",

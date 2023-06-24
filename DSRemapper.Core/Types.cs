@@ -246,11 +246,17 @@ namespace DSRemapper.Types
     }
     public struct DSOutputReport
     {
+        private const float defaulLedIntensity = 0.125f;
         public float[] Rumble { get; set; } = new float[6];
         public DSLight Led { get; set; } = new();
         public float[] ExtLeds { get; set; } = new float[6];
 
-        public DSOutputReport() { }
+        public DSOutputReport() {
+            Led.Player = 1;
+            Red = 0.4f * defaulLedIntensity;
+            Green = 0.8f * defaulLedIntensity;
+            Blue = 1f * defaulLedIntensity;
+        }
 
         #region DS4Layout
         public float Right { get { return Rumble[0]; } set { Rumble[0] = value; } }

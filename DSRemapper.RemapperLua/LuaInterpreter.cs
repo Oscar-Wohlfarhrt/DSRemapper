@@ -46,8 +46,11 @@ namespace DSRemapper.RemapperLua
             UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
         }
         Script script = new Script();
+        Closure? luaRemap = null;
 
         public event RemapperEventArgs? OnLog;
+        private string lastMessage = "";
+        
 
         public LuaInterpreter()
         {
@@ -59,14 +62,36 @@ namespace DSRemapper.RemapperLua
             {
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
                 script.DoFile(file);
+
+                DynValue remapFunction = (DynValue)script.Globals["Remap"];
+                if (remapFunction.Type == DataType.Function)
+                    luaRemap = remapFunction.Function;
+                else
+                    luaRemap = null;
             }
             catch (Exception e)
             {
+                luaRemap = null;
                 OnLog?.Invoke(RemapperEventType.Error, e.Message);
             }
         }
         public DSOutputReport Remap(DSInputReport report)
         {
+            try
+            {
+                if(luaRemap != null)
+                    script.Call(luaRemap);
+            }
+            catch (Exception e)
+            {
+                if (lastMessage != e.Message)
+                {
+                    lastMessage = e.Message;
+                    OnLog?.Invoke(RemapperEventType.Error, e.Message);
+                }
+                luaRemap = null;
+            }
+
             return new();
         }
         private void ConsoleLog(string text)

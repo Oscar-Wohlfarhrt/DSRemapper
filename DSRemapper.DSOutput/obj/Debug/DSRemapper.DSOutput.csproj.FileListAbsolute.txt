@@ -1,18 +1,3 @@
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.deps.json
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.pdb
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.Core.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.Core.pdb
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.AssemblyReference.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.GeneratedMSBuildEditorConfig.editorconfig
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.AssemblyInfoInputs.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.AssemblyInfo.cs
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.CoreCompileInputs.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.CopyComplete
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\refint\DSRemapper.DSOutput.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.pdb
-G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\ref\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.deps.json
 D:\Github\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.pdb
@@ -28,3 +13,18 @@ D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Debug\refint\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.pdb
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Debug\ref\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.deps.json
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.DSOutput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\refint\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\ref\DSRemapper.DSOutput.dll

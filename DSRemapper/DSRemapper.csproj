@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSRemapper.ConfigManager\DSRemapper.ConfigManager.csproj" />
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
     <ProjectReference Include="..\DSRemapper.DSInput\DSRemapper.DSInput.csproj" />
     <ProjectReference Include="..\DSRemapper.DSOutput\DSRemapper.DSOutput.csproj" />

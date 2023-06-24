@@ -1,11 +1,11 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v6.0",
+    "name": ".NETCoreApp,Version=v7.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v6.0": {
+    ".NETCoreApp,Version=v7.0": {
       "DSRemapper.DualShock/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
@@ -19,7 +19,7 @@
       },
       "System.CodeDom/7.0.0": {
         "runtime": {
-          "lib/net6.0/System.CodeDom.dll": {
+          "lib/net7.0/System.CodeDom.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           }
@@ -27,7 +27,7 @@
       },
       "System.IO.Hashing/7.0.0": {
         "runtime": {
-          "lib/net6.0/System.IO.Hashing.dll": {
+          "lib/net7.0/System.IO.Hashing.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           }
@@ -38,13 +38,13 @@
           "System.CodeDom": "7.0.0"
         },
         "runtime": {
-          "lib/net6.0/System.Management.dll": {
+          "lib/net7.0/System.Management.dll": {
             "assemblyVersion": "7.0.0.1",
             "fileVersion": "7.0.523.17405"
           }
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Management.dll": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.1",

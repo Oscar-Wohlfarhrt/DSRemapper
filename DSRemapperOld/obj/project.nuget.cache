@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "E4hcNEndf3HhiaK/YHA6aSAClO4JHwtYdDDaL5dpkdJy6Fb6Vgm1JNeVZ0Y2l5wIyh6gs25WPIi3nSrsJFLN7g==",
+  "dgSpecHash": "nQ8NzGf5BknM8dIEyC+Tm/9tFLfwaYZVMUsua0+BmfC3KG8UePcYRjMhnjCarLQZ5eSvqKP7Jycm1zUqY+N1Qg==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapperOld\\DSRemapperOld.csproj",
   "expectedPackageFiles": [
@@ -99,8 +99,7 @@
     "C:\\Users\\Oscar\\.nuget\\packages\\system.threading.tasks.extensions\\4.3.0\\system.threading.tasks.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Oscar\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.22621.28\\microsoft.windows.sdk.net.ref.10.0.22621.28.nupkg.sha512"
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,0 +1,15 @@
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net7.0\DSRemapper.ConfigManager.deps.json
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net7.0\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net7.0\DSRemapper.ConfigManager.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net7.0\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\bin\Debug\net7.0\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\refint\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\DSRemapper.ConfigManager.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.ConfigManager\obj\Debug\net7.0\ref\DSRemapper.ConfigManager.dll

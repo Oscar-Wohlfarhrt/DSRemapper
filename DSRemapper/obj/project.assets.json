@@ -632,7 +632,7 @@
       },
       "DSRemapper.ConfigManager/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "DSRemapper.Core": "1.0.0"
         },
@@ -645,7 +645,7 @@
       },
       "DSRemapper.Core/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/DSRemapper.Core.dll": {}
         },
@@ -655,7 +655,7 @@
       },
       "DSRemapper.DSInput/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "DSRemapper.ConfigManager": "1.0.0",
           "DSRemapper.Core": "1.0.0"
@@ -669,8 +669,9 @@
       },
       "DSRemapper.DSOutput/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "DSRemapper.ConfigManager": "1.0.0",
           "DSRemapper.Core": "1.0.0"
         },
         "compile": {
@@ -682,7 +683,7 @@
       },
       "DSRemapper.DualShock/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.HID": "1.0.0",
@@ -711,7 +712,7 @@
       },
       "DSRemapper.RemapperCore/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSInput": "1.0.0"
@@ -725,7 +726,7 @@
       },
       "DSRemapper.RemapperLua/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
           "MoonSharp": "2.0.0"
@@ -1741,7 +1742,6 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
-      "DSRemapper.ConfigManager >= 1.0.0",
       "DSRemapper.Core >= 1.0.0",
       "DSRemapper.DSInput >= 1.0.0",
       "DSRemapper.DSOutput >= 1.0.0",
@@ -1787,9 +1787,6 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "projectReferences": {
-            "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj": {
-              "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ConfigManager\\DSRemapper.ConfigManager.csproj"
-            },
             "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj": {
               "projectPath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.Core\\DSRemapper.Core.csproj"
             },

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YUzcsuaUEQ9ZNIK/MaMK5jVRaFFmEmzvYYQpllU7AKfJfG11QFLkmqleiaXndlW9RnaBP9BJb+oGxAng0fZkPw==",
+  "dgSpecHash": "d0sPLlXXqRD7TxypoAfaNsZJou2O6XVcCcIIUGdjUPHXrL41Jra7LScgpDwzI12yicDISmmIfIxgKWUqhpsi/w==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.ViGEm\\DSRemapper.ViGEm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\nefarius.vigem.client\\1.21.256\\nefarius.vigem.client.1.21.256.nupkg.sha512"
+  ],
   "logs": []
 }

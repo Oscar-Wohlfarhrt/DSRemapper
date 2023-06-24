@@ -18,8 +18,8 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyProductAttribute("DSRemapperOld")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DSRemapperOld")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows10.0.22621.0")]
-[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows10.0.17763.0")]
+[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
+[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
 

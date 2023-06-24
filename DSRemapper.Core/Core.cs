@@ -13,10 +13,12 @@ namespace DSRemapper.Core
     [AttributeUsage(AttributeTargets.Class)]
     public class EmulatedControllerAttribute : Attribute
     {
-        public string ScannerPath { get; set; }
-        public EmulatedControllerAttribute(string path)
+        public string DevicePath { get; set; }
+        public bool IsGlobal { get; set; }
+        public EmulatedControllerAttribute(string path, bool isGlobal=false)
         {
-            ScannerPath = path;
+            DevicePath = path;
+            IsGlobal = isGlobal;
         }
     }
     public enum RemapperEventType

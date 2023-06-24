@@ -38,6 +38,9 @@ namespace DSRemapper.HID
             while (trys > 0 && (serial = ReadSerial())==null) ;
             Information.Id = serial ?? info.Path;
 
+            if (serial == null)
+                serial = GenerateFakeMAC();
+
             CancelIO();
             CloseDevice();
         }
@@ -113,16 +116,11 @@ namespace DSRemapper.HID
                             MACAddr[5], MACAddr[6], MACAddr[7], MACAddr[8],
                             MACAddr[9], MACAddr[10], MACAddr[11]);
                     }
-                    /*else
-                    {
-                        return serial = GenerateFakeMAC();
-                    }*/
                 }
             }
             catch (Exception err)
             {
-                /*if (err.GetType() == typeof(IndexOutOfRangeException))
-                    return serial = GenerateFakeMAC();*/
+
             }
 
             return serial;

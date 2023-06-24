@@ -3,6 +3,7 @@ using DSRemapper.Core;
 using DSRemapper.DSInput;
 using DSRemapper.DSLogger;
 using DSRemapper.Types;
+using System.Reflection;
 using System.Threading;
 using System.Xml.Linq;
 
@@ -33,6 +34,16 @@ namespace DSRemapper.RemapperCore
                 Priority = ThreadPriority.BelowNormal
             };
             deviceScannerThread.Start();
+        }
+        public static void Stop()
+        {
+            DisposeAllRemappers();
+            StopScanner();
+        }
+        public static void DisposeAllRemappers()
+        {
+            foreach(Remapper r in remappers)
+                r.Dispose();
         }
         public static void StopScanner()
         {
@@ -89,8 +100,8 @@ namespace DSRemapper.RemapperCore
 
         public static IDSRemapper? CreateRemapper(string fileExt)
         {
-            if (PluginsLoader.RemapperPlugins.TryGetValue(fileExt,out Type? remapType))
-                return (IDSRemapper?)Activator.CreateInstance(remapType);
+            if (PluginsLoader.RemapperPlugins.TryGetValue(fileExt,out ConstructorInfo? remapType))
+                return (IDSRemapper?)remapType?.Invoke(null);
 
             return null;
         }

@@ -1,16 +1,3 @@
-G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.deps.json
-G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.dll
-G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.pdb
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.AssemblyReference.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.GeneratedMSBuildEditorConfig.editorconfig
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.AssemblyInfoInputs.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.AssemblyInfo.cs
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.CoreCompileInputs.cache
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.CopyComplete
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\refint\DSRemapper.RemapperLua.dll
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.pdb
-G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\ref\DSRemapper.RemapperLua.dll
 D:\Github\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.deps.json
 D:\Github\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.dll
 D:\Github\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.pdb
@@ -24,3 +11,16 @@ D:\Github\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.dll
 D:\Github\DSRemapper\DSRemapper.RemapperLua\obj\Debug\refint\DSRemapper.RemapperLua.dll
 D:\Github\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.pdb
 D:\Github\DSRemapper\DSRemapper.RemapperLua\obj\Debug\ref\DSRemapper.RemapperLua.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Remapper\DSRemapper.RemapperLua.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.AssemblyReference.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.AssemblyInfoInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.AssemblyInfo.cs
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.CoreCompileInputs.cache
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\refint\DSRemapper.RemapperLua.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\DSRemapper.RemapperLua.pdb
+G:\Projectos Visual\DSRemapper\DSRemapper.RemapperLua\obj\Debug\ref\DSRemapper.RemapperLua.dll
