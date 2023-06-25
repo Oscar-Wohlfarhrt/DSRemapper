@@ -23,7 +23,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.86" />
     <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
-    <PackageReference Include="System.Management" Version="7.0.1" />
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
+    <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +37,10 @@
     </ProjectReference>
     <ProjectReference Include="..\DSRemapper.RemapperCore\DSRemapper.RemapperCore.csproj" />
     <ProjectReference Include="..\DSRemapper.RemapperLua\DSRemapper.RemapperLua.csproj">
+      <Private>False</Private>
+      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+    <ProjectReference Include="..\DSRemapper.ViGEm\DSRemapper.ViGEm.csproj">
       <Private>False</Private>
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
     </ProjectReference>

@@ -14,4 +14,10 @@
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="vJoyInterface.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

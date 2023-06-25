@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "EjbhTwqZNj8Wd9ixWz/EkKsaCCmJniMQZkumLusNkOTJete7k9/6PIDm29nc8q8FxSINhBEBK5gGYR1KK6WI2Q==",
+  "dgSpecHash": "d8+Me8TtoNFepvyYwe7dXBsIOszpdPRV+WA8k54Lejf44PW+PWqO2k6AaBLC3AVlReS4Vtk5W4WEYAk8OzE4NA==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper.COMM\\DSRemapper.COMM.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Oscar\\.nuget\\packages\\firelibs.io\\1.0.0\\firelibs.io.1.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.native.system.io.ports\\7.0.0\\runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.io.ports\\7.0.0\\system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

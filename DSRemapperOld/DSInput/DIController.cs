@@ -4,12 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SharpDX.DirectInput;
-using Windows.Gaming.Input.ForceFeedback;
-using Windows.Gaming.Input;
 using System.Drawing;
 using System.Runtime.Intrinsics.Arm;
-using Windows.Devices.HumanInterfaceDevice;
-using Windows.UI.Notifications;
 using static System.Windows.Forms.AxHost;
 
 namespace DSRemapper.DSInput

@@ -6,25 +6,25 @@ using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace DSRemapper.ViGEm
 {
-    [EmulatedController("ViGEm/DS4")]
-    internal class Xbox : IDSOutputController
+    [EmulatedController("ViGEm/Xbox")]
+    public class Xbox : IDSOutputController
     {
         private readonly IXbox360Controller emuController;
         public bool IsConnected { get; private set; }
 
-        public DSInputReport state => new DSInputReport(6,0,14,1,0);
+        public DSInputReport state { get; set; } = new DSInputReport(6,0,14,1,0);
         private DSOutputReport feedback = new();
         public Xbox()
         {
             ViGEmClient cli = new ViGEmClient();
             emuController=cli.CreateXbox360Controller();
             emuController.FeedbackReceived += EmuController_FeedbackReceived;
+            emuController.AutoSubmitReport = true;
         }
         public void Connect()
         {
             if (!IsConnected)
             {
-                emuController.AutoSubmitReport = false;
                 emuController.Connect();
                 IsConnected = true;
             }
@@ -41,7 +41,7 @@ namespace DSRemapper.ViGEm
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Disconnect();
         }
         private void EmuController_FeedbackReceived(object sender, Xbox360FeedbackReceivedEventArgs e)
         {

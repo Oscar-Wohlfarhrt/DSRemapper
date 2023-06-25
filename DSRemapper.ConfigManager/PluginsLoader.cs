@@ -24,8 +24,15 @@ namespace DSRemapper.ConfigManager
             string[] plugins = Directory.GetFiles(DSPaths.PluginsPath, "*.dll", SearchOption.AllDirectories);
             foreach (string plugin in plugins)
             {
-                pluginAssemblies.Add(Assembly.LoadFrom(plugin));
-                Logger.Log($"Assembly found: {plugin}");
+                try
+                {
+                    pluginAssemblies.Add(Assembly.LoadFrom(plugin));
+                    Logger.Log($"Assembly found: {Path.GetRelativePath(DSPaths.PluginsPath, plugin)}");
+                }
+                catch
+                {
+                    Logger.LogWarning($"Unable to load {Path.GetRelativePath(DSPaths.PluginsPath, plugin)}");
+                }
             }
         }
 
@@ -49,10 +56,10 @@ namespace DSRemapper.ConfigManager
                     string? path = type.GetCustomAttribute<EmulatedControllerAttribute>()?.DevicePath;
                     if (path != null)
                     {
-                        ConstructorInfo? ctr = type.GetConstructor(BindingFlags.Public, Type.EmptyTypes);
+                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
                         if (ctr != null)
                         {
-                            if (OutputPlugins.TryAdd(path ?? type.FullName ?? "Unknown", ctr))
+                            if (OutputPlugins.TryAdd(path, ctr))
                                 Logger.Log($"Output plugin found: {type.FullName}");
                             else
                                 Logger.LogWarning($"Output plugin is duplicated: {type.FullName}");
@@ -68,7 +75,7 @@ namespace DSRemapper.ConfigManager
                     string? fileExt = type.GetCustomAttribute<RemapperAttribute>()?.FileExt;
                     if (fileExt != null)
                     {
-                        ConstructorInfo? ctr = type.GetConstructor(BindingFlags.Public, Type.EmptyTypes);
+                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
                         if (ctr != null) {
                             if (RemapperPlugins.TryAdd(fileExt, ctr))
                             {
@@ -85,7 +92,7 @@ namespace DSRemapper.ConfigManager
                 }
                 else if (type.IsAssignableTo(typeof(IDSDeviceScanner)))
                 {
-                    ConstructorInfo? ctr = type.GetConstructor(BindingFlags.Public, Type.EmptyTypes);
+                    ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
                     if (ctr != null)
                     {
                         if (Scanners.TryAdd(type.FullName ?? "Unknown", (IDSDeviceScanner)ctr.Invoke(null)))

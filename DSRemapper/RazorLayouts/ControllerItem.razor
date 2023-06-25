@@ -14,7 +14,7 @@
     <div class="ctrl-main">
         <div class="title"><label><InputCheckbox @bind-Value=Active />@Name - @Type</label></div>
         <div class="description">@InfoLine @Remapper.OnReadSubscriptors</div>
-        <select class="profile-list" onchange="@UpdateProfile">
+        <select class="profile-list" value="@Remapper.CurrentProfile" onchange="@UpdateProfile">
             <option value="">Select a profile</option>
             @foreach (string op in ProfileManager.GetProfiles())
             {
@@ -67,6 +67,7 @@
             RemapperConfig config = DSConfig.GetConfig(Remapper.Id);
             Active = config.AutoConnect;
             SetProfile(config.LastProfile);
+            StateHasChanged();
         }
     }
 
@@ -76,8 +77,18 @@
     }
     private void RemapperOnLog(RemapperEventType type, string message)
     {
-        if (type == RemapperEventType.DeviceConsole)
-            ConsoleText = message;
+        switch (type)
+        { // == RemapperEventType.DeviceConsole
+            case RemapperEventType.DeviceConsole:
+                ConsoleText = message;
+                break;
+            case RemapperEventType.Warning:
+                Logger.LogWarning(message);
+                break;
+            case RemapperEventType.Error:
+                Logger.LogError(message);
+                break;
+        }
 
         this.InvokeAsync(() =>
         {

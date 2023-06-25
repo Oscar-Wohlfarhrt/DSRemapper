@@ -1,9 +1,23 @@
 @page "/"
 @using DSRemapper.ConfigManager;
 @using DSRemapper.Core;
+@using DSRemapper.DSLogger;
+@using Microsoft.JSInterop;
+
+@inject IJSRuntime JS
+@implements IDisposable
 
 @{
+    //
     #pragma warning disable CS8974 //this is for call C# functions from onclick event
+}
+@functions {
+    ElementReference footer;
+
+    void SetHTML(string html)
+    {
+        JS.InvokeVoidAsync("SetHTML", new object[] { footer, html });
+    }
 }
 
 <div id="nav">
@@ -11,7 +25,7 @@
     <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
     <button onclick="@DSBridge.LogConsole">Log console</button>
     <span>@RemapperCore.RemapperCore.remappers.Count</span>
-    <span>@DSLogger.Logger.Subcribers</span>
+    <span>@Logger.Subcribers</span>
 </div>
 <div id="main">
     <div id="controller-list">
@@ -21,7 +35,7 @@
         }
     </div>
 </div>
-<div id="footer">
+<div @ref=footer id="footer">
 </div>
 
 @code{
@@ -37,23 +51,22 @@
         base.OnAfterRender(firstRender);
         if (firstRender)
         {
-        #if DEBUG
-            DSBridge.LogConsole();
-        #endif
+#if DEBUG
+    DSBridge.LogConsole();
+#endif
+            Logger.OnLog += Logger_OnLog;
 
             RemapperCore.RemapperCore.OnUpdate += ControllersUpdate;
             RemapperCore.RemapperCore.StartScanner();
         }
     }
+    private void Logger_OnLog(Logger.LogEntry entry)
+    {
+        SetHTML($"<{entry.Level} class='mono-space'>{entry.Message}</{entry.Level}>");
+    }
+
+    public void Dispose()
+    {
+        Logger.OnLog -= Logger_OnLog;
+    }
 }
-<!--
-
-<div class="main-DSLayout">
-</div>
-
-    <h1>Hello World!</h1>
-    <h1><test>This is DSRemapper Razor View</test></h1>
-    <button onclick="@DSBridge.WindowsControllers">Windows Controllers</button>
-    <button onclick="@DSBridge.LogConsole">Windows Controllers</button>
-
-    <ControllerItem/>-->

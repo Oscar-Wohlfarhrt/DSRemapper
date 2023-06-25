@@ -315,6 +315,22 @@
           }
         }
       },
+      "MoonSharp/2.0.0": {
+        "runtime": {
+          "lib/netstandard1.6/MoonSharp.Interpreter.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "Nefarius.ViGEm.Client/1.21.256": {
+        "runtime": {
+          "lib/netstandard2.0/Nefarius.ViGEm.Client.dll": {
+            "assemblyVersion": "1.21.256.0",
+            "fileVersion": "1.21.256.0"
+          }
+        }
+      },
       "System.CodeDom/7.0.0": {
         "runtime": {
           "lib/net7.0/System.CodeDom.dll": {
@@ -569,6 +585,20 @@
       "sha512": "sha512-aWiZhcZn2JxIHtSdRNQoTQU+CEe2hqEzwkV9V1PJ47pJ333ZDcJMqopllN30hxiVoHwqq1eDo+ZbyaCfVGCNDw==",
       "path": "microsoft.web.webview2/1.0.1370.28",
       "hashPath": "microsoft.web.webview2.1.0.1370.28.nupkg.sha512"
+    },
+    "MoonSharp/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uiAcRh7d+53k3xW9pFDJfAFVw4RnjHVCJG05M3oPAVEVwPtFavhg1H/IpC6So4X1j9kJlzuLlA3OghhPcIvc5A==",
+      "path": "moonsharp/2.0.0",
+      "hashPath": "moonsharp.2.0.0.nupkg.sha512"
+    },
+    "Nefarius.ViGEm.Client/1.21.256": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VJMO6hkalOZ7YdXTwcR881aTgPZlN7thEs3x6CWE/kEu7SdE5bY7QuDXkR2eqXfPAee4NrxInIAqa45PorpTsA==",
+      "path": "nefarius.vigem.client/1.21.256",
+      "hashPath": "nefarius.vigem.client.1.21.256.nupkg.sha512"
     },
     "System.CodeDom/7.0.0": {
       "type": "package",

@@ -9,6 +9,7 @@
       "DSRemapper.RemapperLua/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
+          "DSRemapper.DSOutput": "1.0.0",
           "MoonSharp": "2.0.0"
         },
         "runtime": {
@@ -23,9 +24,26 @@
           }
         }
       },
+      "DSRemapper.ConfigManager/1.0.0": {
+        "dependencies": {
+          "DSRemapper.Core": "1.0.0"
+        },
+        "runtime": {
+          "DSRemapper.ConfigManager.dll": {}
+        }
+      },
       "DSRemapper.Core/1.0.0": {
         "runtime": {
           "DSRemapper.Core.dll": {}
+        }
+      },
+      "DSRemapper.DSOutput/1.0.0": {
+        "dependencies": {
+          "DSRemapper.ConfigManager": "1.0.0",
+          "DSRemapper.Core": "1.0.0"
+        },
+        "runtime": {
+          "DSRemapper.DSOutput.dll": {}
         }
       }
     }
@@ -43,7 +61,17 @@
       "path": "moonsharp/2.0.0",
       "hashPath": "moonsharp.2.0.0.nupkg.sha512"
     },
+    "DSRemapper.ConfigManager/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "DSRemapper.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.DSOutput/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

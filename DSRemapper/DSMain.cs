@@ -24,7 +24,7 @@ namespace DSRemapper
     }
     public class DSForm<T> : DSMain where T : IComponent
     {
-        public DSForm(IDictionary<string,object?>? parameters = null) : base(false)
+        public DSForm(IDictionary<string, object?>? parameters = null) : base(false)
         {
             var services = new ServiceCollection();
             services.AddWindowsFormsBlazorWebView();

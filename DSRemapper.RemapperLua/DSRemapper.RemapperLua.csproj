@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+    <ProjectReference Include="..\DSRemapper.DSOutput\DSRemapper.DSOutput.csproj" />
   </ItemGroup>
 
 </Project>

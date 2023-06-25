@@ -157,7 +157,11 @@ namespace DSRemapper.DSInput
                 report.Sliders[4] = AxisToFloat(rawReport.Axis[10]);
                 report.Sliders[5] = AxisToFloat(rawReport.Axis[11]);
 
-                report.Buttons[0] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 0));
+                for (int i = 0; i < report.Buttons.Length; i++)
+                {
+                    report.Buttons[i] = Convert.ToBoolean(rawReport.Buttons[i/8] & (1 << i%8));
+                }
+                /*report.Buttons[0] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 0));
                 report.Buttons[1] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 1));
                 report.Buttons[2] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 2));
                 report.Buttons[3] = Convert.ToBoolean(rawReport.Buttons[0] & (1 << 3));
@@ -191,7 +195,7 @@ namespace DSRemapper.DSInput
                 report.Buttons[28] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 4));
                 report.Buttons[29] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 5));
                 report.Buttons[30] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 6));
-                report.Buttons[31] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 7));
+                report.Buttons[31] = Convert.ToBoolean(rawReport.Buttons[3] & (1 << 7));*/
 
                 if (rawReport.Pov[0] == ushort.MaxValue)
                     report.Povs[0].Angle = -1;

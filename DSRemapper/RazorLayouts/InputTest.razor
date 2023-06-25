@@ -9,29 +9,29 @@
     <div id="input-test-grid">
         @if (report != null)
         {
-            @for (int i = 0; i < report.Value.Axis.Length; i++)
+            @for (int i = 0; i < report.Axis.Length; i++)
             {
-                <AxisItem Name=@($"Axis[{i}]") Value=report.Value.Axis[i]/>
+                <AxisItem Name=@($"Axis[{i}]") Value=report.Axis[i]/>
             }
-            @for (int i = 0; i < report.Value.Sliders.Length; i++)
+            @for (int i = 0; i < report.Sliders.Length; i++)
             {
-                <AxisItem Name=@($"Sliders[{i}]") Value=report.Value.Sliders[i] />
+                <AxisItem Name=@($"Sliders[{i}]") Value=report.Sliders[i] />
             }
-            @for (int i = 0; i < report.Value.Povs.Length; i++)
+            @for (int i = 0; i < report.Povs.Length; i++)
             {
-                <PovItem Name=@($"Pov[{i}]") Value=report.Value.Povs[i] />
+                <PovItem Name=@($"Pov[{i}]") Value=report.Povs[i] />
             }
-            @for (int i = 0; i < report.Value.Buttons.Length; i++)
+            @for (int i = 0; i < report.Buttons.Length; i++)
             {
-                <ButtonItem Name=@($"Buttons[{i}]") Value=report.Value.Buttons[i] />
+                <ButtonItem Name=@($"Buttons[{i}]") Value=report.Buttons[i] />
             }
-            @for (int i = 0; i < report.Value.SixAxis.Length; i++)
+            @for (int i = 0; i < report.SixAxis.Length; i++)
             {
-                <SixAxisItem Name=@($"SixAxis[{i}]") Value=report.Value.SixAxis[i] Scale=SixAxisScales[i] />
+                <SixAxisItem Name=@($"SixAxis[{i}]") Value=report.SixAxis[i] Scale=SixAxisScales[i] />
             }
-            @for (int i = 0; i < report.Value.Touch.Length; i++)
+            @for (int i = 0; i < report.Touch.Length; i++)
             {
-                <TouchItem Name=@($"Touch[{i}]") Value=report.Value.Touch[i] />
+                <TouchItem Name=@($"Touch[{i}]") Value=report.Touch[i] />
             }
         }
     </div>
@@ -39,8 +39,8 @@
 <div id="footer">
     @if (report != null)
     {
-        <span>Battery: @report.Value.Battery</span>
-        <span>USB: @report.Value.Usb</span>
+        <span>Battery: @report.Battery</span>
+        <span>USB: @report.Usb</span>
     }
 </div>
 

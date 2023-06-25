@@ -19,10 +19,25 @@ namespace DSRemapper.DualShock
      */
     public class DualShockInfo : IDSInputDeviceInfo
     {
-        public DualShockInfo(string path, string name, string id, int vendorId, int productId)
-            : base(path, name, id, vendorId, productId) {}
 
-        public override IDSInputController CreateController()
+        public string Path { get; private set; }
+        public string Id { get; private set; }
+
+        public string Name { get; private set; }
+
+        public int VendorId { get; private set; }
+
+        public int ProductId { get; private set; }
+
+        public DualShockInfo(string path, string name, string id, int vendorId, int productId)
+        {
+            Path = path;
+            Id = id;
+            Name = name;
+            VendorId = vendorId;
+            ProductId = productId;
+        }
+        public IDSInputController CreateController()
         {
             return new DualShock(this);
         }
@@ -36,7 +51,7 @@ namespace DSRemapper.DualShock
         /// Conversion from DSHidInfo to DualShockInfo to make both "structures" independent
         /// </summary>
         /// <param name="info">DSHidInfo</param>
-        public static explicit operator DualShockInfo(DSHidInfo info) => new(info.Path,info.Name,info.Id,info.VendorId,info.ProductId);
+        public static explicit operator DualShockInfo(DSHidInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
         /// <summary>
         /// Conversion from DualShockInfo to DSHidInfo to make both "structures" independent
         /// </summary>
@@ -144,9 +159,9 @@ namespace DSRemapper.DualShock
 
     public class DualShockScanner : IDSDeviceScanner
     {
+        public DualShockScanner() { }
         public IDSInputDeviceInfo[] ScanDevices() => WmiEnumerator
             .EnumerateDevices(0x054C).Select(i => (DualShockInfo)i).ToArray();
-
     }
     public class DualShock : IDSInputController
     {

@@ -13,7 +13,7 @@
 
 @functions{
     ElementReference main, logConsole;
-    InputCheckbox autoScrollCheck;
+    InputCheckbox? autoScrollCheck;
 
     void ScrollBottom(){
         JS.InvokeVoidAsync("ScrollToBottom", new object[] { main });
@@ -70,7 +70,7 @@
         if (firstRender)
         {
 
-            foreach (var log in Logger.logs)
+            foreach (var log in Logger.logs.ToArray())
                 PrintLog(log);
 
             ScrollBottom();

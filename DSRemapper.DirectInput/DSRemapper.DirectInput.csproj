@@ -7,8 +7,13 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Input\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Input\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Input\DSDI\</OutputPath>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpDX.DirectInput" Version="4.2.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />

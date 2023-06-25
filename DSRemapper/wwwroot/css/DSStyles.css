@@ -96,6 +96,11 @@ error{
     background-color: #222;
     overflow: hidden auto;
 }
+.mono-space {
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 14px;
+}
 #log-console{
     display: flex;
     flex-direction: column;

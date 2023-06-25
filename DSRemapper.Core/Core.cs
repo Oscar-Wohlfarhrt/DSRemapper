@@ -40,24 +40,14 @@ namespace DSRemapper.Core
 
     #region Interfaces
 
-    public abstract class IDSInputDeviceInfo
+    public interface IDSInputDeviceInfo
     {
-        public virtual string Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Path { get; set; }
-        public virtual int VendorId { get; set; }
-        public virtual int ProductId { get; set; }
-
-        public IDSInputDeviceInfo(string path, string name, string id, int vendorId, int productId)
-        {
-            Path = path;
-            Id = id;
-            Name = name;
-            VendorId = vendorId;
-            ProductId = productId;
-        }
-        public abstract IDSInputController CreateController();
-        public override string ToString() => $"Device {Name} [{Id}]";
+        public string Id { get; }
+        public string Name { get; }
+        public int VendorId { get; }
+        public int ProductId { get; }
+        public IDSInputController CreateController();
+        public virtual string ToString() => $"Device {Name} [{Id}]";
     }
     public interface IDSDeviceScanner
     {
@@ -71,7 +61,6 @@ namespace DSRemapper.Core
         public bool IsConnected { get; }
         public void Connect();
         public void Disconnect();
-        public void ForceDisconnect();
         public DSInputReport GetInputReport();
         public void SendOutputReport(DSOutputReport report);
     }
@@ -84,6 +73,19 @@ namespace DSRemapper.Core
         public void Disconnect();
         public void Update();
         public DSOutputReport GetFeedbackReport();
+        /// <summary>
+        /// Implementation for custom user defined functions.
+        /// Created to implement needed functions not suported by the interface.
+        /// Override for custom implementation, default implementation use reflection.
+        /// </summary>
+        /// <param name="funcName">Name of custom function</param>
+        /// <param name="args">Optional arguments for the custom function</param>
+        public virtual void CustomFunc(string funcName, params object[]? args)
+        {
+            MethodInfo? method = GetType().GetMethod(funcName,
+                args == null ? Type.EmptyTypes : args.Select(a => a.GetType()).ToArray());
+            method?.Invoke(this, args);
+        }
     }
 
     public interface IDSRemapper : IDisposable

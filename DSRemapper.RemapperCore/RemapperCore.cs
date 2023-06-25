@@ -22,12 +22,9 @@ namespace DSRemapper.RemapperCore
 
         public static void StartScanner()
         {
-            if (deviceScannerThread != null)
-            {
-                StopScanner();
-                tokenSource = new();
-                cancellationToken = tokenSource.Token;
-            }
+            StopScanner();
+            tokenSource = new();
+            cancellationToken = tokenSource.Token;
             deviceScannerThread = new(DeviceScanner)
             {
                 Name = $"DSRemapper Device Scanner",
@@ -37,8 +34,8 @@ namespace DSRemapper.RemapperCore
         }
         public static void Stop()
         {
-            DisposeAllRemappers();
             StopScanner();
+            DisposeAllRemappers();
         }
         public static void DisposeAllRemappers()
         {
@@ -125,13 +122,6 @@ namespace DSRemapper.RemapperCore
             this.controller = controller;
             cancellationTokenSource = new CancellationTokenSource();
             cancellationToken = cancellationTokenSource.Token;
-
-            /*timer = new Timer(RemapTimer);
-            timer.Change(0,10);*/
-
-
-            /*Task.Factory.StartNew(RemapThread, CancellationToken.None,
-                TaskCreationOptions.LongRunning, TaskScheduler.Default);*/
         }
 
         public string Id => controller.Id;
@@ -139,6 +129,7 @@ namespace DSRemapper.RemapperCore
         public string Type => controller.Type;
         public bool IsConnected => controller.IsConnected;
         public bool IsRunning => thread?.IsAlive ?? false;
+        public string CurrentProfile { get; private set; } = "";
         public bool Connect()
         {
             if (!IsConnected)
@@ -208,6 +199,7 @@ namespace DSRemapper.RemapperCore
                     }
                 }
             }
+            CurrentProfile=profile;
         }
         public void ConsoleLog(string text)
         {
@@ -216,22 +208,24 @@ namespace DSRemapper.RemapperCore
         {
             while (!cancellationToken.IsCancellationRequested)
             {
-                if (IsConnected)
+                try
                 {
-                    DSInputReport report = controller.GetInputReport();
-                    OnRead?.Invoke(report);
-                    if (remapper != null)
+                    if (IsConnected)
                     {
-                        controller.SendOutputReport(remapper.Remap(report));
+                        DSInputReport report = controller.GetInputReport();
+                        OnRead?.Invoke(report);
+                        if (remapper != null)
+                        {
+                            controller.SendOutputReport(remapper.Remap(report));
+                        }
                     }
                 }
+                catch (Exception e) {
+                    Logger.LogError($"{e.Source}:\n{e.Message}");
+                }
 
-                Thread.Sleep(10);
+                Thread.Sleep(20);
             }
         }
-        /*private void RemapTimer(object? sender)
-        {
-
-        }*/
     }
 }

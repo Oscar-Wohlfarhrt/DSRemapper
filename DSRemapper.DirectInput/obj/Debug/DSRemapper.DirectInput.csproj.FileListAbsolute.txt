@@ -24,3 +24,6 @@ D:\Github\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.dll
 D:\Github\DSRemapper\DSRemapper.DirectInput\obj\Debug\refint\DSRemapper.DirectInput.dll
 D:\Github\DSRemapper\DSRemapper.DirectInput\obj\Debug\DSRemapper.DirectInput.pdb
 D:\Github\DSRemapper\DSRemapper.DirectInput\obj\Debug\ref\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSDI\DSRemapper.DirectInput.deps.json
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSDI\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Input\DSDI\DSRemapper.DirectInput.pdb

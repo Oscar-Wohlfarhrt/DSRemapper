@@ -3,8 +3,8 @@ using DSRemapper.DSMath;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
 using MoonSharp.Interpreter;
+using System.Diagnostics;
 using System.Numerics;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DSRemapper.RemapperLua
 {
@@ -25,7 +25,7 @@ namespace DSRemapper.RemapperLua
             //UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
 
             UserData.RegisterType<IDSOutputController>(InteropAccessMode.BackgroundOptimized);
-
+            UserData.RegisterType<DSOutput.DSOutput>(InteropAccessMode.BackgroundOptimized);
             /*UserData.RegisterType<MKOutput>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<VirtualKeyShort>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<ScanCodeShort>(InteropAccessMode.BackgroundOptimized);
@@ -50,7 +50,10 @@ namespace DSRemapper.RemapperLua
 
         public event RemapperEventArgs? OnLog;
         private string lastMessage = "";
-        
+
+        DSOutput.DSOutput emuControllers = new();
+
+        Stopwatch sw = new();
 
         public LuaInterpreter()
         {
@@ -60,14 +63,18 @@ namespace DSRemapper.RemapperLua
         {
             try
             {
+                emuControllers.DisconnectAll();
+                script=new Script();
+
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
+                script.Globals["Emulated"] = emuControllers;
+                script.Globals["deltaTime"] = 0.0;
                 script.DoFile(file);
 
-                DynValue remapFunction = (DynValue)script.Globals["Remap"];
-                if (remapFunction.Type == DataType.Function)
-                    luaRemap = remapFunction.Function;
-                else
-                    luaRemap = null;
+                Closure? remapFunction = (Closure)script.Globals["Remap"];
+                luaRemap = remapFunction;
+                if (remapFunction == null)
+                    OnLog?.Invoke(RemapperEventType.Warning, "No Remap function on the script");
             }
             catch (Exception e)
             {
@@ -79,8 +86,10 @@ namespace DSRemapper.RemapperLua
         {
             try
             {
-                if(luaRemap != null)
-                    script.Call(luaRemap);
+                script.Globals["deltaTime"] = sw.Elapsed.TotalSeconds;
+                sw.Restart();
+                if (luaRemap != null)
+                    script.Call(luaRemap,report);
             }
             catch (Exception e)
             {
@@ -100,7 +109,7 @@ namespace DSRemapper.RemapperLua
         }
         public void Dispose()
         {
-
+            emuControllers.DisconnectAll();
         }
     }
 }

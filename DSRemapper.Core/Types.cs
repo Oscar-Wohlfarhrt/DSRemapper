@@ -113,7 +113,7 @@ namespace DSRemapper.Types
 
         public override string ToString() => $"Id:{Id},P:{Pressed},{Pos}";
     }
-    public struct DSInputReport
+    public class DSInputReport
     {
         public float Battery { get; set; } = 0;
         public bool Usb { get; set; } = false;
@@ -244,7 +244,7 @@ namespace DSRemapper.Types
         public DSVector3 Accel { get { return SixAxis[3]; } set { SixAxis[3] = value; } }
         #endregion SixAxis
     }
-    public struct DSOutputReport
+    public class DSOutputReport
     {
         private const float defaulLedIntensity = 0.125f;
         public float[] Rumble { get; set; } = new float[6];

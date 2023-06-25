@@ -24,3 +24,4 @@ D:\Github\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.dll
 D:\Github\DSRemapper\DSRemapper.VJoy\obj\Debug\refint\DSRemapper.VJoy.dll
 D:\Github\DSRemapper\DSRemapper.VJoy\obj\Debug\DSRemapper.VJoy.pdb
 D:\Github\DSRemapper\DSRemapper.VJoy\obj\Debug\ref\DSRemapper.VJoy.dll
+G:\Projectos Visual\DSRemapper\build\Debug\Plugins\Output\vJoyInterface.dll

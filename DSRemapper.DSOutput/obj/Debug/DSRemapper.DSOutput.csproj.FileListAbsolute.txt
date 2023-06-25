@@ -28,3 +28,5 @@ G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput
 G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\refint\DSRemapper.DSOutput.dll
 G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\DSRemapper.DSOutput.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\obj\Debug\ref\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Debug\DSRemapper.ConfigManager.pdb

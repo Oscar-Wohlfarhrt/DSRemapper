@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DhebvaWAnhUDoyNZzaf/AQDhv1aZxFYu2899hvLoSnREbC8yyrNMM009Qvj3tALZPBCGRW4iT0SnBJVgTwaWzw==",
+  "dgSpecHash": "AczHNvZy0frSoSDrEJGLkM72DrYoP/tieG/1oECV8lQgvu8too6FpobqlXLouny/ztsKLee1JXPvHmNrsbYRiw==",
   "success": true,
   "projectFilePath": "G:\\Projectos Visual\\DSRemapper\\DSRemapper\\DSRemapper.csproj",
   "expectedPackageFiles": [
@@ -31,10 +31,18 @@
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.jsinterop\\7.0.0\\microsoft.jsinterop.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\microsoft.web.webview2\\1.0.1370.28\\microsoft.web.webview2.1.0.1370.28.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\moonsharp\\2.0.0\\moonsharp.2.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\nefarius.vigem.client\\1.21.256\\nefarius.vigem.client.1.21.256.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.native.system.io.ports\\7.0.0\\runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\7.0.0\\runtime.osx-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.io.hashing\\7.0.0\\system.io.hashing.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
-    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.1\\system.management.7.0.1.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.io.ports\\7.0.0\\system.io.ports.7.0.0.nupkg.sha512",
+    "C:\\Users\\Oscar\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Oscar\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],
