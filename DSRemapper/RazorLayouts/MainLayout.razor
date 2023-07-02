@@ -2,6 +2,7 @@
 @using DSRemapper.ConfigManager;
 @using DSRemapper.Core;
 @using DSRemapper.DSLogger;
+@using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.JSInterop;
 
 @inject IJSRuntime JS
@@ -24,6 +25,7 @@
     <button onclick="bridge.LogWarning('Not working')">File</button>
     <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
     <button onclick="@DSBridge.LogConsole">Log console</button>
+    <label><InputCheckbox @bind-Value=AutoReload/> Auto reload profiles</label>
     <span>@RemapperCore.RemapperCore.remappers.Count</span>
     <span>@Logger.Subcribers</span>
 </div>
@@ -39,7 +41,42 @@
 </div>
 
 @code{
-    private void ControllersUpdate(List<RemapperCore.Remapper> remappers)
+    private bool autoReload=false;
+    private bool AutoReload
+    {
+        get => autoReload;
+        set
+        {
+            if (value)
+                fileWatcher.Changed += FileWatcher_Reload;
+            else
+                fileWatcher.Changed -= FileWatcher_Reload;
+
+            autoReload = value;
+        }
+    }
+
+
+    FileSystemWatcher fileWatcher = new(DSPaths.ProfilesPath);
+
+    public MainLayout()
+    {
+        fileWatcher.Created += FileWatcher_CreateDelete;
+        fileWatcher.Deleted += FileWatcher_CreateDelete;
+        fileWatcher.IncludeSubdirectories = true;
+        fileWatcher.EnableRaisingEvents = true;
+    }
+
+    private void FileWatcher_CreateDelete(object sender, FileSystemEventArgs e)
+    {
+        StateHasChanged();
+    }
+    private void FileWatcher_Reload(object sender, FileSystemEventArgs e)
+    {
+        RemapperCore.RemapperCore.ReloadAllProfiles();
+    }
+
+    private void ControllersUpdate()
     {
         this.InvokeAsync(() =>
         {

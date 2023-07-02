@@ -14,3 +14,6 @@ G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DirectInpu
 G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DirectInput.dll
 G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSRemapper.DirectInput.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper.DirectInput\obj\Release\DSRemapper.DirectInput.csproj.CopyComplete
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSDI\DSRemapper.DirectInput.deps.json
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSDI\DSRemapper.DirectInput.dll
+G:\Projectos Visual\DSRemapper\build\Release\Plugins\Input\DSDI\DSRemapper.DirectInput.pdb

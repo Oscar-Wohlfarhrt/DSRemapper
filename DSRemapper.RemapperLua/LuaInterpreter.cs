@@ -21,8 +21,8 @@ namespace DSRemapper.RemapperLua
             UserData.RegisterType<DSPov[]>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<DSOutputReport>(InteropAccessMode.BackgroundOptimized);
 
-            //UserData.RegisterType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
-            //UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterExtensionType(typeof(Utils), InteropAccessMode.BackgroundOptimized);
 
             UserData.RegisterType<IDSOutputController>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<DSOutput.DSOutput>(InteropAccessMode.BackgroundOptimized);
@@ -45,6 +45,7 @@ namespace DSRemapper.RemapperLua
             UserData.RegisterType<bool[]>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
         }
+
         Script script = new Script();
         Closure? luaRemap = null;
 
@@ -68,6 +69,8 @@ namespace DSRemapper.RemapperLua
 
                 script.Globals["ConsoleLog"] = (Action<string>)ConsoleLog;
                 script.Globals["Emulated"] = emuControllers;
+                script.Globals["Utils"] = typeof(Utils);
+                script.Globals["inputFB"] = Utils.CreateOutputReport();
                 script.Globals["deltaTime"] = 0.0;
                 script.DoFile(file);
 
@@ -75,6 +78,11 @@ namespace DSRemapper.RemapperLua
                 luaRemap = remapFunction;
                 if (remapFunction == null)
                     OnLog?.Invoke(RemapperEventType.Warning, "No Remap function on the script");
+            }
+            catch (InterpreterException e)
+            {
+                luaRemap = null;
+                OnLog?.Invoke(RemapperEventType.Error, e.DecoratedMessage);
             }
             catch (Exception e)
             {
@@ -84,12 +92,21 @@ namespace DSRemapper.RemapperLua
         }
         public DSOutputReport Remap(DSInputReport report)
         {
+            DSOutputReport outReport = new();
             try
             {
                 script.Globals["deltaTime"] = sw.Elapsed.TotalSeconds;
                 sw.Restart();
                 if (luaRemap != null)
                     script.Call(luaRemap,report);
+                DSOutputReport? feedback = (DSOutputReport?)script.Globals["inputFB"];
+                if(feedback!=null)
+                    outReport = feedback;
+            }
+            catch (InterpreterException e)
+            {
+                luaRemap = null;
+                OnLog?.Invoke(RemapperEventType.Error, e.DecoratedMessage);
             }
             catch (Exception e)
             {
@@ -101,7 +118,7 @@ namespace DSRemapper.RemapperLua
                 luaRemap = null;
             }
 
-            return new();
+            return outReport;
         }
         private void ConsoleLog(string text)
         {

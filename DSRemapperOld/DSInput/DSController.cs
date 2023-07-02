@@ -3,8 +3,6 @@ using System.IO.Hashing;
 using System.Numerics;
 using DSRemapper.Remapper;
 using DSRemapper.DSInput.HidCom;
-using Windows.Devices.HumanInterfaceDevice;
-using Windows.ApplicationModel.Appointments;
 
 namespace DSRemapper.DSInput
 {

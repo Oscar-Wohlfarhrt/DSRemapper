@@ -27,3 +27,7 @@ G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\refint\DSRemapper.dll
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.pdb
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\DSRemapper.genruntimeconfig.cache
 G:\Projectos Visual\DSRemapper\DSRemapper\obj\Release\ref\DSRemapper.dll
+G:\Projectos Visual\DSRemapper\build\Release\wwwroot\css\app.css
+G:\Projectos Visual\DSRemapper\build\Release\wwwroot\css\DSStyles.css
+G:\Projectos Visual\DSRemapper\build\Release\wwwroot\index.html
+G:\Projectos Visual\DSRemapper\build\Release\wwwroot\js\jsinterop.js

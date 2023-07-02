@@ -1,11 +1,11 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v6.0",
+    "name": ".NETCoreApp,Version=v7.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v6.0": {
+    ".NETCoreApp,Version=v7.0": {
       "DSRemapperOld/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
@@ -19,23 +19,10 @@
           "SharpDX.DirectInput": "4.2.0",
           "System.IO.Hashing": "7.0.0",
           "System.IO.Ports": "7.0.0",
-          "System.Management": "7.0.1",
-          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.22621.28"
+          "System.Management": "7.0.1"
         },
         "runtime": {
           "DSRemapperOld.dll": {}
-        }
-      },
-      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.28": {
-        "runtime": {
-          "Microsoft.Windows.SDK.NET.dll": {
-            "assemblyVersion": "10.0.22621.24",
-            "fileVersion": "10.0.22621.28"
-          },
-          "WinRT.Runtime.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.1.40881"
-          }
         }
       },
       "FireLibs.IO/1.0.0": {
@@ -404,14 +391,7 @@
           "System.Threading": "4.3.0"
         }
       },
-      "System.CodeDom/7.0.0": {
-        "runtime": {
-          "lib/net6.0/System.CodeDom.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.22.51805"
-          }
-        }
-      },
+      "System.CodeDom/7.0.0": {},
       "System.Collections/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -433,17 +413,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Collections.Immutable/7.0.0": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/System.Collections.Immutable.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.22.51805"
-          }
-        }
-      },
+      "System.Collections.Immutable/7.0.0": {},
       "System.Console/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -568,7 +538,7 @@
       },
       "System.IO.Hashing/7.0.0": {
         "runtime": {
-          "lib/net6.0/System.IO.Hashing.dll": {
+          "lib/net7.0/System.IO.Hashing.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           }
@@ -579,19 +549,19 @@
           "runtime.native.System.IO.Ports": "7.0.0"
         },
         "runtime": {
-          "lib/net6.0/System.IO.Ports.dll": {
+          "lib/net7.0/System.IO.Ports.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           }
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/net6.0/System.IO.Ports.dll": {
+          "runtimes/unix/lib/net7.0/System.IO.Ports.dll": {
             "rid": "unix",
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
           },
-          "runtimes/win/lib/net6.0/System.IO.Ports.dll": {
+          "runtimes/win/lib/net7.0/System.IO.Ports.dll": {
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.0",
@@ -634,13 +604,13 @@
           "System.CodeDom": "7.0.0"
         },
         "runtime": {
-          "lib/net6.0/System.Management.dll": {
+          "lib/net7.0/System.Management.dll": {
             "assemblyVersion": "7.0.0.1",
             "fileVersion": "7.0.523.17405"
           }
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Management.dll": {
+          "runtimes/win/lib/net7.0/System.Management.dll": {
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.1",
@@ -749,12 +719,6 @@
       "System.Reflection.Metadata/7.0.0": {
         "dependencies": {
           "System.Collections.Immutable": "7.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/System.Reflection.Metadata.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.22.51805"
-          }
         }
       },
       "System.Reflection.Primitives/4.3.0": {
@@ -959,25 +923,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Text.Encoding.CodePages/7.0.0": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.22.51805"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Text.Encoding.CodePages.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.0.22.51805"
-          }
-        }
-      },
+      "System.Text.Encoding.CodePages/7.0.0": {},
       "System.Text.Encoding.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -1077,6 +1023,7 @@
       },
       "DSRemapper.DSOutput/1.0.0": {
         "dependencies": {
+          "DSRemapper.ConfigManager": "1.0.0",
           "DSRemapper.Core": "1.0.0"
         },
         "runtime": {
@@ -1088,11 +1035,6 @@
   "libraries": {
     "DSRemapperOld/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.22621.28": {
-      "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
     },

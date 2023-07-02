@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Components;
 using System.Runtime.InteropServices.ObjectiveC;
+using DSRemapper.ConfigManager;
 
 namespace DSRemapper
 {
@@ -16,7 +17,7 @@ namespace DSRemapper
             {
                 var services = new ServiceCollection();
                 services.AddWindowsFormsBlazorWebView();
-                blazorWebView1.HostPage = "wwwroot\\index.html";
+                blazorWebView1.HostPage = Path.Combine(DSPaths.ProgramPath,"wwwroot\\index.html");
                 blazorWebView1.Services = services.BuildServiceProvider();
                 blazorWebView1.RootComponents.Add<MainLayout>("#app");
             }
@@ -28,7 +29,7 @@ namespace DSRemapper
         {
             var services = new ServiceCollection();
             services.AddWindowsFormsBlazorWebView();
-            blazorWebView1.HostPage = "wwwroot\\index.html";
+            blazorWebView1.HostPage = Path.Combine(DSPaths.ProgramPath, "wwwroot\\index.html");
             blazorWebView1.Services = services.BuildServiceProvider();
             blazorWebView1.RootComponents.Add<T>("#app", parameters);
         }

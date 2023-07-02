@@ -1,0 +1,6 @@
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\DSRemapper.ViGEm.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\DSRemapper.ViGEm.deps.json
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\DSRemapper.ViGEm.pdb
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\Nefarius.ViGEm.Client.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Output\ViGEm\DSRemapper.Core.pdb

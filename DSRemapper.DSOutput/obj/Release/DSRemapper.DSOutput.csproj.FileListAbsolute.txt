@@ -28,3 +28,5 @@ D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Release\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Release\refint\DSRemapper.DSOutput.dll
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Release\DSRemapper.DSOutput.pdb
 D:\Github\DSRemapper\DSRemapper.DSOutput\obj\Release\ref\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Release\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\DSRemapper.DSOutput\bin\Release\DSRemapper.ConfigManager.pdb

@@ -89,6 +89,7 @@ namespace DSRemapper.COMM
         private static readonly byte[] infoReportRequst = new byte[] { 0x00 };
         private static readonly byte[] inputReportRequst = new byte[] { 0x01 };
 
+        private bool isNotFirstRead = false;
         private readonly SerialPort sp;
         private COMInputReport rawReport = new();
         private DSInputReport report = new();
@@ -111,7 +112,7 @@ namespace DSRemapper.COMM
         public COMM(COMMDeviceInfo info)
         {
             Id = info.Id;
-            report = new(sliders: 6, buttons: 32, povs: 2);
+            report = new(6, 6, 32, 2,0);
             sp = new(info.Info, BaudRate)
             {
                 ReadTimeout = readTimeout
@@ -158,16 +159,18 @@ namespace DSRemapper.COMM
 
         public DSInputReport GetInputReport()
         {
+            byte[] buffer = new byte[COMInputReportSize];
+
             if (sp.BytesToRead > 0)
                 sp.ReadExisting();
 
             information ??= ReadInfoReport();
 
             sp.Write(inputReportRequst, 0, inputReportRequst.Length);
-            byte[] buffer = new byte[COMInputReportSize];
 
             if (sp.ReadCount(buffer, 0, buffer.Length))
             {
+                isNotFirstRead = true;
                 GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
                 rawReport = Marshal.PtrToStructure<COMInputReport>(ptr.AddrOfPinnedObject());
                 ptr.Free();

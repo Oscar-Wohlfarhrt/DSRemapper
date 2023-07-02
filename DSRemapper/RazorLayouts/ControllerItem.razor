@@ -25,7 +25,8 @@
     </div>
     <div class="buttons">
         <button onclick="@Remapper.Start" >Connect</button>
-        <button onclick="@Remapper.Stop" >Disconnect</button>
+        <button onclick="@Remapper.Stop">Disconnect</button>
+        <button onclick="@Remapper.ReloadProfile">Reload Profile</button>
         <button onclick="@ShowInputTest" >Input Test</button>
     </div>
 </div>
@@ -50,7 +51,7 @@
     [Parameter, EditorRequired]
     public Remapper Remapper { get; set; } = null!;
 
-    public static DSForm<InputTest>? inputTest = null;
+    public DSForm<InputTest>? inputTest = null;
 
     private string Name => Remapper.Name;
     private string Type => Remapper.Type;

@@ -1,0 +1,10 @@
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.RemapperLua.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.RemapperLua.deps.json
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.RemapperLua.pdb
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\MoonSharp.Interpreter.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.ConfigManager.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.Core.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.DSOutput.dll
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.Core.pdb
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.DSOutput.pdb
+G:\Projectos Visual\DSRemapper\build\Plugins\Remapper\Lua\DSRemapper.ConfigManager.pdb

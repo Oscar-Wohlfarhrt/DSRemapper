@@ -4,8 +4,6 @@ using Microsoft.Web.WebView2.WinForms;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Windows.Forms;
-using Windows.Devices.Geolocation;
-using Windows.UI.Notifications;
 using static DSRemapper.Remapper.LuaRemapper;
 
 namespace DSRemapper

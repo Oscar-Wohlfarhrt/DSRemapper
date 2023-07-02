@@ -17,7 +17,7 @@ namespace DSRemapper.RemapperCore
         private static CancellationTokenSource tokenSource = new CancellationTokenSource();
         private static CancellationToken cancellationToken;
 
-        public delegate void RemapperUpdateArgs(List<Remapper> remappers);
+        public delegate void RemapperUpdateArgs();
         public static event RemapperUpdateArgs? OnUpdate;
 
         public static void StartScanner()
@@ -55,7 +55,7 @@ namespace DSRemapper.RemapperCore
                 if(devs.Length != remappers.Count)
                 {
                     SetControllers(devs.Select((i) => i.CreateController()).ToList());
-                    OnUpdate?.Invoke(remappers);
+                    OnUpdate?.Invoke();
                 }
                 Thread.Sleep(1000);
             }
@@ -101,6 +101,12 @@ namespace DSRemapper.RemapperCore
                 return (IDSRemapper?)remapType?.Invoke(null);
 
             return null;
+        }
+
+        public static void ReloadAllProfiles()
+        {
+            foreach (var rmp in remappers)
+                rmp.ReloadProfile();
         }
     }
     public class Remapper : IDisposable
@@ -201,9 +207,7 @@ namespace DSRemapper.RemapperCore
             }
             CurrentProfile=profile;
         }
-        public void ConsoleLog(string text)
-        {
-        }
+        public void ReloadProfile() => SetProfile(CurrentProfile);
         private void RemapThread()
         {
             while (!cancellationToken.IsCancellationRequested)
