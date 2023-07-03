@@ -68,7 +68,7 @@ namespace DSRemapper.SixAxis
             return Mean;
         }
     }
-    public struct CustomMotionProcess
+    public struct SixAxisProcess
     {
         const float accelCorrection = 0.05f;
 
@@ -77,10 +77,10 @@ namespace DSRemapper.SixAxis
 
         public DSQuaternion deltaRotation = Quaternion.Identity;
         public DSQuaternion rotation = Quaternion.Identity;
-        public DSVector3 grav = new(0, -1, 0);
+        public DSVector3 grav = new(0, 0, 0);
         public DSVector3 Accel = new();
 
-        public CustomMotionProcess() { }
+        public SixAxisProcess() { }
 
         public void Update(DSVector3 accel, DSVector3 gyro)
         {

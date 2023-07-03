@@ -95,7 +95,7 @@ namespace DSRemapper.COMM
         private DSInputReport report = new();
         private COMInfoReport? information;
 
-        private CustomMotionProcess motPro = new();
+        private SixAxisProcess motPro = new();
         private ExpMovingAverageVector3 gyroAvg = new();
         private DSVector3 lastGyro = new();
 

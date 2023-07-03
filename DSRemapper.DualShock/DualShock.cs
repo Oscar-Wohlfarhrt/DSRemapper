@@ -168,7 +168,7 @@ namespace DSRemapper.DualShock
         private readonly HidDevice hidDevice;
 
         private DSVector3 lastGyro = new();
-        private CustomMotionProcess motPro = new();
+        private SixAxisProcess motPro = new();
         private ExpMovingAverageVector3 gyroAvg = new();
 
         private int offset = 0;
