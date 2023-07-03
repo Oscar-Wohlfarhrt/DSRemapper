@@ -1,8 +1,25 @@
 # DSRemapper
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)  ![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-orange)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000)](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/latest)
+
+<!--
+![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000)
+![Build Status](https://img.shields.io/badge/Build-Alpha-orange)
+![Build Status](https://img.shields.io/badge/Build-Beta-yellow)
+![Build Status](https://img.shields.io/badge/Build-Release-darkgreen?color=00A000)
+-->
 
 DSRemapper is an open source application to remap PC controllers with written scripts and with plugins support to extend its functionalities.
+
+|Table of content|
+|----------------|
+|1. [Inspiration](#inspiration)|
+|2. [What is DSRemapper?](#what-is-dsremapper)|
+|3. [How to Install it](#how-to-install-it-windows)|
+|4. [Documentation](#documentation)|
+|5. [Thanks](#thanks-to)|
 
 `Aided with Google Translate (my native language is Spanish, I'm from Argentina)`
 
@@ -15,11 +32,13 @@ Unfortunately, the latest versions of the program didn't work as I liked and bas
 
 As a result, I started creating DSRemapper, an alternative/continuation, but with more freedom, at the cost that DSRemapper may not be for everyone.
 
+If you want a simply application you may consider using [InputMapper](https://beta.inputmapper.com) or [DS4Windows](https://ds4-windows.com)
+
 ## What is DSRemapper?
 
 DSRemapper is an open source application to remap PC controllers with written scripts.
 
-These scripts can be written in lua, which is the way I designed the program. I focused on making the syntax easy for everyone. Although I understand that programming is not for everyone, it shouldn't be difficult to modify or write a basic script to achieve what you want without too much trouble.
+These scripts can be written in lua, which is the way I designed the program, or any other language or utility supported by a plugin. I focused on making the syntax easy for everyone. Although I understand that programming is not for everyone, it shouldn't be difficult to modify or write a basic script to achieve what you want without too much trouble.
 
 However, I plan to design an interface system that makes this procedure simpler for everyone, by generating a lua script automatically. This would allow DSRemapper to reach more people and still give complete freedom to everyone who wants it.
 
@@ -33,12 +52,12 @@ Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something n
 
 ---
 
-## How to Install it
-To run DSRemapper you need to install [.NET 7.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+## How to Install it (Windows)
+1. To run DSRemapper you need to install [.NET 7.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
-After that, you have to download the lasted [Release]() of the program, unzip and run.
+2. After that, you have to download the lasted [Release](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/latest) of the program, unzip and run.
 
-If you want to use specific output plugins, you need to download the drivers to use it, if they are required.
+3. If you want to use specific output plugins, you need to download the drivers to use it, if they are required.
 
 ### Drivers for included Output Plugins
 
@@ -59,6 +78,35 @@ Emulates standard DirectInput controllers.
 
 ##### Used for the plugin
 [GitHub](https://github.com/jshafer817/vJoy)
+
+## Other Platforms
+
+Although the application is supported on windows, and several of its plugins, the application is like a container for DSRemapper.
+The program's main assemblies should run without problems on other operating systems that support .NET 7.0 or higher (Linux, OSX or android and ios inclusive). However I have no plans to create interfaces for other operating systems, although this is entirely possible and is left to the future community of the program, if it exists.
+
+---
+
+## Documentation
+Is in progress, when I have something to reference in here, I will do it.
+
+---
+
+## Thanks to
+### For the inspiration
+
+[InputMapper](https://beta.inputmapper.com) - [GitHub](https://github.com/InputMapper)
+
+[DS4Windows](https://ds4-windows.com)
+
+[JoyShockLibrary](https://github.com/JibbSmart/JoyShockLibrary)
+
+### For creating the things I used
+
+[MoonSharp](https://www.moonsharp.org)
+
+[ViGEm](https://vigem.org)
+
+[VJoy](https://sourceforge.net/projects/vjoystick/)
 
 ---
 
