@@ -70,7 +70,9 @@ Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something n
 Emulates Xbox 360 and DualShock 4 Controllers.
 
 [Official Website](https://vigem.org)
+
 [Download Page](https://vigem.org/Downloads/)
+
 [GitHub](https://github.com/ViGEm/ViGEm.github.io)
 
 #### VJoy
