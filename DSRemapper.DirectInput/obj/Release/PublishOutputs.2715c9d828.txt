@@ -1,7 +1,0 @@
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\DSRemapper.DirectInput.dll
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\DSRemapper.DirectInput.deps.json
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\DSRemapper.DirectInput.pdb
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\SharpDX.dll
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\SharpDX.DirectInput.dll
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\DSRemapper.Core.dll
-G:\Projectos Visual\DSRemapper\build\Plugins\Input\DSDI\DSRemapper.Core.pdb
