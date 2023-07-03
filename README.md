@@ -52,6 +52,8 @@ Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something n
 
 [DSR-SDK Package Dowload]()
 
+*(optional)* append DSR-Plugin to plugin name so users can find them on github or other platforms.
+
 ---
 
 ## How to Install it (Windows)
@@ -89,7 +91,7 @@ The program's main assemblies should run without problems on other operating sys
 ---
 
 ## Documentation
-Is in progress, when I have something to reference in here, I will do it.
+Is in progress and hated for all developers, when I have something to reference in here, I will put it.
 
 ---
 
