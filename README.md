@@ -17,9 +17,10 @@ DSRemapper is an open source application to remap PC controllers with written sc
 |----------------|
 |1. [Inspiration](#inspiration)|
 |2. [What is DSRemapper?](#what-is-dsremapper)|
-|3. [How to Install it](#how-to-install-it-windows)|
-|4. [Documentation](#documentation)|
-|5. [Thanks](#thanks-to)|
+|3. [Program Versions Description](#program-versions-description)|
+|4. [How to Install it](#how-to-install-it-windows)|
+|5. [Documentation](#documentation)|
+|6. [Thanks](#thanks)|
 
 `Aided with Google Translate (my native language is Spanish, I'm from Argentina)`
 
@@ -52,7 +53,43 @@ Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something n
 
 [DSR-SDK Package Dowload]()
 
-*(optional)* append DSR-Plugin to plugin name so users can find them on github or other platforms.
+*(optional)* if you want, append DSR-Plugin, or something like that, to the plugin name so users can find them on github or other platforms.
+
+---
+
+<details><summary><h2>Program Versions Description</h2></summary>
+<p>
+
+It may be very obvious how the different versions work, but I wanted to give more details about what can happen in each version.
+
+### Pre-Alpha `[Current]`
+
+The program can suffer major changes from one version to another and be unstable.
+Some changes can be:
+
+#### For users
+
+- The lua remapper syntax for controller remap can change
+- Interface can be reworked (Again, there are three going)
+
+#### For developers
+
+- Renaming of classes, structs, enums, etc. of the Core Assembly for plugins
+
+### Alpha
+
+Still unstable, but there will be no more changes that modify the behavior of the program. Could happen that the lua remapper syntax changes slightly.
+
+### Beta
+
+Stable but still not finished.
+
+### Release
+
+Full released app.
+
+</p>
+</details>
 
 ---
 
@@ -97,7 +134,7 @@ Is in progress and hated for all developers, when I have something to reference 
 
 ---
 
-## Thanks to
+## Thanks
 ### For the inspiration
 
 [InputMapper](https://beta.inputmapper.com) - [GitHub](https://github.com/InputMapper)
@@ -113,39 +150,3 @@ Is in progress and hated for all developers, when I have something to reference 
 [ViGEm](https://vigem.org)
 
 [VJoy](https://sourceforge.net/projects/vjoystick/)
-
----
-
-<details><summary><h2>Program Versions Description</h2></summary>
-<p>
-
-It may be very obvious how the different versions work, but I wanted to give more details about what can happen in each version.
-
-### Pre-Alpha `[Current]`
-
-The program can suffer major changes from one version to another and be unstable.
-Some changes can be:
-
-#### For users
-
-- The lua remapper syntax for controller remap can change
-- Interface can be reworked (Again, there are three going)
-
-#### For developers
-
-- Renaming of classes, structs, enums, etc. of the Core Assembly for plugins
-
-### Alpha
-
-Still unstable, but there will be no more changes that modify the behavior of the program. Could happen that the lua remapper syntax changes slightly.
-
-### Beta
-
-Stable but still not finished.
-
-### Release
-
-Full released app.
-
-</p>
-</details>
