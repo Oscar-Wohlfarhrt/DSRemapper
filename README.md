@@ -44,11 +44,13 @@ However, I plan to design an interface system that makes this procedure simpler 
 
 ## Plugins?
 
-Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something new, and you have the ability to do it, this program provides a way to create:
+Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something new, and you have the ability to do it, this repository provides a sdk package to create:
 
 - **New Remapper Plugins**, which are for read a file with the instructions of how to remap the physical device to a virtual one
 - **New Input Plugins**, which recognize physical devices and translate it's input for remap it.
 - **New Output Plugins**, which create virtual devices or emulate physical devices to give a certain behavior to the physical devices
+
+[DSR-SDK Package Dowload]()
 
 ---
 
