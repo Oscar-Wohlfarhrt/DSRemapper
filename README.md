@@ -77,12 +77,12 @@ Emulates Xbox 360 and DualShock 4 Controllers.
 
 #### VJoy
 
-Emulates standard DirectInput controllers.
+Emulates standard DirectInput controllers. If you have enough knowledge you can make it do almost anything.
 
-##### Original
-[Official Website](https://sourceforge.net/projects/vjoystick/)
+##### Original (used for testing the included plugin)
+[Official Website and Download](https://sourceforge.net/projects/vjoystick/)
 
-##### Used for the plugin
+##### Lasted Version
 [GitHub](https://github.com/jshafer817/vJoy)
 
 ## Other Platforms
