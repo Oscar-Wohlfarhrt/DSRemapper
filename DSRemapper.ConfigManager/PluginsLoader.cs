@@ -47,7 +47,7 @@ namespace DSRemapper.ConfigManager
                     string? path = type.GetCustomAttribute<EmulatedControllerAttribute>()?.DevicePath;
                     if (path != null)
                     {
-                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
+                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);
                         if (ctr != null)
                         {
                             if (OutputPlugins.TryAdd(path, ctr))
@@ -66,7 +66,7 @@ namespace DSRemapper.ConfigManager
                     string? fileExt = type.GetCustomAttribute<RemapperAttribute>()?.FileExt;
                     if (fileExt != null)
                     {
-                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
+                        ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);
                         if (ctr != null) {
                             if (RemapperPlugins.TryAdd(fileExt, ctr))
                             {
@@ -83,7 +83,7 @@ namespace DSRemapper.ConfigManager
                 }
                 else if (type.IsAssignableTo(typeof(IDSDeviceScanner)))
                 {
-                    ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);//BindingFlags.Public, 
+                    ConstructorInfo? ctr = type.GetConstructor(Type.EmptyTypes);
                     if (ctr != null)
                     {
                         if (Scanners.TryAdd(type.FullName ?? "Unknown", (IDSDeviceScanner)ctr.Invoke(null)))

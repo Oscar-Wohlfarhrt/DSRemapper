@@ -13,6 +13,8 @@
 
 DSRemapper is an open source application to remap PC controllers with written scripts and with plugins support to extend its functionalities.
 
+[Application progress and download links](AppProgress.md)
+
 |Table of content|
 |----------------|
 |1. [Inspiration](#inspiration)|
