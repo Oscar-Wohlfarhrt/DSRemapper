@@ -61,10 +61,10 @@ namespace DSRemapper.MouseKeyboardInput
 
         public void Connect()
         {
-            device.Acquire();
             device.SetCooperativeLevel(IntPtr.Zero, CooperativeLevel.NonExclusive | CooperativeLevel.Foreground);
             device.Properties.BufferSize = 16;
             IsConnected = device.SetDataFormat<RawKeyboardState>().Success;
+            device.Acquire();
             if (!IsConnected)
                 Disconnect();
         }
