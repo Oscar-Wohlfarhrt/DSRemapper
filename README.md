@@ -41,7 +41,7 @@ DSRemapper is an open source application to remap PC controllers with written sc
 
 These scripts can be written in lua, which is the way I designed the program, or any other language or utility supported by a plugin. I focused on making the syntax easy for everyone. Although I understand that programming is not for everyone, it shouldn't be difficult to modify or write a basic script to achieve what you want without too much trouble.
 
-However, I plan to design an interface system that makes this procedure simpler for everyone, by generating a lua script automatically. This would allow DSRemapper to reach more people and still give complete freedom to everyone who wants it.
+However, I plan to design an interface system that makes this procedure simpler for everyone, by generating a lua script. This would allow DSRemapper to reach more people and still give complete freedom to everyone who wants it.
 
 ## Plugins?
 
@@ -53,7 +53,7 @@ Yes, DSRemapper is based on plugins, so if you want DSRemapper to do something n
 
 [DSR-SDK Package Dowload]()
 
-*(optional)* if you want, append DSR-Plugin, or something like that, to the plugin name so users can find them on github or other platforms.
+*(optional)* if you want add a tag or append something as a reference to the plugin name so users can find them on github or other platforms.
 
 ---
 
@@ -106,10 +106,8 @@ Full released app.
 
 Emulates Xbox 360 and DualShock 4 Controllers.
 
-[Official Website](https://vigem.org)
-
-[Download Page](https://vigem.org/Downloads/)
-
+[Official Website](https://vigem.org) <br>
+[Download Page](https://vigem.org/Downloads/) <br>
 [GitHub](https://github.com/ViGEm/ViGEm.github.io)
 
 #### VJoy
@@ -137,16 +135,12 @@ Is in progress and hated for all developers, when I have something to reference 
 ## Thanks
 ### For the inspiration
 
-[InputMapper](https://beta.inputmapper.com) - [GitHub](https://github.com/InputMapper)
-
-[DS4Windows](https://ds4-windows.com)
-
+[InputMapper](https://beta.inputmapper.com) - [GitHub](https://github.com/InputMapper) <br>
+[DS4Windows](https://ds4-windows.com) <br>
 [JoyShockLibrary](https://github.com/JibbSmart/JoyShockLibrary)
 
 ### For creating the things I used
 
-[MoonSharp](https://www.moonsharp.org)
-
-[ViGEm](https://vigem.org)
-
+[MoonSharp](https://www.moonsharp.org) <br>
+[ViGEm](https://vigem.org) <br>
 [VJoy](https://sourceforge.net/projects/vjoystick/)

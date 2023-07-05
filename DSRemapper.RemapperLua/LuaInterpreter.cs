@@ -5,6 +5,7 @@ using DSRemapper.Types;
 using MoonSharp.Interpreter;
 using System.Diagnostics;
 using System.Numerics;
+using DSRemapper.MouseKeyboardOutput;
 
 namespace DSRemapper.RemapperLua
 {
@@ -26,10 +27,10 @@ namespace DSRemapper.RemapperLua
 
             UserData.RegisterType<IDSOutputController>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<DSOutput.DSOutput>(InteropAccessMode.BackgroundOptimized);
-            /*UserData.RegisterType<MKOutput>(InteropAccessMode.BackgroundOptimized);
+            UserData.RegisterType<MKOutput>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<VirtualKeyShort>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<ScanCodeShort>(InteropAccessMode.BackgroundOptimized);
-            UserData.RegisterType<MouseButton>(InteropAccessMode.BackgroundOptimized);*/
+            UserData.RegisterType<MouseButton>(InteropAccessMode.BackgroundOptimized);
 
             UserData.RegisterType<Vector2>(InteropAccessMode.BackgroundOptimized);
             UserData.RegisterType<Vector3>(InteropAccessMode.BackgroundOptimized);
@@ -72,6 +73,12 @@ namespace DSRemapper.RemapperLua
                 script.Globals["Utils"] = typeof(Utils);
                 script.Globals["inputFB"] = Utils.CreateOutputReport();
                 script.Globals["deltaTime"] = 0.0;
+
+                script.Globals["MKOut"] = new MKOutput();
+                script.Globals["Keys"] = new VirtualKeyShort();
+                script.Globals["Scans"] = new ScanCodeShort();
+                script.Globals["MButs"] = new MouseButton();
+
                 script.DoFile(file);
 
                 Closure? remapFunction = (Closure)script.Globals["Remap"];

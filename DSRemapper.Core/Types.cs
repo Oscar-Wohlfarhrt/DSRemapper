@@ -4,7 +4,7 @@ namespace DSRemapper.Types
 {
     public class DSPov
     {
-        private float angle = 0;
+        private float angle = -1;
         public float Angle { get { return angle; } set { angle = value < 0 ? -1 : Math.Clamp(value, 0, 360); } }
         private readonly bool[] buts = new bool[4];
         public bool Up { get => buts[0]; set { buts[0] = value; Angle = -1; } }
@@ -161,12 +161,6 @@ namespace DSRemapper.Types
                 Sliders[i] = sliders[i];
         }
         public void SetButtons(bool[] buttons) => SetButtons(buttons, 0, buttons.Length);
-        /*{
-            int length = Math.Min(Buttons.Length,buttons.Length);
-
-            for(int i = 0;i<length;i++)
-                Buttons[i] = buttons[i];
-        }*/
         public void SetButtons(bool[] buttons, int offset, int length)
         {
             int runLength = Math.Min(Buttons.Length - offset, length);

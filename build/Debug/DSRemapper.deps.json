@@ -509,6 +509,11 @@
           "DSRemapper.HID.dll": {}
         }
       },
+      "DSRemapper.MouseKeyboardOutput/1.0.0": {
+        "runtime": {
+          "DSRemapper.MouseKeyboardOutput.dll": {}
+        }
+      },
       "DSRemapper.RemapperCore/1.0.0": {
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
@@ -834,6 +839,11 @@
       "sha512": ""
     },
     "DSRemapper.HID/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.MouseKeyboardOutput/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

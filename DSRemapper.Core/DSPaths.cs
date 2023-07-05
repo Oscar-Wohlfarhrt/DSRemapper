@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace DSRemapper.ConfigManager
+namespace DSRemapper.Core
 {
     public static class DSPaths
     {

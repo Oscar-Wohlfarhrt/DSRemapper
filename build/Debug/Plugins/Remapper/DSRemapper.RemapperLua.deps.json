@@ -10,6 +10,7 @@
         "dependencies": {
           "DSRemapper.Core": "1.0.0",
           "DSRemapper.DSOutput": "1.0.0",
+          "DSRemapper.MouseKeyboardOutput": "1.0.0",
           "MoonSharp": "2.0.0"
         },
         "runtime": {
@@ -45,6 +46,11 @@
         "runtime": {
           "DSRemapper.DSOutput.dll": {}
         }
+      },
+      "DSRemapper.MouseKeyboardOutput/1.0.0": {
+        "runtime": {
+          "DSRemapper.MouseKeyboardOutput.dll": {}
+        }
       }
     }
   },
@@ -72,6 +78,11 @@
       "sha512": ""
     },
     "DSRemapper.DSOutput/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DSRemapper.MouseKeyboardOutput/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

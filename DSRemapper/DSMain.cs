@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Components;
 using System.Runtime.InteropServices.ObjectiveC;
-using DSRemapper.ConfigManager;
+using DSRemapper.Core;
 
 namespace DSRemapper
 {

@@ -46,7 +46,7 @@ namespace DSRemapper.DirectInput
 
         private readonly DIDeviceInfo deviceInfo;
         private readonly Joystick joy;
-        private readonly DSInputReport report = new();
+        private readonly DSInputReport report;
 
         public string Id => deviceInfo.Id;
 

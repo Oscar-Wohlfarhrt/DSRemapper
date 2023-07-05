@@ -1,17 +1,15 @@
-﻿
+﻿using DSRemapper.Core;
 using DSRemapper.DSMath;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
 using MoonSharp.Interpreter;
 
 using MoonSharp.Interpreter.Serialization.Json;
-using System.Numerics;
 
 namespace DSRemapper.RemapperLua
 {
     public static class Utils
     {
-        //public static string ConfigPath { get => Path.Combine(ProfileManager.mainDir, "Profile Configs"); }
         public const float MinAxis = -1;
         public const float CenterAxis = 0;
         public const float MaxAxis = 1;
@@ -28,7 +26,7 @@ namespace DSRemapper.RemapperLua
         public static DSVector2 CreateVector2(float x,float y) => new(x,y);
         public static DSVector3 CreateVector3(float val = 0) => new(val);
         public static DSVector3 CreateVector3(float x, float y,float z) => new(x,y,z);
-        public static DSQuaternion CreateQuaternion() => Quaternion.Identity;
+        public static DSQuaternion CreateQuaternion() => new();
 
         public static float Deadzone(this float value, float deadzone)
         {
@@ -65,13 +63,8 @@ namespace DSRemapper.RemapperLua
         {
             return (1 - bend) * (float)Math.Pow(value, 3) + bend * value;
         }
-        public static Vector3 Normalize(Vector3 vector)
-        {
-            float lenght = vector.Length();
-            return vector / lenght;
-        }
 
-        /*public static void SaveTable(string path, Table table)
+        public static void SaveTable(string path, Table table)
         {
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
@@ -80,7 +73,7 @@ namespace DSRemapper.RemapperLua
             if (Path.IsPathRooted(path))
                 File.WriteAllText(path, json);
             else
-                File.WriteAllText(Path.Combine(ConfigPath,path), json);
+                File.WriteAllText(Path.Combine(DSPaths.ConfigPath,path), json);
         }
         public static Table LoadTable(string path)
         {
@@ -91,9 +84,9 @@ namespace DSRemapper.RemapperLua
             if (Path.IsPathFullyQualified(path))
                 json = File.ReadAllText(path);
             else
-                json = File.ReadAllText(Path.Combine(ConfigPath, path));
+                json = File.ReadAllText(Path.Combine(DSPaths.ConfigPath, path));
 
             return JsonTableConverter.JsonToTable(json);
-        }*/
+        }
     }
 }

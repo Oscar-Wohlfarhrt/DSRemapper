@@ -9,7 +9,6 @@ namespace DSRemapper.Core
 
     }
 
-
     [AttributeUsage(AttributeTargets.Class)]
     public class EmulatedControllerAttribute : Attribute
     {

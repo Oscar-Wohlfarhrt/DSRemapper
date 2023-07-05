@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DSRemapper.SixAxis
 {
-    public struct SimpleSignalFilter
+    public class SimpleSignalFilter
     {
         private DSVector3 sample1, y;
 
@@ -34,7 +34,7 @@ namespace DSRemapper.SixAxis
             return y;
         }
     }
-    public struct ExpMovingAverage
+    public class ExpMovingAverage
     {
         int n = 0;
 
@@ -51,7 +51,7 @@ namespace DSRemapper.SixAxis
             return Mean;
         }
     }
-    public struct ExpMovingAverageVector3
+    public class ExpMovingAverageVector3
     {
         int n = 0;
 
@@ -68,7 +68,7 @@ namespace DSRemapper.SixAxis
             return Mean;
         }
     }
-    public struct SixAxisProcess
+    public class SixAxisProcess
     {
         const float accelCorrection = 0.05f;
 
@@ -77,7 +77,7 @@ namespace DSRemapper.SixAxis
 
         public DSQuaternion deltaRotation = Quaternion.Identity;
         public DSQuaternion rotation = Quaternion.Identity;
-        public DSVector3 grav = new(0, 0, 0);
+        public DSVector3 grav = new(0, -1, 0);
         public DSVector3 Accel = new();
 
         public SixAxisProcess() { }

@@ -1,13 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Input\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Input\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Input\Keyboard\</OutputPath>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vortice.DirectInput" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
+  </ItemGroup>
 
 </Project>
