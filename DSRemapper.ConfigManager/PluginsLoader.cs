@@ -13,10 +13,8 @@ namespace DSRemapper.ConfigManager
     public class PluginsLoader
     {
         private static List<Assembly> pluginAssemblies = new();
-        public static SortedList<string, Type> InputPlugins = new();
         public static SortedList<string, ConstructorInfo> OutputPlugins = new();
         public static SortedList<string, ConstructorInfo> RemapperPlugins = new();
-        //public static SortedList<string, Type> ScannerPlugins = new();
         public static SortedList<string, IDSDeviceScanner> Scanners = new();
 
         public static void LoadPluginAssemblies()
@@ -44,14 +42,7 @@ namespace DSRemapper.ConfigManager
                 if (type.IsInterface || !type.IsVisible)
                     continue;
 
-                if (type.IsAssignableTo(typeof(IDSInputController)))
-                {
-                    if (InputPlugins.TryAdd(type.FullName ?? "Unknown", type))
-                        Logger.Log($"Input plugin found: {type.FullName}");
-                    else
-                        Logger.LogWarning($"Input plugin is duplicated: {type.FullName}");
-                }
-                else if (type.IsAssignableTo(typeof(IDSOutputController)))
+                if (type.IsAssignableTo(typeof(IDSOutputController)))
                 {
                     string? path = type.GetCustomAttribute<EmulatedControllerAttribute>()?.DevicePath;
                     if (path != null)
