@@ -23,9 +23,9 @@
 |---------------------------|--------------------------------------------------------------------------------|-----------|
 |DualShock                  |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|
 |Direct Input               |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|
-<!--|XInput                     |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|-->
 |Mouse and Keyboard         |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|
 |COMM                       |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|
+<!--|XInput                     |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[win-x64](https://github.com/Oscar-Wohlfarhrt/DSRemapper/releases/)|-->
 
 ## Remapper
 
