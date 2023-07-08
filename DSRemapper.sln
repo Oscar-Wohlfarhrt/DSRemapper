@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.VJoy", "DSRemapp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.COMM", "DSRemapper.COMM\DSRemapper.COMM.csproj", "{A9CF3FAF-240D-41FC-A7D5-1977C17F0798}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.TCPIP", "DSRemapper.TCPIP\DSRemapper.TCPIP.csproj", "{3C5AA368-10E4-4828-BA9B-62330D8D33FC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.MouseKeyboardInput", "DSRemapper.MouseKeyboardInput\DSRemapper.MouseKeyboardInput.csproj", "{BF42D3C1-6F40-4F22-8177-45936FC72395}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.MouseKeyboardOutput", "DSRemapper.MouseKeyboardOutput\DSRemapper.MouseKeyboardOutput.csproj", "{B2907F3B-4A4E-4BFE-8D36-2C84F3D63F2C}"
@@ -31,9 +29,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.RemapperLua", "D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.ConfigManager", "DSRemapper.ConfigManager\DSRemapper.ConfigManager.csproj", "{D3AC0FA3-BB91-4E28-B37C-02ED48792467}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper.HID", "DSRemapper.HID\DSRemapper.HID.csproj", "{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSRemapper", "DSRemapper\DSRemapper.csproj", "{6A470241-B1A9-4267-896D-CD3A1DED9CFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{F14207ED-7891-4133-9D64-0134BAC4CC00}"
+	ProjectSection(SolutionItems) = preProject
+		GettingStarted.md = GettingStarted.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DSRemapper", "DSRemapper", "{52334028-341F-408E-BC29-B36AC2C8826F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1AC2D67A-6898-41D1-8E6B-EE4EA3FFFADD}"
+	ProjectSection(SolutionItems) = preProject
+		Types.md = Types.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -192,24 +200,6 @@ Global
 		{A9CF3FAF-240D-41FC-A7D5-1977C17F0798}.ReleaseTest|x64.Build.0 = Release|Any CPU
 		{A9CF3FAF-240D-41FC-A7D5-1977C17F0798}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
 		{A9CF3FAF-240D-41FC-A7D5-1977C17F0798}.ReleaseTest|x86.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|x64.Build.0 = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Debug|x86.Build.0 = Debug|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|x64.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|x64.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|x86.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.Release|x86.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|Any CPU.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|Any CPU.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|x64.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|x64.Build.0 = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
-		{3C5AA368-10E4-4828-BA9B-62330D8D33FC}.ReleaseTest|x86.Build.0 = Release|Any CPU
 		{BF42D3C1-6F40-4F22-8177-45936FC72395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF42D3C1-6F40-4F22-8177-45936FC72395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF42D3C1-6F40-4F22-8177-45936FC72395}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -300,24 +290,6 @@ Global
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x64.Build.0 = Release|Any CPU
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
 		{D3AC0FA3-BB91-4E28-B37C-02ED48792467}.ReleaseTest|x86.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x64.Build.0 = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Debug|x86.Build.0 = Debug|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x64.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x64.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x86.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.Release|x86.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|Any CPU.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|Any CPU.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x64.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x64.Build.0 = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x86.ActiveCfg = Release|Any CPU
-		{0E132D34-3B81-4C7B-B7D8-542A02D1C64A}.ReleaseTest|x86.Build.0 = Release|Any CPU
 		{6A470241-B1A9-4267-896D-CD3A1DED9CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A470241-B1A9-4267-896D-CD3A1DED9CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A470241-B1A9-4267-896D-CD3A1DED9CFD}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -339,6 +311,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52334028-341F-408E-BC29-B36AC2C8826F} = {F14207ED-7891-4133-9D64-0134BAC4CC00}
+		{1AC2D67A-6898-41D1-8E6B-EE4EA3FFFADD} = {52334028-341F-408E-BC29-B36AC2C8826F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D7B64B0-2497-420C-A03F-61DE1CBE104F}

@@ -4,6 +4,8 @@
 @using DSRemapper.DSLogger;
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.JSInterop;
+@using System.Diagnostics;
+@using System.Reflection;
 
 @inject IJSRuntime JS
 @implements IDisposable
@@ -22,12 +24,10 @@
 }
 
 <div id="nav">
-    <button onclick="bridge.LogWarning('Not working')">File</button>
     <button onclick="@DSBridge.WindowsControllers">Windows controllers</button>
     <button onclick="@DSBridge.LogConsole">Log console</button>
     <label><InputCheckbox @bind-Value=AutoReload/> Auto reload profiles</label>
-    <!--<span>@RemapperCore.RemapperCore.remappers.Count</span>
-    <span>@Logger.Subcribers</span>-->
+    <button onclick="@ProjectRepository" class="to-right">v@(GetDSRVersion())</button>
 </div>
 <div id="main">
     <div id="controller-list">
@@ -56,7 +56,6 @@
         }
     }
 
-
     FileSystemWatcher fileWatcher = new(DSPaths.ProfilesPath);
 
     public MainLayout()
@@ -65,6 +64,16 @@
         fileWatcher.Deleted += FileWatcher_CreateDelete;
         fileWatcher.IncludeSubdirectories = true;
         fileWatcher.EnableRaisingEvents = true;
+    }
+
+    string GetDSRVersion()
+    {
+        FileVersionInfo version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+        return version.FileVersion ?? "Unkonwn";
+    }
+    void ProjectRepository()
+    {
+        Process.Start(new ProcessStartInfo("https://github.com/Oscar-Wohlfarhrt/DSRemapper") { UseShellExecute = true });
     }
 
     private void FileWatcher_CreateDelete(object sender, FileSystemEventArgs e)

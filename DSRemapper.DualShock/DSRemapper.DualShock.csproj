@@ -9,18 +9,31 @@
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Input\</BaseOutputPath>
 	  <OutputPath>..\build\$(Configuration)\Plugins\Input\</OutputPath>
 	  <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>$(AssemblyName) - DSR-Plugin</Title>
+	  <Authors>Oscar-Wohlfarhrt</Authors>
+	  <Description>Plugin of DSRemapper</Description>
+	  <Copyright>Copyright (c) 2023 Oscar Andrés Wohlfarhrt</Copyright>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageProjectUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</RepositoryUrl>
+	  <AssemblyVersion>0.1.0</AssemblyVersion>
+	  <FileVersion>$(AssemblyVersion)-pre-alpha</FileVersion>
+	  <Version>$(FileVersion)</Version>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FireLibs.IO" Version="0.1.0-alpha" />
     <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
-    <PackageReference Include="System.Management" Version="7.0.1" />
+    <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj">
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\DSRemapper.HID\DSRemapper.HID.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,6 +9,18 @@
 	<OutputPath>..\build\$(Configuration)\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<ApplicationIcon>DSRemapper.ico</ApplicationIcon>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>$(AssemblyName) - DSR-Plugin</Title>
+	  <Authors>Oscar-Wohlfarhrt</Authors>
+	  <Description>DSRemapper Application</Description>
+	  <Copyright>Copyright (c) 2023 Oscar Andrés Wohlfarhrt</Copyright>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageProjectUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</RepositoryUrl>
+	  <AssemblyVersion>0.1.0</AssemblyVersion>
+	  <FileVersion>$(AssemblyVersion)-pre-alpha</FileVersion>
+	  <Version>$(FileVersion)</Version>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +35,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.86" />
-    <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
     <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>
@@ -32,25 +43,7 @@
     <ProjectReference Include="..\DSRemapper.Core\DSRemapper.Core.csproj" />
     <ProjectReference Include="..\DSRemapper.DSInput\DSRemapper.DSInput.csproj" />
     <ProjectReference Include="..\DSRemapper.DSOutput\DSRemapper.DSOutput.csproj" />
-    <ProjectReference Include="..\DSRemapper.DualShock\DSRemapper.DualShock.csproj">
-      <Private>False</Private>
-      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
     <ProjectReference Include="..\DSRemapper.RemapperCore\DSRemapper.RemapperCore.csproj" />
-    <ProjectReference Include="..\DSRemapper.RemapperLua\DSRemapper.RemapperLua.csproj">
-      <Private>False</Private>
-      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
-    <ProjectReference Include="..\DSRemapper.ViGEm\DSRemapper.ViGEm.csproj">
-      <Private>False</Private>
-      <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
-    </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="LogConsole.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

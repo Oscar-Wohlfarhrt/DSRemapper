@@ -1,15 +1,12 @@
 ﻿using DSRemapper.Core;
 using DSRemapper.DSLogger;
 using DSRemapper.DSMath;
-using DSRemapper.HID;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
-using System;
-using System.CodeDom;
+using FireLibs.IO.HID;
 using System.Collections.Specialized;
 using System.IO.Hashing;
 using System.Runtime.InteropServices;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DSRemapper.DualShock
 {
@@ -48,12 +45,12 @@ namespace DSRemapper.DualShock
         }
 
         /// <summary>
-        /// Conversion from DSHidInfo to DualShockInfo to make both "structures" independent
+        /// Conversion from DSHidInfo to DualShockInfo
         /// </summary>
         /// <param name="info">DSHidInfo</param>
         public static explicit operator DualShockInfo(DSHidInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
         /// <summary>
-        /// Conversion from DualShockInfo to DSHidInfo to make both "structures" independent
+        /// Conversion from DualShockInfo to DSHidInfo
         /// </summary>
         /// <param name="info">DSHidInfo</param>
         public static explicit operator DSHidInfo(DualShockInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);

@@ -8,6 +8,28 @@
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Output\</BaseOutputPath>
 	  <OutputPath>..\build\$(Configuration)\Plugins\Output\</OutputPath>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <Title>$(AssemblyName) - DSR-Plugin</Title>
+	  <Authors>Oscar-Wohlfarhrt</Authors>
+	  <Description>Output plugin of DSRemapper, implemented directly on the remapper plugins. For that reason is part of the DSR-SDK package. Can be used as a PInvoke for keyboard and mouse input on windows.</Description>
+	  <Copyright>Copyright (c) 2023 Oscar Andrés Wohlfarhrt</Copyright>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageProjectUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</RepositoryUrl>
+	  <AssemblyVersion>0.1.0</AssemblyVersion>
+	  <FileVersion>$(AssemblyVersion)-pre-alpha</FileVersion>
+	  <Version>$(FileVersion)</Version>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <PackageReadmeFile>Readme.md</PackageReadmeFile>
+	  <PackageReleaseNotes>First release of the package</PackageReleaseNotes>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
 
 </Project>
