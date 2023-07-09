@@ -130,7 +130,7 @@ The program's main assemblies should run without problems on other operating sys
 ---
 
 ## Documentation
-Is in progress and hated for all developers, when I have something to reference in here, I will put it.
+Is in progress, when I have something to reference in here, I will put it.
 
 ---
 
