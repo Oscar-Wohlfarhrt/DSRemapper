@@ -29,9 +29,9 @@ DSRemapper is an open source application to remap PC controllers with written sc
 ---
 
 ## Inspiration
-I love playing games, especially simulators. Driven by this I found InputMapper, an application that allowed me to get input from a PS4 controller (DualShock4 - DS4) and remap it into an Xbox360 controller. One feature that this application has is to read the DualShock4's accelerometer and gyroscope, and remap it as a joystick input. This was amazing, literally by tilting the controller, and with great reading accuracy, it was able to emulate a steering wheel, which I used in games like ETS2 (Euro Truck Simulator 2).
+I love playing games, especially simulators. Driven by this, I found InputMapper, an application that allowed me to get input from a PS4 controller (DualShock4 - DS4) and remap it into an Xbox360 controller. One feature that this application has is to read the DualShock4's accelerometer and gyroscope, and remap it as a joystick input. This was amazing, literally by tilting the controller, and with great reading accuracy, it was able to emulate a steering wheel, which I used in games like ETS2 (Euro Truck Simulator 2).
 
-Unfortunately, the latest versions of the program didn't work as I liked and basically it wasn't very easy to achieve the behavior I was looking for.
+Unfortunately, the latest versions of InputMapper didn't work as I liked and basically it wasn't very easy to achieve the behavior I was looking for.
 
 As a result, I started creating DSRemapper, an alternative/continuation, but with more freedom, at the cost that DSRemapper may not be for everyone.
 
