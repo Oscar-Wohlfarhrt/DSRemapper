@@ -41,7 +41,7 @@ If you want a simply application you may consider using [InputMapper](https://be
 
 DSRemapper is an open source application to remap PC controllers with written scripts.
 
-These scripts can be written in lua, which is the way I designed the program, or any other language or utility supported by a plugin. I focused on making the syntax easy for everyone. Although I understand that programming is not for everyone, it shouldn't be difficult to modify or write a basic script to achieve what you want without too much trouble.
+These scripts can be written in lua, which is the way I designed the program, or any other language or utility supported by a plugin. I focused on making the syntax easy for everyone. Although I understand that programming is not for everyone, but it shouldn't be difficult to modify or write a basic script to achieve what you want without too much trouble.
 
 However, I plan to design an interface system that makes this procedure simpler for everyone, by generating a lua script. This would allow DSRemapper to reach more people and still give complete freedom to everyone who wants it.
 
