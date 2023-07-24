@@ -6,14 +6,14 @@
 
 ## Application modules
 
-| Package Name              | Version                                                                        | Links     |
-|---------------------------|--------------------------------------------------------------------------------|-----------|
-|DSRemapper Core (SDK[^1])  |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]() - [nuget]()|
-|DSRemapper RemapperCore    |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]()|
-|DSRemapper DSInput         |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]()|
-|DSRemapper DSOutput        |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]()|
+| Package Name                     | Version                                                                        | Links                 |
+|----------------------------------|--------------------------------------------------------------------------------|-----------------------|
+|DSRemapper Core (SDK[^1])         |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]() - [nuget]()|
+|DSRemapper RemapperCore           |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]()            |
+|DSRemapper DSInput                |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]()            |
+|DSRemapper DSOutput (SDK[^1])     |![Build Status](https://img.shields.io/badge/Build-Pre--Alpha-red?color=FF4000) |[dll-x64]() - [nuget]()|
 
-[^1]:Remapper Core is the DSR-SDK required to make plugins
+[^1]: Package part of the DSR-SDK required to make plugins
 
 # Plugins
 
