@@ -281,6 +281,7 @@ namespace DSRemapper.COMM
 
     internal static class FloatExtensions
     {
+        public static float ToFloatAxis(this short axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
         public static short ToShortAxis(this float axis) => (short)(axis * (axis < 0 ? -short.MinValue : short.MaxValue));
         public static sbyte ToSByteAxis(this float axis) => (sbyte)(axis * (axis < 0 ? -sbyte.MinValue : sbyte.MaxValue));
         public static byte ToByteTrigger(this float axis) => (byte)(axis * byte.MaxValue);
