@@ -11,7 +11,7 @@ namespace DSRemapper.ViGEm
     {
         private readonly IDualShock4Controller emuController;
         public bool IsConnected { get; private set; }
-        public DSInputReport state { get; private set; } = new(6, 0, 14, 1, 2);
+        public DSInputReport State { get; private set; } = new(6, 0, 14, 1, 2);
         private DSOutputReport feedback = new();
         public DS4()
         {
@@ -56,50 +56,50 @@ namespace DSRemapper.ViGEm
         {
             if (IsConnected)
             {
-                emuController.SetAxisValue(DualShock4Axis.LeftThumbX, (byte)(state.LX.ToSByteAxis() + 128));
-                emuController.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)(state.LY.ToSByteAxis() + 128));
-                emuController.SetAxisValue(DualShock4Axis.RightThumbX, (byte)(state.RX.ToSByteAxis() + 128));
-                emuController.SetAxisValue(DualShock4Axis.RightThumbY, (byte)(state.RY.ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.LeftThumbX, (byte)(State.LX.ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.LeftThumbY, (byte)(State.LY.ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.RightThumbX, (byte)(State.RX.ToSByteAxis() + 128));
+                emuController.SetAxisValue(DualShock4Axis.RightThumbY, (byte)(State.RY.ToSByteAxis() + 128));
 
-                emuController.SetSliderValue(DualShock4Slider.LeftTrigger, state.LTrigger.ToByteTrigger());
-                emuController.SetSliderValue(DualShock4Slider.RightTrigger, state.RTrigger.ToByteTrigger());
+                emuController.SetSliderValue(DualShock4Slider.LeftTrigger, State.LTrigger.ToByteTrigger());
+                emuController.SetSliderValue(DualShock4Slider.RightTrigger, State.RTrigger.ToByteTrigger());
 
-                if (state.Up && !state.Left && !state.Down && !state.Right)
+                if (State.Up && !State.Left && !State.Down && !State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.North);
-                else if (state.Up && !state.Left && !state.Down && state.Right)
+                else if (State.Up && !State.Left && !State.Down && State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.Northeast);
-                else if (!state.Up && !state.Left && !state.Down && state.Right)
+                else if (!State.Up && !State.Left && !State.Down && State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.East);
-                else if (!state.Up && !state.Left && state.Down && state.Right)
+                else if (!State.Up && !State.Left && State.Down && State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.Southeast);
-                else if (!state.Up && !state.Left && state.Down && !state.Right)
+                else if (!State.Up && !State.Left && State.Down && !State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.South);
-                else if (!state.Up && state.Left && state.Down && !state.Right)
+                else if (!State.Up && State.Left && State.Down && !State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.Southwest);
-                else if (!state.Up && state.Left && !state.Down && !state.Right)
+                else if (!State.Up && State.Left && !State.Down && !State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.West);
-                else if (state.Up && state.Left && !state.Down && !state.Right)
+                else if (State.Up && State.Left && !State.Down && !State.Right)
                     emuController.SetDPadDirection(DualShock4DPadDirection.Northwest);
                 else
                     emuController.SetDPadDirection(DualShock4DPadDirection.None);
 
-                emuController.SetButtonState(DualShock4Button.Cross, state.Cross);
-                emuController.SetButtonState(DualShock4Button.Circle, state.Circle);
-                emuController.SetButtonState(DualShock4Button.Square, state.Square);
-                emuController.SetButtonState(DualShock4Button.Triangle, state.Triangle);
+                emuController.SetButtonState(DualShock4Button.Cross, State.Cross);
+                emuController.SetButtonState(DualShock4Button.Circle, State.Circle);
+                emuController.SetButtonState(DualShock4Button.Square, State.Square);
+                emuController.SetButtonState(DualShock4Button.Triangle, State.Triangle);
 
-                emuController.SetButtonState(DualShock4Button.Options, state.Options);
-                emuController.SetButtonState(DualShock4Button.Share, state.Share);
+                emuController.SetButtonState(DualShock4Button.Options, State.Options);
+                emuController.SetButtonState(DualShock4Button.Share, State.Share);
 
-                emuController.SetButtonState(DualShock4Button.ShoulderLeft, state.L1);
-                emuController.SetButtonState(DualShock4Button.ShoulderRight, state.R1);
-                emuController.SetButtonState(DualShock4Button.TriggerLeft, state.L2);
-                emuController.SetButtonState(DualShock4Button.TriggerRight, state.R2);
-                emuController.SetButtonState(DualShock4Button.ThumbLeft, state.L3);
-                emuController.SetButtonState(DualShock4Button.ThumbRight, state.R3);
+                emuController.SetButtonState(DualShock4Button.ShoulderLeft, State.L1);
+                emuController.SetButtonState(DualShock4Button.ShoulderRight, State.R1);
+                emuController.SetButtonState(DualShock4Button.TriggerLeft, State.L2);
+                emuController.SetButtonState(DualShock4Button.TriggerRight, State.R2);
+                emuController.SetButtonState(DualShock4Button.ThumbLeft, State.L3);
+                emuController.SetButtonState(DualShock4Button.ThumbRight, State.R3);
 
-                emuController.SetButtonState(DualShock4SpecialButton.Ps, state.PS);
-                emuController.SetButtonState(DualShock4SpecialButton.Touchpad, state.TouchClick);
+                emuController.SetButtonState(DualShock4SpecialButton.Ps, State.PS);
+                emuController.SetButtonState(DualShock4SpecialButton.Touchpad, State.TouchClick);
 
                 emuController.SubmitReport();
             }

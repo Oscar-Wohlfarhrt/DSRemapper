@@ -17,11 +17,11 @@ namespace DSRemapper.VJoyCtrl
         public readonly DSOutputReport report = new();
 
         public bool IsConnected { get; private set; }
-        public DSInputReport state { get; private set; }
+        public DSInputReport State { get; private set; }
 
         public VJoyCtrl()
         {
-            state = new(6, 2, 128, 4, 0);
+            State = new(6, 2, 128, 4, 0);
             range = 32768;
         }
         public void Connect()
@@ -61,18 +61,18 @@ namespace DSRemapper.VJoyCtrl
         {
             if (IsConnected && id.HasValue)
             {
-                vState.AxisX = FloatToVJoyAxis(state.Axis[0]);
-                vState.AxisY = FloatToVJoyAxis(state.Axis[1]);
-                vState.AxisZRot = FloatToVJoyAxis(state.Axis[2]);
-                vState.AxisZ = FloatToVJoyAxis(state.Axis[3]);
-                vState.AxisXRot = FloatToVJoyAxis(state.Axis[4]);
-                vState.AxisYRot = FloatToVJoyAxis(state.Axis[5]);
+                vState.AxisX = FloatToVJoyAxis(State.Axis[0]);
+                vState.AxisY = FloatToVJoyAxis(State.Axis[1]);
+                vState.AxisZRot = FloatToVJoyAxis(State.Axis[2]);
+                vState.AxisZ = FloatToVJoyAxis(State.Axis[3]);
+                vState.AxisXRot = FloatToVJoyAxis(State.Axis[4]);
+                vState.AxisYRot = FloatToVJoyAxis(State.Axis[5]);
 
-                vState.Slider = state.Sliders[0].ToShortAxis();
-                vState.Dial = state.Sliders[1].ToShortAxis();
-                vState.bHats = (uint)(state.Povs[0].Angle != -1 ? state.Povs[0].Angle * 100 : -1);
+                vState.Slider = State.Sliders[0].ToShortAxis();
+                vState.Dial = State.Sliders[1].ToShortAxis();
+                vState.bHats = (uint)(State.Povs[0].Angle != -1 ? State.Povs[0].Angle * 100 : -1);
 
-                BitArray bArr = new BitArray(state.Buttons);
+                BitArray bArr = new BitArray(State.Buttons);
                 uint[] buttons = new uint[4];
                 bArr.CopyTo(buttons, 0);
                 vState.Buttons = buttons[0];

@@ -2,7 +2,8 @@
 using DSRemapper.DSMath;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
-using FireLibs.IO.COMPorts;
+using FireLibs.IO.COMPorts.Win;
+using SerialDeviceInfo = FireLibs.IO.COMPorts.SerialDeviceInfo;
 using System.Runtime.InteropServices;
 
 namespace DSRemapper.COMM
@@ -50,14 +51,23 @@ namespace DSRemapper.COMM
 
         public COMOutputReport() { }
     };
+    /// <summary>
+    /// COM device scanner class
+    /// </summary>
     public class COMMScanner : IDSDeviceScanner
     {
+        /// <summary>
+        /// Gets available/connected devices as IDSInputDeviceInfo array
+        /// </summary>
+        /// <returns>A IDSInputDeviceInfo array containing the COM devices</returns>
         public IDSInputDeviceInfo[] ScanDevices()
         {
             return SerialPort.GetSerialDevices().Select(sd => new COMMDeviceInfo(sd)).ToArray();
         }
     }
-
+    /// <summary>
+    /// COM device info class
+    /// </summary>
     public class COMMDeviceInfo : IDSInputDeviceInfo
     {
         public string Id => Info.PortName;
@@ -79,10 +89,12 @@ namespace DSRemapper.COMM
             return new COMM(this);
         }
     }
-
+    /// <summary>
+    /// COM controller class
+    /// </summary>
     public class COMM : IDSInputController
     {
-        const int BaudRate = 57600;
+        const BaudRates BaudRate = BaudRates.BR57600;
         private static int COMInfoReportSize { get => Marshal.SizeOf(typeof(COMInfoReport)); }
         private static int COMInputReportSize { get => Marshal.SizeOf(typeof(COMInputReport)); }
         private static int COMOutputReportSize { get => Marshal.SizeOf(typeof(COMOutputReport)); }
@@ -99,8 +111,6 @@ namespace DSRemapper.COMM
         private ExpMovingAverageVector3 gyroAvg = new();
         private DSVector3 lastGyro = new();
 
-        private const int readTimeout = 500;
-
         public string Id { get; private set; }
 
         public string Name => $"Controller {Id}";
@@ -113,10 +123,7 @@ namespace DSRemapper.COMM
         {
             Id = info.Id;
             report = new(6, 6, 32, 2,0);
-            sp = new(info.Info, BaudRate)
-            {
-                ReadTimeout = readTimeout
-            };
+            sp = new(info.Info, BaudRate);
         }
         public void Connect()
         {

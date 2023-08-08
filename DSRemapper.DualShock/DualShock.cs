@@ -174,6 +174,8 @@ namespace DSRemapper.DualShock
         DSInputReport report = new();
         List<byte> sendReport = new();
 
+        static readonly byte[] unpairReport = new byte[15] {0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
         public string Id => hidDevice.Information.Id;
 
         public string Name => "DualShock 4";
@@ -203,6 +205,7 @@ namespace DSRemapper.DualShock
 
         public void Disconnect()
         {
+            DSUnpair();
             hidDevice.CancelIO();
             hidDevice.CloseDevice();
         }
@@ -213,9 +216,10 @@ namespace DSRemapper.DualShock
             hidDevice.Dispose();
         }
 
-        public void ForceDisconnect()
+        public void DSUnpair()
         {
 
+            hidDevice.WriteOutputReportViaControl(unpairReport);
         }
         public void GetFeatureReport()
         {
