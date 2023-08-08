@@ -148,40 +148,24 @@ namespace DSRemapper.COMM
 
         private COMInfoReport? ReadInfoReport()
         {
-            if (sp.BytesToRead > 0)
-                sp.ReadExisting();
+            sp.FlushRXBuffer();
 
-            COMInfoReport? report = null;
-            sp.Write(infoReportRequst, 0, infoReportRequst.Length);
-            byte[] buffer = new byte[COMInfoReportSize];
-            if (sp.ReadCount(buffer, 0, buffer.Length))
-            {
-                GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-                report = Marshal.PtrToStructure<COMInfoReport>(ptr.AddrOfPinnedObject());
-                ptr.Free();
-            }
-
-            return report;
+            sp.Write(infoReportRequst);
+            if(sp.Read(out COMInfoReport report)>=Marshal.SizeOf<COMInfoReport>())
+                return report;
+            return null;
         }
 
         public DSInputReport GetInputReport()
         {
-            byte[] buffer = new byte[COMInputReportSize];
-
-            if (sp.BytesToRead > 0)
-                sp.ReadExisting();
+            sp.FlushRXBuffer();
 
             information ??= ReadInfoReport();
 
-            sp.Write(inputReportRequst, 0, inputReportRequst.Length);
+            sp.Write(inputReportRequst);
 
-            if (sp.ReadCount(buffer, 0, buffer.Length))
-            {
-                isNotFirstRead = true;
-                GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-                rawReport = Marshal.PtrToStructure<COMInputReport>(ptr.AddrOfPinnedObject());
-                ptr.Free();
-
+            if(sp.Read(out rawReport)>0)
+            { 
                 report.Axis[0] = AxisToFloat(rawReport.Axis[0]);
                 report.Axis[1] = AxisToFloat(rawReport.Axis[1]);
                 report.Axis[2] = AxisToFloat(rawReport.Axis[2]);
@@ -272,15 +256,9 @@ namespace DSRemapper.COMM
             for (int i = 0; i < report.ExtLeds.Length; i++)
                 outReport.Leds[i] = (byte)report.ExtLeds[i];
 
-            byte[] buffer = new byte[COMOutputReportSize];
+            sp.Write(outReport);
 
-            GCHandle ptr = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-            Marshal.StructureToPtr(outReport, ptr.AddrOfPinnedObject(), false);
-            ptr.Free();
-
-            sp.Write(buffer, 0, buffer.Length);
-
-            sp.ReadCount(buffer, 0, 1);
+            sp.Read(out _, 1);
         }
 
         private static float AxisToFloat(int axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
