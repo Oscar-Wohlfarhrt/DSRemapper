@@ -5,7 +5,7 @@ namespace DSRemapper.Types
     public class DSPov
     {
         private float angle = -1;
-        public float Angle { get { return angle; } set { angle = value < 0 ? -1 : Math.Clamp(value, 0, 360); } }
+        public float Angle { get { return angle; } set { angle = value < 0 ? -1 : Math.Clamp(value, 0, 360); CalculateButtons(); } }
         private readonly bool[] buts = new bool[4];
         public bool Up { get => buts[0]; set { buts[0] = value; Angle = -1; } }
         public bool Right { get => buts[1]; set { buts[1] = value; Angle = -1; } }

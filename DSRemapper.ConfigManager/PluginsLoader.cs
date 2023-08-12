@@ -9,14 +9,28 @@ using System.Threading.Tasks;
 
 namespace DSRemapper.ConfigManager
 {
-    
+    /// <summary>
+    /// Class used for loading all DSRemapper assemblies and plugins
+    /// </summary>
     public class PluginsLoader
     {
-        private static List<Assembly> pluginAssemblies = new();
+        private static readonly List<Assembly> pluginAssemblies = new();
+        /// <summary>
+        /// Output plugins list, sorted by Emulated controller path
+        /// </summary>
         public static SortedList<string, ConstructorInfo> OutputPlugins = new();
+        /// <summary>
+        /// Remapper plugins list, sorted by remapper asigned file extension
+        /// </summary>
         public static SortedList<string, ConstructorInfo> RemapperPlugins = new();
+        /// <summary>
+        /// Physical devices scanner plugins (input plugins), sorted by namespace and class name
+        /// </summary>
         public static SortedList<string, IDSDeviceScanner> Scanners = new();
 
+        /// <summary>
+        /// Loads the assemblies inside the DSRemapper Plugins folder and subfolders
+        /// </summary>
         public static void LoadPluginAssemblies()
         {
             string[] plugins = Directory.GetFiles(DSPaths.PluginsPath, "*.dll", SearchOption.AllDirectories);
@@ -34,6 +48,9 @@ namespace DSRemapper.ConfigManager
             }
         }
 
+        /// <summary>
+        /// Find and update all static lists of this class using the assemblies loaded by 'LoadPluginAssemblies' function
+        /// </summary>
         public static void LoadPlugins()
         {
             IEnumerable<Type> types = pluginAssemblies.SelectMany(a => a.GetTypes());

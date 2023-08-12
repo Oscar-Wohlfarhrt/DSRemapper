@@ -7,7 +7,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Input\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Input\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Input\DualShock\</OutputPath>
 	  <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FireLibs.IO" Version="0.1.0-alpha" />
+    <PackageReference Include="FireLibs.IO" Version="0.2.1-alpha" />
     <PackageReference Include="System.IO.Hashing" Version="7.0.0" />
     <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>

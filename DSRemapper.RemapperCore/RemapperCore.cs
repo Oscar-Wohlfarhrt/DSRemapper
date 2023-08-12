@@ -81,6 +81,7 @@ namespace DSRemapper.RemapperCore
         {
             if (!remappers.Exists((c) => { return c.Id == controller.Id; }))
             {
+                Logger.Log($"Physical device plugged: {controller.Name} [{controller.Id}]");
                 remappers.Add(new(controller));
             }
         }
@@ -90,6 +91,7 @@ namespace DSRemapper.RemapperCore
 
             if (ctrlRemapper != null)
             {
+                Logger.Log($"Physical device unpluged: {ctrlRemapper.Name} [{ctrlRemapper.Id}]");
                 remappers.Remove(ctrlRemapper);
                 ctrlRemapper.Dispose();
             }

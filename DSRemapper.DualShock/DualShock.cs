@@ -1,5 +1,4 @@
 ﻿using DSRemapper.Core;
-using DSRemapper.DSLogger;
 using DSRemapper.DSMath;
 using DSRemapper.SixAxis;
 using DSRemapper.Types;
@@ -7,6 +6,12 @@ using FireLibs.IO.HID;
 using System.Collections.Specialized;
 using System.IO.Hashing;
 using System.Runtime.InteropServices;
+
+/* 
+ * Some things of this class are copied from some github repositories.
+ * I didn't keep track of the consulted repositories and also use information from multiple wikis and web pages.
+ * Disclaimer: It wasn't my intention to use other people's code without mentioning them, if this happened.
+ */
 
 namespace DSRemapper.DualShock
 {
@@ -16,16 +21,30 @@ namespace DSRemapper.DualShock
      */
     public class DualShockInfo : IDSInputDeviceInfo
     {
-
+        /// <summary>
+        /// Hid Device path of the DualShock controller
+        /// </summary>
         public string Path { get; private set; }
+        /// <inheritdoc/>
         public string Id { get; private set; }
-
+        /// <inheritdoc/>
         public string Name { get; private set; }
-
+        /// <summary>
+        /// Hid Device vendor id of the DualShock controller
+        /// </summary>
         public int VendorId { get; private set; }
-
+        /// <summary>
+        /// Hid Device product id of the DualShock controller
+        /// </summary>
         public int ProductId { get; private set; }
-
+        /// <summary>
+        /// DualShockInfo class constructor
+        /// </summary>
+        /// <param name="path">Hid Device path</param>
+        /// <param name="name">Device name</param>
+        /// <param name="id">Device unique id</param>
+        /// <param name="vendorId">Device vendor id</param>
+        /// <param name="productId">Device product id</param>
         public DualShockInfo(string path, string name, string id, int vendorId, int productId)
         {
             Path = path;
@@ -34,35 +53,27 @@ namespace DSRemapper.DualShock
             VendorId = vendorId;
             ProductId = productId;
         }
+        /// <inheritdoc/>
         public IDSInputController CreateController()
         {
             return new DualShock(this);
         }
-
+        /// <inheritdoc/>
         public override string ToString()
         {
             return $"Device {Name} [{Id}] [{VendorId:X4}][{ProductId:X4}]";
         }
 
         /// <summary>
-        /// Conversion from DSHidInfo to DualShockInfo
+        /// Conversion from HidInfo to DualShockInfo
         /// </summary>
-        /// <param name="info">DSHidInfo</param>
-        public static explicit operator DualShockInfo(DSHidInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
+        /// <param name="info">HidInfo</param>
+        public static explicit operator DualShockInfo(HidInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
         /// <summary>
-        /// Conversion from DualShockInfo to DSHidInfo
+        /// Conversion from DualShockInfo to HidInfo
         /// </summary>
-        /// <param name="info">DSHidInfo</param>
-        public static explicit operator DSHidInfo(DualShockInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
-    }
-
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct ReportArray
-    {
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        public byte[] data;
-
-        public byte this[int index] { get => data[index]; }
+        /// <param name="info">HidInfo</param>
+        public static explicit operator HidInfo(DualShockInfo info) => new(info.Path, info.Name, info.Id, info.VendorId, info.ProductId);
     }
 
     [StructLayout(LayoutKind.Explicit, Size = 64)]
@@ -80,8 +91,8 @@ namespace DSRemapper.DualShock
         public byte RY = 0;
 
         [FieldOffset(5)]
-        private BitVector32 buttons = new BitVector32();
-        private static BitVector32.Section[] masks = new BitVector32.Section[15];
+        private BitVector32 buttons = new();
+        private static readonly BitVector32.Section[] masks = new BitVector32.Section[15];
 
         [FieldOffset(8)]
         public byte LT = 0;
@@ -110,10 +121,10 @@ namespace DSRemapper.DualShock
         [FieldOffset(39)]
         private BitVector32 touchf2 = new();
 
-        private static BitVector32.Section touchId = BitVector32.CreateSection(0x7F);
-        private static BitVector32.Section touchPress = BitVector32.CreateSection(0x01, touchId);
-        private static BitVector32.Section touchPosX = BitVector32.CreateSection(0xFFF, touchPress);
-        private static BitVector32.Section touchPosY = BitVector32.CreateSection(0xFFF, touchPosX);
+        private static readonly BitVector32.Section touchId = BitVector32.CreateSection(0x7F);
+        private static readonly BitVector32.Section touchPress = BitVector32.CreateSection(0x01, touchId);
+        private static readonly BitVector32.Section touchPosX = BitVector32.CreateSection(0xFFF, touchPress);
+        private static readonly BitVector32.Section touchPosY = BitVector32.CreateSection(0xFFF, touchPosX);
 
         public byte DPad => (byte)buttons[masks[0]];
         public bool Square => buttons[masks[1]] != 0;
@@ -153,46 +164,58 @@ namespace DSRemapper.DualShock
 
         public DualShockInReport() { }
     }
-
+    /// <summary>
+    /// DualShock device scanner class
+    /// </summary>
     public class DualShockScanner : IDSDeviceScanner
     {
+        /// <summary>
+        /// DualShockScanner class constructor
+        /// </summary>
         public DualShockScanner() { }
-        public IDSInputDeviceInfo[] ScanDevices() => WmiEnumerator
-            .EnumerateDevices(0x054C).Select(i => (DualShockInfo)i).ToArray();
+        /// <inheritdoc/>
+        public IDSInputDeviceInfo[] ScanDevices() => HidEnumerator
+            .WmiEnumerateDevices(0x054C).Select(i => (DualShockInfo)i).ToArray();
     }
+    /// <summary>
+    /// DualShock controller class
+    /// </summary>
     public class DualShock : IDSInputController
     {
         private readonly HidDevice hidDevice;
 
         private DSVector3 lastGyro = new();
-        private SixAxisProcess motPro = new();
-        private ExpMovingAverageVector3 gyroAvg = new();
+        private readonly SixAxisProcess motPro = new();
+        private readonly ExpMovingAverageVector3 gyroAvg = new();
 
         private int offset = 0;
-        DualShockInReport strRawReport;
-        byte[] rawReport = Array.Empty<byte>(), crc = Array.Empty<byte>();
-        DSInputReport report = new();
-        List<byte> sendReport = new();
+        private DualShockInReport strRawReport;
+        private byte[] rawReport = Array.Empty<byte>(), crc = Array.Empty<byte>();
+        private readonly DSInputReport report = new();
+        private List<byte> sendReport = new();
 
-        static readonly byte[] unpairReport = new byte[15] {0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-
+        /// <inheritdoc/>
         public string Id => hidDevice.Information.Id;
 
+        /// <inheritdoc/>
         public string Name => "DualShock 4";
 
+        /// <inheritdoc/>
         public string Type => "DS";
 
-        //bool _isConnected = false;
-
+        /// <inheritdoc/>
         public bool IsConnected => hidDevice.IsOpen;
 
-        //public bool IsConnected { get => _isConnected; private set => _isConnected = value; }
-
+        /// <summary>
+        /// DualShock class constructor
+        /// </summary>
+        /// <param name="info">A DualShockInfo class with the physical controller info</param>
         public DualShock(DualShockInfo info)
         {
-            hidDevice = new((DSHidInfo)info);
-            Logger.Log($"Device connected: {Name} [{Id}] [{hidDevice.Information.VendorId:X4}][{hidDevice.Information.ProductId:X4}]");
+            hidDevice = new((HidInfo)info);
+            //Logger.Log($"Device connected: {Name} [{Id}] [{hidDevice.Information.VendorId:X4}][{hidDevice.Information.ProductId:X4}]");
         }
+        /// <inheritdoc/>
         public void Connect()
         {
             hidDevice.OpenDevice(false);
@@ -202,32 +225,29 @@ namespace DSRemapper.DualShock
                 GetFeatureReport();
             }
         }
-
+        /// <inheritdoc/>
         public void Disconnect()
         {
-            DSUnpair();
             hidDevice.CancelIO();
             hidDevice.CloseDevice();
         }
-
+        /// <inheritdoc/>
         public void Dispose()
         {
             Disconnect();
             hidDevice.Dispose();
+            GC.SuppressFinalize(this);
         }
-
-        public void DSUnpair()
-        {
-
-            hidDevice.WriteOutputReportViaControl(unpairReport);
-        }
-        public void GetFeatureReport()
+        /// <summary>
+        /// Gets the 0x05 feature report of DualShock4 controller, which enables the input report with IMU information
+        /// </summary>
+        private void GetFeatureReport()
         {
             byte[] fetRep = new byte[64];
             fetRep[0] = 0x05;
             hidDevice.GetFeature(fetRep);
 
-            DSOutputReport report = new();//Utils.CreateOutputReport();
+            DSOutputReport report = new();
 
             if (rawReport.Length > 64)
             {
@@ -272,7 +292,7 @@ namespace DSRemapper.DualShock
                 };
             }
         }
-
+        /// <inheritdoc/>
         public DSInputReport GetInputReport()
         {
             hidDevice.ReadFile(rawReport);
@@ -347,7 +367,7 @@ namespace DSRemapper.DualShock
 
             return report;
         }
-
+        /// <inheritdoc/>
         public void SendOutputReport(DSOutputReport report)
         {
             if (offset > 0)

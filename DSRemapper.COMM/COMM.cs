@@ -8,27 +8,31 @@ using System.Runtime.InteropServices;
 
 namespace DSRemapper.COMM
 {
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <summary>
+    /// Structure that match COM controller info data structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 32)]
     internal struct COMInfoReport
     {
-        public byte Axis = 0; //per controller
-        public byte Buttons = 0; //per controller
-        public byte Povs = 0; //per controller
+        public byte Axis = 0;
+        public byte Buttons = 0;
+        public byte Povs = 0;
         public ushort AccelScale = 0;
         public ushort GyroScale = 0;
 
         public COMInfoReport() { }
-    };
+    }
 
-    //Pack is required to match report length of the COM device
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    /// <summary>
+    /// Structure that match COM controller input data structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 64)]
     internal struct COMInputReport
     {
         public byte id = 0;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public short[] Axis = new short[12];
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-        public byte[] Buttons = new byte[4];
+        public uint Buttons = 0;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
         public ushort[] Pov = new ushort[2];
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
@@ -37,12 +41,18 @@ namespace DSRemapper.COMM
         public short[] Gyro = new short[3];
 
         public COMInputReport() { }
-    };
-    //Pack is required to match report length of the COM device
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    }
+
+    // Report size is 32 bytes long, BUT this struct includes the PROTOCOL CODE as first byte, therefore it is 33 bytes long.
+    // This made me waste a WHOLE DAY until I realized that the size of the structure should be 33 bytes long.
+    // This comment is a reminder of my DUMBEST mistake to the date - August 10, 2023.
+    /// <summary>
+    /// Structure that match COM controller output data structure
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 33)]
     internal struct COMOutputReport
     {
-        public readonly byte code = 2;
+        public readonly byte code = 2; //COM protocol code embedded into the structure
         public byte id = 0;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public short[] Motors = new short[6];
@@ -50,7 +60,8 @@ namespace DSRemapper.COMM
         public byte[] Leds = new byte[6];
 
         public COMOutputReport() { }
-    };
+    }
+
     /// <summary>
     /// COM device scanner class
     /// </summary>
@@ -70,20 +81,24 @@ namespace DSRemapper.COMM
     /// </summary>
     public class COMMDeviceInfo : IDSInputDeviceInfo
     {
+        /// <inheritdoc/>
         public string Id => Info.PortName;
-
+        /// <inheritdoc/>
         public string Name => $"Controller {Id}";
 
-        public int VendorId => 0;
-
-        public int ProductId => 0;
-
+        /// <summary>
+        /// SerialDeviceInfo structure from FireLibs.IO library
+        /// </summary>
         public SerialDeviceInfo Info { get; private set; }
-
+        /// <summary>
+        /// COMMDeviceInfo class constructor
+        /// </summary>
+        /// <param name="info">SerialDeviceInfo structure from FireLibs.IO library</param>
         public COMMDeviceInfo(SerialDeviceInfo info)
         {
             Info=info;
         }
+        /// <inheritdoc/>
         public IDSInputController CreateController()
         {
             return new COMM(this);
@@ -95,36 +110,42 @@ namespace DSRemapper.COMM
     public class COMM : IDSInputController
     {
         const BaudRates BaudRate = BaudRates.BR57600;
-        private static int COMInfoReportSize { get => Marshal.SizeOf(typeof(COMInfoReport)); }
-        private static int COMInputReportSize { get => Marshal.SizeOf(typeof(COMInputReport)); }
-        private static int COMOutputReportSize { get => Marshal.SizeOf(typeof(COMOutputReport)); }
         private static readonly byte[] infoReportRequst = new byte[] { 0x00 };
         private static readonly byte[] inputReportRequst = new byte[] { 0x01 };
 
-        private bool isNotFirstRead = false;
         private readonly SerialPort sp;
         private COMInputReport rawReport = new();
-        private DSInputReport report = new();
+        private readonly DSInputReport report = new();
         private COMInfoReport? information;
+        private readonly COMOutputReport outReport = new();
 
-        private SixAxisProcess motPro = new();
-        private ExpMovingAverageVector3 gyroAvg = new();
+        private readonly SixAxisProcess motPro = new();
+        private readonly ExpMovingAverageVector3 gyroAvg = new();
         private DSVector3 lastGyro = new();
-
+        /// <inheritdoc/>
         public string Id { get; private set; }
-
+        /// <inheritdoc/>
         public string Name => $"Controller {Id}";
-
+        /// <inheritdoc/>
         public string Type => "COMM";
-
+        /// <inheritdoc/>
         public bool IsConnected => sp.IsConnected;
-
+        
+        /// <summary>
+        /// Creates a COMM controller.
+        /// COMM class constructor.
+        /// </summary>
+        /// <param name="info"></param>
         public COMM(COMMDeviceInfo info)
         {
             Id = info.Id;
             report = new(6, 6, 32, 2,0);
-            sp = new(info.Info, BaudRate);
+            sp = new(info.Info, BaudRate)
+            {
+                ReadTotalTimeoutConstant = 10
+            };
         }
+        /// <inheritdoc/>
         public void Connect()
         {
             if (!IsConnected)
@@ -133,6 +154,7 @@ namespace DSRemapper.COMM
             }
         }
 
+        /// <inheritdoc/>
         public void Disconnect()
         {
             if (IsConnected)
@@ -141,13 +163,20 @@ namespace DSRemapper.COMM
             }
         }
 
+        /// <inheritdoc/>
         public void Dispose()
         {
             Disconnect();
+            GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Reads info report from COM controller
+        /// </summary>
+        /// <returns></returns>
         private COMInfoReport? ReadInfoReport()
         {
+            sp.CancelCurrentIO(tx: false);
             sp.FlushRXBuffer();
 
             sp.Write(infoReportRequst);
@@ -156,45 +185,38 @@ namespace DSRemapper.COMM
             return null;
         }
 
+        /// <inheritdoc/>
         public DSInputReport GetInputReport()
         {
-            sp.FlushRXBuffer();
-
             information ??= ReadInfoReport();
+
+            sp.FlushRXBuffer();
 
             sp.Write(inputReportRequst);
 
-            if(sp.Read(out rawReport)>0)
+            if (sp.Read(out rawReport) >= Marshal.SizeOf<COMInputReport>())
             { 
-                report.Axis[0] = AxisToFloat(rawReport.Axis[0]);
-                report.Axis[1] = AxisToFloat(rawReport.Axis[1]);
-                report.Axis[2] = AxisToFloat(rawReport.Axis[2]);
-                report.Axis[3] = AxisToFloat(rawReport.Axis[3]);
-                report.Axis[4] = AxisToFloat(rawReport.Axis[4]);
-                report.Axis[5] = AxisToFloat(rawReport.Axis[5]);
+                report.Axis[0] = rawReport.Axis[0].ToFloatAxis();
+                report.Axis[1] = rawReport.Axis[1].ToFloatAxis();
+                report.Axis[2] = rawReport.Axis[2].ToFloatAxis();
+                report.Axis[3] = rawReport.Axis[3].ToFloatAxis();
+                report.Axis[4] = rawReport.Axis[4].ToFloatAxis();
+                report.Axis[5] = rawReport.Axis[5].ToFloatAxis();
 
-                report.Sliders[0] = AxisToFloat(rawReport.Axis[6]);
-                report.Sliders[1] = AxisToFloat(rawReport.Axis[7]);
-                report.Sliders[2] = AxisToFloat(rawReport.Axis[8]);
-                report.Sliders[3] = AxisToFloat(rawReport.Axis[9]);
-                report.Sliders[4] = AxisToFloat(rawReport.Axis[10]);
-                report.Sliders[5] = AxisToFloat(rawReport.Axis[11]);
+                report.Sliders[0] = rawReport.Axis[6].ToFloatAxis();
+                report.Sliders[1] = rawReport.Axis[7].ToFloatAxis();
+                report.Sliders[2] = rawReport.Axis[8].ToFloatAxis();
+                report.Sliders[3] = rawReport.Axis[9].ToFloatAxis();
+                report.Sliders[4] = rawReport.Axis[10].ToFloatAxis();
+                report.Sliders[5] = rawReport.Axis[11].ToFloatAxis();
 
                 for (int i = 0; i < report.Buttons.Length; i++)
                 {
-                    report.Buttons[i] = Convert.ToBoolean(rawReport.Buttons[i / 8] & (1 << i % 8));
+                    report.Buttons[i] = Convert.ToBoolean(rawReport.Buttons & (1 << i % 32));
                 }
 
-                if (rawReport.Pov[0] == ushort.MaxValue)
-                    report.Povs[0].Angle = -1;
-                else
-                    report.Povs[0].Angle = rawReport.Pov[0] / 100f;
-                report.Povs[0].CalculateButtons();
-                if (rawReport.Pov[1] == ushort.MaxValue)
-                    report.Povs[1].Angle = -1;
-                else
-                    report.Povs[1].Angle = rawReport.Pov[1] / 100f;
-                report.Povs[1].CalculateButtons();
+                report.Povs[0].Angle = rawReport.Pov[0] == ushort.MaxValue ? -1 : rawReport.Pov[0] / 100f;
+                report.Povs[1].Angle = rawReport.Pov[1] == ushort.MaxValue ? -1 : rawReport.Pov[1] / 100f;
 
                 if (information != null)
                 {
@@ -247,23 +269,24 @@ namespace DSRemapper.COMM
 
             return report;
         }
+
+        /// <inheritdoc/>
         public void SendOutputReport(DSOutputReport report)
         {
-            COMOutputReport outReport = new();
-
             for (int i = 0; i < report.Rumble.Length; i++)
                 outReport.Motors[i] = report.Rumble[i].ToShortAxis();
             for (int i = 0; i < report.ExtLeds.Length; i++)
                 outReport.Leds[i] = (byte)report.ExtLeds[i];
 
+            sp.FlushRXBuffer();
             sp.Write(outReport);
-
-            sp.Read(out _, 1);
+            sp.Read(out _, 1); // makes a little delay using the timeout, or until the response byte is sent.
         }
-
-        private static float AxisToFloat(int axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));
     }
 
+    /// <summary>
+    /// Utils class for raw data conversion
+    /// </summary>
     internal static class FloatExtensions
     {
         public static float ToFloatAxis(this short axis) => (float)axis / (short.MaxValue + (axis < 0 ? 1 : 0));

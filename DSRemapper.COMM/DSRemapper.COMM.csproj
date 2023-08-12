@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<BaseOutputPath>..\build\$(Configuration)\Plugins\Input\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Input\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Input\COMM\</OutputPath>
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FireLibs.IO" Version="0.2.0-alpha" />
+    <PackageReference Include="FireLibs.IO" Version="0.2.1-alpha" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
   </ItemGroup>
 

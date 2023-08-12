@@ -12,7 +12,7 @@ namespace DSRemapper
     {
         public static DSForm<ConsoleLayout>? console = null;
         /// <summary>
-        /// 
+        /// Shows 'Windows Game Controllers' Control Panel windows
         /// </summary>
         public static void WindowsControllers()
         {
@@ -25,6 +25,9 @@ namespace DSRemapper
                 }
             }.Start();
         }
+        /// <summary>
+        /// Create/Shows/Maximize the DSRemapper Log Console form.
+        /// </summary>
         public static void LogConsole()
         {
             if (console == null || console.IsDisposed)
