@@ -14,9 +14,9 @@ namespace DSRemapper.COMM
     [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 32)]
     internal struct COMInfoReport
     {
-        public byte Axis = 0;
-        public byte Buttons = 0;
-        public byte Povs = 0;
+        public byte Axis = 0; // reserved for the future (useless at the moment)
+        public byte Buttons = 0; // reserved for the future (useless at the moment)
+        public byte Povs = 0; // reserved for the future (useless at the moment)
         public ushort AccelScale = 0;
         public ushort GyroScale = 0;
 
@@ -29,7 +29,7 @@ namespace DSRemapper.COMM
     [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 64)]
     internal struct COMInputReport
     {
-        public byte id = 0;
+        public byte id = 0; // reserved for the future (useless at the moment)
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
         public short[] Axis = new short[12];
         public uint Buttons = 0;
@@ -52,8 +52,8 @@ namespace DSRemapper.COMM
     [StructLayout(LayoutKind.Sequential, Pack = 1, Size = 33)]
     internal struct COMOutputReport
     {
-        public readonly byte code = 2; //COM protocol code embedded into the structure
-        public byte id = 0;
+        public readonly byte code = 2; // COM protocol code embedded into the structure
+        public byte id = 0; // reserved for the future (useless at the moment)
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
         public short[] Motors = new short[6];
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
@@ -71,10 +71,7 @@ namespace DSRemapper.COMM
         /// Gets available/connected devices as IDSInputDeviceInfo array
         /// </summary>
         /// <returns>A IDSInputDeviceInfo array containing the COM devices</returns>
-        public IDSInputDeviceInfo[] ScanDevices()
-        {
-            return SerialPort.GetSerialDevices().Select(sd => new COMMDeviceInfo(sd)).ToArray();
-        }
+        public IDSInputDeviceInfo[] ScanDevices() => SerialPort.GetSerialDevices().Select(sd => new COMMDeviceInfo(sd)).ToArray();
     }
     /// <summary>
     /// COM device info class
@@ -113,7 +110,7 @@ namespace DSRemapper.COMM
         private static readonly byte[] infoReportRequst = new byte[] { 0x00 };
         private static readonly byte[] inputReportRequst = new byte[] { 0x01 };
 
-        private readonly SerialPort sp;
+        private readonly SerialPort port;
         private COMInputReport rawReport = new();
         private readonly DSInputReport report = new();
         private COMInfoReport? information;
@@ -129,7 +126,7 @@ namespace DSRemapper.COMM
         /// <inheritdoc/>
         public string Type => "COMM";
         /// <inheritdoc/>
-        public bool IsConnected => sp.IsConnected;
+        public bool IsConnected => port.IsConnected;
         
         /// <summary>
         /// Creates a COMM controller.
@@ -140,7 +137,7 @@ namespace DSRemapper.COMM
         {
             Id = info.Id;
             report = new(6, 6, 32, 2,0);
-            sp = new(info.Info, BaudRate)
+            port = new(info.Info, BaudRate)
             {
                 ReadTotalTimeoutConstant = 10
             };
@@ -150,7 +147,7 @@ namespace DSRemapper.COMM
         {
             if (!IsConnected)
             {
-                sp.Connect();
+                port.Connect();
             }
         }
 
@@ -159,7 +156,7 @@ namespace DSRemapper.COMM
         {
             if (IsConnected)
             {
-                sp.Disconnect();
+                port.Disconnect();
             }
         }
 
@@ -176,11 +173,11 @@ namespace DSRemapper.COMM
         /// <returns></returns>
         private COMInfoReport? ReadInfoReport()
         {
-            sp.CancelCurrentIO(tx: false);
-            sp.FlushRXBuffer();
+            port.CancelCurrentIO(tx: false);
+            port.FlushRXBuffer();
 
-            sp.Write(infoReportRequst);
-            if(sp.Read(out COMInfoReport report)>=Marshal.SizeOf<COMInfoReport>())
+            port.Write(infoReportRequst);
+            if(port.Read(out COMInfoReport report)>=Marshal.SizeOf<COMInfoReport>())
                 return report;
             return null;
         }
@@ -190,11 +187,11 @@ namespace DSRemapper.COMM
         {
             information ??= ReadInfoReport();
 
-            sp.FlushRXBuffer();
+            port.FlushRXBuffer();
 
-            sp.Write(inputReportRequst);
+            port.Write(inputReportRequst);
 
-            if (sp.Read(out rawReport) >= Marshal.SizeOf<COMInputReport>())
+            if (port.Read(out rawReport) >= Marshal.SizeOf<COMInputReport>())
             { 
                 report.Axis[0] = rawReport.Axis[0].ToFloatAxis();
                 report.Axis[1] = rawReport.Axis[1].ToFloatAxis();
@@ -278,9 +275,9 @@ namespace DSRemapper.COMM
             for (int i = 0; i < report.ExtLeds.Length; i++)
                 outReport.Leds[i] = (byte)report.ExtLeds[i];
 
-            sp.FlushRXBuffer();
-            sp.Write(outReport);
-            sp.Read(out _, 1); // makes a little delay using the timeout, or until the response byte is sent.
+            port.FlushRXBuffer();
+            port.Write(outReport);
+            port.Read(out _, 1); // makes a little delay using the timeout, or until the response byte is sent.
         }
     }
 

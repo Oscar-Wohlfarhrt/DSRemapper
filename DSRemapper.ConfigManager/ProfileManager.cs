@@ -16,10 +16,8 @@ namespace DSRemapper.ConfigManager
         /// Get all the files inside the DSRemapper plugins folder and subfolders
         /// </summary>
         /// <returns>An array containing all remap profile files</returns>
-        public static string[] GetProfiles()
-        {
-            return Directory.GetFiles(DSPaths.ProfilesPath, "*.*", SearchOption.AllDirectories)
-                .Select((f) => Path.GetRelativePath(DSPaths.ProfilesPath, f)).ToArray();
-        }
+        public static string[] GetProfiles() =>
+            Directory.GetFiles(DSPaths.ProfilesPath, "*.*", SearchOption.AllDirectories)
+            .Select((f) => Path.GetRelativePath(DSPaths.ProfilesPath, f)).ToArray();
     }
 }

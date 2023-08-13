@@ -37,23 +37,23 @@ namespace DSRemapper.ConfigManager
     /// </summary>
     public static class DSConfig
     {
-        private static string configPath = Path.Combine(DSPaths.ConfigPath,"DSConfigs.json");
-        private static List<RemapperConfig> remapperConfigs;
+        private static string configPath = Path.Combine(DSPaths.ConfigPath, "DSConfigs.json");
+        private static List<RemapperConfig> remapperConfigs = null!;
 
         /// <summary>
         /// DSConfig static contructor
         /// </summary>
         static DSConfig()
         {
-            if(File.Exists(configPath))
+            if (File.Exists(configPath))
                 LoadConfigFile();
             else
                 remapperConfigs = new();
         }
         private static void LoadConfigFile() => remapperConfigs = JsonSerializer
             .Deserialize<List<RemapperConfig>>(File.ReadAllText(configPath)) ?? new();
-        private static void SaveConfigFile() => File.
-            WriteAllText(configPath, JsonSerializer.Serialize(remapperConfigs));
+        private static void SaveConfigFile() =>
+            File.WriteAllText(configPath, JsonSerializer.Serialize(remapperConfigs));
         /// <summary>
         /// Gets the controller config associated with the id.
         /// </summary>
@@ -61,7 +61,7 @@ namespace DSRemapper.ConfigManager
         /// <returns></returns>
         public static RemapperConfig GetConfig(string id)
         {
-            if(!remapperConfigs.Exists((c) => c.Id == id))
+            if (!remapperConfigs.Exists((c) => c.Id == id))
                 remapperConfigs.Add(new RemapperConfig(id));
 
 #pragma warning disable CS8603 // Posible tipo de valor devuelto de referencia nulo
@@ -84,7 +84,7 @@ namespace DSRemapper.ConfigManager
         /// </summary>
         /// <param name="id">Id of a physical controller</param>
         /// <param name="autoConnect">True if the controller has to be connected as soon as it is plugged in</param>
-        public static void SetAutoConnect(string id,bool autoConnect)
+        public static void SetAutoConnect(string id, bool autoConnect)
         {
             GetConfig(id).AutoConnect = autoConnect;
             SaveConfigFile();
