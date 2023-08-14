@@ -99,7 +99,7 @@ namespace DSRemapper.ViGEm
                 emuController.SetButtonState(DualShock4Button.ThumbRight, State.R3);
 
                 emuController.SetButtonState(DualShock4SpecialButton.Ps, State.PS);
-                emuController.SetButtonState(DualShock4SpecialButton.Touchpad, State.TouchClick);
+                emuController.SetButtonState(DualShock4SpecialButton.Touchpad, State.TouchPad);
 
                 emuController.SubmitReport();
             }

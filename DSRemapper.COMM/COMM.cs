@@ -193,12 +193,12 @@ namespace DSRemapper.COMM
 
             if (port.Read(out rawReport) >= Marshal.SizeOf<COMInputReport>())
             { 
-                report.Axis[0] = rawReport.Axis[0].ToFloatAxis();
-                report.Axis[1] = rawReport.Axis[1].ToFloatAxis();
-                report.Axis[2] = rawReport.Axis[2].ToFloatAxis();
-                report.Axis[3] = rawReport.Axis[3].ToFloatAxis();
-                report.Axis[4] = rawReport.Axis[4].ToFloatAxis();
-                report.Axis[5] = rawReport.Axis[5].ToFloatAxis();
+                report.Axes[0] = rawReport.Axis[0].ToFloatAxis();
+                report.Axes[1] = rawReport.Axis[1].ToFloatAxis();
+                report.Axes[2] = rawReport.Axis[2].ToFloatAxis();
+                report.Axes[3] = rawReport.Axis[3].ToFloatAxis();
+                report.Axes[4] = rawReport.Axis[4].ToFloatAxis();
+                report.Axes[5] = rawReport.Axis[5].ToFloatAxis();
 
                 report.Sliders[0] = rawReport.Axis[6].ToFloatAxis();
                 report.Sliders[1] = rawReport.Axis[7].ToFloatAxis();

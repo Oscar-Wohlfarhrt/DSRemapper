@@ -38,6 +38,9 @@ namespace DSRemapper.DSLogger
         /// Occurs when a log function is called
         /// </summary>
         public static event LoggerEvent? OnLog;
+        /// <summary>
+        /// Gets the number of subscriptors to the 'OnLog' event. For debug purposes.
+        /// </summary>
         public static int Subcribers => OnLog?.GetInvocationList().Length ?? 0;
         /// <summary>
         /// Structure of a log entry

@@ -90,9 +90,9 @@ namespace DSRemapper.MouseKeyboardInput
                     if (res.Success)
                     {
                         MouseState state = device.GetCurrentMouseState();
-                        report.Axis[0] = state.X / 120f;
-                        report.Axis[1] = state.Y / 120f;
-                        report.Axis[2] = state.Z / 120f;
+                        report.Axes[0] = state.X / 120f;
+                        report.Axes[1] = state.Y / 120f;
+                        report.Axes[2] = state.Z / 120f;
                         report.SetButtons(state.Buttons);
                     }
                     else

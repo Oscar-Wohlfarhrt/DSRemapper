@@ -19,6 +19,9 @@ namespace DSRemapper.DualShock
      * Dualshock vendor id: 054C
      * Dualshock product id: 09CC (of my dualshock at least)
      */
+    /// <summary>
+    /// DualShock info class
+    /// </summary>
     public class DualShockInfo : IDSInputDeviceInfo
     {
         /// <summary>
@@ -322,7 +325,7 @@ namespace DSRemapper.DualShock
             report.R3 = strRawReport.R3;
 
             report.PS = strRawReport.PS;
-            report.TouchClick = strRawReport.TPad;
+            report.TouchPad = strRawReport.TPad;
 
             report.LTrigger = AxisToFloat(strRawReport.LT);
             report.RTrigger = AxisToFloat(strRawReport.RT);

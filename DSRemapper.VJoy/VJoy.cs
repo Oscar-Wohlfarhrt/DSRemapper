@@ -1,7 +1,6 @@
 ﻿using VJoyWrapper;
 using DSRemapper.Core;
 using DSRemapper.Types;
-using System;
 using System.Collections;
 
 namespace DSRemapper.VJoyCtrl
@@ -61,12 +60,12 @@ namespace DSRemapper.VJoyCtrl
         {
             if (IsConnected && id.HasValue)
             {
-                vState.AxisX = FloatToVJoyAxis(State.Axis[0]);
-                vState.AxisY = FloatToVJoyAxis(State.Axis[1]);
-                vState.AxisZRot = FloatToVJoyAxis(State.Axis[2]);
-                vState.AxisZ = FloatToVJoyAxis(State.Axis[3]);
-                vState.AxisXRot = FloatToVJoyAxis(State.Axis[4]);
-                vState.AxisYRot = FloatToVJoyAxis(State.Axis[5]);
+                vState.AxisX = FloatToVJoyAxis(State.Axes[0]);
+                vState.AxisY = FloatToVJoyAxis(State.Axes[1]);
+                vState.AxisZRot = FloatToVJoyAxis(State.Axes[2]);
+                vState.AxisZ = FloatToVJoyAxis(State.Axes[3]);
+                vState.AxisXRot = FloatToVJoyAxis(State.Axes[4]);
+                vState.AxisYRot = FloatToVJoyAxis(State.Axes[5]);
 
                 vState.Slider = State.Sliders[0].ToShortAxis();
                 vState.Dial = State.Sliders[1].ToShortAxis();

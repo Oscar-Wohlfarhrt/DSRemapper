@@ -34,7 +34,6 @@ namespace DSRemapper.RemapperLua
         /// Max controller trigger axis value
         /// </summary>
         public const float MaxTrigger = 1;
-        private const float defaulLedIntensity = 0.125f;
         /// <summary>
         /// Creates a default DSOutputReport object to set physical device feedback properties.
         /// </summary>
@@ -216,7 +215,7 @@ namespace DSRemapper.RemapperLua
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
-            string json = "";
+            string json;
             if (Path.IsPathFullyQualified(path))
                 json = File.ReadAllText(path);
             else

@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace DSRemapper.DSOutput
 {
-    public class DSOutput
+    public class DSOutput : IDisposable
     {
         private List<IDSOutputController> emulatedControllers = new();
         static Dictionary<string,BindedController> bindedControllers = new();
@@ -56,6 +56,12 @@ namespace DSRemapper.DSOutput
                     }
                 }
             }
+        }
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            DisconnectAll();
+            GC.SuppressFinalize(this);
         }
     }
 

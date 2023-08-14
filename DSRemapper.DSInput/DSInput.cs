@@ -8,12 +8,6 @@ namespace DSRemapper.DSInput
     public class DSInput
     {
         public DSInput() { }
-
-        public static void LogDevices()
-        {
-
-        }
-
         public static IDSInputDeviceInfo[] GetDevicesInfo()
         {
             return PluginsLoader.Scanners.SelectMany((s) => {

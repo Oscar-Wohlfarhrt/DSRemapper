@@ -95,12 +95,12 @@ namespace DSRemapper.DirectInput
                         report.Buttons[i] = state.Buttons[i];
                     }
 
-                    report.Axis[0] = AxisToFloat(state.X - short.MaxValue);
-                    report.Axis[1] = AxisToFloat(state.Y - short.MaxValue);
-                    report.Axis[2] = AxisToFloat(state.Z - short.MaxValue);
-                    report.Axis[3] = AxisToFloat(state.RotationZ - short.MaxValue);
-                    report.Axis[4] = AxisToFloat(state.RotationX - short.MaxValue);
-                    report.Axis[5] = AxisToFloat(state.RotationY - short.MaxValue);
+                    report.Axes[0] = AxisToFloat(state.X - short.MaxValue);
+                    report.Axes[1] = AxisToFloat(state.Y - short.MaxValue);
+                    report.Axes[2] = AxisToFloat(state.Z - short.MaxValue);
+                    report.Axes[3] = AxisToFloat(state.RotationZ - short.MaxValue);
+                    report.Axes[4] = AxisToFloat(state.RotationX - short.MaxValue);
+                    report.Axes[5] = AxisToFloat(state.RotationY - short.MaxValue);
 
                     report.Sliders[0] = AxisToFloat(state.Sliders[0] - short.MaxValue);
                     report.Sliders[1] = AxisToFloat(state.Sliders[1] - short.MaxValue);

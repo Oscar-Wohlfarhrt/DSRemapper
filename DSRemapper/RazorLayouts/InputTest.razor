@@ -9,9 +9,9 @@
     <div id="input-test-grid">
         @if (report != null)
         {
-            @for (int i = 0; i < report.Axis.Length; i++)
+            @for (int i = 0; i < report.Axes.Length; i++)
             {
-                <AxisItem Name=@($"Axis[{i}]") Value=report.Axis[i]/>
+                <AxisItem Name=@($"Axis[{i}]") Value=report.Axes[i]/>
             }
             @for (int i = 0; i < report.Sliders.Length; i++)
             {

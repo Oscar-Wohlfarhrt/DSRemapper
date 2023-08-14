@@ -75,7 +75,7 @@ namespace DSRemapper.Core
 
     #region Interfaces
     /// <summary>
-    /// A standard interface for devices infos handled by DSRemapper
+    /// A standard interface for device informations handled by DSRemapper
     /// </summary>
     public interface IDSInputDeviceInfo
     {
@@ -195,7 +195,7 @@ namespace DSRemapper.Core
         }
     }
     /// <summary>
-    /// Standard interface for 
+    /// Standard interface for DSRemapper remappers
     /// </summary>
     public interface IDSRemapper : IDisposable
     {

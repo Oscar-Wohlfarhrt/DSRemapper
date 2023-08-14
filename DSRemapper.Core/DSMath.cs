@@ -2,9 +2,6 @@
 
 namespace DSRemapper.DSMath
 {
-    internal class DSMath
-    {
-    }
     public class DSVector2
     {
         public float X { get; set; } = 0;
