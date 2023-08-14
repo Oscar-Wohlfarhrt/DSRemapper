@@ -82,32 +82,58 @@ namespace DSRemapper.MouseKeyboardOutput
         {
             SendInput(inputBuilder.Clear().AddKeyPress(key).ToArray());
         }
-
-        public int ConvertSCToKey(ScanCodeShort key)
-        {
-            return (int)MapVirtualKeyA((uint)key, MapVirtualKeyMapTypes.MAPVK_VSC_TO_VK);
-        }
-        public int ConvertKeyToSC(VirtualKeyShort key)
-        {
-            return (int)MapVirtualKeyA((uint)key, MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
-        }
-
+        /// <summary>
+        /// Converts a scan code to a virtual key code
+        /// </summary>
+        /// <param name="key">Scan code to convert</param>
+        /// <returns>An equivalent virtual key code</returns>
+        public static int ConvertSCToKey(ScanCodeShort key) =>
+            (int)MapVirtualKeyA((uint)key, MapVirtualKeyMapTypes.MAPVK_VSC_TO_VK);
+        /// <summary>
+        /// Converts a virtual key code to a scan code
+        /// </summary>
+        /// <param name="key">Virtual key code to convert</param>
+        /// <returns>An equivalent scan code</returns>
+        public static int ConvertKeyToSC(VirtualKeyShort key) =>
+            (int)MapVirtualKeyA((uint)key, MapVirtualKeyMapTypes.MAPVK_VK_TO_VSC);
+        /// <summary>
+        /// Moves mouse by the X and Y values
+        /// </summary>
+        /// <param name="x">The X value</param>
+        /// <param name="y">The Y value</param>
         public void MoveMouse(int x, int y)
         {
             SendInput(inputBuilder.Clear().MoveMouse(x, y).ToArray());
         }
+        /// <summary>
+        /// Moves the mouse to the X and Y coordinates
+        /// </summary>
+        /// <param name="x">The X coordinate</param>
+        /// <param name="y">The Y coordinate</param>
         public void MoveMouseAbsolute(int x, int y)
         {
             SendInput(inputBuilder.Clear().MoveMouse(x, y, true).ToArray());
         }
+        /// <summary>
+        /// Emulates a mouse button press. Doesn't release the key pulsation until MButtonUp function for the same button is called.
+        /// </summary>
+        /// <param name="button">Mouse button code</param>
         public void MButtonDown(MouseButton button)
         {
             SendInput(inputBuilder.Clear().MButtonDown(button).ToArray());
         }
+        /// <summary>
+        /// Emulates a mouse button release.
+        /// </summary>
+        /// <param name="button">Mouse button code</param>
         public void MButtonUp(MouseButton button)
         {
             SendInput(inputBuilder.Clear().MButtonUp(button).ToArray());
         }
+        /// <summary>
+        /// Emulates a mouse button press and release (pulsation).
+        /// </summary>
+        /// <param name="button">Mouse button code</param>
         public void MButtonPress(MouseButton button)
         {
             SendInput(inputBuilder.Clear().MButtonPress(button).ToArray());
