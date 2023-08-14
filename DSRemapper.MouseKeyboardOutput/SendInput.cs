@@ -3,7 +3,7 @@
 namespace DSRemapper.MouseKeyboardOutput
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct INPUT
+    internal struct INPUT
     {
         internal InputType type = 0;
         internal InputUnion U = default;
@@ -22,7 +22,7 @@ namespace DSRemapper.MouseKeyboardOutput
         }
     }
 
-    public enum InputType : uint
+    internal enum InputType : uint
     {
         INPUT_MOUSE,
         INPUT_KEYBOARD,
@@ -84,6 +84,11 @@ namespace DSRemapper.MouseKeyboardOutput
         SCANCODE = 0x0008,
         UNICODE = 0x0004
     }
+    /// <summary>
+    /// Key codes for virtual keys
+    /// Doesn't work with DirectX applications
+    /// </summary>
+#pragma warning disable CS1591
     public enum VirtualKeyShort : short
     {
         LBUTTON = 0x01,
@@ -337,7 +342,13 @@ namespace DSRemapper.MouseKeyboardOutput
         NONAME = 0xFC,
         PA1 = 0xFD,
         OEM_CLEAR = 0xFE
+#pragma warning restore CS1591
     }
+    /// <summary>
+    /// Key codes for scan keys
+    /// Works with DirectX applications
+    /// </summary>
+#pragma warning disable CS1591
     public enum ScanCodeShort : short
     {
         LBUTTON = 0,
@@ -513,6 +524,7 @@ namespace DSRemapper.MouseKeyboardOutput
         PA1 = 0,
         OEM_CLEAR = 0,
     }
+#pragma warning restore CS1591
     [StructLayout(LayoutKind.Sequential)]
     internal struct HARDWAREINPUT
     {

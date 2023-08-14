@@ -3,43 +3,81 @@ using static DSRemapper.MouseKeyboardOutput.SendInputApi;
 
 namespace DSRemapper.MouseKeyboardOutput
 {
+    /// <summary>
+    /// Mouse buttons enumeration
+    /// </summary>
     public enum MouseButton : int
     {
+        /// <summary>Left mouse button</summary>
         LEFT,
+        /// <summary>Right mouse button</summary>
         RIGHT,
+        /// <summary>Middle mouse button</summary>
         MIDDLE,
+        /// <summary>Forward mouse button</summary>
         BUTTON4,
+        /// <summary>Back mouse button</summary>
         BUTTON5,
     }
+    /// <summary>
+    /// Mouse and Keyboard Output/Emulation class
+    /// </summary>
     public class MKOutput
     {
         private InputBuilder inputBuilder = new InputBuilder();
 
-        private void SendInput(INPUT[] inputs)
-        {
-            SendInputApi.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<INPUT>());
-        }
-
+        private static void SendInput(INPUT[] inputs) => SendInputApi
+            .SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<INPUT>());
+        /// <summary>
+        /// Emulates a key press. Doesn't release the key pulsation until KeyUp function for the same code is called.
+        /// Doesn't work with DirectX applications.
+        /// </summary>
+        /// <param name="key">Virtual key code</param>
         public void KeyDown(VirtualKeyShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyDown(key).ToArray());
         }
+        /// <summary>
+        /// Emulates a key press. Doesn't release the key pulsation until SCUp function for the same code is called.
+        /// Works with DirectX applications.
+        /// </summary>
+        /// <param name="key">Scan key code</param>
         public void SCDown(ScanCodeShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyDown(key).ToArray());
         }
+        /// <summary>
+        /// Emulates a key release.
+        /// Doesn't work with DirectX applications.
+        /// </summary>
+        /// <param name="key">Virtual key code</param>
         public void KeyUp(VirtualKeyShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyUp(key).ToArray());
         }
+        /// <summary>
+        /// Emulates a key release.
+        /// Works with DirectX applications.
+        /// </summary>
+        /// <param name="key">Scan key code</param>
         public void SCUp(ScanCodeShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyUp(key).ToArray());
         }
+        /// <summary>
+        /// Emulates a key press and release (pulsation).
+        /// Doesn't work with DirectX applications.
+        /// </summary>
+        /// <param name="key">Virtual key code</param>
         public void KeyPress(VirtualKeyShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyPress(key).ToArray());
         }
+        /// <summary>
+        /// Emulates a key press and release (pulsation).
+        /// Works with DirectX applications.
+        /// </summary>
+        /// <param name="key">Scan key code</param>
         public void SCPress(ScanCodeShort key)
         {
             SendInput(inputBuilder.Clear().AddKeyPress(key).ToArray());
