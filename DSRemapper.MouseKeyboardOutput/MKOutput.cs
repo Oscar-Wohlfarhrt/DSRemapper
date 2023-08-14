@@ -24,9 +24,9 @@ namespace DSRemapper.MouseKeyboardOutput
     /// </summary>
     public class MKOutput
     {
-        private InputBuilder inputBuilder = new InputBuilder();
+        private readonly InputBuilder inputBuilder = new();
 
-        private static void SendInput(INPUT[] inputs) => SendInputApi
+        private static void SendInput(INPUT[] inputs) => _ = SendInputApi
             .SendInput((uint)inputs.Length, inputs, Marshal.SizeOf<INPUT>());
         /// <summary>
         /// Emulates a key press. Doesn't release the key pulsation until KeyUp function for the same code is called.
@@ -142,7 +142,7 @@ namespace DSRemapper.MouseKeyboardOutput
 
     internal class InputBuilder
     {
-        List<INPUT> inputList = new List<INPUT>();
+        readonly List<INPUT> inputList = new();
 
         public InputBuilder AddKeyDown(VirtualKeyShort key)
         {
