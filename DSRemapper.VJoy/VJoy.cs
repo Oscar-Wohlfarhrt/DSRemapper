@@ -5,6 +5,9 @@ using System.Collections;
 
 namespace DSRemapper.VJoyCtrl
 {
+    /// <summary>
+    /// VJoy emulated controller class
+    /// </summary>
     [EmulatedController("VJoy")]
     public class VJoyCtrl : IDSOutputController
     {
@@ -13,20 +16,32 @@ namespace DSRemapper.VJoyCtrl
         private VJoy.JoystickState vState = new();
         private uint? id;
 
-        public readonly DSOutputReport report = new();
+        private readonly DSOutputReport report = new();
 
+        /// <inheritdoc/>
         public bool IsConnected { get; private set; }
+        /// <inheritdoc/>
         public DSInputReport State { get; private set; }
 
+        /// <summary>
+        /// VJoy controller class constructor
+        /// </summary>
         public VJoyCtrl()
         {
             State = new(6, 2, 128, 4, 0);
             range = 32768;
         }
+        /// <summary>
+        /// Connects to VJoy controller with the id 1
+        /// </summary>
         public void Connect()
         {
             Connect(1);
         }
+        /// <summary>
+        /// Connects to VJoy controller with the specified id
+        /// </summary>
+        /// <param name="id">The id of the VJoy controller</param>
         public void Connect(uint id)
         {
             if(!this.id.HasValue)
@@ -35,8 +50,13 @@ namespace DSRemapper.VJoyCtrl
             if (joy.AcquireVJD(id))
                 IsConnected = true;
         }
+        /// <summary>
+        /// Connects to VJoy controller with the specified id.
+        /// Defined for Lua Interpreter plugin support
+        /// </summary>
+        /// <param name="id">The id of the VJoy controller</param>
         public void Connect(double id) => Connect((uint)id);
-
+        /// <inheritdoc/>
         public void Disconnect()
         {
             if (id.HasValue)
@@ -45,17 +65,18 @@ namespace DSRemapper.VJoyCtrl
                 IsConnected = false;
             }
         }
-
+        /// <inheritdoc/>
         public void Dispose()
         {
-
+            Disconnect();
+            GC.SuppressFinalize(this);
         }
-
+        /// <inheritdoc/>
         public DSOutputReport GetFeedbackReport()
         {
-            return new();
+            return report;
         }
-
+        /// <inheritdoc/>
         public void Update()
         {
             if (IsConnected && id.HasValue)
@@ -71,7 +92,7 @@ namespace DSRemapper.VJoyCtrl
                 vState.Dial = State.Sliders[1].ToShortAxis();
                 vState.bHats = (uint)(State.Povs[0].Angle != -1 ? State.Povs[0].Angle * 100 : -1);
 
-                BitArray bArr = new BitArray(State.Buttons);
+                BitArray bArr = new(State.Buttons);
                 uint[] buttons = new uint[4];
                 bArr.CopyTo(buttons, 0);
                 vState.Buttons = buttons[0];
@@ -82,7 +103,7 @@ namespace DSRemapper.VJoyCtrl
             }
         }
 
-        public int FloatToVJoyAxis(float axis)
+        internal int FloatToVJoyAxis(float axis)
         {
             return (int)((axis + 1) * (axis > 0 ? range - 1 : range) / 2);
         }

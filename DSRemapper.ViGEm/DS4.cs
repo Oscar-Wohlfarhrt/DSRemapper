@@ -6,22 +6,31 @@ using Nefarius.ViGEm.Client.Targets.DualShock4;
 
 namespace DSRemapper.ViGEm
 {
+    /// <summary>
+    /// ViGEm DualShock 4 emulated controller class
+    /// </summary>
     [EmulatedController("ViGEm/DS4")]
     public class DS4 : IDSOutputController
     {
         private readonly IDualShock4Controller emuController;
+        /// <inheritdoc/>
         public bool IsConnected { get; private set; }
+        /// <inheritdoc/>
         public DSInputReport State { get; private set; } = new(6, 0, 14, 1, 2);
-        private DSOutputReport feedback = new();
+        private readonly DSOutputReport feedback = new();
+        /// <summary>
+        /// ViGEm DualShock 4 controller class constructor
+        /// </summary>
         public DS4()
         {
-            ViGEmClient cli = new ViGEmClient();
+            ViGEmClient cli = new();
             emuController = cli.CreateDualShock4Controller();
 #pragma warning disable CS0618 // El tipo o el miembro están obsoletos
-            emuController.FeedbackReceived += EmuController_FeedbackReceived; //there is no other way
+            emuController.FeedbackReceived += EmuController_FeedbackReceived; //there is no other way to get it work
 #pragma warning restore CS0618 // El tipo o el miembro están obsoletos
             emuController.AutoSubmitReport = false;
         }
+        /// <inheritdoc/>
         public void Connect()
         {
             if (!IsConnected)
@@ -30,6 +39,7 @@ namespace DSRemapper.ViGEm
                 IsConnected = true;
             }
         }
+        /// <inheritdoc/>
         public void Disconnect()
         {
             if (IsConnected)
@@ -38,9 +48,11 @@ namespace DSRemapper.ViGEm
                 IsConnected = false;
             }
         }
+        /// <inheritdoc/>
         public void Dispose()
         {
             Disconnect();
+            GC.SuppressFinalize(this);
         }
         private void EmuController_FeedbackReceived(object sender, DualShock4FeedbackReceivedEventArgs e)
         {
@@ -48,10 +60,12 @@ namespace DSRemapper.ViGEm
             feedback.Strong = e.LargeMotor / 255f;
             feedback.Led = new(e.LightbarColor.Red, e.LightbarColor.Green, e.LightbarColor.Blue);
         }
+        /// <inheritdoc/>
         public DSOutputReport GetFeedbackReport()
         {
             return feedback;
         }
+        /// <inheritdoc/>
         public void Update()
         {
             if (IsConnected)

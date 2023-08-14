@@ -200,7 +200,7 @@ namespace DSRemapper.Core
     public interface IDSRemapper : IDisposable
     {
         /// <summary>
-        /// OnLog event to comunicate Remapper messages
+        /// Occurs when the remapper raise a message.
         /// </summary>
         public event RemapperEventArgs? OnLog;
         /// <summary>

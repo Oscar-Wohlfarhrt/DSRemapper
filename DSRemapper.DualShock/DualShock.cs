@@ -344,11 +344,11 @@ namespace DSRemapper.DualShock
                 gyroAvg.Update(report.Gyro, 200);
             lastGyro = report.Gyro;
 
-            report.Gyro -= gyroAvg.Mean;
+            report.Gyro -= gyroAvg.Average;
 
             motPro.Update(report.RawAccel, report.Gyro);
 
-            report.Grav = -motPro.grav;
+            report.Grav = -motPro.Grav;
             report.Accel = motPro.Accel;
             report.Rotation = motPro.rotation;
             report.DeltaRotation = motPro.deltaRotation;

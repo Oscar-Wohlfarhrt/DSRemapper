@@ -6,21 +6,29 @@ using Nefarius.ViGEm.Client.Targets.Xbox360;
 
 namespace DSRemapper.ViGEm
 {
+    /// <summary>
+    /// ViGEm Xbox emulated controller class
+    /// </summary>
     [EmulatedController("ViGEm/Xbox")]
     public class Xbox : IDSOutputController
     {
         private readonly IXbox360Controller emuController;
+        /// <inheritdoc/>
         public bool IsConnected { get; private set; }
-
+        /// <inheritdoc/>
         public DSInputReport State { get; set; } = new DSInputReport(6,0,14,1,0);
-        private DSOutputReport feedback = new();
+        private readonly DSOutputReport feedback = new();
+        /// <summary>
+        /// ViGEm Xbox controller class constructor
+        /// </summary>
         public Xbox()
         {
-            ViGEmClient cli = new ViGEmClient();
+            ViGEmClient cli = new();
             emuController=cli.CreateXbox360Controller();
             emuController.FeedbackReceived += EmuController_FeedbackReceived;
             emuController.AutoSubmitReport = true;
         }
+        /// <inheritdoc/>
         public void Connect()
         {
             if (!IsConnected)
@@ -29,7 +37,7 @@ namespace DSRemapper.ViGEm
                 IsConnected = true;
             }
         }
-
+        /// <inheritdoc/>
         public void Disconnect()
         {
             if (IsConnected)
@@ -38,10 +46,11 @@ namespace DSRemapper.ViGEm
                 IsConnected = false;
             }
         }
-
+        /// <inheritdoc/>
         public void Dispose()
         {
             Disconnect();
+            GC.SuppressFinalize(this);
         }
         private void EmuController_FeedbackReceived(object sender, Xbox360FeedbackReceivedEventArgs e)
         {
@@ -63,11 +72,12 @@ namespace DSRemapper.ViGEm
                     break;
             }
         }
+        /// <inheritdoc/>
         public DSOutputReport GetFeedbackReport()
         {
             return feedback;
         }
-
+        /// <inheritdoc/>
         public void Update()
         {
             if (IsConnected)

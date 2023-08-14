@@ -9,6 +9,9 @@ using DSRemapper.MouseKeyboardOutput;
 
 namespace DSRemapper.RemapperLua
 {
+    /// <summary>
+    /// Remapper plugin based on lua scripts for remapping controllers
+    /// </summary>
     [Remapper("lua")]
     public class LuaInterpreter : IDSRemapper
     {
@@ -47,20 +50,23 @@ namespace DSRemapper.RemapperLua
             UserData.RegisterType<float[]>(InteropAccessMode.BackgroundOptimized);
         }
 
-        Script script = new Script();
-        Closure? luaRemap = null;
-
+        private Script script = new();
+        private Closure? luaRemap = null;
+        /// <inheritdoc/>
         public event RemapperEventArgs? OnLog;
         private string lastMessage = "";
 
-        DSOutput.DSOutput emuControllers = new();
+        private readonly DSOutput.DSOutput emuControllers = new();
 
-        Stopwatch sw = new();
-
+        private readonly Stopwatch sw = new();
+        /// <summary>
+        /// LuaInterpreter class constructor
+        /// </summary>
         public LuaInterpreter()
         {
 
         }
+        /// <inheritdoc/>
         public void SetScript(string file)
         {
             try
@@ -97,6 +103,7 @@ namespace DSRemapper.RemapperLua
                 OnLog?.Invoke(RemapperEventType.Error, e.Message);
             }
         }
+        /// <inheritdoc/>
         public DSOutputReport Remap(DSInputReport report)
         {
             DSOutputReport outReport = new();
@@ -131,9 +138,11 @@ namespace DSRemapper.RemapperLua
         {
             OnLog?.Invoke(RemapperEventType.DeviceConsole,text);
         }
+        /// <inheritdoc/>
         public void Dispose()
         {
             emuControllers.DisconnectAll();
+            GC.SuppressFinalize(this);
         }
     }
 }

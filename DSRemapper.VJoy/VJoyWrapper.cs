@@ -2,7 +2,7 @@
 
 namespace VJoyWrapper
 {
-    public enum HID_USAGES
+    internal enum HID_USAGES
     {
         HID_USAGE_X = 0x30,
         HID_USAGE_Y = 0x31,
@@ -16,7 +16,7 @@ namespace VJoyWrapper
         HID_USAGE_POV = 0x39,
     }
 
-    public enum VjdStat  /* Declares an enumeration data type called BOOLEAN */
+    internal enum VjdStat  /* Declares an enumeration data type called BOOLEAN */
     {
         VJD_STAT_OWN,   // The  vJoy Device is owned by this application.
         VJD_STAT_FREE,  // The  vJoy Device is NOT owned by any application (including this one).
@@ -30,7 +30,7 @@ namespace VJoyWrapper
 
     // HID Descriptor definitions - FFB Report IDs
 
-    public enum FFBPType // FFB Packet Type
+    internal enum FFBPType // FFB Packet Type
     {
         // Write
         PT_EFFREP = 0x01,   // Usage Set Effect Report
@@ -53,7 +53,7 @@ namespace VJoyWrapper
         PT_POOLREP = 0x03 + 0x10,   // Usage PID Pool Report
     };
 
-    public enum FFBEType // FFB Effect Type
+    internal enum FFBEType // FFB Effect Type
     {
 
         // Effect Type
@@ -72,7 +72,7 @@ namespace VJoyWrapper
         ET_CSTM = 12,   //    Custom Force Data
     };
 
-    public enum FFB_CTRL
+    internal enum FFB_CTRL
     {
         CTRL_ENACT = 1, // Enable all device actuators.
         CTRL_DISACT = 2,    // Disable all the device actuators.
@@ -82,7 +82,7 @@ namespace VJoyWrapper
         CTRL_DEVCONT = 6,   // Device Continue– The all effects that running when the device was paused are restarted from their last time step.
     };
 
-    public enum FFBOP
+    internal enum FFBOP
     {
         EFF_START = 1, // EFFECT START
         EFF_SOLO = 2, // EFFECT SOLO START

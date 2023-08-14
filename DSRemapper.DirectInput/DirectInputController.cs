@@ -6,56 +6,88 @@ using SharpDX.DirectInput;
 
 namespace DSRemapper.DirectInput
 {
+    /// <summary>
+    /// Direct input device scanner class
+    /// </summary>
     public class DIScanner : IDSDeviceScanner
     {
-        public static readonly SharpDX.DirectInput.DirectInput di = new();
+        /// <summary>
+        /// DirecInput object used in the plugin
+        /// </summary>
+        internal static readonly SharpDX.DirectInput.DirectInput DI = new();
+        /// <inheritdoc/>
         public IDSInputDeviceInfo[] ScanDevices()
         {
-            return di.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly)
+            return DI.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly)
                 .Select((x) => { return new DIDeviceInfo(x); }).ToArray();
         }
     }
+    /// <summary>
+    /// Direct input information class
+    /// </summary>
     public class DIDeviceInfo : IDSInputDeviceInfo
     {
-
+        /// <summary>
+        /// DirectX DirectInput Device instance class used to create the controller
+        /// </summary>
         public DeviceInstance DeviceInstance { get; private set; }
+        /// <summary>
+        /// Gets product GUID of the device
+        /// </summary>
         public Guid ProductGuid { get { return DeviceInstance.ProductGuid; } }
+        /// <summary>
+        /// Gets instance GUID of the device
+        /// </summary>
         public Guid InstanceGuid { get { return DeviceInstance.InstanceGuid; } }
 
         private byte[] ProductBytes { get { return ProductGuid.ToByteArray(); } }
-
+        /// <inheritdoc/>
         public string Id => InstanceGuid.ToString();
+        /// <inheritdoc/>
         public string Name { get { return DeviceInstance.ProductName; } }
+        /// <summary>
+        /// Gets device product id
+        /// </summary>
         public int ProductId { get { return BitConverter.ToUInt16(ProductBytes, 2); } }
+        /// <summary>
+        /// Gets device vendor id
+        /// </summary>
         public int VendorId { get { return BitConverter.ToUInt16(ProductBytes, 0); } }
 
-
+        /// <summary>
+        /// DirectInput Device Info class contructor
+        /// </summary>
+        /// <param name="deviceInstance">Device instance representing the physical controller</param>
         public DIDeviceInfo(DeviceInstance deviceInstance)
         {
             DeviceInstance = deviceInstance;
         }
-
-        public IDSInputController CreateController()
-        {
-            return new DirectInputController(this);
-        }
+        /// <inheritdoc/>
+        public IDSInputController CreateController() => new DirectInputController(this);
     }
+    /// <summary>
+    /// Direct Input Controller class
+    /// </summary>
     public class DirectInputController : IDSInputController
     {
-        static SharpDX.DirectInput.DirectInput DI => DIScanner.di;
+        static SharpDX.DirectInput.DirectInput DI => DIScanner.DI;
 
         private readonly DIDeviceInfo deviceInfo;
         private readonly Joystick joy;
         private readonly DSInputReport report;
 
+        /// <inheritdoc/>
         public string Id => deviceInfo.Id;
-
+        /// <inheritdoc/>
         public string Name => deviceInfo.Name;
-
+        /// <inheritdoc/>
         public string Type => "DI";
-
+        /// <inheritdoc/>
         public bool IsConnected { get; private set; }
-
+        /// <summary>
+        /// DirectInput Controller class constructor
+        /// </summary>
+        /// <param name="deviceInfo">DirectInput device information requiered to connect the controller</param>
         public DirectInputController(DIDeviceInfo deviceInfo)
         {
             this.deviceInfo = deviceInfo;
@@ -63,24 +95,25 @@ namespace DSRemapper.DirectInput
 
             report = new(6, 8, 32, 4, 0);
         }
-
+        /// <inheritdoc/>
         public void Connect()
         {
             joy.Acquire();
             IsConnected = true;
         }
-
+        /// <inheritdoc/>
         public void Disconnect()
         {
             IsConnected = false;
             joy.Unacquire();
         }
-
+        /// <inheritdoc/>
         public void Dispose()
         {
             Disconnect();
+            GC.SuppressFinalize(this);
         }
-
+        /// <inheritdoc/>
         public DSInputReport GetInputReport()
         {
             try
@@ -129,7 +162,7 @@ namespace DSRemapper.DirectInput
 
             return report;
         }
-
+        /// <inheritdoc/>
         public void SendOutputReport(DSOutputReport report)
         {
 
