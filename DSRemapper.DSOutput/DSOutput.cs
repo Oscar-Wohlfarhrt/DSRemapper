@@ -10,7 +10,7 @@ namespace DSRemapper.DSOutput
     /// </summary>
     public class DSOutput : IDisposable
     {
-        private readonly List<IDSOutputController> emulatedControllers = new();
+        private List<IDSOutputController> emulatedControllers = new();
         private static readonly Dictionary<string,SharedController> sharedControllers = new();
         /// <summary>
         /// Creates a standalone emulated controller for the remapper.
@@ -61,6 +61,7 @@ namespace DSRemapper.DSOutput
                 controller.Dispose();
             }
             DisconnectAllBinded();
+            emulatedControllers = new();
         }
         /// <summary>
         /// Disconnects THIS DSOutput object from all shared controllers

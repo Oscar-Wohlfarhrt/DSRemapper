@@ -37,7 +37,7 @@ namespace DSRemapper.Core
         /// </summary>
         public readonly static string ProfilesPath = Path.Combine(FolderPath, "Profiles");
         /// <summary>
-        /// Folder containing remapper profiles settings saved from them.
+        /// Folder containing DSRemapper app settings.
         /// </summary>
         public readonly static string ConfigPath = Path.Combine(FolderPath, "Configs");
 
