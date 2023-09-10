@@ -24,6 +24,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="RazorLayouts\About.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="DSRemapper.ico" />
   </ItemGroup>
 
@@ -46,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="RazorLayouts\TestInputItems\QuatItem.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
     <Content Update="wwwroot\css\app.css">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -58,6 +65,18 @@
     <Content Update="wwwroot\js\jsinterop.js">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="RazorLayouts\About.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="RazorLayouts\About.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="RazorLayouts\About.razor" />
   </ItemGroup>
 
 </Project>

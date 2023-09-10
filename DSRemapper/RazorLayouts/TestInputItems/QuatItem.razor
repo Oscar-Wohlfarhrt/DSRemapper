@@ -1,0 +1,43 @@
+﻿@using DSRemapper.DSMath;
+<div class="quat-item">
+    <span>@Name</span>
+    <div>
+        <svg width="50px" height="@height">
+            <rect x="0" y="0" width="50" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+            <rect x="0" y="0" width="@svgxVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
+        </svg>
+        <span>@($"{Value.X:0.000}")</span>
+        <svg width="50px" height="@height">
+            <rect x="0" y="0" width="50" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+            <rect x="0" y="0" width="@svgyVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
+        </svg>
+        <span>@($"{Value.Y:0.000}")</span>
+        <svg width="50px" height="@height">
+            <rect x="0" y="0" width="50" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+            <rect x="0" y="0" width="@svgzVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
+        </svg>
+        <span>@($"{Value.Z:0.000}")</span>
+        <svg width="50px" height="@height">
+            <rect x="0" y="0" width="50" height="@height" rx="@borrad" ry="@borrad" fill="#282828"></rect>
+            <rect x="0" y="0" width="@svgwVal" height="@height" rx="@borrad" ry="@borrad" fill="#aaa"></rect>
+        </svg>
+        <span>@($"{Value.W:0.000}")</span>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = "Unamed";
+    [Parameter]
+    public DSQuaternion Value { get; set; } = null!;
+    [Parameter]
+    public float Scale { get; set; } = 1;
+
+    const int borrad = 2;
+    const int height = 7;
+
+    private int svgxVal => (int)Math.Round((Value.X/Scale + 1) * 25, 0);
+    private int svgyVal => (int)Math.Round((Value.Y/Scale + 1) * 25, 0);
+    private int svgzVal => (int)Math.Round((Value.Z / Scale + 1) * 25, 0);
+    private int svgwVal => (int)Math.Round((Value.W / Scale + 1) * 25, 0);
+}

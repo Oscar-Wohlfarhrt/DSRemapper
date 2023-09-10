@@ -414,14 +414,17 @@ namespace DSRemapper.Types
         /// </summary>
         public DSVector3[] SixAxis { get; } = new DSVector3[4] { new(), new(), new(), new() };
         /// <summary>
+        /// Quaternions array containing IMU data quaternions of the controller
+        /// </summary>
+        public DSQuaternion[] Quaternions { get; } = new DSQuaternion[2] { new(), new() };
+        /// <summary>
         /// Gets the delta/diference of quaternion rotation from the last report
         /// </summary>
-        public DSQuaternion DeltaRotation { get; set; } = new();
+        public DSQuaternion DeltaRotation { get=> Quaternions[0]; set=> Quaternions[0]=value; }
         /// <summary>
         /// Gets the current total rotation of the controller as a quaternion
         /// </summary>
-        public DSQuaternion Rotation { get; set; } = new();
-
+        public DSQuaternion Rotation { get => Quaternions[1]; set => Quaternions[1] = value; }
         /// <summary>
         /// Touches array containing all the finger touchs on the controller touchpad
         /// </summary>

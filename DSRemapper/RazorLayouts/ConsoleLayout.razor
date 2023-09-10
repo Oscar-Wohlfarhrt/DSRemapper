@@ -46,7 +46,8 @@
     string testLog = "";
 
     void PrintLog(Logger.LogEntry entry){
-        AddHTMLLog($"<{entry.Level}>{entry.Message}</{entry.Level}>");
+        //AddHTMLLog($"<{entry.Level}>{entry.Message}</{entry.Level}>");
+        AddHTMLLog(entry.ToString());
         if(autoScroll)
             ScrollBottom();
     }

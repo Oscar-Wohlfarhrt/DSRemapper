@@ -17,7 +17,7 @@ namespace DSRemapper
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            DSMain main = new();
+            DSForm<MainLayout> main = new();
             main.FormClosing += Main_FormClosing;
             Application.Run(main);
             RemapperCore.RemapperCore.Stop();

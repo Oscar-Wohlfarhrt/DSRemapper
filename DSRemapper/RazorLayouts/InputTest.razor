@@ -1,5 +1,7 @@
 ﻿@using DSRemapper.RemapperCore;
 @using DSRemapper.Types;
+@using DSRemapper.RazorLayouts;
+@using DSRemapper.RazorLayouts.TestInputItems;
 @implements IDisposable
 
 <div id="nav">
@@ -32,6 +34,10 @@
             @for (int i = 0; i < report.Touch.Length; i++)
             {
                 <TouchItem Name=@($"Touch[{i}]") Value=report.Touch[i] />
+            }
+            @for (int i = 0; i < report.Quaternions.Length; i++)
+            {
+                <QuatItem Name=@($"Quaternion[{i}]") Value=report.Quaternions[i] />
             }
         }
     </div>
