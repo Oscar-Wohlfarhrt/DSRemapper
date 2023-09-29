@@ -8,8 +8,12 @@ using System.Threading.Tasks;
 
 namespace DSRemapper.DualShock
 {
+	internal interface IDualShockInputReport
+	{
+		public StateData StateData { get; }
+	}
 	[StructLayout(LayoutKind.Explicit, Size = 64)]
-	struct StateData
+    internal struct StateData
 	{
 		[FieldOffset(0)]
 		public byte id = 0;
@@ -96,8 +100,25 @@ namespace DSRemapper.DualShock
 		}
 
 		public StateData() { }
+    }
+    [StructLayout(LayoutKind.Explicit,Size = 64)]
+    internal struct DSUSBInputReport : IDualShockInputReport
+    {
+        [FieldOffset(0)]
+        StateData stateData;
+
+        public StateData StateData => stateData;
+    }
+	[StructLayout(LayoutKind.Explicit, Size = 64)]
+    internal struct DSBTInputReport : IDualShockInputReport
+	{
+		[FieldOffset(2)]
+		StateData stateData;
+
+		public StateData StateData => stateData;
 	}
-	struct FeedbackData
+
+    internal struct FeedbackData
 	{
 
 	}
