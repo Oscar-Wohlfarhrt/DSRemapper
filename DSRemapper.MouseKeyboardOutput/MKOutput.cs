@@ -106,6 +106,15 @@ namespace DSRemapper.MouseKeyboardOutput
             SendInput(inputBuilder.Clear().MoveMouse(x, y).ToArray());
         }
         /// <summary>
+        /// Moves mouse wheel by the X and Y values. One wheel click is equivalente to 120.
+        /// </summary>
+        /// <param name="x">The X value</param>
+        /// <param name="y">The Y value</param>
+        public void MouseWheel(int x, int y)
+        {
+            SendInput(inputBuilder.Clear().MouseWheel(x, y).ToArray());
+        }
+        /// <summary>
         /// Moves the mouse to the X and Y coordinates
         /// </summary>
         /// <param name="x">The X coordinate</param>
@@ -245,6 +254,39 @@ namespace DSRemapper.MouseKeyboardOutput
             };
 
             inputList.Add(input);
+
+            return this;
+        }
+        public InputBuilder MouseWheel(int x, int y)
+        {
+            if (x != 0)
+            {
+                INPUT inputv = new(InputType.INPUT_MOUSE);
+                inputv.U.mi = new MOUSEINPUT
+                {
+                    dx = 0,
+                    dy = 0,
+                    mouseData = x,
+                    dwFlags = MOUSEEVENTF.WHEEL,
+                    time = 0,
+                    dwExtraInfo = GetMessageExtraInfo()
+                };
+                inputList.Add(inputv);
+            }
+            if (y != 0)
+            {
+                INPUT inputh = new(InputType.INPUT_MOUSE);
+                inputh.U.mi = new MOUSEINPUT
+                {
+                    dx = 0,
+                    dy = 0,
+                    mouseData = y,
+                    dwFlags = MOUSEEVENTF.HWHEEL,
+                    time = 0,
+                    dwExtraInfo = GetMessageExtraInfo()
+                };
+                inputList.Add(inputh);
+            }
 
             return this;
         }
