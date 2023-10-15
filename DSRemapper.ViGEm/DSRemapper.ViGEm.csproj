@@ -7,7 +7,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Output\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Output\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Output\ViGEm</OutputPath>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Title>$(AssemblyName) - DSR-Plugin</Title>

@@ -7,7 +7,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Remapper\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Remapper\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Remapper\LuaInterpreter</OutputPath>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Title>$(AssemblyName) - DSR-Plugin</Title>

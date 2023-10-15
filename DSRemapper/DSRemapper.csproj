@@ -17,7 +17,7 @@
 	  <RepositoryType>git</RepositoryType>
 	  <PackageProjectUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</PackageProjectUrl>
 	  <RepositoryUrl>https://github.com/Oscar-Wohlfarhrt/DSRemapper</RepositoryUrl>
-	  <AssemblyVersion>0.1.0</AssemblyVersion>
+	  <AssemblyVersion>0.1.1</AssemblyVersion>
 	  <FileVersion>$(AssemblyVersion)-pre-alpha</FileVersion>
 	  <Version>$(FileVersion)</Version>
 	  <GenerateDocumentationFile>True</GenerateDocumentationFile>

@@ -7,7 +7,7 @@
 	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	  <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	  <BaseOutputPath>..\build\$(Configuration)\Plugins\Output\</BaseOutputPath>
-	  <OutputPath>..\build\$(Configuration)\Plugins\Output\</OutputPath>
+	  <OutputPath>..\build\$(Configuration)\Plugins\Output\VJoy</OutputPath>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	  <Title>$(AssemblyName) - DSR-Plugin</Title>
 	  <Authors>Oscar-Wohlfarhrt</Authors>
