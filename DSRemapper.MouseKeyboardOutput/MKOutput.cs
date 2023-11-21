@@ -267,7 +267,7 @@ namespace DSRemapper.MouseKeyboardOutput
                     dx = 0,
                     dy = 0,
                     mouseData = x,
-                    dwFlags = MOUSEEVENTF.WHEEL,
+                    dwFlags = MOUSEEVENTF.HWHEEL,
                     time = 0,
                     dwExtraInfo = GetMessageExtraInfo()
                 };
@@ -281,7 +281,7 @@ namespace DSRemapper.MouseKeyboardOutput
                     dx = 0,
                     dy = 0,
                     mouseData = y,
-                    dwFlags = MOUSEEVENTF.HWHEEL,
+                    dwFlags = MOUSEEVENTF.WHEEL,
                     time = 0,
                     dwExtraInfo = GetMessageExtraInfo()
                 };
